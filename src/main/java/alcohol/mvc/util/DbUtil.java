@@ -1,4 +1,4 @@
-package kosta.mvc.util;
+package alcohol.mvc.util;
 
 import java.io.FileInputStream;
 import java.sql.Connection;

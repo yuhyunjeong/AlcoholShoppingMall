@@ -1,4 +1,4 @@
-package kosta.mvc.dto;
+package alcohol.mvc.dto;
 
 public class UserDTO {
 	private String userId;

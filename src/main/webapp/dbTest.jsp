@@ -1,4 +1,4 @@
-<%@page import="kosta.mvc.util.DbUtil"%>
+<%@page import="alcohol.mvc.util.DbUtil"%>
 <%@page import="java.sql.Connection"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
