@@ -7,8 +7,6 @@ public class OrderLineDTO {
 	private int orderLineCount;
 
 	public OrderLineDTO() {
-		
-		System.out.println("만들어야하나");
 	}
 
 	public OrderLineDTO(int orderLineCode, int orderCode, String pCode, int orderLineCount) {
