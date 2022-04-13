@@ -40,7 +40,7 @@
               username="admin" password="Kosta2222!!!!"
               maxTotal="20"
               maxIdle="10"
-              maxActive="10"
+              maxActive="30"
               maxWaitMillis="-1"/> 
     
 </Context>
