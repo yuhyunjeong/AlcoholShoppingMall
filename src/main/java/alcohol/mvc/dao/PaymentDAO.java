@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 public interface PaymentDAO {
 	/**
-	 * °áÀçÇÏ±â select * from payment where pay_type=?
+	 * ê²°ìž¬í•˜ê¸° select * from payment where pay_type=?
 	 * */
 	public int selectPay(int paytype)throws SQLException;
 }

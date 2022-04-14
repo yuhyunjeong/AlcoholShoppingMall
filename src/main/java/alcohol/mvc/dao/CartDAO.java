@@ -7,27 +7,27 @@ import alcohol.mvc.dto.CartDTO;
 
 public interface CartDAO {
 	/**
-	 * Àå¹Ù±¸´Ï ´ã±â INSERT INTO CART VALUES(cart_no_seq.nextval,?,?,?)
+	 * ìž¥ë°”êµ¬ë‹ˆ ë‹´ê¸° INSERT INTO CART VALUES(cart_no_seq.nextval,?,?,?)
 	 * */
 	public int cartInsert(CartDTO dto)throws SQLException;
 	
 	/**
-	 * ¼ö·® ¼öÁ¤ UPDATE CART SET CART_COUNT =? WHERE CART_NUMBER=?
+	 * ìˆ˜ëŸ‰ ìˆ˜ì • UPDATE CART SET CART_COUNT =? WHERE CART_NUMBER=?
 	 * */
 	public int cartUpdate(CartDTO dto)throws SQLException;
 	
 	/**
-	 * »èÁ¦ DELETE FROM CART WHERE CART_NUMBER=?
+	 * ì‚­ì œ DELETE FROM CART WHERE CART_NUMBER=?
 	 * */
 	public int cartDelete(int cartNo)throws SQLException;
 	
 	/**
-	 * Àå¹Ù±¸´Ï ÁÖ¹® (ÀÌ°Ç ¼­ºñ½º¿¡¼­ ÇÏ´Â°ÇÁö order¿¡¼­ ÇÏ´Â°ÇÁö ¸ð¸£°Ú´Ù)
+	 * ìž¥ë°”êµ¬ë‹ˆ ì£¼ë¬¸ (ì´ê±´ ì„œë¹„ìŠ¤ì—ì„œ í•˜ëŠ”ê±´ì§€ orderì—ì„œ í•˜ëŠ”ê±´ì§€ ëª¨ë¥´ê² ë‹¤)
 	 * */
 	
 	
 	/**
-	 * Àå¹Ù±¸´Ï ´ãÀº°Å ÀüÃ¼°Ë»ö SELECT * FROM CART
+	 * ìž¥ë°”êµ¬ë‹ˆ ë‹´ì€ê±° ì „ì²´ê²€ìƒ‰ SELECT * FROM CART
 	 * */
 	public List<CartDTO> selectAll()throws SQLException;
 	

@@ -6,28 +6,28 @@ import alcohol.mvc.dto.OrdersDTO;
 
 public interface OrderDAO {
 	/**
-	 * аж╧╝го╠Б(╣Н╥о) INSERT INTO ORDERS(ORDER_CODE,U_ID,PAY_CODE) VALUES(orders_no_seq.nextval,?,?,SYSDATE,?,?,?,?,?) ╨╦╥Ы ╣И╬Н╨а╬ъ╬к╣М
+	 * Лё╪К╛╦М∙≤Й╦╟(К⌠╠К║²) INSERT INTO ORDERS(ORDER_CODE,U_ID,PAY_CODE) VALUES(orders_no_seq.nextval,?,?,SYSDATE,?,?,?,?,?) КЁ╢К╔≤ К⌠╓Л√╢К╢░Л∙╪Л∙▄К⌠╞
 	 * */
 	public int orderInsert(OrdersDTO ordersDTO)throws SQLException;
 	
 	
 	/**
-	 * аж╧╝ ╩Себ╪Жа╓ UPDATE ORDERS SET ORDER_STATUS=? WHERE ORDER_CODE=?
+	 * Лё╪К╛╦ Л┐│М┐°Л┬≤Л═∙ UPDATE ORDERS SET ORDER_STATUS=? WHERE ORDER_CODE=?
 	 * */
 	public int orderUpdate(OrdersDTO ordersDTO)throws SQLException;
 	
 	/**
-	 * аж╧╝ ╩СебцБ╥б SELECT ORDER_STATUS FROM ORDERS WHERE ORDER_CODE=?
+	 * Лё╪К╛╦ Л┐│М┐°Л╤°К═╔ SELECT ORDER_STATUS FROM ORDERS WHERE ORDER_CODE=?
 	 * */
 	public String orderStatus(String oCode)throws SQLException;
 	
 	/**
-	 * ╧Х╪ш ╩Себ ╪Жа╓ UPDATE ORDERS SET DELI_STATUS=? WHERE ORDER_CODE=?
+	 * К╟╟Л├║ Л┐│М┐° Л┬≤Л═∙ UPDATE ORDERS SET DELI_STATUS=? WHERE ORDER_CODE=?
 	 * */
 	public int deliUpdate(OrdersDTO ordersDTO)throws SQLException;
 	
 	/**
-	 * ╧Х╪ш ╩Себ цБ╥б SELECT DELI_STATUS FROM ORDERS WHERE ORDER_CODE=?
+	 * К╟╟Л├║ Л┐│М┐° Л╤°К═╔ SELECT DELI_STATUS FROM ORDERS WHERE ORDER_CODE=?
 	 * */
 	public String deliStatus(String oCode)throws SQLException;
 }

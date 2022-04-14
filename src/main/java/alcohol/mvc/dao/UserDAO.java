@@ -7,29 +7,29 @@ import alcohol.mvc.dto.UserDTO;
 public interface UserDAO {
 
 	/**
-	 * ·Î±×ÀÎ Ã¼Å© select u_id , u_pwd, u_name from users where u_id=? and u_pwd=?
+	 * ë¡œê·¸ì¸ ì²´í¬ select u_id , u_pwd, u_name from users where u_id=? and u_pwd=?
 	 * */
 	public UserDTO loginCheck(UserDTO userDto)throws SQLException;
 	
 	/**
-	 * È¸¿ø°¡ÀÔ(µî·Ï) INSERT INTO USERS (U_ID, U_PWD,U_NAME,U_JUMIN,U_PHONE,U_EMAIL,U_ADDR
+	 * íšŒì›ê°€ì…(ë“±ë¡) INSERT INTO USERS (U_ID, U_PWD,U_NAME,U_JUMIN,U_PHONE,U_EMAIL,U_ADDR
 	 * U_ADDR2,U_GRADE,U_POINT,JOIN_DATE) VALUES(?,?,?,?,?,?,?,?,0,0,SYSDATE)
 	 * */
 	public int insert(UserDTO userDto)throws SQLException;
 	
 	/**
-	 * ¾ÆÀÌµğ Áßº¹¿©ºÎ Ã¼Å© SELECT U_ID FROM USERS WHERE U_ID=?
+	 * ì•„ì´ë”” ì¤‘ë³µì—¬ë¶€ ì²´í¬ SELECT U_ID FROM USERS WHERE U_ID=?
 	 * */
 	public boolean idCheck(String id)throws SQLException;
 	
 	/**
-	 * °³ÀÎÁ¤º¸¼öÁ¤ UPDATE USERS SET U_PWD =? , U_PHONE =? ,U_ADDR=?,U_ADDR2=? WHERE U_ID=?
+	 * ê°œì¸ì •ë³´ìˆ˜ì • UPDATE USERS SET U_PWD =? , U_PHONE =? ,U_ADDR=?,U_ADDR2=? WHERE U_ID=?
 	 * */
 	public int update(UserDTO userDto)throws SQLException;
 	
 	
 	/**
-	 * È¸¿ø Å»Åğ DELETE FROM USERS WHERE U_ID=?\
+	 * íšŒì› íƒˆí‡´ DELETE FROM USERS WHERE U_ID=?\
 	 * */
 	public int delete(String id)throws SQLException;
 }
