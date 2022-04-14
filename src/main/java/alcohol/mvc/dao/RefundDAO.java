@@ -9,12 +9,12 @@ public interface RefundDAO {
 	/**
 	 * 환불하기(등록) INSERT INTO REFUND VALUES(?,orders_no_seq.currval,?,?)
 	 * */
-	public int refundInsert(RefundDTO dto)throws SQLException;
+	public int refundInsert(RefundDTO refundDTO)throws SQLException;
 	
 	/**
 	 * 환불상태 변경(수정) UPDATE REFUND SET RE_STATUS=? WHERE RE_CODE=?
 	 * */
-	public int refundUpdate(RefundDTO dto)throws SQLException;
+	public int refundUpdate(RefundDTO refundDTO)throws SQLException;
 	
 	
 	/**

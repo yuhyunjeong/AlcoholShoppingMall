@@ -10,13 +10,13 @@ public interface SubDAO {
 	/**
 	 * 구독하기(등록) INSERT INTO SUBSCRIPTION VALUES('sub_' || subscription_no_seq.nextval,?,sysdate,?)
 	 * */
-	public int subInsert(SubDTO dto)throws SQLException;
+	public int subInsert(SubDTO subDTO)throws SQLException;
 	
 	
 	/**
 	 * 구독취소(삭제) DELETE FROM SUBSCRIPTION WHERE SUB_CODE=?
 	 * */
-	public int subDelete(String sCode)throws SQLException;
+	public int subDelete(String subCode)throws SQLException;
 	
 	/**
 	 * 구독리스트(아마도 관리자) SELECT * FROM SUBSCRIPTION
@@ -26,5 +26,5 @@ public interface SubDAO {
 	/**
 	 * 구독상세(회원) SELECT * FROM SUBSCRIPTION WHERE U_ID=?
 	 * */
-	public SubDTO subSelect(String id)throws SQLException;
+	public SubDTO subSelect(String uId)throws SQLException;
 }

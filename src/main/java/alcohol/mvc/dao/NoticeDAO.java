@@ -10,7 +10,7 @@ public interface NoticeDAO {
 	/**
 	 * 등록하기 INSERT INTO NOTICE VALUES(notice_no_seq.nextval,?,?,?,SYSDATE,0)
 	 * */
-	public int noticeInsert(NoticeDTO dto)throws SQLException;
+	public int noticeInsert(NoticeDTO noticeDTO)throws SQLException;
 	
 	/**
 	 * 조회수 증가 기능 update NOTICE set VIEW_COUNT = VIEW_COUNT + 1 where NO_NUMBER=?
@@ -26,7 +26,7 @@ public interface NoticeDAO {
 	/**
 	 * 수정하기 UPDATE NOTICE SET NO_TITLE=? ,NO_CONTENT=? WHERE NO_NUMBER=?
 	 * */
-	public int noticeUpdate(NoticeDTO dto)throws SQLException;
+	public int noticeUpdate(NoticeDTO noticeDTO)throws SQLException;
 	
 	/**
 	 * 전체검색 SELECT * FROM NOTICE

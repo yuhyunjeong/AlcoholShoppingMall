@@ -9,13 +9,13 @@ public interface ReplyDAO {
 	/**
 	 * 등록하기 INSERT INTO REPLY VALUES(reply_no_seq.nextval,?,?,?,SYSDATE,?)
 	 * */
-	public int replyInsert(ReplyDTO dto)throws SQLException;
+	public int replyInsert(ReplyDTO replyDTO)throws SQLException;
 	
 	
 	/**
 	 * 수정하기 UPDATE REPLY SET RE_CONTENT =? WHERE RE_NUMBER=?
 	 * */
-	public int replyUpdate(ReplyDTO dto)throws SQLException;
+	public int replyUpdate(ReplyDTO replyDTO)throws SQLException;
 	
 	
 	/**

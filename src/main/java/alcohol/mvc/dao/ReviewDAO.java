@@ -10,11 +10,11 @@ public interface ReviewDAO {
 	/**
 	 * 등록하기 INSERT INTO REVIEW VALUES(review_no_seq.nextval,?,?,?,?,?)
 	 * */
-	public int reviewInsert(ReviewDTO dto)throws SQLException;
+	public int reviewInsert(ReviewDTO reviewDTO)throws SQLException;
 	/**
 	 * 삭제하기 DELETE FROM REVIEW WHERE VIEW_NUMBDER=?
 	 * */
-	public int reviewDelete(int vNumber)throws SQLException;
+	public int reviewDelete(int viewNumber)throws SQLException;
 	
 	/**
 	 * 전체검색 SELECT * FROM REVIEW WHERE P_CODE=?
@@ -24,5 +24,5 @@ public interface ReviewDAO {
 	/**
 	 * 수정하기 UPDATE REVIEW SET VIEW_CONTENT=? WHERE VIEW_NUMBER=?
 	 * */
-	public int reviewUpdate(ReviewDTO dto)throws SQLException;
+	public int reviewUpdate(ReviewDTO reviewDTO)throws SQLException;
 }
