@@ -21,7 +21,7 @@ public class AlcoholDispatcherServlet extends HttpServlet {
 	Map<String, Controller> map;
 	Map<String, Class<?>> clzMap;
 
-	public void init() throws ServletException {
+	public void init(ServletConfig config) throws ServletException {
 		
 //		ServletContext application = super.getServletContext();
 //		Object obj = application.getAttribute("map");
