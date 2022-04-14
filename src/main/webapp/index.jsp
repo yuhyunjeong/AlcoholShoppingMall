@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <jsp:include page="common/header.jsp"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,5 +14,3 @@
 	월 3,9000원<br>
 </body>
 </html>
-
-<jsp:include page="common/footer.jsp"/>
