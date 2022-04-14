@@ -10,13 +10,13 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import alcohol.mvc.controller.Controller;
-
-public class AjaxHandlerMappingListener {
+@WebListener
+public class AjaxHandlerMappingListener  implements ServletContextListener  {
 	/**
 	 * 서버가 start될 때 각각의 controller의 구현체를 미리 생성해서 map에 저장 
 	 */
-	@WebListener
-	public class HandlerMappingListener implements ServletContextListener { 
+	
+	
 
 	    public void contextInitialized(ServletContextEvent e)  { 
 	    	Map<String, Controller> map = new HashMap<String, Controller>(); 
@@ -55,5 +55,5 @@ public class AjaxHandlerMappingListener {
 	    	application.setAttribute("path", application.getContextPath()); // ${path}만 하면 ${pageContext.request.contextPath } 들어온다.
 	    	
 	    } 
-	}
+
 }
