@@ -25,7 +25,7 @@ public interface QADAO {
 	/**
 	 * 전체검색 SELECT * FROM QA
 	 * */
-	public List<QADTO> qaAll()throws SQLException;
+	public List<QADTO> qaAll(int paging)throws SQLException;
 	
 	/**
 	 * 상세검색 SELECT * FROM QA WHERE QA_NUMBER=?

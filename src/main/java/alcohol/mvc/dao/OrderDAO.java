@@ -1,6 +1,7 @@
 package alcohol.mvc.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import alcohol.mvc.dto.OrdersDTO;
 
@@ -8,7 +9,7 @@ public interface OrderDAO {
 	/**
 	 * 주문하기(등록) INSERT INTO ORDERS(ORDER_CODE,U_ID,PAY_CODE) VALUES(orders_no_seq.nextval,?,?,SYSDATE,?,?,?,?,?) 보류 들어봐야알듯
 	 * */
-	public int orderInsert(OrdersDTO ordersDTO)throws SQLException;
+	public int orderInsert(List<OrdersDTO> list)throws SQLException;
 	
 	
 	/**

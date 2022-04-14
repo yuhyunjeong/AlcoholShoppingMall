@@ -1,6 +1,7 @@
 package alcohol.mvc.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import alcohol.mvc.dto.UserDTO;
 
@@ -18,6 +19,11 @@ public interface UserDAO {
 	public int insert(UserDTO userDto)throws SQLException;
 	
 	/**
+	 * 회원정보검색 SELECT * FROM USERS
+	 * */
+	public List<UserDTO> usersAll(int paging)throws SQLException;
+	
+	/**
 	 * 아이디 중복여부 체크 SELECT U_ID FROM USERS WHERE U_ID=?
 	 * */
 	public boolean idCheck(String id)throws SQLException;
@@ -32,4 +38,21 @@ public interface UserDAO {
 	 * 회원 탈퇴 DELETE FROM USERS WHERE U_ID=?\
 	 * */
 	public int delete(String id)throws SQLException;
+	
+	
+	/**
+	 * 아이디 찾기 SELECT U_ID FROM USERS WHERE U_JUMIN = ? AND U_PHONE =?
+	 * */
+	public String idFind(String jumin, String phone)throws SQLException;
+	
+	/**
+	 * 비밀번호 찾기 SELECT U_PWD FROM USERS WHERE U_ID=? AND U_JUMIN = ? AND U_PHONE =?
+	 * */
+	public String pwdFind(String id ,String jumin, String phone)throws SQLException;
+	
+	
+	
+	
+	
+	
 }

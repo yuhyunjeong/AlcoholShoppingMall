@@ -35,6 +35,7 @@ public interface ProductDAO {
          SELECT * FROM PRODUCT  최신순?
          SELECT * FROM PRODUCT  디폴트값? 
          이런느낌
+         step 14 dbcp dao처럼
 	 * 
 	 * */
 	public  List<ProductDTO> selectAll()throws SQLException;

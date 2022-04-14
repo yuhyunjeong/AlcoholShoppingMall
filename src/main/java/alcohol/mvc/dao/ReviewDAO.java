@@ -14,12 +14,12 @@ public interface ReviewDAO {
 	/**
 	 * 삭제하기 DELETE FROM REVIEW WHERE VIEW_NUMBDER=?
 	 * */
-	public int reviewDelete(String vNumber)throws SQLException;
+	public int reviewDelete(int vNumber)throws SQLException;
 	
 	/**
 	 * 전체검색 SELECT * FROM REVIEW WHERE P_CODE=?
 	 **/
-	public List<ReviewDTO> reviewAll(String pCode)throws SQLException;
+	public List<ReviewDTO> reviewAll(String pCode, int paging)throws SQLException;
 	
 	/**
 	 * 수정하기 UPDATE REVIEW SET VIEW_CONTENT=? WHERE VIEW_NUMBER=?
