@@ -16,6 +16,6 @@ public interface FactoryDAO {
 	/**
 	 * 상세검색 SELECT * FROM FACTORY WHERE F_NAME=?
 	 * */
-	public FactoryDTO factorySelect(String fName)throws SQLException;
+	public FactoryDTO factorySelect(String name)throws SQLException;
 
 }

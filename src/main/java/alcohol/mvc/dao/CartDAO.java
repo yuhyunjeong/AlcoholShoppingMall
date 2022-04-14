@@ -9,17 +9,17 @@ public interface CartDAO {
 	/**
 	 * 장바구니 담기 INSERT INTO CART VALUES(cart_no_seq.nextval,?,?,?)
 	 * */
-	public int cartInsert(CartDTO cartDTO)throws SQLException;
+	public int cartInsert(CartDTO dto)throws SQLException;
 	
 	/**
 	 * 수량 수정 UPDATE CART SET CART_COUNT =? WHERE CART_NUMBER=?
 	 * */
-	public int cartUpdate(CartDTO cartDTO)throws SQLException;
+	public int cartUpdate(CartDTO dto)throws SQLException;
 	
 	/**
 	 * 삭제 DELETE FROM CART WHERE CART_NUMBER=?
 	 * */
-	public int cartDelete(int cartNumber)throws SQLException;
+	public int cartDelete(int cartNo)throws SQLException;
 	
 	/**
 	 * 장바구니 주문 (이건 서비스에서 하는건지 order에서 하는건지 모르겠다)
