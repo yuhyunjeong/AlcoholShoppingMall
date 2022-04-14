@@ -7,13 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>header</title>
+
 
 <link rel="StyleSheet" 
 href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 
 <script 
-src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
+src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 
 </head>
 <body>
@@ -29,6 +29,7 @@ src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
   
     <a class="navbar-brand" href="${path}/index.jsp">로그인</a>
   </div>
+  
   
   
 </div>
