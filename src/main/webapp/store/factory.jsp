@@ -7,6 +7,8 @@
 <title>양조장</title>
 </head>
 <body>
+<%@include file="../common/header.jsp"%>
 <h1>양조장</h1>
+<%@include file="../common/footer.jsp"%>
 </body>
 </html>

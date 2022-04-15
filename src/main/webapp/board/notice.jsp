@@ -7,6 +7,8 @@
 <title>공지사항</title>
 </head>
 <body>
+<%@include file="../common/header.jsp"%>
 공지사항 게시판
+<%@include file="../common/footer.jsp"%>
 </body>
 </html>
