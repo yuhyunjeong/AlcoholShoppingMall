@@ -8,109 +8,135 @@
 <meta charset="UTF-8">
 <title>안다미로_로그인</title>
 <style type="text/css">
-	h1 {
-		text-align: center;
-	}
-	
-	div {
-		text-align: center;
-	}
-	
-	#login, #join {
-		padding: 10px 15px;
-		margin: 10px;
-	}
-	
-	input[type="text"] {
-		background: transparent;
-		border: none;
-		border-bottom: 1px solid #000000;
-		-webkit-box-shadow: none;
-		box-shadow: none;
-		border-radius: 0;
-		text-align: center;
-		color: gray;
-	}
-	
-	input[type="text"]:focus {
-		-webkit-box-shadow: none;
-		box-shadow: none;
-	}
-	
-	a {
-		text-decoration: none;
-	}
+h1 {
+	text-align: center;
+	padding: 30px;
+}
+
+h6 {
+	color: #9D8FFA;
+}
+
+div {
+	text-align: center;
+}
+
+input[type="text"], input[type="password"] {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #000000;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-radius: 0;
+	text-align: center;
+	color: gray;
+	width: 250px;
+	padding: 10px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	outline: none;
+}
+
+input:focus::-webkit-input-placeholder {
+	color:transparent; 
+}
 </style>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
-	// SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
+	function saveToDos(token) { // item을 localStorage에 저장 
+		typeof (Storage) !== 'undefined'
+				&& sessionStorage.setItem('AccessKEY', JSON.stringify(token));
+	}
+
+	// SDK 초기화, 사용할 앱의 JavaScript 키 입력 
 	Kakao.init('09849bf089720853454c142511d3ca09');
-	
-	// SDK 초기화 여부를 판단합니다.
-	console.log(Kakao.isInitialized());
 
 	// 로그인 
-	  function loginWithKakao() {
-		    Kakao.Auth.login({
-		      success: function(authObj) {
-		        alert(JSON.stringify(authObj))
-		      },
-		      fail: function(err) {
-		        alert(JSON.stringify(err))
-		      },
-		    })
-		  }
-	
-/*       // 엑세스 토큰을 발급받고, 아래 함수를 호출시켜서 사용자 정보를 받아옴.
-      function getInfo() {
-          Kakao.API.request({
-              url: '/v2/user/me',
-              success: function (res) {
-                  console.log(res);
-                  // 이메일, 연령대, 생일 
-                  var email = res.kakao_account.email;
-                  var age_range = res.kakao_account.age_range;
-                  var birthday = res.kakao_account.birthday;
+	function loginWithKakao() {
+		Kakao.Auth.login({
+			scope: 'profile_nickname, account_email, age_range, birthday',
+			success : function(response) {
+				saveToDos(resposne.access_token) // 로그인 성공시 사용자 엑세스 토큰을 sessionStorage에 저장
+				window.Kakao.API.request({ // 사용자 정보 가져오기 
+					url: '/v2/user/me',
+					success: (res) => {
+						const kakao_account = res.kakao.account;
+						window.location.href('index.jsp')
+					}
+				})
+			},
+			fail : function(err) {
+				alert(JSON.stringify(err))
+			},
+		})
+	}
 
-                  console.log(email, age_range, birthday);
-              },
-              fail: function (error) {
-                  alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
-              }
-          });
-      } */
-      
-      Kakao.Auth.createLoginButton({
-    	    container: '#kakao-login-btn',
-    	    success: function(authObj) {
-    	      Kakao.API.request({
-    	        url: '/v2/user/me',
-    	        success: function(res) {
-    	          alert(JSON.stringify(res))
-    	        },
-    	        fail: function(error) {
-    	          alert(
-    	            'login success, but failed to request user information: ' +
-    	              JSON.stringify(error)
-    	          )
-    	        },
-    	      })
-    	    },
-    	    fail: function(err) {
-    	      alert('failed to login: ' + JSON.stringify(err))
-    	    },
-    	  })
-      
+	/* 	// 로그인 
+	 function loginWithKakao() {
+	 Kakao.Auth.login({
+	 success: function(authObj) {
+	 alert(JSON.stringify(authObj))
+	 },
+	 fail: function(err) {
+	 alert(JSON.stringify(err))
+	 },
+	 })
+	 } */
+
+	/*       // 엑세스 토큰을 발급받고, 아래 함수를 호출시켜서 사용자 정보를 받아옴.
+	 function getInfo() {
+	 Kakao.API.request({
+	 url: '/v2/user/me',
+	 success: function (res) {
+	 console.log(res);
+	 // 이메일, 연령대, 생일 
+	 var email = res.kakao_account.email;
+	 var age_range = res.kakao_account.age_range;
+	 var birthday = res.kakao_account.birthday;
+
+	 console.log(email, age_range, birthday);
+	 },
+	 fail: function (error) {
+	 alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
+	 }
+	 });
+	 } */
+
+	Kakao.Auth
+			.createLoginButton({
+				container : '#kakao-login-btn',
+				success : function(authObj) {
+					Kakao.API
+							.request({
+								url : '/v2/user/me',
+								success : function(res) {
+									alert(JSON.stringify(res))
+								},
+								fail : function(error) {
+									alert('login success, but failed to request user information: '
+											+ JSON.stringify(error))
+								},
+							})
+				},
+				fail : function(err) {
+					alert('failed to login: ' + JSON.stringify(err))
+				},
+			})
+
 	// 로그아웃 
-	  function kakaoLogout() {
-    if (!Kakao.Auth.getAccessToken()) {
-      alert('Not logged in.')
-      return
-    }
-    Kakao.Auth.logout(function() {
-      alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
-    })
-  }
+	function kakaoLogout() {
+		if (!Kakao.Auth.getAccessToken()) {
+			alert('Not logged in.')
+			return
+
+		}
+		Kakao.Auth.logout(function() {
+			alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
+		})
+	}
 </script>
 </head>
 <body>
@@ -118,35 +144,55 @@
 	<h1>로그인</h1>
 	<p>
 	<p>
-	<form>
-		<div>
-			<h3>아이디</h3>
-			<input type="text" name="id" value="아이디 입력"><p>
-			
-			<h3>비밀번호</h3>
-			<input type="text" name="pwd" value="비밀번호 입력"><p>
+	<p>
+	<p>
+	<div class="col-sm-6, container">
+		<form method="post" action="../index.jsp">
 
-			<input type="submit" value="로그인" id="login"><p>
+			<div class="m-3">
+				<h6>아이디</h6>
+				<input type="text" name="id" placeholder="아이디를 입력해주세요.">
+				<p>
+				<h6>비밀번호</h6>
+				<input type="password" name="pwd" placeholder="비밀번호를 입력해주세요.">
+			</div>
+			<p>
+			<p>
+			<p>
+			<p>
+			<p>
+			<div class="m-5">
+				<a id="custom-login-btn" href="javascript:loginWithKakao()"> <img
+					src="../img/kakao_login_medium_wide.png" width="300"
+					alt="카카오 로그인 버튼" />
+				</a>
+				<p><p>
 
-			<a id="custom-login-btn" href="javascript:loginWithKakao()"> <img
-				src="//k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
-				width="222" alt="카카오 로그인 버튼" />
-			</a><p>
-			
-			<!-- <button class="api-btn" onclick="kakaoLogout()">로그아웃</button> --><p>
-			
-			<a href="#">아이디 찾기</a><p>
-			<a href="#">비밀번호 찾기</a><p>
+					<input class="w-25 btn btn-dark" type="submit" value="로그인">
+				<p>
+					<input class="w-25 btn btn-dark" type="submit" value="회원가입">
+			</div>
+			<p>
 
-			<input type="submit" value="회원가입" id="join">
-		</div>
-	</form>
+				<!-- <button class="api-btn" onclick="kakaoLogout()">로그아웃</button> -->
+			<p>
 
 
+			<div class="m-5">
+				<a href="#">아이디 찾기</a>
+			<p><p>
+				<a href="#">비밀번호 찾기</a>
+			<p>
+			</div>
+		</form>
+	</div>
+	<p>
 
 
 
-	<%-- 	<div class="jumbotron">
+
+
+		<%-- 	<div class="jumbotron">
 		<h1>Login</h1>
 		<p>Login, AOP/HttpSession</p>
 		<p>
@@ -200,5 +246,5 @@
 	</c:otherwise>
 </c:choose> --%>
 
-	<jsp:include page="../common/footer.jsp" />
+		<jsp:include page="../common/footer.jsp" />
 </body>
