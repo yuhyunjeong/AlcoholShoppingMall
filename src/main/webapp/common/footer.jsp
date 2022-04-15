@@ -10,7 +10,7 @@
 
 	
 	<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/footers/">
-	<link rel="StyleSheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+	<%-- <link rel="StyleSheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"> --%>
 	<link href="${pageContext.request.contextPath}/css/footers.css" rel="stylesheet">
 </head>
 <body>
@@ -30,7 +30,7 @@
 </div>	
 	
 	
-<script src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script> --%>
 
 </body>
 </html>
