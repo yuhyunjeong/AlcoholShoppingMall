@@ -57,7 +57,7 @@
 
 <div class="container">	
 	<div class="row" >
-		<div class="col-lg-3">
+		<div class="col-lg-3 col-md-6">
 			<div class="card mb-3">
 			  <img src="../img/10월의 술.jpg" class="card-img-top" alt="모르겠다">
 			  <div class="card-body">
@@ -68,7 +68,7 @@
 			</div>
 		</div>
 		
-		<div class="col-lg-3">
+		<div class="col-lg-3 col-md-6">
 			<div class="card  mb-3">
 			  <img src="../img/10월의 술.jpg" class="card-img-top" alt="모르겠다">
 			  <div class="card-body">
@@ -79,7 +79,7 @@
 			</div>
 		</div>
 		
-		<div class="col-lg-3">
+		<div class="col-lg-3 col-md-6">
 			<div class="card  mb-3">
 			  <img src="../img/10월의 술.jpg" class="card-img-top" alt="모르겠다">
 			  <div class="card-body">
@@ -90,7 +90,7 @@
 			</div>
 		</div>
 		
-		<div class="col-lg-3">
+		<div class="col-lg-3 col-md-6">
 			<div class="card  mb-3">
 			  <img src="../img/10월의 술.jpg" class="card-img-top" alt="모르겠다">
 			  <div class="card-body">
