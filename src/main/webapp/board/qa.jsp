@@ -20,7 +20,7 @@
 	<%@include file="../common/header.jsp"%>
 	<h1>Q&A</h1>
 
-	<div>
+	<div class="col-sm-6, container">
 		<table class="table table-hover">
 			<thead>
 				<tr>
