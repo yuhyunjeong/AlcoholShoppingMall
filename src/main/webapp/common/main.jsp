@@ -15,7 +15,8 @@
 
 	
 	<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/carousel/">
-	<link rel="StyleSheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+	
+	<%-- <link rel="StyleSheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"> --%>
 	<link href="${pageContext.request.contextPath}/css/carousel.css" rel="stylesheet">
 	<style>
       .bd-placeholder-img {
@@ -122,7 +123,7 @@
 </div>
 
 
-	<script src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
-</body>
+	<%-- <script src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
+ --%></body>
 </html>
 

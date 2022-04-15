@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>메인</title>
 
@@ -12,5 +13,7 @@
 <jsp:include page="common/header.jsp"/>
 <jsp:include page="common/main.jsp"/>
 <jsp:include page="common/footer.jsp"/>
+
+
 </body>
 </html>

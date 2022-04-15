@@ -25,7 +25,7 @@
         }
       }
 </style>
-
+ㅈ
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -33,10 +33,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 
-
+<link rel="StyleSheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/navbars/">
 <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
-<link rel="StyleSheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+
 <link href="${pageContext.request.contextPath}/css/headers.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/navbar.css" rel="stylesheet">
 
