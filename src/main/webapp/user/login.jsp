@@ -1,17 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="../common/header.jsp"/>
-<title>안다미로_로그인</title>
-<div class="jumbotron">
-	<h1>Login</h1>
-	<p>Login, AOP/HttpSession</p>
-	<p>
-		<a class="btn btn-primary btn-lg">Learn more</a>
-	</p>
-</div>
 
-<c:choose>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>안다미로_로그인</title>
+<style type="text/css">
+	h1 {
+		text-align: center;
+	}
+	
+	div {
+		text-align: center;
+	}
+	
+	#login, #join {
+		padding: 10px 15px;
+		margin: 10px;
+	}
+</style>
+</head>
+<body>
+	<jsp:include page="../common/header.jsp" />
+	<h1>로그인</h1><p><p>
+	
+	<form>
+		<div>
+			<h3>아이디</h3>
+			<input type="text" name="id"><p>
+			
+			<h3>비밀번호</h3>
+			<input type="text" name="pwd"><p>
+			
+			<input type="submit" value="로그인" id="login"><p>
+	
+			<a>아이디 찾기</a><p>
+			<a>비밀번호 찾기</a><p>			
+			
+			<input type="submit" value="회원가입" id="join">
+			
+		</div>
+	</form>
+
+	
+	
+	
+
+<%-- 	<div class="jumbotron">
+		<h1>Login</h1>
+		<p>Login, AOP/HttpSession</p>
+		<p>
+			<a class="btn btn-primary btn-lg">Learn more</a>
+		</p>
+	</div>
+
+	<c:choose>
 	<c:when test="${empty loginUser}">
 		<form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/front">
 			<input type="hidden" name="key" value = "user" /> <!-- Controller를 찾는 정보 -->
@@ -55,7 +100,7 @@
 				</div>
 			</blockquote>
 	</c:otherwise>
-</c:choose>
+</c:choose> --%>
 
-<jsp:include page="../common/footer.jsp"/>
-
+	<jsp:include page="../common/footer.jsp" />
+</body>
