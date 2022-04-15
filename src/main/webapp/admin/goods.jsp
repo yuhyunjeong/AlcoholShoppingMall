@@ -11,7 +11,7 @@
 
 button{border:none; }
 
-table{text-align: center;}
+.table{text-align: center;}
 
 </style>
 
@@ -19,11 +19,19 @@ table{text-align: center;}
 <body>
 <caption><h2 align="center">상품관리</h2></caption>
 
-<div align=left>
+<p>
+
+
+<div class="container">
+<div align=left >
 <button type="button" class="btn btn-light" >등록하기</button>
 </div>
-
+</div>
 <p>
+
+
+    <div class="container"><!-- 전체 컨테이너의 절반 크기로 띄우게 됨 -->
+        <!-- 여기에 테이블 삽입 -->
 
 <table class="table table-sm">
 <thead class="table-light">
@@ -31,6 +39,7 @@ table{text-align: center;}
 <th>카테고리</th>
 <th>상품코드</th>
 <th>상품이름</th>
+<th>상품설명</th>
 <th>도수</th>
 <th>상품가격</th>
 <th>재고수량</th>
@@ -40,6 +49,7 @@ table{text-align: center;}
 
 
 <tr>
+<td>1</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -59,7 +69,7 @@ table{text-align: center;}
 </thead>
 </table>
 
-
+</div>
 
 
 </body>

@@ -9,65 +9,73 @@
 
 </head>
 <body>
+
 <caption><h2 align="center">상품등록</h2></caption>
 
-<table border="1" width="500" height="50" align="center" cellspacing="5">
-<tr>
- <td>카테고리</td>
- <td colspan="2">
-<select class="form-select form-select-sm" aria-label=".form-select-sm example">
-  <option selected>select</option>
-  <option value="1">탁주</option>
-  <option value="2">청주</option>
-  <option value="3">과실주</option>
-  <option value="4">증류주</option>
-  <option value="5">선물세트</option>
-  <option value="6">이달의 술</option>
-</select>
- </td>
-</tr>
+<p>
+
+<form>
+<div class="container">
+
+<div class="col-12">
+  <label for="inputAddress" class="form-label">category</label>
+   <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+     <option selected>select</option>
+     <option value="1">탁주</option>
+     <option value="2">청주</option>
+     <option value="3">과실주</option>
+     <option value="4">증류주</option>
+     <option value="5">선물세트</option>
+     <option value="6">이달의 술</option>
+   </select>
+</div><p>
 
 
+<div class="row">
+  <div class="col">
+  <label for="inputAddress" class="form-label">상품코드</label>
+    <input type="text" class="form-control" placeholder="상품코드" aria-label="First name">
+  </div>
+  <div class="col">
+  <label for="inputAddress" class="form-label">상품이름</label>
+    <input type="text" class="form-control" placeholder="상품이름" aria-label="Last name">
+  </div>
+</div><p>
 
-<tr>
-<td>상품코드</td>
-<td colspan="2"><input type="text"></td>
-</tr>
-<tr>
-<td>상품이름</td>
-<td colspan="2"><input type="text"></td>
-</tr>
-<tr>
-<td>도수</td>
-<td colspan="2"><input type="text"> %</td>
-</tr>
-<tr>
-<td>상품가격</td>
-<td colspan="2"><input type="text"> 원</td>
-</tr>
-<tr>
-<td>재고수량</td>
-<td colspan="2"><input type="text"> 개</td>
-</tr>
-<tr>
-<td>등록일</td>
-<td colspan="2"><input type="text"></td>
-</tr>
+<div class="col-12">
+    <label for="inputAddress" class="form-label">상품설명</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="상품설명">
+</div><p>
 
+<div class="row">
+  <div class="col">
+  <label for="inputAddress" class="form-label">도수</label>
+    <input type="text" class="form-control" placeholder="도수" aria-label="First name">
+  </div>
+  <div class="col">
+  <label for="inputAddress" class="form-label">상품가격</label>
+    <input type="text" class="form-control" placeholder="상품가격" aria-label="Last name">
+  </div>
+</div><p>
 
+<div class="row">
+ <div class="col">
+  <label for="inputAddress" class="form-label">재고량</label>
+    <input type="text" class="form-control" placeholder="재고량" aria-label="First name">
+ </div>
+ <div class="col">
+  <label for="inputAddress" class="form-label">등록일</label>
+    <input type="text" class="form-control" placeholder="등록일" aria-label="First name">
+ </div> 
 
-</tr>
+</form>
 
-
-
-</table>
-
-
+<p>
 <div align="right">
 <button type="button" class="btn btn-light" >등록하기</button>
 </div><p>
 
-
+</div>
 
 </body>
 </html>
