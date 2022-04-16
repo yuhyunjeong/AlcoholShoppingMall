@@ -41,7 +41,7 @@ html,body{
 	           			</div>
 	           			<div class="col">
 		           			<p class="text-end" >29,000원</p>       			
-		           			<p class="text-end" >3</p>
+		           			<p class="text-end" ><input name="items" type="number" class="datail-quantity form-control text-center input-sm" value="1" ></p>
 	           			</div>
 	           			
            			</div>
@@ -121,20 +121,11 @@ html,body{
           </div>
 		</div>
 			<p>
-			
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="same-address">
-            <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
-          </div>
 
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="save-info">
-            <label class="form-check-label" for="save-info">Save this information for next time</label>
-          </div>
 
-          <hr class="my-4">
+          <hr class="my-5">
           <div class="container h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100 my-5">
              <div class="col-md-offset-4 col-md-4">
 			  	<div class="card" style="width: 18rem;">
           
@@ -159,7 +150,7 @@ html,body{
 		     </div>
 		     </div>        
 
-          <hr class="my-4">
+          <hr class="my-5">
           
           <div class="d-grid gap-2 col-6 mx-auto">
 			<h4  class="mb-3" style="text-align: center;">총 결제 금액 : 87,000원</h4>
