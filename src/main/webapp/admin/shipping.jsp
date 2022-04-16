@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-배송통계
+배송관리
 </body>
 </html>
