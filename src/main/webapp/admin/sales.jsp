@@ -40,7 +40,7 @@ div {
 <body>
 
 	<div>
-		<div id="piechart" style="width: 900px; height: 500px;"></div>
+		<div id="piechart" style="width:100% ; height: 600px;"></div>
 	</div>
 
 </body>
