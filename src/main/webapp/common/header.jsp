@@ -48,14 +48,14 @@
 
 <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+      <a href="${path}/index.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <span class="fs-4">안다미로</span>
       </a>
 	<div class="col-md-5 text-end">
 		<a href="#"><i class="bi bi-cart4 me-2"></i></a>
-        <button type="button" class="btn btn-primary me-2">구독</button>
-        <button type="button" class="btn btn-primary me-2">스토어</button>
-        <button type="button" class="btn btn-primary me-2">로그인</button>
+        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/subscription.jsp'">구독</button>
+        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/category.jsp'">스토어</button>
+        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/user/login.jsp'">로그인</button>
     </div>
     </header>
 </div>	
@@ -90,7 +90,7 @@
 
 
 
-<script src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>	
+	
 
 <%-- 
 <c:choose>
