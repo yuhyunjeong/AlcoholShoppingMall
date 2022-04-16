@@ -49,7 +49,7 @@
 
 <div class="container">
 
-
+	
 	<div class="row">	
 			<div class="col-lg-8">
 				<div class="row">
@@ -75,11 +75,11 @@
 				          <div class="card-body mx-auto">
 				          	<span style="text-align: right">수량</span>
 				          	<div class="card rounded-3 shadow-sm">     		
-				          		<div class="card-main text-center">
+				          		<div class="card-main ">
 				          			
-				          			<button type="button" class="minus">-</button>
-				          			<input type="number" class="numBox" min="1" max="99" value="1" readonly="readonly"/>
-				          			<button type="button" class="plus">+</button>
+				          			<button type="button" class="minus" style="border: none; background: none;">-</button>
+				          			<input type="number" class="numBox" min="1" max="99" value="1" readonly="readonly" style="border: none; background: none; text-align: center;"/>
+				          			<button type="button" class="plus" style="border: none; background: none;">+</button>
 				          		</div>       	
 				          	</div>
 				            
