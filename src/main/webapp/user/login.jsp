@@ -179,9 +179,9 @@ input:focus::-webkit-input-placeholder {
 
 
 			<div class="m-5">
-				<a href="#">아이디 찾기</a>
+				<a href="#" style="text-decoration: none;">아이디 찾기</a>
 			<p><p>
-				<a href="#">비밀번호 찾기</a>
+				<a href="#" style="text-decoration: none;">비밀번호 찾기</a>
 			<p>
 			</div>
 		</form>
