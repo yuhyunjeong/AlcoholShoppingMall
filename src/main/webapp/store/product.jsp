@@ -10,7 +10,7 @@
 <body>
 <jsp:include page="../common/header.jsp"/>
 <div class="container">
-<caption><h2 style="text-align: center;">탁주</h2></caption>
+<h2 style="text-align: center;">${param.name}</h2>
 </div>
 
 
