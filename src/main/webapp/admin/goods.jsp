@@ -30,9 +30,8 @@ button{border:none; }
 <p>
 
 
-    <div class="container"><!-- 전체 컨테이너의 절반 크기로 띄우게 됨 -->
-        <!-- 여기에 테이블 삽입 -->
-
+<div class="container"><!-- 전체 컨테이너의 절반 크기로 띄우게 됨 -->
+        
 <table class="table table-sm">
 <thead class="table-light">
 <tr> 
@@ -44,7 +43,7 @@ button{border:none; }
 <th>상품가격</th>
 <th>재고수량</th>
 <th>등록일</th>
-<th><button type="button" class="btn btn-sm btn-dark">삭제</button></th>
+<th><a href="${path}/#"><button type="button" class="btn btn-sm btn-dark">삭제</button></a></th>
 </tr>
 
 

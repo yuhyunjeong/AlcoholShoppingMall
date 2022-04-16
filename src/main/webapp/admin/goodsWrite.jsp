@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/header.jsp"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +66,7 @@
  </div>
  <div class="col">
   <label for="inputAddress" class="form-label">등록일</label>
-    <input type="text" class="form-control" placeholder="등록일" aria-label="First name">
+    <input type="date" class="form-control" id="date">
  </div> 
 
 </form>
