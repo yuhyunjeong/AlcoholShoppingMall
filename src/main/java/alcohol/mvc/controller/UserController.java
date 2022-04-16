@@ -36,7 +36,7 @@ public class UserController implements Controller {
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", dbDTO); // ${loginUser.userId}
 		session.setAttribute("loginName", dbDTO.getUserName());
-		
+		session.setAttribute("loginGrade", dbDTO.getUserGrade());
 		
 		//index.jsp -> redirect 
 		ModelAndView mv = new ModelAndView("index.jsp",true);
