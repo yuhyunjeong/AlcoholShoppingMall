@@ -72,6 +72,8 @@ create table product( --상품
   p_stuck number , --재고수량 
   p_date varchar2(30) , --출시일 
   p_image varchar2(4000), --이미지
+  p_image2 varchar2(4000), --이미지2
+  p_image3 varchar2(4000), --이미지3
   p_detail varchar2(4000) --상품설명 
 );
 
@@ -408,7 +410,7 @@ insert into subscription values('sub_' || subscription_no_seq.nextval,'jung',sys
 create table factory ( --양조장
   f_name varchar2(50) primary key, --양조장이름
   f_type varchar2(4000), --양조장취급종류 
-  f_image varchar2(4000), --양조장이미지
+  --f_image varchar2(4000), --양조장이미지
   f_addr varchar2(4000) --양조장주소
 );
 
@@ -418,15 +420,15 @@ delete from factory;
 
 delete from factory where f_name='제주샘주';
 
-insert into factory values('배상면주가','탁주,약주, 청주,증류주','img','경기도 포천시 화현면 화현리 512');
-insert into factory values('국순당','탁주,증류주','img','강원도 횡성군 둔내면 현천리 120');
-insert into factory values('풍정사계','탁주,약주, 청주,과실주,증류주','img','충청북도 청주시 청원구 내수읍 풍정1길 8-2');
-insert into factory values('중원당','약주,청주','img','충북 충주시 가금면 창동리 243');
-insert into factory values('복순도가','탁주,청주','img','울산광역시 울주군 향산동길 48');
-insert into factory values('청산녹수','탁주,증류주','img','전라남도 장성군 장성읍 백계리 444-1');
-insert into factory values('한국애플리즈','과실주','img','경상북도 의성군 단촌면 일직점곡로 755');
-insert into factory values('태인합동주조','탁주,증류주','img','전라북도 정읍시 태인면 창흥2길 17');
-insert into factory values('제주샘주','약주,청주,증류주','img','제주시 애월읍 애언로 283');
+insert into factory values('배상면주가','탁주,약주, 청주,증류주','경기도 포천시 화현면 화현리 512');
+insert into factory values('국순당','탁주,증류주','강원도 횡성군 둔내면 현천리 120');
+insert into factory values('풍정사계','탁주,약주, 청주,과실주,증류주','충청북도 청주시 청원구 내수읍 풍정1길 8-2');
+insert into factory values('중원당','약주,청주','충북 충주시 가금면 창동리 243');
+insert into factory values('복순도가','탁주,청주','울산광역시 울주군 향산동길 48');
+insert into factory values('청산녹수','탁주,증류주','전라남도 장성군 장성읍 백계리 444-1');
+insert into factory values('한국애플리즈','과실주','경상북도 의성군 단촌면 일직점곡로 755');
+insert into factory values('태인합동주조','탁주,증류주','전라북도 정읍시 태인면 창흥2길 17');
+insert into factory values('제주샘주','약주,청주,증류주','제주시 애월읍 애언로 283');
 ---------------------------------------------------------------------------------
 create table notice( --공지사항
   no_number number primary key, --공지사항번호

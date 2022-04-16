@@ -9,12 +9,14 @@ public class ProductDTO {
 	private int pStuck;
 	private String pDate;
 	private String pImage;
+	private String pImage2;
+	private String pImage3;
 	private String pDetail;
 	
 	public ProductDTO() {}
 
 	public ProductDTO(String pCode, String cateCode, String pName, int pAlcohol, int pPrice, int pStuck, String pDate,
-			String pImage, String pDetail) {
+			String pImage, String pImage2, String pImage3, String pDetail) {
 		super();
 		this.pCode = pCode;
 		this.cateCode = cateCode;
@@ -24,6 +26,8 @@ public class ProductDTO {
 		this.pStuck = pStuck;
 		this.pDate = pDate;
 		this.pImage = pImage;
+		this.pImage2 = pImage2;
+		this.pImage3 = pImage3;
 		this.pDetail = pDetail;
 	}
 
@@ -91,6 +95,22 @@ public class ProductDTO {
 		this.pImage = pImage;
 	}
 
+	public String getpImage2() {
+		return pImage2;
+	}
+
+	public void setpImage2(String pImage2) {
+		this.pImage2 = pImage2;
+	}
+
+	public String getpImage3() {
+		return pImage3;
+	}
+
+	public void setpImage3(String pImage3) {
+		this.pImage3 = pImage3;
+	}
+
 	public String getpDetail() {
 		return pDetail;
 	}
@@ -98,5 +118,7 @@ public class ProductDTO {
 	public void setpDetail(String pDetail) {
 		this.pDetail = pDetail;
 	}
+
+	
 	
 }
