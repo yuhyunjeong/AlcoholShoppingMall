@@ -18,9 +18,16 @@ a:link , a:visited{
 <body>
 <%@include file="../common/header.jsp"%>
 <caption><h2 align="center">공지사항</h2></caption>
-<div class="container" style="text-align: center;">
+
+
+<div class="container" >
 	
-	<form name="write" method="post" action="noticeWrite.jsp">
+		<div class="d-grid gap-2 d-md-block">
+			<a class="btn btn-primary" href="#" onclick="document.write.submit()" role="button" value="등록하기">등록하기</a>
+	</div>
+	<p>
+	
+	<form  name="write" method="post" action="noticeWrite.jsp" style="text-align: center;">
 	<table class="table">
 	
 	  <thead class="table-light">
