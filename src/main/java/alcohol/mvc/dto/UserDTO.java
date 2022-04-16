@@ -5,6 +5,7 @@ public class UserDTO {
 	private String userPwd;
 	private String userName;
 	private String userJumin;
+	private String userPhone;
 	private String userEmail;
 	private String userAddr;
 	private String userAddr2;
@@ -14,13 +15,14 @@ public class UserDTO {
 	
 	public UserDTO() {}
 
-	public UserDTO(String userId, String userPwd, String userName, String userJumin, String userEmail, String userAddr,
-			String userAddr2, int userGrade, int userPoint, String joinDate) {
+	public UserDTO(String userId, String userPwd, String userName, String userJumin, String userPhone, String userEmail,
+			String userAddr, String userAddr2, int userGrade, int userPoint, String joinDate) {
 		super();
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.userName = userName;
 		this.userJumin = userJumin;
+		this.userPhone = userPhone;
 		this.userEmail = userEmail;
 		this.userAddr = userAddr;
 		this.userAddr2 = userAddr2;
@@ -59,6 +61,14 @@ public class UserDTO {
 
 	public void setUserJumin(String userJumin) {
 		this.userJumin = userJumin;
+	}
+
+	public String getUserPhone() {
+		return userPhone;
+	}
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
 	}
 
 	public String getUserEmail() {
@@ -108,6 +118,5 @@ public class UserDTO {
 	public void setJoinDate(String joinDate) {
 		this.joinDate = joinDate;
 	}
-	
 	
 }

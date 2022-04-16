@@ -1,25 +1,25 @@
 package alcohol.mvc.dto;
 
 public class CategoryDTO {
-	private String cartCode;
-	private String cartName;
+	private String cateCode;
+	private String cateName;
 	public CategoryDTO() {}
-	public CategoryDTO(String cartCode, String cartName) {
+	public CategoryDTO(String cateCode, String cateName) {
 		super();
-		this.cartCode = cartCode;
-		this.cartName = cartName;
+		this.cateCode = cateCode;
+		this.cateName = cateName;
 	}
-	public String getCartCode() {
-		return cartCode;
+	public String getCateCode() {
+		return cateCode;
 	}
-	public void setCartCode(String cartCode) {
-		this.cartCode = cartCode;
+	public void setCateCode(String cateCode) {
+		this.cateCode = cateCode;
 	}
-	public String getCartName() {
-		return cartName;
+	public String getCateName() {
+		return cateName;
 	}
-	public void setCartName(String cartName) {
-		this.cartName = cartName;
+	public void setCateName(String cateName) {
+		this.cateName = cateName;
 	}
 	
 	

@@ -2,21 +2,21 @@ package alcohol.mvc.dto;
 
 public class NoticeDTO {
 	private int noNumber;
-	private String userId;
 	private String noTitle;
 	private String noContent;
 	private String noDate;
+	private String userId;
 	private int viewCount;
 	
 	public NoticeDTO() {}
 
-	public NoticeDTO(int noNumber, String userId, String noTitle, String noContent, String noDate, int viewCount) {
+	public NoticeDTO(int noNumber, String noTitle, String noContent, String noDate, String userId, int viewCount) {
 		super();
 		this.noNumber = noNumber;
-		this.userId = userId;
 		this.noTitle = noTitle;
 		this.noContent = noContent;
 		this.noDate = noDate;
+		this.userId = userId;
 		this.viewCount = viewCount;
 	}
 
@@ -26,14 +26,6 @@ public class NoticeDTO {
 
 	public void setNoNumber(int noNumber) {
 		this.noNumber = noNumber;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 
 	public String getNoTitle() {
@@ -60,6 +52,14 @@ public class NoticeDTO {
 		this.noDate = noDate;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	public int getViewCount() {
 		return viewCount;
 	}
@@ -67,6 +67,8 @@ public class NoticeDTO {
 	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
 	}
+
+	
 	
 	
 }
