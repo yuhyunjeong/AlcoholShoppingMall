@@ -150,6 +150,7 @@ div {
 			</div>
 
 			<!-- 주별 -->
+			<div>
 			<div class="row border border-dark">
 				<div class="col-2" style="background: lightgray;">주별</div>
 				<div class="col-10" style="background: #ffffff;">
@@ -174,8 +175,10 @@ div {
 					</div>
 				</div>
 			</div>
+			</div>
 
 			<!-- 월별 -->
+			<div>
 			<div class="row border border-dark">
 				<div class="col-2" style="background: lightgray;">월별</div>
 				<div class="col-10" style="background: #ffffff;">
@@ -241,7 +244,7 @@ div {
 
 		</div>
 	</div>
-
+	</div>
 
 	<hr>
 
