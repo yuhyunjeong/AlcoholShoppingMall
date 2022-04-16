@@ -147,7 +147,7 @@ input:focus::-webkit-input-placeholder {
 	<p>
 	<p>
 	<div class="col-sm-6, container">
-		<form method="post" action="../index.jsp">
+		<form method="post" action="${path}/front">
 
 			<div class="m-3">
 				<h6>아이디</h6>
@@ -167,7 +167,8 @@ input:focus::-webkit-input-placeholder {
 					alt="카카오 로그인 버튼" />
 				</a>
 				<p><p>
-
+					<input type="hidden" name="key" value = "user" /> <!-- Controller를 찾는 정보 -->
+					<input type="hidden" name="methodName" value = "login" />  <!-- 메소드이름 -->
 					<input class="w-25 btn btn-dark" type="submit" value="로그인">
 				<p>
 					<input class="w-25 btn btn-dark" type="submit" value="회원가입">

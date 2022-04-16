@@ -14,12 +14,22 @@ public class UserDTO {
 	private String joinDate;
 	
 	public UserDTO() {}
+	
 
-	public UserDTO(String userId, String userPwd, String userName, String userJumin, String userPhone, String userEmail,
-			String userAddr, String userAddr2, int userGrade, int userPoint, String joinDate) {
+	
+
+	public UserDTO(String userId, String userPwd) {
 		super();
 		this.userId = userId;
 		this.userPwd = userPwd;
+	}
+
+
+
+
+	public UserDTO(String userId, String userPwd, String userName, String userJumin, String userPhone, String userEmail,
+			String userAddr, String userAddr2, int userGrade, int userPoint, String joinDate) {
+		this(userId,userPwd);
 		this.userName = userName;
 		this.userJumin = userJumin;
 		this.userPhone = userPhone;

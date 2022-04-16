@@ -115,6 +115,7 @@
 				      <th scope="col">#</th>
 				      <th scope="col">글쓴이</th>
 				      <th scope="col">내용</th>
+				      <th scope="col">별점</th>
 				      <th scope="col">등록일</th>
 				      <th scope="col">사진</th>
 				    </tr>
@@ -124,6 +125,7 @@
 				      <th scope="row">1</th>
 				      <td>김정현</td>
 				      <td>너무 맛있었다</td>
+				      <td>별점이다</td>
 				      <td>2022-04-05</td>
 				      <td><img src="../img/10월의 술.jpg" width="50" height="50"></td>
 				    </tr>
