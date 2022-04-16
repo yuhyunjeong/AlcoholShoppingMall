@@ -100,7 +100,7 @@
 				      <a href="${path}/index.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
 				        <span class="fs-4">안다미로</span>
 				      </a>
-					<div class="col-md-5 text-end">
+					<div class="col-md-6 text-end">
 						<b>${loginName}님</b>
 						<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/admin/member.jsp'">회원관리</button>
 				        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/admin/goods.jsp'">상품관리</button>
