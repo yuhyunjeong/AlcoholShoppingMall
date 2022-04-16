@@ -13,13 +13,10 @@
 
 <h2 align="center">장바구니</h2><p>
 
-
-
-<div class="container">
-
-
+<div class="container" style="padding-left: 250px;">
 
 <div class="row"> 
+
  <div class="col">
  <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -28,17 +25,27 @@
  </div> 
 </div> 
 
+
 <div class="row">
   <div class="col-md-5 mr-3">
+  
     <div class="card w-85">
-       <div class="card-body">
-       
-  <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-  <button type="button" class="btn-close" aria-label="Close"></button>
- 
-         
+
+<div class="row"> 
+<div class="col text-start">  
+<div style="padding-left:5px;">  
+ <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."> 
+ </div>
+</div>  
+
+<div class="col text-end">
+ <button type="button" class="btn-close" aria-label="Close"></button>
+</div>
+</div>
+    
+ <div class="card-body">     
        <div class="col-md-4">
-          <img src="../img/냥이탁주.jpg" class="rounded float-start" alt="냥이탁주" style="max-width:200px; padding-top:5px">
+          <img src="../img/냥이탁주.jpg" class="rounded float-start" alt="냥이탁주" style="max-width:150px;">
        </div>
        
        <div class="row">
@@ -62,19 +69,18 @@
        <div class="row">  
                <div class="col">
                <div class="text-start">상품 금액</div><p> 
-               <div class="text-start">할인 금액</div><p>
                <div class="text-start"><b>총 금액</b></div> 
               </div> 
               
               <div class="col">
                <div class="text-end">15000원</div><p> 
-               <div class="text-end">0원</div><p>
                <div class="text-end"><b>15000원</b></div> 
               </div>
            </div>
 
        </div><!--상품카드바디-->
-    </div><!--상품카드-->      
+    </div><!--상품카드-->  
+
   </div><!--그리드-->
        
                
@@ -85,13 +91,11 @@
         <div class="row">  
           <div class="col">
             <div class="text-start">총 상품 금액</div><p> 
-            <div class="text-start">총 할인 금액</div><p>
             <div class="text-start">총 배송비</div><p>
             <div class="text-start"><b>총 결제 금액</b></div> 
            </div> 
            <div class="col">
              <div class="text-end">15000원</div><p>
-             <div class="text-end">0원</div><p>
              <div class="text-end">3000원</div><p>
              <div class="text-end"><b>18000원</b></div><p>
            </div> 
@@ -102,19 +106,30 @@
    <a href="${path}/#"><button type="button" class="btn btn-primary btn-lg">주문하기</button></a>
   
 </div><!--그리드--><p>
+
 </div><!--1번 row-->
 
 <div class="row">
   <div class="col-md-5 mr-3">
     <div class="card w-85">
-       <div class="card-body">
-       
-       <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-       <button type="button" class="btn-close" aria-label="Close"></button>
-       
-       <div class="col-md-4">
-          <img src="../img/냥이탁주.jpg" class="rounded float-start" alt="냥이탁주" style="max-width:200px; padding-top:5px">
-       </div>
+
+
+<div class="row"> 
+<div class="col text-start">  
+<div style="padding-left:5px;">  
+ <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."> 
+ </div>
+</div>  
+
+<div class="col text-end">
+ <button type="button" class="btn-close" aria-label="Close"></button>
+</div>
+</div>
+ 
+<div class="card-body">       
+  <div class="col-md-4">
+     <img src="../img/냥이탁주.jpg" class="rounded float-start" alt="냥이탁주" style="max-width:150px;">
+  </div>
        
        <div class="row">
         <div class="col">
@@ -136,13 +151,11 @@
        <div class="row">  
                <div class="col">
                <div class="text-start">상품 금액</div><p> 
-               <div class="text-start">할인 금액</div><p>
                <div class="text-start"><b>총 금액</b></div> 
               </div> 
               
               <div class="col">
                <div class="text-end">15000원</div><p> 
-               <div class="text-end">0원</div><p>
                <div class="text-end"><b>15000원</b></div> 
               </div>
            </div>
