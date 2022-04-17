@@ -15,20 +15,11 @@
 
   <div class="row m-5" >
       <div class="col-lg-3" >
-      <form action="${path}/front"  method="get">
- 
-       <a href="#" onclick="parentNode.submit();">
+       <a href="${path}/store/product.jsp">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>       
         	<image href="${pageContext.request.contextPath}/img/A/자연담은 복분자 막걸리.jpg" height="100%" width="100%"/>
         </svg>
-
 	   </a>
-
-	   	<input type="hidden" name="key" value = "product" /> <!-- Controller를 찾는 정보 -->
-		<input type="hidden" name="methodName" value = "productSelectAll" />  <!-- 메소드이름 -->
-		<input type="hidden" name="type" value = "A" />
-		<input type="hidden" name="title" value = "탁주" />
-        </form>
         <p></p>
         
         <h3>탁주</h3>

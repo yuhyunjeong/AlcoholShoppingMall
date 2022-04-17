@@ -12,33 +12,51 @@
 $(function(){
 
 	function selectAll(){
-		alert(1);
+		
+		 /* let name="희정";
+		 alert(`name = ${name}`)// 은 자바스크립코드라고 생각했다 - x , ~.jsp문서이므로 을 표현언어로 먼저 해석한다. 
+		 
+	       alert(`경로3 : ${path} , ${name}`)
+		 
+		 alert(`경로4 : ${path} , ${'${name}'}`)
+		   */
+		
+		
+		
+		
 		$.ajax({
    			url :"../ajax" , //서버요청주소
    			type:"post", //요청방식(method방식 : get | post | put | delete )
    			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
    			data: {key :"product", methodName:"productSelectAll"}, //서버에게 보낼 데이터정보(parameter정보)
    			success :function(result){
-   				alert(2);
+   				
    				let str ="";
-   				$.each(result, function(index,item){
-   					alert(3);
-   					str+="<div class='container mb-4'>"
-   					str+="<div class='row row-cols-1 row-cols-md-4 g-4'>"
-   					str+="<div class='col-lg-3 col-md-6'>"
-   					str+="<div class='card mb-3 h-100'>"
-   					str+=`<a href = '${path}/store/productDetail.jsp'><img src='${path}/img/${index.cateCode}/+${index.pImage}+.jpg' class='card-img-top' alt='모르겠다'></a>`
-   					str+="<div class='card-body'>"
-   					str+="<p class='card-text'>"
-   					str+=`<b>${index.pName}</b><p><p>`
-   					str+=`<b>가격 : ${index.pPrice}원</b><p>`
-   					str+="<hr>"
-   					str+="<b>상품 설명</b><p>"	    
-   					str+=`${index.pDetail}`
-   					str+="</p></div></div></div></div></div>"			
+   				$("#rrr").each(function(index, item) {
+   					
+   					str+="";
+   					str+="<div class='row row-cols-1 row-cols-md-4 g-4'>";
+   					str+="<div class='col-lg-3 col-md-6'>";
+   					str+="<div class='card mb-3 h-100'>";
+   					
+   					str+="<a href = '${path}/store/productDetail.jsp'><img src='${path}/img/"+${'${item.cateCode}'}+"/"+${'${item.pImage}'}+".jpg' class=card-img-top alt='모르겠다'></a>";
+   					str+="<div class='card-body'>";
+   					str+="<p class='card-text'>";
+   					str+=`<b>${'${item.pName}'}</b><p><p>`;
+   					str+=`<b>가격 : ${'${item.pPrice}'}원</b><p>`;
+   					str+="<hr>";
+   					str+="<b>상품 설명</b><p>";    
+   					str+=`${item.pDetail}`;
+   					str+="</p></div></div></div></div>";
    				});
-					$("#resu").html(str);
-   			},
+   				//$("rrr").remove();
+
+   				
+				$("#rrr").append(str);
+					
+   			},error : function(err){  
+   				alert(err+"에러 발생했어요.");
+   			}  //실팽했을때 실행할 함수 
    		});
 		
 	}
@@ -133,8 +151,8 @@ $(function(){
 			</c:forEach>	
 	</div>	
 </div> --%>
+<div id="rrr" class='container mb-4'></div>
 
-<div id="resu"></div>
 <%-- <jsp:include page="../store/productMain.jsp"/> --%>
 <jsp:include page="../common/footer.jsp"/>
 </body>
