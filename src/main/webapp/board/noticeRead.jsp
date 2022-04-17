@@ -52,7 +52,7 @@
 				<p>
 				<div class="row m-5" align="right">
 					 <div class="col-sm-12">
-						<button type="button" class="btn btn-light" >목록</button>
+						<button type="button" class="btn btn-light"  onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
 					</div>
 				</div>
 				
