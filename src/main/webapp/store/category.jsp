@@ -7,10 +7,7 @@
 <title>안다미로_상품카테고리</title>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <style type="text/css">
-	.subbt{
-		background: none;
-		border: none;
-	}
+
 
 </style>
 </head>
@@ -21,14 +18,14 @@
 
   <div class="row m-5" >
       <div class="col-lg-3" >
-      <form action="${path}/front">
-      <button class="subbt" type= "submit">
-       <!-- <a href="#" onclick="parentNode.submit();"> -->
+      <form action="${path}/front"  method="post">
+ 
+       <a href="#" onclick="parentNode.submit();">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>       
         	<image href="${pageContext.request.contextPath}/img/A/자연담은 복분자 막걸리.jpg" height="100%" width="100%"/>
         </svg>
-        </button>
-	   <!-- </a> -->
+
+	   </a>
 
 	   	<input type="hidden" name="key" value = "product" /> <!-- Controller를 찾는 정보 -->
 		<input type="hidden" name="methodName" value = "productSelectAll" />  <!-- 메소드이름 -->

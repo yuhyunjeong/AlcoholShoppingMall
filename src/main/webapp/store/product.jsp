@@ -13,7 +13,7 @@
 <body>
 <jsp:include page="../common/header.jsp"/>
 <div class="container">
-<h2 style="text-align: center;">${ss}</h2>
+<h2 style="text-align: center;">${param.title}</h2>
 </div>
 
 
