@@ -11,7 +11,6 @@ public interface OrderDAO {
 	 * */
 	public int orderInsert(List<OrdersDTO> list)throws SQLException;
 	
-	
 	/**
 	 * 주문 상태수정 UPDATE ORDERS SET ORDER_STATUS=? WHERE ORDER_CODE=?
 	 * */

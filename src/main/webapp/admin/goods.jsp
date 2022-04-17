@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <jsp:include page="../common/header.jsp"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
+   <jsp:include page="../common/header.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,16 +49,29 @@ button{border:none; }
 </tr>
 
 
-<tr>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
+<c:choose>
+  <c:when test="${empty requestScope.list}">
+     <p align="center">등록된 상품이 없습니다</p>
+  </c:when>
+
+<c:forEach items="${requestScop.list}" var="cartDto">
+  <td>
+  <p><fmt:formatNumber value="${cartDto.cartNo}"/></p>
+</td>
 <td>
+  <p>${cartDto.userId}</p>
+</td>
+<td>
+  <p>${cartDto.pCode}</p>
+</td>
+<td>
+  <p><fmt:formatNumber value="${cartDto.cartCount"}/></p>
+</td>
+  
+  
+</c:forEach>
+</c:choose>
+
 <div>
   <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
 </div>

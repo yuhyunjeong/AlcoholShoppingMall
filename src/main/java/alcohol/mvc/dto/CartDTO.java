@@ -1,35 +1,35 @@
 package alcohol.mvc.dto;
 
 public class CartDTO {
-	private int cartNo;
-	private String userId;
+	private int cartNumber;
+	private String uId;
 	private String pCode;
 	private int cartCount;
 	
 	public CartDTO() {}
 
-	public CartDTO(int cartNo, String userId, String pCode, int cartCount) {
+	public CartDTO(int cartNumber, String uId, String pCode, int cartCount) {
 		super();
-		this.cartNo = cartNo;
-		this.userId = userId;
+		this.cartNumber = cartNumber;
+		this.uId = uId;
 		this.pCode = pCode;
 		this.cartCount = cartCount;
 	}
 
-	public int getCartNo() {
-		return cartNo;
+	public int getCartNumber() {
+		return cartNumber;
 	}
 
-	public void setCartNo(int cartNo) {
-		this.cartNo = cartNo;
+	public void setCartNumber(int cartNumber) {
+		this.cartNumber = cartNumber;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getuId() {
+		return uId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setuId(String uId) {
+		this.uId = uId;
 	}
 
 	public String getpCode() {
@@ -47,6 +47,8 @@ public class CartDTO {
 	public void setCartCount(int cartCount) {
 		this.cartCount = cartCount;
 	}
+
+	
 	
 	
 }

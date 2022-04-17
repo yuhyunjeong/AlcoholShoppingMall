@@ -55,7 +55,7 @@ import alcohol.mvc.util.DbUtil;
 				con = DbUtil.getConnection();
 				ps = con.prepareStatement(sql);
 				
-				ps.setString(1, dto.getUserId());
+				ps.setString(1, dto.getuId());
 				ps.setString(2, dto.getpCode());
 				ps.setInt(3, dto.getCartCount());
 				
@@ -81,7 +81,7 @@ import alcohol.mvc.util.DbUtil;
 				ps = con.prepareStatement(sql);
 				
 				ps.setInt(1, dto.getCartCount());
-				ps.setInt(2, dto.getCartNo());
+				ps.setInt(2, dto.getCartNumber());
 				
 				result = ps.executeUpdate();
 				

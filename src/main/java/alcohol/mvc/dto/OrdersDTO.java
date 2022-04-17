@@ -2,7 +2,7 @@ package alcohol.mvc.dto;
 
 public class OrdersDTO {
 	private int orderCode;
-	private String userId;
+	private String uId;
 	private int payCode;
 	private String orderDate;
 	private String orderStatus;
@@ -13,11 +13,11 @@ public class OrdersDTO {
 	
 	public OrdersDTO() {}
 
-	public OrdersDTO(int orderCode, String userId, int payCode, String orderDate, String orderStatus, String deliStatus,
+	public OrdersDTO(int orderCode, String uId, int payCode, String orderDate, String orderStatus, String deliStatus,
 			String deliAddr, String deliAddr2, String orderPhone) {
 		super();
 		this.orderCode = orderCode;
-		this.userId = userId;
+		this.uId = uId;
 		this.payCode = payCode;
 		this.orderDate = orderDate;
 		this.orderStatus = orderStatus;
@@ -35,12 +35,12 @@ public class OrdersDTO {
 		this.orderCode = orderCode;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getuId() {
+		return uId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setuId(String uId) {
+		this.uId = uId;
 	}
 
 	public int getPayCode() {
@@ -98,5 +98,7 @@ public class OrdersDTO {
 	public void setOrderPhone(String orderPhone) {
 		this.orderPhone = orderPhone;
 	}
+
+	
 	
 }

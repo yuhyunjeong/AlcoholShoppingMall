@@ -8,6 +8,34 @@
 <meta charset="UTF-8">
 <title>장바구니</title>
 
+<script type="text/javascript">
+   
+//checkbox 전체선택 제어 
+
+$("#flexCheckDefault").click( function()  //전체선택 checkbox 클릭 시
+{
+    $("input[name=check]").each(function() // name=alcohol input을 반복문 돌며 제어
+    {
+	    if($("#flexCheckDefault").prop('checked'))	 //전체선택 checkbox 선택
+	    {
+		    if(!$(this).prop('disabled'))
+		    {
+		    	$(this).prop('checked', true);
+		    }
+	    }
+	    else                                //전체선택 checkbox 해제
+	    {
+		    $(this).prop('checked', false);
+	    }
+    });
+});
+
+
+ 
+</script>
+
+
+
 </head>
 <body>
 
@@ -19,9 +47,9 @@
 
  <div class="col">
  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked="checked">
   <label class="form-check-label" for="flexCheckDefault">전체선택</label>
- </div>
+
  </div> 
 </div> 
 
@@ -34,7 +62,7 @@
 <div class="row"> 
 <div class="col text-start">  
 <div style="padding-left:5px;">  
- <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."> 
+ <input class="form-check-input" type="checkbox" name="check" id="flexCheckDefault" value="" aria-label="..." checked="checked"> 
  </div>
 </div>  
 
@@ -45,7 +73,7 @@
     
  <div class="card-body">     
        <div class="col-md-4">
-          <img src="../img/냥이탁주.jpg" class="rounded float-start" alt="냥이탁주" style="max-width:150px;">
+          <img src="../img/A/냥이탁주.jpg" class="rounded float-start" alt="냥이탁주" style="max-width:150px;">
        </div>
        
        <div class="row">
@@ -103,7 +131,7 @@
    </div><!--계산서카드 바디-->
   </div><!--계산서카드--> <p><p>
   
-   <a href="${path}/#"><button type="button" class="btn btn-primary btn-lg">주문하기</button></a>
+   <a href="${path}/store/order.jsp"><button type="button" class="btn btn-primary btn-lg">주문하기</button></a>
   
 </div><!--그리드--><p>
 
@@ -117,7 +145,7 @@
 <div class="row"> 
 <div class="col text-start">  
 <div style="padding-left:5px;">  
- <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."> 
+ <input class="form-check-input" type="checkbox" name="check" id="flexCheckDefault" value="" aria-label="..." checked="checked"> 
  </div>
 </div>  
 
@@ -128,7 +156,7 @@
  
 <div class="card-body">       
   <div class="col-md-4">
-     <img src="../img/냥이탁주.jpg" class="rounded float-start" alt="냥이탁주" style="max-width:150px;">
+     <img src="../img/A/냥이탁주.jpg" class="rounded float-start" alt="냥이탁주" style="max-width:150px;">
   </div>
        
        <div class="row">
@@ -167,7 +195,7 @@
 
 
 
-    
+ </div><!--form-check -->    
 
  
 </div><!--컨테이너-->
