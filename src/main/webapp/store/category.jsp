@@ -13,13 +13,17 @@
 
   <div class="row m-5" >
       <div class="col-lg-3" >
-       <a href="${pageContext.request.contextPath}/store/product.jsp?name=탁주"  >
+      <form action="${path}/front?name=탁주">
+       <a href="#" onclick="">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>       
         	<image href="${pageContext.request.contextPath}/img/자연담은 복분자 막걸리.jpg" height="100%" width="100%"/>
         </svg>
 	   </a>
+	   	<input type="hidden" name="key" value = "product" /> <!-- Controller를 찾는 정보 -->
+		<input type="hidden" name="methodName" value = "productSelectAll" />  <!-- 메소드이름 -->
         <h3>탁주</h3>
         <p></p>
+        </form>
       </div>
       
       <div class="col-lg-3" >

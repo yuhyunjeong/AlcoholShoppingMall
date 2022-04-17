@@ -54,7 +54,7 @@
 			<div class="col-lg-8">
 				<div class="row">
 					<div class="col-xxl-8">
-						<img src="../img/10월의 술.jpg" class="rounded">
+						<img src="../img/A/냥이탁주.jpg" class="rounded">
 			
 			
 					</div>
@@ -103,7 +103,7 @@
 	</div>
 	<div class="row mt-5">
 		<div class="col">
-			<img src="../img/10월의 술.jpg"  valeu="상세설명자리" width="100%" height="100%">		
+			<img src="../img/A/냥이탁주.jpg"  valeu="상세설명자리" width="100%" height="100%">		
 		</div>
 	</div>
 	
@@ -127,7 +127,7 @@
 				      <td>너무 맛있었다</td>
 				      <td>별점이다</td>
 				      <td>2022-04-05</td>
-				      <td><img src="../img/10월의 술.jpg" width="50" height="50"></td>
+				      <td><img src="../img/A/냥이탁주.jpg" width="50" height="50"></td>
 				    </tr>
 				  </tbody>
 				</table>	

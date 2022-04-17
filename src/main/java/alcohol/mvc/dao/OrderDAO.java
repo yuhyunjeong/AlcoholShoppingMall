@@ -20,7 +20,7 @@ public interface OrderDAO {
 	/**
 	 * 주문 상태출력 SELECT ORDER_STATUS FROM ORDERS WHERE ORDER_CODE=?
 	 * */
-	public String orderStatus(String oCode)throws SQLException;
+	public String orderStatus(int oCode)throws SQLException;
 	
 	/**
 	 * 배송 상태 수정 UPDATE ORDERS SET DELI_STATUS=? WHERE ORDER_CODE=?
