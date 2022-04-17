@@ -22,8 +22,8 @@ public class ProductController implements Controller {
 	
 	public ModelAndView productSelectAll(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
-		List<ProductDTO> proList = proService.selectAll();
+		String type= request.getParameter("type");
+		List<ProductDTO> proList = proService.selectAll(type);
 		
 		request.setAttribute("proList", proList);
 		ModelAndView mv = new ModelAndView("store/product.jsp");

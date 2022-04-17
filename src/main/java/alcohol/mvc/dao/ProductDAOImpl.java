@@ -48,17 +48,18 @@ public class ProductDAOImpl implements ProductDAO {
 	 * 
 	 * */
 	@Override
-	public List<ProductDTO> selectAll() throws SQLException {
+	public List<ProductDTO> selectAll(String type) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps =null;
 		ResultSet rs = null;
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		
-		String sql ="SELECT * FROM PRODUCT";
+		String sql ="SELECT * FROM PRODUCT WHERE CATE_CODE=?";
 		ProductDTO product = null;
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement(sql);	
+			ps = con.prepareStatement(sql);
+			ps.setString(1, type);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				product = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7)

@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>카테고리 눌렀을때</title>
 
+
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
@@ -57,62 +58,30 @@
 
 </nav>
 
-<div class="container">	
-	<div class="row" >
-	
-		<c:forEach items="${proList}" var="product">
-			<div class="col-lg-3 col-md-6">
-				<div class="card mb-3">
-				  <a href = "${path}/store/productDetail.jsp"><img src="../img/A/냥이탁주.jpg" class="card-img-top" alt="모르겠다"></a>
-				  <div class="card-body">
-				    <p class="card-text">${product.pName}
-				    </p>
-				  </div>  
-				</div>	
-			</div>
-		</c:forEach>
-		<!-- <div class="col-lg-3 col-md-6">
-			<div class="card  mb-3">
-			  <img src="../img/A/냥이탁주.jpg" class="card-img-top" alt="모르겠다">
-			  <div class="card-body">
-			    <p class="card-text">내용도 끌고 와야한다 src도 물론 사진누르면 창 이동하는걸로 통일하자 가격도 적혀야하고 리뷰도 별점도 물론 for문으로 다 나오게도 해야하고
-			    c choos로 필터기능도 만들어야한다.
-			    </p>
-			  </div>
-			</div>
-		</div>
-		
-		<div class="col-lg-3 col-md-6">
-			<div class="card  mb-3">
-			  <img src="../img/A/냥이탁주.jpg" class="card-img-top" alt="모르겠다">
-			  <div class="card-body">
-			    <p class="card-text">내용도 끌고 와야한다 src도 물론 사진누르면 창 이동하는걸로 통일하자 가격도 적혀야하고 리뷰도 별점도 물론 for문으로 다 나오게도 해야하고
-			    c choos로 필터기능도 만들어야한다.
-			    </p>
-			  </div>
-			</div>
-		</div>
-		
-		<div class="col-lg-3 col-md-6">
-			<div class="card  mb-3">
-			  <img src="../img/A/냥이탁주.jpg" class="card-img-top" alt="모르겠다">
-			  <div class="card-body">
-			    <p class="card-text">내용도 끌고 와야한다 src도 물론 사진누르면 창 이동하는걸로 통일하자 가격도 적혀야하고 리뷰도 별점도 물론 for문으로 다 나오게도 해야하고
-			    c choos로 필터기능도 만들어야한다.
-			    </p>
-			  </div>
-			</div>
-		</div> -->
-			
-			
-		
-		
+<div class="container mb-4">	
+	<div class="row row-cols-1 row-cols-md-4 g-4" >
+<%-- 		<c:forEach var ="i" begin="1" end="4"> --%>
+			<c:forEach items="${proList}" var="product">
+				<div class="col-lg-3 col-md-6">
+					<div class="card mb-3 h-100">
+					  <a href = "${path}/store/productDetail.jsp"><img src="${path}/img/${product.cateCode}/${product.pImage}.jpg" class="card-img-top" alt="모르겠다"></a>
+					  <div class="card-body">
+					  
+					    <p class="card-text">
+					    <b>${product.pName}</b><p><p>
+					    <b>가격 : ${product.pPrice}원</b><p>
+					    <hr>
+					    <b>상품 설명</b><p>	    
+					    ${product.pDetail}
+					    
+					    </p>
+					  </div>  
+					</div>	
+				</div>
+			</c:forEach>	
 	</div>
 </div>
-
-
 <jsp:include page="../common/footer.jsp"/>
-
 
 
 
