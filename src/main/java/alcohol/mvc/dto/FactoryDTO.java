@@ -4,12 +4,12 @@ import java.util.List;
 
 public class FactoryDTO {
 	private String fName;
-	private List<String> fType;
+	private String fType;
 	private String fAddr;
 		
 	public FactoryDTO() {}
 
-	public FactoryDTO(String fName, List<String> fType, String fAddr) {
+	public FactoryDTO(String fName, String fType, String fAddr) {
 		super();
 		this.fName = fName;
 		this.fType = fType;
@@ -24,11 +24,11 @@ public class FactoryDTO {
 		this.fName = fName;
 	}
 
-	public List<String> getfType() {
+	public String getfType() {
 		return fType;
 	}
 
-	public void setfType(List<String> fType) {
+	public void setfType(String fType) {
 		this.fType = fType;
 	}
 
@@ -39,7 +39,5 @@ public class FactoryDTO {
 	public void setfAddr(String fAddr) {
 		this.fAddr = fAddr;
 	}
-	
-		
 	
 }
