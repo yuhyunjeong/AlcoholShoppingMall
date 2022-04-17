@@ -11,61 +11,76 @@
 
 <caption><h2 align="center">공지사항 등록 or 수정 폼</h2></caption>
 
-<form>
-<div class="container" style="text-align: center;">
+<form name="writeForm" method="post" action="${path}/front?key=notice&methodName=insert" 
+  onSubmit='return checkValid()' enctype="multipart/form-data">
+<!-- 
+     아래 문장으로 전송하면 post방식으로 전송이되고 현재 파일업로드때문에 enctype="multipart/form-data" 설정되어 있기때문에 
+     request로 값을 받을수가 없다. ( MulitpartRequest로 받아야한다.) 그런데 Controller로 가기전에 Controller를 찾기위해서 
+     DispatherServlet에서 request로 두개의 값을 받고 있기때문에 key, methodName은 get방식으로 별도로 전송해야한다.
+     
+	<input type="hidden" name="key" value = "user" />
+	<input type="hidden" name="methodName" value = "login" />  
 
-<div class="row m-5">
-	<div class="col">
+ -->
+
+<div class="col-md-7 col-lg-8" style="float: none; margin:0 auto;">
+	<div class="container">
 	
-	<div class="row m-5">
-	    <label for="inputTitle" class="col-sm-2 col-form-label">제목</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력해주세요.">
-	    </div>
-	 </div>
-	 
-	 <div class="row m-5">
-	    <label for="inputContent" class="col-sm-2 col-form-label">내용</label>
-	    <div class="col-sm-10">
-	      <textarea class="form-control" id="inputContent" rows="10">내용에 이미지 추가는 어떻게</textarea>
-	    </div>
-	 </div>
-	 
-	 <div class="row m-5">
-	    <label for="inputFile" class="col-sm-2 col-form-label">첨부파일</label>
-	    <div class="col-sm-10">
-	      <input type="text" class="form-control" id="inputFile" placeholder="첨부파일 가능한가?"> 
-	    </div>
-	 </div>
-	 
-	 <div class="row m-5">
-	    <label for="date" class="col-sm-2 col-form-label">날짜</label>
-	    <div class="col-sm-10">
-	      <input type="date" class="form-control" id="date">
-	    </div>
-	 </div>
-	 
-
-		<p>
-		
-		<div class="row m-5" align="right">
-			 <div class="col-sm-10">
-				<button type="button" class="btn btn-light" >등록하기</button>
-			</div>
+		<div class="row mb-5">
+			<div class="col">
 			
-			<div class="col-sm-2">
-				<button type="button" class="btn btn-light" >수정하기</button>
+			<div class="row m-5">
+			    <label for="inputTitle" class="col-sm-2 col-form-label">제목</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력해주세요.">
+			    </div>
+			 </div>
+			 
+			 <div class="row m-5">
+			    <label for="inputContent" class="col-sm-2 col-form-label">내용</label>
+			    <div class="col-sm-10">
+			      <textarea class="form-control" id="inputContent" rows="10">내용에 이미지 추가는 어떻게</textarea>
+			    </div>
+			 </div>
+			 
+			 <div class="row m-5">
+			    <div class="col-sm-2"></div>
+			    <div class="col-sm-10">
+				  <label for="formFileMultiple" class="form-label"></label>
+				  <input class="form-control" type="file" id="formFileMultiple" multiple>
+				</div>
+			 </div>
+			 
+			 <div class="row m-5">
+			    <label for="date" class="col-sm-2 col-form-label">날짜</label>
+			    <div class="col-sm-10">
+			      <input type="date" class="form-control" id="date">
+			    </div>
+			 </div>
+			 
+		
+				<p>
+				
+				<div class="row m-5" align="right">
+					 <div class="col-sm-10">
+						<button type="button" class="btn btn-light" >등록하기</button>
+					</div>
+					
+					<div class="col-sm-2">
+						<button type="button" class="btn btn-light" >수정하기</button>
+					</div>
+				
+				</div><p>
+				
 			</div>
-		
-		</div><p>
-		
+		</div>
 	</div>
 </div>
 </form>
 
 
 
-</div>
+
 <%@include file="../common/footer.jsp"%>
 </body>
 </html>

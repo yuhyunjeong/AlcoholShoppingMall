@@ -12,7 +12,6 @@
 	
 	div {
 		margin 100px;
-		
 	}
 </style>
 </head>
@@ -40,13 +39,9 @@
 					<td>이수빈</td>
 					<td><a href="#">Sample Data2</a></td>
 				</tr>
-
 			</tbody>
 		</table>
 	</div>
-
-
-
 
 	<%@include file="../common/footer.jsp"%>
 </body>

@@ -12,6 +12,14 @@
  		font-size: 30px;
    		line-height: 30px;
 	}
+	 img{
+ 	height: 285.05px;
+
+ 	}
+	
+	
+	
+	
   	.bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;

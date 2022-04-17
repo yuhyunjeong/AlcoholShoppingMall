@@ -35,8 +35,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductDTO> selectAll() throws SQLException {
-		List<ProductDTO> list =dao.selectAll();
+	public List<ProductDTO> selectAll(String type) throws SQLException {
+		List<ProductDTO> list =dao.selectAll(type);
 		return list;
 	}
 
@@ -47,9 +47,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<CategoryDTO> selectCategory() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductDTO> selectCategory(String type, String alcohol) throws SQLException {
+		List<ProductDTO> list = dao.selectCategory(type, alcohol);
+		return list;
 	}
 
 }
