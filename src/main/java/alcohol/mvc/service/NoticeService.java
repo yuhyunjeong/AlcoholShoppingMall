@@ -12,12 +12,6 @@ public interface NoticeService {
 	public void noticeInsert(NoticeDTO dto)throws SQLException;
 	
 	/**
-	 * 조회수 증가 기능
-	 * */
-	public NoticeDTO increamentByNoticeNum(int noNumber,boolean flag)throws SQLException;
-	
-	
-	/**
 	 * 삭제하기
 	 * */
 	public void noticeDelete(int noNumber)throws SQLException;
@@ -30,10 +24,16 @@ public interface NoticeService {
 	/**
 	 * 전체검색
 	 * */
-	public List<NoticeDTO> noticeAll(int paging)throws SQLException;
+	public List<NoticeDTO> noticeAll()throws SQLException;
+	
+	/**
+	 * paging처리
+	 * */
+    List<NoticeDTO> noticeAll(int pageNo) throws SQLException;
 	
 	/**
 	 * 상세검색
+	 * @param : boolean flag - 조회수 증가 여부를 판별하는 매개변수임(true이면 조회수증가 / false이면 조회수 증가 안함)
 	 * */
-	public NoticeDTO noticeSelect(int noNumber)throws SQLException;
+	public NoticeDTO noticeSelect(int noNumber, boolean flag)throws SQLException;
 }
