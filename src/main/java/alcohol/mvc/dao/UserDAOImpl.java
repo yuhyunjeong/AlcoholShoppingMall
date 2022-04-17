@@ -99,17 +99,17 @@ public class UserDAOImpl implements UserDAO {
 
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			
-			ps.setInt(1, (paging-1) * PageCnt.pagesize + 1); // 시작점 번호 
-			ps.setInt(2, paging*pageCnt.pagesize); // 끝점 번호 
-			
+
+			ps.setInt(1, (paging - 1) * PageCnt.pagesize + 1); // 시작점 번호
+			ps.setInt(2, paging * pageCnt.pagesize); // 끝점 번호
+
 			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				UserDTO userDTO =  new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
+
+			while (rs.next()) {
+				UserDTO userDTO = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
 						rs.getString(11));
-				
+
 				userList.add(userDTO);
 			}
 
@@ -121,39 +121,39 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	/**
-	 * 아이디에 해당하는 회원정보 검색 
+	 * 아이디에 해당하는 회원정보 검색
 	 */
 	@Override
 	public UserDTO selectByUserId(String id) throws SQLException {
-		
+
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		UserDTO userDTO = null;
 		String sql = " select * from users where u_id=?";
-		
+
 		try {
-			
+
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			
+
 			ps.setString(1, id);
-			
+
 			rs = ps.executeQuery();
-			
-			if(rs.next()) {
-				userDTO = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
+
+			if (rs.next()) {
+				userDTO = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
 						rs.getString(11));
 			}
-			
+
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * 전체 레코드 수 가져오기
 	 */
@@ -191,24 +191,24 @@ public class UserDAOImpl implements UserDAO {
 		ResultSet rs = null;
 		boolean result = false;
 		String sql = "SELECT U_ID FROM USERS WHERE U_ID=?";
-		
+
 		try {
-			
+
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			
+
 			ps.setString(1, id);
-			
+
 			rs = ps.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				result = true;
 			}
-			
+
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
-		
+
 		return result;
 	}
 
@@ -243,12 +243,12 @@ public class UserDAOImpl implements UserDAO {
 
 	// 회원 탈퇴
 	@Override
-	public int delete(String id) throws SQLException {
+	public int delete(String id, String pwd) throws SQLException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = " DELETE FROM USERS WHERE U_ID=?";
+		String sql = " DELETE FROM USERS WHERE U_ID=?, U_PWD=?";
 
 		try {
 
@@ -256,6 +256,7 @@ public class UserDAOImpl implements UserDAO {
 			ps = con.prepareStatement(sql);
 
 			ps.setString(1, id);
+			ps.setString(2, pwd);
 
 			result = ps.executeUpdate();
 
@@ -268,23 +269,24 @@ public class UserDAOImpl implements UserDAO {
 
 	// 아이디 찾기
 	@Override
-	public String idFind(String jumin, String phone) throws SQLException {
-		
+	public String idFind(String name, String phone, String email) throws SQLException {
+
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "SELECT U_ID FROM USERS WHERE U_JUMIN = ? AND U_PHONE =?";
+		String sql = "SELECT U_ID FROM USERS WHERE U_NAME = ? AND U_PHONE =? AND U_EMAIL=?";
 		String id = null;
 
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, jumin);
+			ps.setString(1, name);
 			ps.setString(2, phone);
+			ps.setString(3, email);
 
 			rs = ps.executeQuery();
-			if(rs.next()) {
-				id = rs.getString(1); 
+			if (rs.next()) {
+				id = rs.getString(1);
 			}
 
 		} finally {
@@ -295,32 +297,30 @@ public class UserDAOImpl implements UserDAO {
 
 	// 비밀번호 찾기
 	@Override
-	public String pwdFind(String id, String jumin, String phone) throws SQLException {
+	public String pwdFind(String id , String name, String phone, String email) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "SELECT U_PWD FROM USERS WHERE U_ID=? AND U_JUMIN = ? AND U_PHONE =?";
+		String sql = "SELECT U_PWD FROM USERS WHERE U_ID=? U_NAME = ? AND U_PHONE =? AND U_EMAIL=?";
 		String pwd = null;
 
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
-			ps.setString(2, jumin);
+			ps.setString(2, name);
 			ps.setString(3, phone);
+			ps.setString(4, email);
 
 			rs = ps.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				pwd = rs.getString(2);
 			}
-
 
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
 		return pwd;
 	}
-
-
 
 }

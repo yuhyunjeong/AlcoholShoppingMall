@@ -55,7 +55,7 @@ input:focus::-webkit-input-placeholder {
 	<p>
 	<p>
 	<div class="col-sm-6, container">
-		<form method="post" action="../index.jsp">
+		<form method="post" action="${path}/front">
 		
 		<div class="m-3">
 			<h6>아이디</h6>
@@ -69,16 +69,31 @@ input:focus::-webkit-input-placeholder {
 			<h6>비밀번호 확인</h6>
 			<input type="password" name="pwdCheck"
 				placeholder="비밀번호를 한번 더 입력해주세요.">
+			<p>
+
+			<h6>이름</h6>
+			<input type="text" name="name" placeholder="이름을 입력해주세요.">
+			<p>
+
+			<h6>연락처</h6>
+			<input type="text" name="tel" placeholder="연락처를 입력해주세요.">
+			<p>
 
 			<p>
 			<h6>이메일</h6>
 			<input type="text" name="email" placeholder="이메일을 입력해주세요.">
 			<p>
-			<h6>연락처</h6>
-			<input type="text" name="tel" placeholder="연락처를 입력해주세요.">
-			<p>
+
 			<h6>주민등록번호</h6>
 			<input type="text" name="jumin" placeholder="주민등록번호를 입력해주세요.">
+			<p>
+			
+			<h6>도로명주소</h6>
+			<input type="text" name="addr" placeholder="주민등록번호를 입력해주세요.">
+			<p>
+			
+			<h6>상세주소</h6>
+			<input type="text" name="addr2" placeholder="주민등록번호를 입력해주세요.">
 			<p>
 			<p>
 			</div>

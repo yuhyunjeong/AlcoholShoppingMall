@@ -9,12 +9,12 @@ public interface UserService {
 	/**
 	 * 로그인 체크
 	 * */
-	public UserDTO loginCheck(UserDTO userDto)throws SQLException;
+	public UserDTO loginCheck(UserDTO userDTO)throws SQLException;
 	
 	/**
 	 * 회원가입(등록)
 	 * */
-	public void insert(UserDTO userDto)throws SQLException;
+	public void insert(UserDTO userDTO)throws SQLException;
 	
 	/**
 	 * 회원정보검색
@@ -30,22 +30,22 @@ public interface UserService {
 	/**
 	 * 개인정보수정
 	 * */
-	public void update(UserDTO userDto)throws SQLException;
+	public void update(UserDTO userDTO)throws SQLException;
 	
 	
 	/**
 	 * 회원 탈퇴
 	 * */
-	public void delete(String id)throws SQLException;
+	public void delete(String id, String pwd)throws SQLException;
 	
 	
 	/**
 	 * 아이디 찾기 
 	 * */
-	public String idFind(String jumin, String phone)throws SQLException;
+	public String idFind(String name, String phone, String email)throws SQLException;
 	
 	/**
 	 * 비밀번호 찾기 
 	 * */
-	public String pwdFind(String id ,String jumin, String phone)throws SQLException;
+	public String pwdFind(String id , String name, String phone, String email)throws SQLException;
 }
