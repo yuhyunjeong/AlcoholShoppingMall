@@ -13,7 +13,7 @@
 <body>
 <jsp:include page="../common/header.jsp"/>
 <div class="container">
-<h2 style="text-align: center;">${param.name}</h2>
+<h2 style="text-align: center;">${ss}</h2>
 </div>
 
 
@@ -60,7 +60,7 @@
 
 <div class="container mb-4">	
 	<div class="row row-cols-1 row-cols-md-4 g-4" >
-<%-- 		<c:forEach var ="i" begin="1" end="4"> --%>
+
 			<c:forEach items="${proList}" var="product">
 				<div class="col-lg-3 col-md-6">
 					<div class="card mb-3 h-100">
