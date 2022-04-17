@@ -13,17 +13,6 @@ public class OrderDAOImpl implements OrderDAO{
 
 	@Override
 	public int orderInsert(List<OrdersDTO> list) throws SQLException {
-		Connection con = null;
-		PreparedStatement ps = null;
-		int result = 0;
-		
-		String sql = "";
-		try {
-			
-		} finally {
-			// TODO: handle finally clause
-		}
-		
 		
 		return 0;
 	}
@@ -63,9 +52,11 @@ public class OrderDAOImpl implements OrderDAO{
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, oCode);
+			rs = ps.executeQuery();
 			
-			
+			while(rs.next()) {
+				rs.getInt(1);
+			}
 			
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
@@ -76,8 +67,26 @@ public class OrderDAOImpl implements OrderDAO{
 
 	@Override
 	public int deliUpdate(OrdersDTO ordersDTO) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		
+		String sql = "UPDATE ORDERS SET DELI_STATUS=? WHERE ORDER_CODE=?";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, ordersDTO.getDeliStatus());
+			ps.setInt(2, ordersDTO.getOrderCode());
+			
+			result = ps.executeUpdate();
+			
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+			
+		return result;
 	}
 
 	@Override
