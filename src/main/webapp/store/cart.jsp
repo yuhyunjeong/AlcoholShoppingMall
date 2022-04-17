@@ -10,25 +10,7 @@
 
 <script type="text/javascript">
    
-//checkbox 전체선택 제어 
 
-$("#flexCheckDefault").click( function()  //전체선택 checkbox 클릭 시
-{
-    $("input[name=check]").each(function() // name=alcohol input을 반복문 돌며 제어
-    {
-	    if($("#flexCheckDefault").prop('checked'))	 //전체선택 checkbox 선택
-	    {
-		    if(!$(this).prop('disabled'))
-		    {
-		    	$(this).prop('checked', true);
-		    }
-	    }
-	    else                                //전체선택 checkbox 해제
-	    {
-		    $(this).prop('checked', false);
-	    }
-    });
-});
 
 
  

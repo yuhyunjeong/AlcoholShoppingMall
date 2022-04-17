@@ -13,8 +13,31 @@ public class OrderDAOImpl implements OrderDAO{
 
 	@Override
 	public int orderInsert(List<OrdersDTO> list) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
 		
-		return 0;
+		String sql = "INSERT INTO ORDERS(ORDER_CODE,U_ID,PAY_CODE) VALUES(orders_no_seq.nextval,?,?,SYSDATE,?,?,?,?,?)";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, sql);
+			ps.setString(2, sql);
+			ps.setString(3, sql);
+			ps.setString(4, sql);
+			ps.setString(5, sql);
+			ps.setString(6, sql);
+			ps.setString(7, sql);
+			
+			result = ps.executeUpdate();
+			
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		
+		return result;
 	}
 
 	@Override
@@ -90,8 +113,28 @@ public class OrderDAOImpl implements OrderDAO{
 	}
 
 	@Override
-	public String deliStatus(String oCode) throws SQLException {
-		// TODO Auto-generated method stub
+	public String deliStatus(int oCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT DELI_STATUS FROM ORDERS WHERE ORDER_CODE=?";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				rs.getInt(1);
+				
+			}
+				
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		
 		return null;
 	}
 

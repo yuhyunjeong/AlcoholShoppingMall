@@ -29,5 +29,5 @@ public interface OrderDAO {
 	/**
 	 * 배송 상태 출력 SELECT DELI_STATUS FROM ORDERS WHERE ORDER_CODE=?
 	 * */
-	public String deliStatus(String oCode)throws SQLException;
+	public String deliStatus(int oCode)throws SQLException;
 }

@@ -95,7 +95,7 @@ public class ProductDAOImpl implements ProductDAO {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, alcohol);
-			ps.setInt(2, result);
+			ps.setFloat(2, result);
 			ps.setString(3, type);
 			rs = ps.executeQuery();
 			while(rs.next()) {

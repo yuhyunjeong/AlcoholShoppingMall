@@ -26,7 +26,7 @@ button{border:none; }
 
 <div class="container">
 <div align=left >
-<button type="button" class="btn btn-light" >등록하기</button>
+ <a href="${path}/admin/goodsWrite.jsp"><button type="button" class="btn btn-light" >등록하기</button></a>
 </div>
 </div>
 <p>
@@ -45,29 +45,40 @@ button{border:none; }
 <th>상품가격</th>
 <th>재고수량</th>
 <th>등록일</th>
-<th><a href="${path}/#"><button type="button" class="btn btn-sm btn-dark">삭제</button></a></th>
+<th><a href="${path}/admin/goods.jsp"><button type="button" class="btn btn-sm btn-dark">삭제</button></a></th>
 </tr>
 
 
 <c:choose>
-  <c:when test="${empty requestScope.list}">
+  <c:when test="${empty proList}">
      <p align="center">등록된 상품이 없습니다</p>
   </c:when>
 
-<c:forEach items="${requestScop.list}" var="cartDto">
+<c:forEach items="${proList}" var="productDto">
   <td>
-  <p><fmt:formatNumber value="${cartDto.cartNo}"/></p>
-</td>
-<td>
-  <p>${cartDto.userId}</p>
-</td>
-<td>
-  <p>${cartDto.pCode}</p>
-</td>
-<td>
-  <p><fmt:formatNumber value="${cartDto.cartCount"}/></p>
-</td>
-  
+    <p>${productDto.cateCode}</p>
+  </td>
+  <td>
+    <p>${productDto.pCode}</p>
+  </td>
+  <td>
+    <p>${productDto.pName}</p>
+  </td>
+  <td>
+    <p>${productDto.pDetail}</p>
+  </td>
+  <td>
+    <p><fmt:formatNumber value="${productDto.pAlcohol}"/></p>
+  </td>
+  <td>
+    <p><fmt:formatNumber value="${productDto.pPrice}"/></p>
+  </td>
+  <td>
+    <p><fmt:formatNumber value="${productDto.pStuck}"/></p>
+  </td>
+  <td>
+    <p>${productDto.pDate}</p>
+  </td>
   
 </c:forEach>
 </c:choose>
