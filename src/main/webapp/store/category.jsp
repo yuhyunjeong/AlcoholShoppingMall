@@ -5,11 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>안다미로_상품카테고리</title>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<style type="text/css">
 
 
-</style>
 </head>
 <body>
 <%@include file="../common/header.jsp"%>
@@ -18,7 +15,7 @@
 
   <div class="row m-5" >
       <div class="col-lg-3" >
-      <form action="${path}/front"  method="post">
+      <form action="${path}/front"  method="get">
  
        <a href="#" onclick="parentNode.submit();">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>       

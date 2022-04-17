@@ -50,6 +50,6 @@ public interface ProductDAO {
 	/**
 	 * 카테고리 검색 SELECT * FROM CATEGORY
 	 * */
-	public List<CategoryDTO> selectCategory()throws SQLException;
+	public List<ProductDTO> selectCategory(String type,String alcohol)throws SQLException;
 	
 }

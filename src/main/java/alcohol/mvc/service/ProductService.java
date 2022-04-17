@@ -47,7 +47,7 @@ public interface ProductService {
 	public ProductDTO searchBy(String pCode)throws SQLException;
 	
 	/**
-	 * 카테고리 검색
+	 * 도수별 검색
 	 * */
-	public List<CategoryDTO> selectCategory()throws SQLException;
+	public List<ProductDTO> selectCategory(String type,String alcohol)throws SQLException;
 }

@@ -81,9 +81,34 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public List<CategoryDTO> selectCategory() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductDTO> selectCategory(String type,String alcohol) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps =null;
+		ResultSet rs = null;
+		List<ProductDTO> list = new ArrayList<ProductDTO>();
+		String alNo = alcohol;
+		int no = Integer.parseInt(alNo);
+		int result = (no-10);
+		String sql ="SELECT * FROM PRODUCT WHERE P_ALCOHOL < ? AND P_ALCOHOL >=? AND CATE_CODE=?";
+		ProductDTO product = null;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, alcohol);
+			ps.setInt(2, result);
+			ps.setString(3, type);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				product = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7)
+						,rs.getString(8),rs.getString(10),rs.getString(11),rs.getString(9));
+				list.add(product);
+			}
+			
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return list;
 	}
 
 }

@@ -119,19 +119,7 @@ System.out.println(${param.name});
 									  </div>
 		       						  <!-- Modal End -->			           			
 			           			
-			           			
-			           			
-			           			
-			           			
-			           			
-			           			
-			           			
-			           			
-			           			
-			           			
-			           			
-			           			
-			           			
+
 			           			
 		           			</div>	
 		           		</div>		 		
