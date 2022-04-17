@@ -10,12 +10,13 @@ import java.util.List;
 import alcohol.mvc.dto.UserDTO;
 import alcohol.mvc.paging.PageCnt;
 import alcohol.mvc.util.DbUtil;
+import oracle.jdbc.proxy.annotation.Pre;
 
 public class UserDAOImpl implements UserDAO {
 
 	// 로그인 체크
 	@Override
-	public UserDTO loginCheck(UserDTO userDto) throws SQLException {
+	public UserDTO loginCheck(UserDTO userDTO) throws SQLException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -26,8 +27,8 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, userDto.getUserId());
-			ps.setString(2, userDto.getUserPwd());
+			ps.setString(1, userDTO.getUserId());
+			ps.setString(2, userDTO.getUserPwd());
 
 			rs = ps.executeQuery();
 			if (rs.next()) {
@@ -44,7 +45,7 @@ public class UserDAOImpl implements UserDAO {
 
 	// 회원가입
 	@Override
-	public int insert(UserDTO userDto) throws SQLException {
+	public int insert(UserDTO userDTO) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -55,16 +56,16 @@ public class UserDAOImpl implements UserDAO {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 
-			ps.setString(1, userDto.getUserId());
-			ps.setString(2, userDto.getUserPwd());
-			ps.setString(3, userDto.getUserName());
-			ps.setString(4, userDto.getUserJumin());
-			ps.setString(5, userDto.getUserPhone());
-			ps.setString(6, userDto.getUserEmail());
-			ps.setString(7, userDto.getUserAddr());
-			ps.setString(8, userDto.getUserAddr2());
-			ps.setInt(9, userDto.getUserGrade());
-			ps.setInt(10, userDto.getUserPoint());
+			ps.setString(1, userDTO.getUserId());
+			ps.setString(2, userDTO.getUserPwd());
+			ps.setString(3, userDTO.getUserName());
+			ps.setString(4, userDTO.getUserJumin());
+			ps.setString(5, userDTO.getUserPhone());
+			ps.setString(6, userDTO.getUserEmail());
+			ps.setString(7, userDTO.getUserAddr());
+			ps.setString(8, userDTO.getUserAddr2());
+			ps.setInt(9, userDTO.getUserGrade());
+			ps.setInt(10, userDTO.getUserPoint());
 
 			result = ps.executeUpdate();
 
@@ -83,7 +84,7 @@ public class UserDAOImpl implements UserDAO {
 		ResultSet rs = null;
 
 		List<UserDTO> userList = new ArrayList<UserDTO>();
-		String sql = "select * from (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM users ORDER BY join_date desc) a) where  rnum>=? and rnum <=? ;";
+		String sql = "select * from (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM users ORDER BY join_date desc) a) where  rnum>=? and rnum <=?";
 
 		try {
 
@@ -98,6 +99,19 @@ public class UserDAOImpl implements UserDAO {
 
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, (paging-1) * PageCnt.pagesize + 1); // 시작점 번호 
+			ps.setInt(2, paging*pageCnt.pagesize); // 끝점 번호 
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				UserDTO userDTO =  new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
+						rs.getString(11));
+				
+				userList.add(userDTO);
+			}
 
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
@@ -106,6 +120,40 @@ public class UserDAOImpl implements UserDAO {
 		return userList;
 	}
 
+	/**
+	 * 아이디에 해당하는 회원정보 검색 
+	 */
+	@Override
+	public UserDTO selectByUserId(String id) throws SQLException {
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		UserDTO userDTO = null;
+		String sql = " select * from users where u_id=?";
+		
+		try {
+			
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, id);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				userDTO = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
+						rs.getString(11));
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return null;
+	}
+	
 	/**
 	 * 전체 레코드 수 가져오기
 	 */
@@ -166,7 +214,7 @@ public class UserDAOImpl implements UserDAO {
 
 	// 회원정보 수정
 	@Override
-	public int update(UserDTO userDto) throws SQLException {
+	public int update(UserDTO userDTO) throws SQLException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -178,11 +226,11 @@ public class UserDAOImpl implements UserDAO {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 
-			ps.setString(1, userDto.getUserPwd());
-			ps.setString(2, userDto.getUserPhone());
-			ps.setString(3, userDto.getUserAddr());
-			ps.setString(4, userDto.getUserAddr2());
-			ps.setString(5, userDto.getUserId());
+			ps.setString(1, userDTO.getUserPwd());
+			ps.setString(2, userDTO.getUserPhone());
+			ps.setString(3, userDTO.getUserAddr());
+			ps.setString(4, userDTO.getUserAddr2());
+			ps.setString(5, userDTO.getUserId());
 
 			result = ps.executeUpdate();
 
@@ -272,5 +320,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return pwd;
 	}
+
+
 
 }
