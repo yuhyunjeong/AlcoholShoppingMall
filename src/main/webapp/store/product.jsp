@@ -143,7 +143,7 @@ $(function(){
 		
 		
 	</div>
-	<form class="d-flex">
+	<!-- <form class="d-flex"> -->
 		<div class="row">
 			<div class="col-9"></div>
 			<div class="col">
@@ -154,7 +154,7 @@ $(function(){
 				</select>  
 			</div>
 		</div>
-		</form>
+		<!-- </form> -->
   </div>
 </nav>
 

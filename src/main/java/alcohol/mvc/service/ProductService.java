@@ -49,7 +49,7 @@ public interface ProductService {
 	/**
 	 * 도수별 검색
 	 * */
-	public List<ProductDTO> selectCategory(String type,String alcohol)throws SQLException;
+	public List<ProductDTO> selectCategory(String type,String alcohol,String filter)throws SQLException;
 	/**
 	 *날짜 판매 
 	 * */

@@ -47,8 +47,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductDTO> selectCategory(String type, String alcohol) throws SQLException {
-		List<ProductDTO> list = dao.selectCategory(type, alcohol);
+	public List<ProductDTO> selectCategory(String type, String alcohol,String filter) throws SQLException {
+		List<ProductDTO> list = dao.selectCategory(type, alcohol,filter);
 		return list;
 	}
 

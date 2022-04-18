@@ -54,23 +54,24 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet rs = null;
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		
-		String o = "";
-		if(filter.equals("0")||filter.equals("null")){
-			o="p_code";
-		}else if(filter.equals("1")){
-			o="P_STUCK ASC";	
-		}else {
-			o="VIEW_SCORE ASC";
+	
+		
+		String sql ="";
+		switch(filter) {
+		case "0" : sql = "SELECT * FROM PRODUCT WHERE CATE_CODE=? ORDER BY P_CODE";break;
+		case "null" : sql = "SELECT * FROM PRODUCT WHERE CATE_CODE=? ORDER BY P_CODE";break;
+		case "1" : sql = "SELECT * FROM PRODUCT WHERE CATE_CODE=? ORDER BY P_STUCK ASC";break;
+		case "2" : sql = "SELECT * FROM PRODUCT WHERE CATE_CODE=? ORDER BY VIEW_SCORE ASC";break;
 		}
 		
 		
-		String sql ="SELECT * FROM PRODUCT WHERE CATE_CODE=? ORDER BY ?";
+		
+		
 		ProductDTO product = null;
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, type);
-			ps.setString(2, o);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -94,7 +95,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public List<ProductDTO> selectCategory(String type,String alcohol) throws SQLException {
+	public List<ProductDTO> selectCategory(String type,String alcohol,String filter) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps =null;
 		ResultSet rs = null;
@@ -102,7 +103,22 @@ public class ProductDAOImpl implements ProductDAO {
 		String alNo = alcohol;
 		int no = Integer.parseInt(alNo);
 		int result = (no-10);
-		String sql ="SELECT * FROM PRODUCT WHERE P_ALCOHOL < ? AND P_ALCOHOL >=? AND CATE_CODE=?";
+		
+		
+		
+		String sql ="";
+
+		switch(filter) {
+		case "0" : sql = "SELECT * FROM PRODUCT WHERE P_ALCOHOL < ? AND P_ALCOHOL >=? AND CATE_CODE=? ORDER BY P_CODE";break;
+		case "null" : sql = "SELECT * FROM PRODUCT WHERE P_ALCOHOL < ? AND P_ALCOHOL >=? AND CATE_CODE=? ORDER BY P_CODE";break;
+		case "1" : sql = "SELECT * FROM PRODUCT WHERE P_ALCOHOL < ? AND P_ALCOHOL >=? AND CATE_CODE=? ORDER BY P_STUCK ASC";break;
+		case "2" : sql = "SELECT * FROM PRODUCT WHERE P_ALCOHOL < ? AND P_ALCOHOL >=? AND CATE_CODE=? ORDER BY VIEW_SCORE ASC";break;
+		}
+		
+		
+		
+		
+		
 		ProductDTO product = null;
 		try {
 			con = DbUtil.getConnection();
