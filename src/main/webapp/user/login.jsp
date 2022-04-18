@@ -171,7 +171,7 @@ input:focus::-webkit-input-placeholder {
 					<input type="hidden" name="methodName" value = "login" />  <!-- 메소드이름 -->
 					<input class="w-25 btn btn-dark" type="submit" value="로그인">
 				<p>
-					<input class="w-25 btn btn-dark" type="submit" value="회원가입">
+					<input class="w-25 btn btn-dark" type="button" value="회원가입" onclick="location.href='join.jsp'">
 			</div>
 			<p>
 
