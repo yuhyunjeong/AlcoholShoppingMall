@@ -136,11 +136,11 @@ public class NoticeController implements Controller {
 			throws Exception {
 		
 		int noNumber = Integer.parseInt(request.getParameter("noNumber"));
-		String userId = request.getParameter("userId");
 		String noTitle = request.getParameter("noTitle");
 		String noContent = request.getParameter("noContent");
+		String 	noDate	= request.getParameter("noDate");
 		
-		NoticeDTO notice = new NoticeDTO(userId, noTitle, noContent);
+		NoticeDTO notice = new NoticeDTO(noNumber, noTitle, noContent,noDate);
 		
 		noService.noticeUpdate(notice);
 		

@@ -38,8 +38,8 @@ public class NoticeServiceImpl implements NoticeService {
 	public void noticeUpdate(NoticeDTO dto) throws SQLException {
 		
 		//관리자가 로그인했는지 여부 체크 필요
-		
-		if(dao.noticeUpdate(dto)==0) {
+		int result= dao.noticeUpdate(dto);
+		if(result==0) {
 			throw new SQLException("수정되지 않았습니다.");
 		}
 
