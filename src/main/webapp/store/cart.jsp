@@ -11,9 +11,26 @@
 <meta charset="UTF-8">
 <title>장바구니</title>
 
-<script type="text/javascript">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
+<script type="text/javascript">
+   
+$(document).ready(function() {
+	$("#flexCheckDefault").click(function() {
+		if($("#flexCheckDefault").is(":checked")) $("input[name=chk]").prop("checked", true);
+		else $("input[name=chk]").prop("checked", false);
+	});
+
+	$("input[name=chk]").click(function() {
+		var total = $("input[name=chk]").length;
+		var checked = $("input[name=chk]:checked").length;
+
+		if(total != checked) $("#flexCheckDefault").prop("checked", false);
+		else $("#flexCheckDefault").prop("checked", true); 
+	});
+});
   
+ 
 
 </script>
 
@@ -26,15 +43,15 @@
 
 <div class="container" style="padding-left: 250px;">
 
-<%-- <form action="${path}/front" method="get">
+<form action="${path}/front" method="get">
  <input type="hidden" name="key" value="cart" /> 
- <input type="hidden" name="methodName" value="select" /> --%>
+ <input type="hidden" name="methodName" value="insert" />
 
 <div class="row"> 
 
  <div class="col">
  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked="checked">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked="checked" name="chk">
   <label class="form-check-label" for="flexCheckDefault">전체선택</label>
 
  </div> 
@@ -49,34 +66,30 @@
 <div class="row"> 
 <div class="col text-start">  
 <div style="padding-left:5px;">  
- <input class="form-check-input" type="checkbox" name="check" id="flexCheckDefault" value="" aria-label="..." checked="checked"> 
+ <input class="form-check-input" type="checkbox" id="flexCheckDefault" value="" aria-label="..." checked="checked" name="chk"> 
  </div>
 </div>  
 
 <div class="col text-end">
-  <button type="button" class="btn-close" aria-label="Close" onclick="delete"></button>
+  <button type="button" class="btn-close" aria-label="Close"></button>
 </div>
 </div>
     
  <div class="card-body">     
        <div class="col-md-4">
-          <img src="../img/A/냥이탁주.jpg" class="rounded float-start" alt="냥이탁주" style="max-width:150px;">
+          <img src="../img/${cart.type}/${cart.image}.jpg" class="rounded float-start" style="max-width:150px;">
        </div>
        
        <div class="row">
         <div class="col">
-        <div class="text-start"><h4><b><input value="${cart.pCode}"/></b></h4></div>
+        <div class="text-start"><h4><b>${cart.pcode}</b></h4></div>
       </div>
      </div><p>
      
      <div class="row"> 
      
-     <div class="col">
-     <input type="number" value="${cart.countCount}" class="datail-quantity form-control text-center input-sm" value="1" >
-     </div>
-      
       <div class="col">
-        <div class="text-end"><fmt:formatNumber value="${cart.Price}" pattern="###,###"/>원</div>
+        <div class="text-end"><input type="number" name="count" value="${cart.cartcount}" min="1" max="99">개</div>
       </div>   
       </div><hr>
        
@@ -88,8 +101,8 @@
               </div> 
               
               <div class="col">
-               <div class="text-end">${cart.p_price}원</div><p> 
-               <div class="text-end"><b>15000원</b></div> 
+               <div class="text-end"><fmt:formatNumber value="${cart.price}" pattern="###,###"/>원</div><p> 
+               <div class="text-end"><b><fmt:formatNumber value="${cart.totalprice}" pattern="###,###"/>원</b></div> 
               </div>
            </div>
 
@@ -110,9 +123,9 @@
             <div class="text-start"><b>총 결제 금액</b></div> 
            </div> 
            <div class="col">
-             <div class="text-end">15000원</div><p>
-             <div class="text-end">3000원</div><p>
-             <div class="text-end"><b>18000원</b></div><p>
+             <div class="text-end"><fmt:formatNumber value="${cart.totalprice}" pattern="###,###"/>원</div><p>
+             <div class="text-end"><fmt:formatNumber value="${cart.charge}" pattern="###,###"/>원</div><p>
+             <div class="text-end"><b><fmt:formatNumber value="${cart.total}" pattern="###,###"/>원</b></div><p>
            </div> 
          </div>
    </div><!--계산서카드 바디-->
@@ -132,7 +145,7 @@
 <div class="row"> 
 <div class="col text-start">  
 <div style="padding-left:5px;">  
- <input class="form-check-input" type="checkbox" name="check" id="flexCheckDefault" value="" aria-label="..." checked="checked"> 
+ <input class="form-check-input" type="checkbox" id="flexCheckDefault" value="" aria-label="..." checked="checked" name="chk"> 
  </div>
 </div>  
 
@@ -143,25 +156,22 @@
  
 <div class="card-body">       
   <div class="col-md-4">
-     <img src="../img/A/냥이탁주.jpg" class="rounded float-start" alt="냥이탁주" style="max-width:150px;">
+     <img src="../img/${cart.type}/${cart.image}.jpg" class="rounded float-start" style="max-width:150px;">
   </div>
        
        <div class="row">
         <div class="col">
-        <div class="text-start"><h4><b>냥이탁주</b></h4></div>
+        <div class="text-start"><h4><b>${cart.pcode}</b></h4></div>
       </div>
      </div><p>
      
      <div class="row"> 
      
      <div class="col">
-     <input name="items" type="number" class="datail-quantity form-control text-center input-sm" value="1" >
-     </div>
+     <div class="text-end"><input type="number" value="${cart.cartcount}" min="1" max="99">개</div>
+     </div><p>
       
-      <div class="col">
-        <div class="text-end">15000원</div>
-      </div>   
-      </div><hr>
+     <hr>
        
        <div class="row">  
                <div class="col">
@@ -170,8 +180,8 @@
               </div> 
               
               <div class="col">
-               <div class="text-end">15000원</div><p> 
-               <div class="text-end"><b>15000원</b></div> 
+               <div class="text-end"><fmt:formatNumber value="${cart.price}" pattern="###,###"/>원</div><p> 
+               <div class="text-end"><b><fmt:formatNumber value="${cart.totalprice}" pattern="###,###"/>원</b></div> 
               </div>
            </div>
 
@@ -189,7 +199,8 @@
  
 </div><!--컨테이너-->
 
-
+</form>
+</div>
 
 </body>
 </html>

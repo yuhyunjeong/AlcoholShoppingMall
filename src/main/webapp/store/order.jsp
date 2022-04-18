@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <jsp:include page="../common/header.jsp"/>
     
 <!DOCTYPE html>
@@ -25,15 +26,20 @@
 <h2 align="center">구매하기</h2><p>
 
 <div class="container">
+
+<form action="${path}/front" method="get">
+ <input type="hidden" name="key" value="order" /> 
+ <input type="hidden" name="methodName" value="select" />
+
 <div class="container row" style="float: none; margin:100 auto;">
 <div class="col-md-9 col-lg-9" style="float: none; margin:0 auto;"><p>
 
 <div class="row">
  <div class="col">
-  <div class="text-start"><h3><b>냥이탁주</b></h3></div> 
+  <div class="text-start"><h3><b>${cart.pcode}</b></h3></div> 
  </div>
  <div class="col">
-  <img src="../img/A/냥이탁주.jpg" class="rounded float-end" alt="냥이탁주" style="width:180px; height:250px;">   
+  <img src="../img/${cart.type}/${cart.image}.jpg" class="rounded float-end" style="width:180px; height:250px;">   
  </div>
 </div>  
   
@@ -43,8 +49,8 @@
  <div class="text-start">수량</div> 
  </div> 
  <div class="col">
- <div class="text-center">15000원</div><p>
- <div class="text-center">1개</div>
+ <div class="text-center"><fmt:formatNumber value="${cart.price}" pattern="###,###"/>원</div><p>
+ <div class="text-center">${cart.cartcount}개</div>
  </div> 
 </div>
 
@@ -55,7 +61,7 @@
  <div class="text-start"><b>총 상품 금액</b></div> 
  </div> 
  <div class="col">
- <div class="text-center"><b>15000원</b></div><p> 
+ <div class="text-center"><b><fmt:formatNumber value="${cart.totalprice}" pattern="###,###"/>원</b></div><p> 
 </div> 
 </div> 
 
@@ -96,7 +102,7 @@
         <h5 class="card-title">사용 가능한 쿠폰</h5>
         <select class="form-select" aria-label="Default select example">
          <option selected>select</option>
-         <option value="1">Welcom coupon</option>
+         <option value="1">Welcome coupon</option>
          <option value="2">Birthday coupon</option>
          <option value="3">New Product coupon</option>
         </select>
@@ -108,7 +114,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">사용 가능한 적립금</h5>
-        <h6 class="text-end"><b>3000원</b></h6>
+        <h6 class="text-end"><b><fmt:formatNumber value="${point}" pattern="###,###"/>원</b></h6>
         <input class="form-control form-control-sm" type="text" placeholder="사용할 적립금을 입력하세요" aria-label=".form-control-sm example">
       </div>
     </div>
@@ -145,17 +151,17 @@
  </div>
  <div class="col">
   <div class="text-end">&nbsp;</div><p>
-  <div class="text-end">15000원</div><p>
-  <div class="text-end">0원</div><p>
-  <div class="text-end">0원</div><p>
-  <div class="text-end">0원</div><p>
-  <div class="text-end">3000원</div><p>
-  <div class="text-end"><b>18000원</b></div><p>
+  <div class="text-end"><fmt:formatNumber value="${cart.totalprice}" pattern="###,###"/>원</div><p>
+  <div class="text-end"><fmt:formatNumber value="${discount}" pattern="###,###"/>원</div><p>
+  <div class="text-end"><fmt:formatNumber value="${point}" pattern="###,###"/>원</div><p>
+  <div class="text-end"><fmt:formatNumber value="${coupon.cname}" pattern="###,###"/>원</div><p>
+  <div class="text-end"><fmt:formatNumber value="${cart.charge}" pattern="###,###"/>원</div><p>
+  <div class="text-end"><b><fmt:formatNumber value="${cart.total}" pattern="###,###"/>원</b></div><p>
  
 </div>
 
 <div align="center">
-<button type="button" onclick="order()" class="btn btn-light">결제하기</button>
+<button type="submit" onclick="order()" class="btn btn-light">결제하기</button>
 </div><p> 
 
  
@@ -165,6 +171,7 @@
 
 </div><!--container row-->
 
+</form>
 
 </div><!--container-->
 </body>
