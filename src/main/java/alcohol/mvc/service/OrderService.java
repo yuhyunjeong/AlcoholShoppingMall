@@ -20,7 +20,7 @@ public interface OrderService {
 	/**
 	 * 주문 상태출력
 	 * */
-	public String orderStatus(String oCode)throws SQLException;
+	public String orderStatus(int oCode)throws SQLException;
 	
 	/**
 	 * 배송 상태 수정
@@ -30,6 +30,7 @@ public interface OrderService {
 	/**
 	 * 배송 상태 출력
 	 * */
-	public String deliStatus(String oCode)throws SQLException;
+	public String deliStatus(int oCode)throws SQLException;
+
 	
 }

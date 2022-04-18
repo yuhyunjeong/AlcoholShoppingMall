@@ -8,6 +8,13 @@
 <meta charset="UTF-8">
 <title>상품관리</title>
 
+<script type="text/javascript">
+
+
+
+</script>
+
+
 </head>
 <body>
 
@@ -73,7 +80,7 @@
 
 <p>
 <div align="right">
-<button type="button" class="btn btn-light" >등록하기</button>
+<a href="${path}/admin/goods.jsp"><button type="button" class="btn btn-light" >등록하기</button></a>
 </div><p>
 
 </div>

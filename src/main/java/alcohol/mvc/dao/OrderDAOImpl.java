@@ -79,6 +79,7 @@ public class OrderDAOImpl implements OrderDAO{
 			
 			while(rs.next()) {
 				rs.getInt(1);
+					
 			}
 			
 		} finally {

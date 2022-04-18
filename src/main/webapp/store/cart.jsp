@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <jsp:include page="../common/header.jsp"/>
 
 <!DOCTYPE html>
@@ -9,11 +10,9 @@
 <title>장바구니</title>
 
 <script type="text/javascript">
-   
 
+  
 
-
- 
 </script>
 
 
@@ -49,7 +48,7 @@
 </div>  
 
 <div class="col text-end">
- <button type="button" class="btn-close" aria-label="Close"></button>
+  <button type="button" class="btn-close" aria-label="Close" onclick="delete"></button>
 </div>
 </div>
     

@@ -1,3 +1,5 @@
+<%@page import="alcohol.mvc.dto.ProductDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
@@ -17,6 +19,11 @@ button{border:none; }
 
 </style>
 
+<script type="text/javascript">
+
+
+</script>
+
 </head>
 <body>
 <caption><h2 align="center">상품관리</h2></caption>
@@ -33,7 +40,8 @@ button{border:none; }
 
 
 <div class="container"><!-- 전체 컨테이너의 절반 크기로 띄우게 됨 -->
-        
+      
+      
 <table class="table table-sm">
 <thead class="table-light">
 <tr> 
@@ -45,43 +53,30 @@ button{border:none; }
 <th>상품가격</th>
 <th>재고수량</th>
 <th>등록일</th>
-<th><a href="${path}/admin/goods.jsp"><button type="button" class="btn btn-sm btn-dark">삭제</button></a></th>
+<th><a href="${path}/store/product.jsp"><button type="button" class="btn btn-sm btn-dark">삭제</button></a></th>
 </tr>
-
 
 <c:choose>
   <c:when test="${empty proList}">
-     <p align="center">등록된 상품이 없습니다</p>
+     <td colspan="9"><p align="center">등록된 상품이 없습니다</p></td>
   </c:when>
+  <c:otherwise>
+<c:forEach items="${proList}" var="product">
+ <tr>
+  <td>${proList.cateCode}</td>
+  <td>${proList.pCode}</td>
+  <td>${proList.pName}</td>
+  <td>${proList.pDetail}</td>
+  <td><fmt:formatNumber value="${proList.pAlcohol}"/></td>
+  <td><fmt:formatNumber value="${proList.pPrice}"/></td>
+  <td><fmt:formatNumber value="${proList.pStuck}"/></td>
+  <td>${proList.pDate}</td>
+ </tr> 
 
-<c:forEach items="${proList}" var="productDto">
-  <td>
-    <p>${productDto.cateCode}</p>
-  </td>
-  <td>
-    <p>${productDto.pCode}</p>
-  </td>
-  <td>
-    <p>${productDto.pName}</p>
-  </td>
-  <td>
-    <p>${productDto.pDetail}</p>
-  </td>
-  <td>
-    <p><fmt:formatNumber value="${productDto.pAlcohol}"/></p>
-  </td>
-  <td>
-    <p><fmt:formatNumber value="${productDto.pPrice}"/></p>
-  </td>
-  <td>
-    <p><fmt:formatNumber value="${productDto.pStuck}"/></p>
-  </td>
-  <td>
-    <p>${productDto.pDate}</p>
-  </td>
-  
 </c:forEach>
-</c:choose>
+ </c:otherwise>
+
+</c:choose> 
 
 <div>
   <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">

@@ -16,9 +16,7 @@
 
 <script type="text/javascript">
   
-  $(function(){
-	  alert("주문이 완료되었습니다");
-  })
+ 
 	  
  
 
@@ -161,7 +159,7 @@
  
 </div>
 
-<div align="center" class="btn">
+<div align="center">
 <button type="button" onclick="order()" class="btn btn-light">결제하기</button>
 </div><p> 
 
