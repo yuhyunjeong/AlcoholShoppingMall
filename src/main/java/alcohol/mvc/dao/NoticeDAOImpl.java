@@ -95,6 +95,8 @@ public class NoticeDAOImpl implements NoticeDAO {
 		}finally {
 			DbUtil.dbClose(ps, con);
 		}
+		
+		System.out.println(result);
 		return result;
 	}
 
