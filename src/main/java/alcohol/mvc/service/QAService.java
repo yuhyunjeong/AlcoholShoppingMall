@@ -9,17 +9,17 @@ public interface QAService {
 	/**
 	 * 등록하기 
 	 * */
-	public void qaInsert(QADTO dto)throws SQLException;
+	public void qaInsert(QADTO qaDTO)throws SQLException;
 	
 	/**
 	 * 삭제하기
 	 * */
-	public void qaDelete(String qaNumber)throws SQLException;
+	public void qaDelete(int qaNumber)throws SQLException;
 	
 	/**
 	 * 수정하기
 	 * */
-	public void qaUpdate(QADTO dto)throws SQLException;
+	public void qaUpdate(QADTO qaDTO)throws SQLException;
 	
 	/**
 	 * 전체검색
@@ -29,5 +29,5 @@ public interface QAService {
 	/**
 	 * 상세검색
 	 * */
-	public QADTO qaSelect(String qaNumber)throws SQLException;
+	public QADTO qaSelect(int qaNumber)throws SQLException;
 }
