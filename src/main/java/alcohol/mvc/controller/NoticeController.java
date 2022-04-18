@@ -96,8 +96,11 @@ public class NoticeController implements Controller {
 //				}
 				
 				noService.noticeInsert(notice);
-					
-				return new ModelAndView("board/notice.jsp", true);
+				
+				ModelAndView mv = this.select(request,response);
+				
+
+				return mv;
 	}
 	
 	/**
