@@ -24,8 +24,8 @@ $(function(){
    					str+="<div class='col-lg-3 col-md-6'>";
    					str+="<div class='card mb-3 h-100'>";
    					
-   					str+=`<a href = '${path}/store/productDetail.jsp'>`
-   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`;
+   					str+=`<a href = '${path}/store/productDetail.jsp?pName=${"${item.pName}"}&type=${param.type}&title=${param.title}'>`
+   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`; 
    					str+="<div class='card-body'>";
    					str+="<p class='card-text'>";
    					str+=`<b>${'${item.pName}'}</b><p><p>`;
@@ -57,9 +57,10 @@ $(function(){
 
    				let strr ="";
    				$.each(result, function(index, item) {
+   					alert('${param.title}');
    					strr+="<div class='col-lg-3 col-md-6'>";
    					strr+="<div class='card mb-3 h-100'>";			
-   					strr+=`<a href = '${path}/store/productDetail.jsp'>`
+   					strr+=`<a href = '${path}/store/productDetail.jsp?pName=${"${item.pName}"}&type=${param.type}&title=${param.title}'>`
    					strr+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`;
    					strr+="<div class='card-body'>";
    					strr+="<p class='card-text'>";
@@ -77,8 +78,7 @@ $(function(){
 		})
 		
 	}
-	
-	
+
 	$("[name=btn]").click(function(){
 		alcoFilter($(this).val());
 	})
@@ -143,7 +143,7 @@ $(function(){
 		
 		
 	</div>
-	<form class="d-flex">
+	<!-- <form class="d-flex"> -->
 		<div class="row">
 			<div class="col-9"></div>
 			<div class="col">
@@ -154,7 +154,7 @@ $(function(){
 				</select>  
 			</div>
 		</div>
-		</form>
+		<!-- </form> -->
   </div>
 </nav>
 

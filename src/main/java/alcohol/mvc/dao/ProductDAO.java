@@ -45,12 +45,12 @@ public interface ProductDAO {
 	/**
 	 * 상품 상세 검색 SELECT * FROM PRODUCT WHERE P_CODE=?
 	 * */
-	public ProductDTO searchBy(String pCode)throws SQLException;
+	public ProductDTO searchBy(String name)throws SQLException;
 	
 	/**
 	 * 도수별  검색
 	 * */
-	public List<ProductDTO> selectCategory(String type,String alcohol)throws SQLException;
+	public List<ProductDTO> selectCategory(String type,String alcohol,String filter)throws SQLException;
 	
 	
 	/**

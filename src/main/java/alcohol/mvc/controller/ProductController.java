@@ -57,16 +57,36 @@ public class ProductController implements Controller {
 		response.setContentType("text/html;charset=UTF-8");
 		String type = request.getParameter("cate");
 		String alcohol = request.getParameter("alcohol");
-		String filter = request.getParameter("filter");
+		String filter = request.getParameter("filter")+"";
 		System.out.println(type);
 		
-		List<ProductDTO> proList = proService.selectCategory(type,alcohol);
+		List<ProductDTO> proList = proService.selectCategory(type,alcohol,filter);
 		JSONArray arr = JSONArray.fromObject(proList);
 		System.out.println("나오냐"+proList.size());
 		PrintWriter out = response.getWriter();
 		out.print(arr);
 
 	}
+	
+	/**
+	 * 상세검색
+	 * */
+	public void searchBy(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		String name = request.getParameter("name");
+		System.out.println(name);
+
+		
+		ProductDTO dto = proService.searchBy(name);
+		JSONArray arr = JSONArray.fromObject(dto);
+		//System.out.println(dto.getpName()+"나와라");
+		PrintWriter out = response.getWriter();
+		out.print(arr);
+
+	}
+	
+	
 	
 	
 	//goods.jsp

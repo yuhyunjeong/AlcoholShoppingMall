@@ -41,14 +41,14 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductDTO searchBy(String pCode) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public ProductDTO searchBy(String name) throws SQLException {
+		ProductDTO dto = dao.searchBy(name);
+		return dto;
 	}
 
 	@Override
-	public List<ProductDTO> selectCategory(String type, String alcohol) throws SQLException {
-		List<ProductDTO> list = dao.selectCategory(type, alcohol);
+	public List<ProductDTO> selectCategory(String type, String alcohol,String filter) throws SQLException {
+		List<ProductDTO> list = dao.selectCategory(type, alcohol,filter);
 		return list;
 	}
 
