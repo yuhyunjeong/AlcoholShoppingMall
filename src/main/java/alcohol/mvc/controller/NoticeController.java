@@ -16,6 +16,7 @@ import alcohol.mvc.service.NoticeServiceImpl;
 
 
 
+
 public class NoticeController implements Controller {
 	
 	private NoticeService noService = new NoticeServiceImpl();
@@ -97,6 +98,18 @@ public class NoticeController implements Controller {
 				noService.noticeInsert(notice);
 					
 				return new ModelAndView("board/notice.jsp", true);
+	}
+	
+	/**
+	 * 글 상세보기
+	 * */
+	public ModelAndView selectByNoticeNum(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		int noNumber = Integer.parseInt(request.getParameter("noNumber"));
+		NoticeDTO notice =  noService.noticeSelect(noNumber, true); //true는 조회수 증가시킨다!!
+		request.setAttribute("notice", notice);
+		
+		return new ModelAndView("board/noticeRead.jsp");
 	}
 	
 	/**

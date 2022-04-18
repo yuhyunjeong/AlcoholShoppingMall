@@ -27,7 +27,7 @@ a:link , a:visited{
 	</div>
 	<p>
 	
-	<form  name="read" method="post" action="noticeRead.jsp" style="text-align: center;">
+	<form  name="read" method="post" action="${path}/board/noticeRead.jsp" style="text-align: center;">
 	<table class="table">
 	
 	  <thead class="table-light">
@@ -67,7 +67,7 @@ a:link , a:visited{
 	    <c:forEach items="${noticeList}" var="notice">
              <tr>
                         <th scope="row">${notice.noNumber}</th>
-                        <td>${notice.noTitle}</td>
+                        <td><a href="${path}/front?key=notice&methodName=selectByNoticeNum&noNumber=${notice.noNumber}">${notice.noTitle}</a></td>
                 
                         <td>${notice.noDate}</td>
                         <td>${notice.viewCount}</td>
