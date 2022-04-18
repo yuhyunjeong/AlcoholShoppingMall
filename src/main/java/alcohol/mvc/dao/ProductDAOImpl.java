@@ -151,5 +151,38 @@ public class ProductDAOImpl implements ProductDAO {
 		System.out.println(result);
 		return result;
 	}
-
+	
+	
+	//goods.jsp를 위한 selectAll
+	
+	public List<ProductDTO> selectAll() throws SQLException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		List<ProductDTO> list = new ArrayList<ProductDTO>();
+		ProductDTO proDto = null;
+		
+		String sql = "select p_code,cate_code,p_name,p_alcohol,p_price,p_stuck,p_date,p_detail from product";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				proDto = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7),rs.getString(8));
+			 
+				list.add(proDto);
+			
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		
+		}
+	
+		return list;
+	}
+	
 }

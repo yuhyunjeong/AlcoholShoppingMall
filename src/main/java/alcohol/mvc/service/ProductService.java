@@ -54,4 +54,10 @@ public interface ProductService {
 	 *날짜 판매 
 	 * */
 	public List<ProductDTO> selectDate(String type,String alcohol)throws SQLException;
+
+
+	//goods.jsp
+	public List<ProductDTO> selectAll() throws SQLException;
+
+
 }

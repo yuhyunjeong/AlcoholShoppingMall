@@ -66,5 +66,22 @@ public class ProductController implements Controller {
 		out.print(arr);
 
 	}
+	
+	
+	//goods.jsp
+	//전체검색
+		public ModelAndView select(HttpServletRequest request, HttpServletResponse response)
+				throws Exception {
+
+			List<ProductDTO> list = proService.selectAll();
+			request.setAttribute("list", list);
+
+			for(ProductDTO p : list) {
+				System.out.println(p.getCateCode());
+			}
+			System.out.println(list.size());
+
+			return new ModelAndView("admin/goods.jsp");
+		}
 
 }

@@ -58,4 +58,15 @@ public class ProductServiceImpl implements ProductService {
 		return null;
 	}
 
+	//goods.jsp
+	@Override
+	public List<ProductDTO> selectAll() throws SQLException {
+		
+		List<ProductDTO> list = dao.selectAll();
+		
+		return list;
+	}
+	
+	
+
 }
