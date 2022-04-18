@@ -79,7 +79,7 @@ public class FactoryDAOImpl implements FactoryDAO {
 			ps.setString(1, name);		
 			rs = ps.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				factory = new FactoryDTO(rs.getString(1), rs.getString(2), rs.getString(3));
 				
 			}

@@ -91,7 +91,7 @@
 				              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?name=선물 세트">선물 세트</a>
 				            </li>
 				            <li class="nav-item">
-				              <a class="nav-link active" aria-current="page" href="${path}/store/factory.jsp">양조장</a>
+				              <a class="nav-link active" aria-current="page" href="${path}/front?key=factory&methodName=select">양조장</a>
 				            </li>
 				          </ul>
 				          <form>
@@ -134,7 +134,7 @@
 				              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?name=선물 세트">선물 세트</a>
 				            </li>
 				            <li class="nav-item">
-				              <a class="nav-link active" aria-current="page" href="${path}/store/factory.jsp">양조장</a>
+				              <a class="nav-link active" aria-current="page" href="${path}/front?key=factory&methodName=select">양조장</a>
 				            </li>
 				          </ul>
 				          <form>
@@ -177,7 +177,7 @@
 		              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?name=선물 세트">선물 세트</a>
 		            </li>
 		            <li class="nav-item">
-		              <a class="nav-link active" aria-current="page" href="${path}/store/factory.jsp">양조장</a>
+		              <a class="nav-link active" aria-current="page" href="${path}/front?key=factory&methodName=select">양조장</a>
 		            </li>
 		          </ul>
 		          <form>

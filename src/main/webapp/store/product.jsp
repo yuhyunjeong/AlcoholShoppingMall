@@ -11,12 +11,12 @@
 <script type="text/javascript">
 $(function(){
 
-	function selectAll(){	
+	function selectAll(fi){	
 		$.ajax({
    			url :"../ajax" , //서버요청주소
    			type:"post", //요청방식(method방식 : get | post | put | delete )
    			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-   			data: {key :"product", methodName:"productSelectAll", cate :"${param.type}"},
+   			data: {key :"product", methodName:"productSelectAll", cate :"${param.type}" , filter : fi},
    			success :function(result){
 
    				let str ="";
@@ -48,13 +48,13 @@ $(function(){
    		});
 		
 	}
-	$("[name=btn]").click(function(){
 
+	function alcoFilter(v,fi){		
 		$.ajax({
    			url :"../ajax" , //서버요청주소
    			type:"post", //요청방식(method방식 : get | post | put | delete )
    			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-   			data: {key :"product", methodName:"alcoFilter", cate :"${param.type}" ,alcohol : $(this).val()},
+   			data: {key :"product", methodName:"alcoFilter", cate :"${param.type}" ,alcohol : v , filter : fi},
    			success :function(result){
 
    				let strr ="";
@@ -77,49 +77,35 @@ $(function(){
 				$("#rrr").html(strr);
    			}
 		})
-	})
-	
-	function selectAll(){	
-		$.ajax({
-   			url :"../ajax" , //서버요청주소
-   			type:"post", //요청방식(method방식 : get | post | put | delete )
-   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-   			data: {key :"product", methodName:"alcoFilter", cate :"${param.type}", filter : $(this).val()},
-   			success :function(result){
-
-   				let str ="";
-   				$.each(result, function(index, item) {
-   					str+="";
-
-   					str+="<div class='col-lg-3 col-md-6'>";
-   					str+="<div class='card mb-3 h-100'>";
-   					
-   					str+=`<a href = '${path}/store/productDetail.jsp'>`
-   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`;
-   					str+="<div class='card-body'>";
-   					str+="<p class='card-text'>";
-   					str+=`<b>${'${item.pName}'}</b><p><p>`;
-   					str+=`<b>가격 : ${'${item.pPrice}'} 원</b><p>`;
-   					str+="<hr>";
-   					str+="<b>상품 설명</b><p>";    
-   					str+=`${'${item.pDetail}'}`;
-   					str+="</p></div></div></div>";
-   				});
-   				//$("rrr").remove();
-
-   				$("#rrr").empty();
-				$("#rrr").html(str);
-					
-   			},error : function(err){  
-   				alert(err+"에러 발생했어요.");
-   			}  //실팽했을때 실행할 함수 
-   		});
 		
 	}
+	
+	
+	$("[name=btn]").click(function(){
+		alcoFilter($(this).val());
+	})
+
+	
+	$("#se").change(function(){
+		var s = $(this).val();
+		selectAll(s);
+		
+		
+		$("[name=btn]").click(function(s){
+			alcoFilter($(this).val(),s);
+		})
+	})	
 
 	selectAll();
 });
 
+ /* doucmengetElementById("a").click = function (){
+	  
+  }
+  
+  $("#a").click(function(){
+	  
+  })*/
 
 </script>
 </head>
@@ -136,14 +122,15 @@ $(function(){
   
     <a class="navbar-brand" >도수</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"  ></span>
     </button>
     
     
     <div class="collapse navbar-collapse " id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          	<button type="button" class="btn btn-link-light" style="text-decoration: none;" value="10" name=btn>저도수(0~10)%</button>
+
+          	<button type="button"  class="btn btn-link-light" style="text-decoration: none;" value="10" name=btn>저도수(0~10)%</button>
         </li>
         <li class="nav-item">    
           	<button type="button" class="btn btn-link-light" style="text-decoration: none;" value="20" name=btn>낮은 중도수(10~20)%</button>
@@ -162,8 +149,8 @@ $(function(){
 		<div class="row">
 			<div class="col-9"></div>
 			<div class="col">
-		      	<select class="form-select form-select-sm " onchange="this.form.submit()" aria-label=".form-select-sm example" style="width:100px;height:38px;">
-				  <option selected>기본순</option>
+		      	<select id="se" class="form-select form-select-sm " aria-label=".form-select-sm example" style="width:100px;height:38px;">
+				  <option selected value="0">기본순</option>
 				  <option value="1">판매순</option>
 				  <option value="2">별점순</option>
 				</select>  

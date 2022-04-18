@@ -35,8 +35,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductDTO> selectAll(String type) throws SQLException {
-		List<ProductDTO> list =dao.selectAll(type);
+	public List<ProductDTO> selectAll(String type,String filter) throws SQLException {
+		List<ProductDTO> list =dao.selectAll(type,filter);
 		return list;
 	}
 

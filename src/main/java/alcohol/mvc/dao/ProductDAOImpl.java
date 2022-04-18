@@ -48,13 +48,22 @@ public class ProductDAOImpl implements ProductDAO {
 	 * 
 	 * */
 	@Override
-	public List<ProductDTO> selectAll(String type) throws SQLException {
+	public List<ProductDTO> selectAll(String type,String filter) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps =null;
 		ResultSet rs = null;
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		
-		String sql ="SELECT * FROM PRODUCT WHERE CATE_CODE=?";
+		String o = "";
+		if(filter.equals("0")||filter.equals(null)){
+			o="p_code";
+		}else if(filter.equals("1")){
+			o="p_code";
+			
+		}else {
+			o="p_code";
+		}
+		String sql ="SELECT * FROM PRODUCT WHERE CATE_CODE=? ORDER BY ?";
 		ProductDTO product = null;
 		try {
 			con = DbUtil.getConnection();
@@ -115,6 +124,32 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<ProductDTO> selectDate(String type, String alcohol) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	
+	public int productNo(String pCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps =null;
+		ResultSet rs = null;
+		int result= 0;
+		
+		String sql ="select count(order_line_count) from order_line where p_code =?";
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, pCode);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		System.out.println(result);
+		return result;
 	}
 
 }

@@ -27,9 +27,10 @@ public class ProductController implements Controller {
 	public void productSelectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html;charset=UTF-8");
 		String type = request.getParameter("cate");
+		String filter = request.getParameter("filter");
 		System.out.println(type);
-		
-		List<ProductDTO> proList = proService.selectAll(type);
+		System.out.println(filter);
+		List<ProductDTO> proList = proService.selectAll(type,filter);
 		JSONArray arr = JSONArray.fromObject(proList);
 		System.out.println("나오냐"+proList.size());
 		PrintWriter out = response.getWriter();
@@ -55,6 +56,7 @@ public class ProductController implements Controller {
 		response.setContentType("text/html;charset=UTF-8");
 		String type = request.getParameter("cate");
 		String alcohol = request.getParameter("alcohol");
+		String filter = request.getParameter("filter");
 		System.out.println(type);
 		
 		List<ProductDTO> proList = proService.selectCategory(type,alcohol);

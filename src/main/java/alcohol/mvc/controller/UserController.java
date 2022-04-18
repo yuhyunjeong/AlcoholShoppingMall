@@ -2,6 +2,11 @@ package alcohol.mvc.controller;
 
 import java.io.IOException;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,9 +17,10 @@ import alcohol.mvc.service.UserService;
 import alcohol.mvc.service.UserServiceImpl;
 
 public class UserController implements Controller {
+
 	private UserService userService = new UserServiceImpl();
 
-	@Override
+	@Override   
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("UserController 제대로 오나?");
@@ -30,7 +36,7 @@ public class UserController implements Controller {
 		UserDTO dbDTO = userService.loginCheck(new UserDTO(userId, userPwd));
 		// 그결과를 받아서 성공했으면
 
-		// sessionScope에 loginUser loginName 저장
+		// sessionScope에 loginUser loginName 저장                         
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", dbDTO); // ${loginUser.userId}
 		session.setAttribute("loginName", dbDTO.getUserName());
@@ -43,23 +49,32 @@ public class UserController implements Controller {
 
 	}
 
-	public ModelAndView join(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
+	public ModelAndView join(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
 		System.out.println("UserController join입니다.");
-		
+
+		// 전송된 데이터 받기
 		String userId = request.getParameter("id");
 		String userPwd = request.getParameter("pwd");
 		String userName = request.getParameter("name");
+		String userJumin = request.getParameter("userJumin");
 		String userPhone = request.getParameter("tel");
 		String userEmail = request.getParameter("userEmail");
-		String userJumin = request.getParameter("userJumin");
 		String userAddr = request.getParameter("userAddr");
 		String userAddr2 = request.getParameter("userAddr2");
-		
+		String userAddr3 = request.getParameter("userAddr3");
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		String date = df.format(new Date());
 
+		UserDTO userDTO = new UserDTO(userId, userPwd, userName, userJumin, userPhone, userEmail, userAddr, userAddr2,
+				userAddr3, 0, 0, date);
 
-		return null;
+		userService.insert(userDTO);
+
+		// index.jsp -> redirect
+		ModelAndView mv = new ModelAndView("index.jsp", true);
+
+		return mv;
 
 	}
 

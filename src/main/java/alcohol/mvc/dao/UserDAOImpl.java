@@ -32,9 +32,9 @@ public class UserDAOImpl implements UserDAO {
 
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				dbDTO = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
-						rs.getString(11));
+				dbDTO = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(10), rs.getInt(9), rs.getInt(11),
+						rs.getString(12));
 			}
 
 		} finally {
@@ -49,7 +49,7 @@ public class UserDAOImpl implements UserDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "INSERT INTO USERS(U_ID, U_PWD,U_NAME,U_JUMIN,U_PHONE,U_EMAIL,U_ADDR,U_ADDR2,U_GRADE,U_POINT,JOIN_DATE) VALUES(?,?,?,?,?,?,?,?,0,0,SYSDATE)";
+		String sql = "INSERT INTO USERS(U_ID, U_PWD,U_NAME,U_JUMIN,U_PHONE,U_EMAIL,U_ADDR,U_ADDR2,U_ADDR3,U_GRADE,U_POINT,JOIN_DATE) VALUES(?,?,?,?,?,?,?,?,0,0,SYSDATE)";
 
 		try {
 
@@ -64,8 +64,7 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(6, userDTO.getUserEmail());
 			ps.setString(7, userDTO.getUserAddr());
 			ps.setString(8, userDTO.getUserAddr2());
-			ps.setInt(9, userDTO.getUserGrade());
-			ps.setInt(10, userDTO.getUserPoint());
+			ps.setString(8, userDTO.getUserAddr3());
 
 			result = ps.executeUpdate();
 
@@ -107,8 +106,8 @@ public class UserDAOImpl implements UserDAO {
 
 			while (rs.next()) {
 				UserDTO userDTO = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
-						rs.getString(11));
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(10), rs.getInt(9), rs.getInt(11),
+						rs.getString(12));
 
 				userList.add(userDTO);
 			}
@@ -143,8 +142,8 @@ public class UserDAOImpl implements UserDAO {
 
 			if (rs.next()) {
 				userDTO = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10),
-						rs.getString(11));
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(10), rs.getInt(9), rs.getInt(11),
+						rs.getString(12));
 			}
 
 		} finally {
@@ -219,7 +218,7 @@ public class UserDAOImpl implements UserDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "UPDATE USERS SET U_PWD =? , U_PHONE =? ,U_ADDR=?,U_ADDR2=? WHERE U_ID=?";
+		String sql = "UPDATE USERS SET U_PWD =? , U_PHONE =?, U_ADDR=?, U_ADDR2=?, U_ADDR3=? WHERE U_ID=?";
 
 		try {
 
@@ -230,7 +229,8 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(2, userDTO.getUserPhone());
 			ps.setString(3, userDTO.getUserAddr());
 			ps.setString(4, userDTO.getUserAddr2());
-			ps.setString(5, userDTO.getUserId());
+			ps.setString(5, userDTO.getUserAddr3());
+			ps.setString(6, userDTO.getUserId());
 
 			result = ps.executeUpdate();
 
