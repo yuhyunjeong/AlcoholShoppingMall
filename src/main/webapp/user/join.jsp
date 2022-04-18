@@ -101,7 +101,6 @@ input:focus::-webkit-input-placeholder {
 				<h6>연락처</h6>
 				<input type="text" name="tel" placeholder="연락처를 입력해주세요." required="required">
 				<p>
-				<p>
 				<h6>이메일</h6>
 				<input type="text" name="email" placeholder="이메일을 입력해주세요." required="required">
 				<p>
