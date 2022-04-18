@@ -13,17 +13,6 @@ $(function(){
 
 	function selectAll(){
 		
-		 /* let name="희정";
-		 alert(`name = ${name}`)// 은 자바스크립코드라고 생각했다 - x , ~.jsp문서이므로 을 표현언어로 먼저 해석한다. 
-		 
-	       alert(`경로3 : ${path} , ${name}`)
-		 
-		 alert(`경로4 : ${path} , ${'${name}'}`)
-		   */
-		
-		
-		
-		
 		$.ajax({
    			url :"../ajax" , //서버요청주소
    			type:"post", //요청방식(method방식 : get | post | put | delete )
@@ -51,7 +40,7 @@ $(function(){
    				});
    				//$("rrr").remove();
 
-   				
+   				$("#rrr").empty();
 				$("#rrr").html(str);
 					
    			},error : function(err){  
@@ -60,9 +49,41 @@ $(function(){
    		});
 		
 	}
+	
+	$("[name=btn]").click(function(){
+
+		$.ajax({
+   			url :"../ajax" , //서버요청주소
+   			type:"post", //요청방식(method방식 : get | post | put | delete )
+   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+   			data: {key :"product", methodName:"alcoFilter", cate :"${param.type}" ,alcohol : $(this).val()},
+   			success :function(result){
+
+   				let strr ="";
+   				$.each(result, function(index, item) {
+   					strr+="<div class='col-lg-3 col-md-6'>";
+   					strr+="<div class='card mb-3 h-100'>";			
+   					strr+=`<a href = '${path}/store/productDetail.jsp'>`
+   					strr+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`;
+   					strr+="<div class='card-body'>";
+   					strr+="<p class='card-text'>";
+   					strr+=`<b>${'${item.pName}'}</b><p><p>`;
+   					strr+=`<b>가격 : ${'${item.pPrice}'} 원</b><p>`;
+   					strr+="<hr>";
+   					strr+="<b>상품 설명</b><p>";    
+   					strr+=`${'${item.pDetail}'}`;
+   					strr+="</p></div></div></div>";
+   				});
+
+   			    $("#rrr").empty();
+				$("#rrr").html(strr);
+   			}
+		})
+	})
+	
+	
+
 	selectAll();
-	
-	
 });
 
 
@@ -78,41 +99,23 @@ $(function(){
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white container">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">도수</a>
+    <a class="navbar-brand" >도수</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          	<button type="button" id="10" class="btn btn-link-light" style="text-decoration: none;">저도수(0~10)%</button>
+          	<button type="button" class="btn btn-link-light" style="text-decoration: none;" value="10" name=btn>저도수(0~10)%</button>
         </li>
         <li class="nav-item">    
-          <form action="${path}/front" method="post" >
-          	<button type="submit" id="al20" class="btn btn-link-light" style="text-decoration: none;">낮은 중도수(10~20)%</button>
-  			<input type="hidden" name="key" value="product">
-  			<input type="hidden" name="methodName" value="alcoFilter">
-  			<input type="hidden" name="alcohol" value="20">
-  			<input type="hidden" name="type" value="${param.type}">
-		  </form>
+          	<button type="button" class="btn btn-link-light" style="text-decoration: none;" value="20" name=btn>낮은 중도수(10~20)%</button>
         </li>
         <li class="nav-item">
-          <form action="${path}/front" method="post" >
-          	<button type="submit" id="al20" class="btn btn-link-light" style="text-decoration: none;">높은 중도수(20~30)%</button>
-  			<input type="hidden" name="key" value="product">
-  			<input type="hidden" name="methodName" value="alcoFilter">
-  			<input type="hidden" name="alcohol" value="30">
-  			<input type="hidden" name="type" value="${param.type}">
-		  </form>
+          	<button type="button" class="btn btn-link-light" style="text-decoration: none;" value="30" name=btn>높은 중도수(20~30)%</button>
         </li>
         <li class="nav-item">
-          <form action="${path}/front" method="post" >
-          	<button type="submit" id="al20" class="btn btn-link-light" style="text-decoration: none;">고도수(30~40)%</button>
-  			<input type="hidden" name="key" value="product">
-  			<input type="hidden" name="methodName" value="alcoFilter">
-  			<input type="hidden" name="alcohol" value="40">
-  			<input type="hidden" name="type" value="${param.type}">
-		  </form>
+          	<button type="button" class="btn btn-link-light" style="text-decoration: none;" value="40" name=btn>고도수(30~40)%</button>
         </li>
       </ul>
     </div>
@@ -129,33 +132,14 @@ $(function(){
 	<!-- </form> -->
   </div>
 </nav>
-<%-- <div class="container mb-4">	
-	<div class="row row-cols-1 row-cols-md-4 g-4" >
-			<c:forEach items="${proList}" var="product">
-				<div class="col-lg-3 col-md-6">
-					<div class="card mb-3 h-100">
-					  <a href = "${path}/store/productDetail.jsp"><img src="${path}/img/${product.cateCode}/${product.pImage}.jpg" class="card-img-top" alt="모르겠다"></a>
-					  <div class="card-body">
-					  
-					    <p class="card-text">
-					    <b>${product.pName}</b><p><p>
-					    <b>가격 : ${product.pPrice}원</b><p>
-					    <hr>
-					    <b>상품 설명</b><p>	    
-					    ${product.pDetail}
-					    
-					    </p>
-					  </div>  
-					</div>	
-				</div>
-			</c:forEach>	
-	</div>	
-</div> --%>
+
+
 <div class='container mb-4'>
 	<div id='rrr' class='row row-cols-1 row-cols-md-4 g-4'>
-	
 	</div>
 </div>
+
+
 <%-- <jsp:include page="../store/productMain.jsp"/> --%>
 <jsp:include page="../common/footer.jsp"/>
 </body>
