@@ -30,10 +30,10 @@
 
 <div class="row">
  <div class="col">
-  <div class="text-start"><h3><b>냥이탁주</b></h3></div> 
+  <div class="text-start"><h3><b>${param.pName}</b></h3></div> 
  </div>
  <div class="col">
-  <img src="../img/A/냥이탁주.jpg" class="rounded float-end" alt="냥이탁주" style="width:180px; height:250px;">   
+  <img src="../img/${param.type}/${param.pName}.jpg" class="rounded float-end" alt="냥이탁주" style="width:180px; height:250px;">   
  </div>
 </div>  
   
