@@ -39,7 +39,7 @@ public class AlcoholDispatcherServlet extends HttpServlet {
 		String methodName = request.getParameter("methodName");
 
 		
-		System.out.println("key = " + key + ", methodName = " + methodName);
+		//System.out.println("key = " + key + ", methodName = " + methodName);
 		
 		try {
 			

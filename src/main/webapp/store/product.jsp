@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>카테고리 눌렀을때</title>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 $(function(){
 
@@ -28,31 +28,31 @@ $(function(){
    			url :"../ajax" , //서버요청주소
    			type:"post", //요청방식(method방식 : get | post | put | delete )
    			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-   			data: {key :"product", methodName:"productSelectAll"}, //서버에게 보낼 데이터정보(parameter정보)
+   			data: {key :"product", methodName:"productSelectAll", cate :"${param.type}"},
    			success :function(result){
-   				
+
    				let str ="";
-   				$("#rrr").each(function(index, item) {
-   					
+   				$.each(result, function(index, item) {
    					str+="";
-   					str+="<div class='row row-cols-1 row-cols-md-4 g-4'>";
+
    					str+="<div class='col-lg-3 col-md-6'>";
    					str+="<div class='card mb-3 h-100'>";
    					
-   					str+="<a href = '${path}/store/productDetail.jsp'><img src='${path}/img/"+${'${item.cateCode}'}+"/"+${'${item.pImage}'}+".jpg' class=card-img-top alt='모르겠다'></a>";
+   					str+=`<a href = '${path}/store/productDetail.jsp'>`
+   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`;
    					str+="<div class='card-body'>";
    					str+="<p class='card-text'>";
    					str+=`<b>${'${item.pName}'}</b><p><p>`;
-   					str+=`<b>가격 : ${'${item.pPrice}'}원</b><p>`;
+   					str+=`<b>가격 : ${'${item.pPrice}'} 원</b><p>`;
    					str+="<hr>";
    					str+="<b>상품 설명</b><p>";    
-   					str+=`${item.pDetail}`;
-   					str+="</p></div></div></div></div>";
+   					str+=`${'${item.pDetail}'}`;
+   					str+="</p></div></div></div>";
    				});
    				//$("rrr").remove();
 
    				
-				$("#rrr").append(str);
+				$("#rrr").html(str);
 					
    			},error : function(err){  
    				alert(err+"에러 발생했어요.");
@@ -151,8 +151,11 @@ $(function(){
 			</c:forEach>	
 	</div>	
 </div> --%>
-<div id="rrr" class='container mb-4'></div>
-
+<div class='container mb-4'>
+	<div id='rrr' class='row row-cols-1 row-cols-md-4 g-4'>
+	
+	</div>
+</div>
 <%-- <jsp:include page="../store/productMain.jsp"/> --%>
 <jsp:include page="../common/footer.jsp"/>
 </body>
