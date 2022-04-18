@@ -12,6 +12,7 @@ public class ProductDTO {
 	private String pImage2;
 	private String pImage3;
 	private String pDetail;
+	private int rStar;
 	
 	public ProductDTO() {}
 
@@ -28,15 +29,17 @@ public class ProductDTO {
 	}
 
 	
+	
+
 	public ProductDTO(String pCode, String cateCode, String pName, int pAlcohol, int pPrice, int pStuck, String pDate,
-			String pImage, String pImage2, String pImage3, String pDetail) {
+			String pImage, String pImage2, String pImage3, String pDetail,int rStar) {
 		
 		this(pCode,cateCode,pName,pAlcohol,pPrice,pStuck,pDate,pDetail);
 		
 		this.pImage = pImage;
 		this.pImage2 = pImage2;
 		this.pImage3 = pImage3;
-		
+		this.rStar = rStar;
 	}
 
 	public String getpCode() {
@@ -127,6 +130,14 @@ public class ProductDTO {
 		this.pDetail = pDetail;
 	}
 
-	
+	public int getrStar() {
+		return rStar;
+	}
+
+	public void setrStar(int rStar) {
+		this.rStar = rStar;
+	}
+
+
 	
 }

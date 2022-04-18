@@ -21,8 +21,6 @@ $(function(){
 
    				let str ="";
    				$.each(result, function(index, item) {
-   					str+="";
-
    					str+="<div class='col-lg-3 col-md-6'>";
    					str+="<div class='card mb-3 h-100'>";
    					

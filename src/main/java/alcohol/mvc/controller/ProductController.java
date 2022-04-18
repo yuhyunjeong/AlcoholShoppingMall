@@ -27,7 +27,8 @@ public class ProductController implements Controller {
 	public void productSelectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html;charset=UTF-8");
 		String type = request.getParameter("cate");
-		String filter = request.getParameter("filter");
+		String filter = request.getParameter("filter")+"";
+		
 		System.out.println(type);
 		System.out.println(filter);
 		List<ProductDTO> proList = proService.selectAll(type,filter);
