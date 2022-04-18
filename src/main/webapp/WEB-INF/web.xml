@@ -17,4 +17,5 @@
 		<param-name>fileName</param-name>
 		<param-value>actionMapping</param-value> <!-- resources/actionMapping.properties 찾는다. -->
 	</context-param>
+	
 </web-app>

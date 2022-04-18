@@ -104,7 +104,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 		ResultSet rs=null;
 		
 		List<NoticeDTO> noticeList = new ArrayList<NoticeDTO>();
-		String sql = "SELECT * FROM NOTICE";
+		String sql = "SELECT * FROM NOTICE order by no_number";
 		
 		try {
 			con = DbUtil.getConnection();

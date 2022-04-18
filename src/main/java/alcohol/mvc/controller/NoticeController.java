@@ -15,6 +15,8 @@ import alcohol.mvc.service.NoticeService;
 import alcohol.mvc.service.NoticeServiceImpl;
 
 
+
+
 public class NoticeController implements Controller {
 	
 	private NoticeService noService = new NoticeServiceImpl();
@@ -44,14 +46,14 @@ public class NoticeController implements Controller {
 	}
 	
 	/**
-	 * 전체검색하기
+	 * 로그인한게 관리자라면..
 	 * */
 	public ModelAndView getNoticesView(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		String user = request.getParameter("user");
+		int userGrade = Integer.parseInt(request.getParameter("userGrade"));
 		boolean isAdmin = false;
-		if (user.equals("admin"))  {
+		if (userGrade==1)  {
 			isAdmin = true;
 		}
 		List<NoticeDTO> noticeList = noService.noticeAll();
@@ -75,8 +77,52 @@ public class NoticeController implements Controller {
 				MultipartRequest m = 
 					new MultipartRequest(request, saveDir,maxSize,encoding , new DefaultFileRenamePolicy());
 
-		
-		return new ModelAndView("notice.jsp");
+				//전송된 데이터 받기
+				String userId = m.getParameter("u_id");
+				String noTitle = m.getParameter("no_title");
+				String noContent = m.getParameter("no_content");
+				
+				
+				NoticeDTO notice = new NoticeDTO(userId, noTitle, noContent);
+				
+//				//파일첨부가 되었다면..
+//				if(m.getFilesystemName("file") != null) {
+//					//파일이름 저장
+//					notice.setFname(m.getFilesystemName("file"));
+//					
+//					//파일크기 저장
+//					notice.setFsize((int)m.getFile("file").length());
+//					
+//				}
+				
+				noService.noticeInsert(notice);
+				
+				ModelAndView mv = this.select(request,response);
+				
+
+				return mv;
 	}
+	
+	/**
+	 * 글 상세보기
+	 * */
+	public ModelAndView selectByNoticeNum(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		int noNumber = Integer.parseInt(request.getParameter("noNumber"));
+		NoticeDTO notice =  noService.noticeSelect(noNumber, true); //true는 조회수 증가시킨다!!
+		request.setAttribute("notice", notice);
+		
+		return new ModelAndView("board/noticeRead.jsp");
+	}
+	
+	/**
+	 * 수정하기
+	 * */
+	
+	/**
+	 * 삭제하기
+	 * */
+	
+	
 
 }

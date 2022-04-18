@@ -111,4 +111,10 @@ public class ProductDAOImpl implements ProductDAO {
 		return list;
 	}
 
+	@Override
+	public List<ProductDTO> selectDate(String type, String alcohol) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

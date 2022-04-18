@@ -37,7 +37,7 @@ public class AjaxDispatcherServlet extends HttpServlet {
 		String key = request.getParameter("key"); // customer 
 		String methodName = request.getParameter("methodName"); // idCheck, insert, selectAll, update, delete 
 
-		System.out.println("key = " + key + ", methodName = " + methodName); // 확인
+		System.out.println("key2 = " + key + ", methodName2 = " + methodName); // 확인
 
 		try {
 
