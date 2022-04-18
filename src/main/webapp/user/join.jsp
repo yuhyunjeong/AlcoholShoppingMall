@@ -95,15 +95,14 @@ input:focus::-webkit-input-placeholder {
 				<h6>이름</h6>
 				<input type="text" name="name" placeholder="이름을 입력해주세요." required="required">
 				<p>
+				<h6>주민등록번호</h6>
+				<input type="text" name="jumin" placeholder="주민등록번호를 입력해주세요." required="required">
+				<p>
 				<h6>연락처</h6>
 				<input type="text" name="tel" placeholder="연락처를 입력해주세요." required="required">
 				<p>
-				<p>
 				<h6>이메일</h6>
 				<input type="text" name="email" placeholder="이메일을 입력해주세요." required="required">
-				<p>
-				<h6>주민등록번호</h6>
-				<input type="text" name="jumin" placeholder="주민등록번호를 입력해주세요." required="required">
 				<p>
 				<h6>주소</h6> 
 				<input type="text" name="addr" id="member_post" placeholder="Zip Code" readonly

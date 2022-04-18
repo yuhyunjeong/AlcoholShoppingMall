@@ -1,5 +1,8 @@
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +13,25 @@ html,body{
 	height: 100%;
 }
 </style>
+ <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+ <script type="text/javascript">
+ 	$(function(){
+
+ 		$("#count").change(function(){
+ 			var price = $("#price").val();
+ 			var priceTotal = $("#count").val()*price;
+ 
+ 		});
+ 		
+ 	});
+ 	<%LocalDate now = LocalDate.now();
+ 		//String month = now.getMonth().toString();
+ 		int monthValue = now.getMonthValue();
+
+
+ 	%>
+ 
+ </script>
 </head>
 <body>
 <%@include file="../common/header.jsp"%>
@@ -20,11 +42,7 @@ html,body{
       <h1>정기구독</h1>     
     </div>
 	
-	
-	
-
-    
-        
+       
       <div class="col-md-7 col-lg-8" style="float: none; margin:0 auto;"> <!-- 가운데 정렬 -->
                
         <form class="needs-validation" novalidate>
@@ -39,9 +57,9 @@ html,body{
 		           			<p class="text-start" >구독료</p>
 		           			<p class="text-start" >개수</p>
 	           			</div>
-	           			<div class="col">
-		           			<p class="text-end" >29,000원</p>       			
-		           			<p class="text-end" ><input name="items" type="number" class="datail-quantity form-control text-center input-sm" value="1" ></p>
+	           		<div class="col">
+	           					
+		           			<p class="text-end" ><input id="count" ame="items" type="number" class="detail-quantity form-control text-center input-sm" min="0" value="1" ></p>
 	           			</div>
 	           			
            			</div>
@@ -50,13 +68,13 @@ html,body{
 								<h4>총 구독료 : </h4>
 						</div>
 						<div class="col">
-								<h4 class="text-end" >87,000원</h4>
+								<h4 class="text-end" ><fmt:formatNumber value="${priceTotal}"/>원</h4>
 						</div>
 					</div>
            		</div>
 				
 				<div class="col" >
-					<img src="../img/4월의 술2.jpg" class="rounded float-end" style="width: 300px; height: 200px">
+					<img src="../img/Mo/<%=monthValue%>월의 술.jpg" class="rounded float-end" style="width: 300px; height: 200px">
 				</div>
 								
 			</div>
@@ -140,7 +158,7 @@ html,body{
 		         	 <div class="my-3" >
 		           		 <div class="form-check">
 		             		 <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-		             	 	<label class="form-check-label" for="credit">Credit card</label>
+		             	 	<label class="form-check-label" for="credit">신용 카드</label>
 		           		 </div>
 		            
 		         	  </div>

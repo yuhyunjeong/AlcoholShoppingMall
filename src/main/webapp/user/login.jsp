@@ -156,6 +156,7 @@ input:focus::-webkit-input-placeholder {
 				<h6>비밀번호</h6>
 				<input type="password" name="pwd" placeholder="비밀번호를 입력해주세요.">
 			</div>
+			
 			<p>
 			<p>
 			<p>
@@ -170,8 +171,11 @@ input:focus::-webkit-input-placeholder {
 					<input type="hidden" name="key" value = "user" /> <!-- Controller를 찾는 정보 -->
 					<input type="hidden" name="methodName" value = "login" />  <!-- 메소드이름 -->
 					<input class="w-25 btn btn-dark" type="submit" value="로그인">
-				<p>
-					<input class="w-25 btn btn-dark" type="button" value="회원가입" onclick="location.href='join.jsp'">
+				<p>			
+			</div>
+			</form>
+			<div class="m-5">
+				<input class="w-25 btn btn-dark" type="button" value="회원가입" onclick="location.href='join.jsp'">
 			</div>
 			<p>
 
@@ -185,7 +189,7 @@ input:focus::-webkit-input-placeholder {
 				<a href="#" style="text-decoration: none;">비밀번호 찾기</a>
 			<p>
 			</div>
-		</form>
+		
 	</div>
 	<p>
 
