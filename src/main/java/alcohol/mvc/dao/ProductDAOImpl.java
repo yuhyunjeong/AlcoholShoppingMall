@@ -55,24 +55,27 @@ public class ProductDAOImpl implements ProductDAO {
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		
 		String o = "";
-		if(filter.equals("0")||filter.equals(null)){
+		if(filter.equals("0")||filter.equals("null")){
 			o="p_code";
 		}else if(filter.equals("1")){
-			o="p_code";
-			
+			o="P_STUCK ASC";	
 		}else {
-			o="p_code";
+			o="VIEW_SCORE ASC";
 		}
+		
+		
 		String sql ="SELECT * FROM PRODUCT WHERE CATE_CODE=? ORDER BY ?";
 		ProductDTO product = null;
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, type);
+			ps.setString(2, o);
 			rs = ps.executeQuery();
+			
 			while(rs.next()) {
 				product = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7)
-						,rs.getString(8),rs.getString(10),rs.getString(11),rs.getString(9));
+						,rs.getString(8),rs.getString(10),rs.getString(11),rs.getString(9),rs.getInt(12));
 				list.add(product);
 			}
 			
@@ -80,6 +83,7 @@ public class ProductDAOImpl implements ProductDAO {
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
+		System.out.println(list.get(0).getpName());
 		return list;
 	}
 
@@ -109,7 +113,7 @@ public class ProductDAOImpl implements ProductDAO {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				product = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7)
-						,rs.getString(8),rs.getString(10),rs.getString(11),rs.getString(9));
+						,rs.getString(8),rs.getString(10),rs.getString(11),rs.getString(9),rs.getInt(12));
 				list.add(product);
 			}
 			
@@ -155,7 +159,7 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	//goods.jsp를 위한 selectAll
 	
-	public List<ProductDTO> selectAll() throws SQLException{
+	public List<ProductDTO> selectGoods() throws SQLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -171,7 +175,7 @@ public class ProductDAOImpl implements ProductDAO {
 			rs = ps.executeQuery();
 					
 			while(rs.next()) {
-				proDto = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7),rs.getString(11));
+				proDto = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7),rs.getString(8));
 			 
 				list.add(proDto);
 			

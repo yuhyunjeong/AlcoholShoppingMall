@@ -57,7 +57,7 @@ public interface ProductService {
 
 
 	//goods.jsp
-	public List<ProductDTO> selectAll() throws SQLException;
+	public List<ProductDTO> selectGoods() throws SQLException;
 
 
 }

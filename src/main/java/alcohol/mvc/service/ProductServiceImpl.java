@@ -60,9 +60,9 @@ public class ProductServiceImpl implements ProductService {
 
 	//goods.jsp
 	@Override
-	public List<ProductDTO> selectAll() throws SQLException {
+	public List<ProductDTO> selectGoods() throws SQLException {
 		
-		List<ProductDTO> list = dao.selectAll();
+		List<ProductDTO> list = dao.selectGoods();
 		
 		return list;
 	}

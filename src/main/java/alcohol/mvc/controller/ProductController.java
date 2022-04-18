@@ -71,18 +71,16 @@ public class ProductController implements Controller {
 	
 	//goods.jsp
 	//전체검색
-		public ModelAndView select(HttpServletRequest request, HttpServletResponse response)
-				throws Exception {
+	public ModelAndView select(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("ProductController select 나오나?");
+		List<ProductDTO> list = proService.selectGoods();
+		request.setAttribute("list", list);
+		
+		System.out.println(list.size());
+		ModelAndView mv = new ModelAndView("admin/goods.jsp");
 
-			List<ProductDTO> list = proService.selectAll();
-			request.setAttribute("list", list);
-
-			for(ProductDTO p : list) {
-				System.out.println(p.getCateCode());
-			}
-			System.out.println(list.size());
-
-			return new ModelAndView("admin/goods.jsp");
-		}
+		return mv;
+	}
+		
 
 }

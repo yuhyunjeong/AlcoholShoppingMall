@@ -59,6 +59,6 @@ public interface ProductDAO {
 	public List<ProductDTO> selectDate(String type,String alcohol)throws SQLException;
 	
 	//good.jsp
-	public List<ProductDTO> selectAll() throws SQLException;
+	public List<ProductDTO> selectGoods() throws SQLException;
 	
 }
