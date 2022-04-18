@@ -42,14 +42,15 @@ div {margin 100px;
 				</thead>
 
 				<tbody>
-					<c:forEach items="${noticeList}" var="notice">
+					<c:forEach items="${qaList}" var="notice">
 						<tr>
-							<th scope="row">${notice.noNumber}</th>
+							<th scope="row">${qa.qaNumber}</th>
 							<td><a
-								href="${path}/front?key=notice&methodName=selectByNoticeNum&noNumber=${notice.noNumber}">${notice.noTitle}</a></td>
+								href="${path}/front?key=qa&methodName=selectByqaNum&qsNumber=${qa.qaNumber}">${qa.qaUserId}</a></td>
 
-							<td>${notice.noDate}</td>
-							<td>${notice.viewCount}</td>
+							<td>${qa.qaTitle}</td>
+							<td>${qa.qaContent}</td>
+							<td>${qa.qaDate}</td>
 							<td><input type="checkbox" name="delete" value=""></td>
 						</tr>
 					</c:forEach>
