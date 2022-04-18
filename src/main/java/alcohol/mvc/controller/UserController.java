@@ -32,10 +32,11 @@ public class UserController implements Controller {
 		// 넘어오는 userID,pwd 받기
 		String userId = request.getParameter("id");
 		String userPwd = request.getParameter("pwd");
+		System.out.println(userId + userPwd);
 		// 서비스 호출
 		UserDTO dbDTO = userService.loginCheck(new UserDTO(userId, userPwd));
 		// 그결과를 받아서 성공했으면
-
+		System.out.println(dbDTO);
 		// sessionScope에 loginUser loginName 저장                         
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", dbDTO); // ${loginUser.userId}
