@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지등록</title>
+<title>공지 등록</title>
 
 <SCRIPT language=javascript>
 function checkValid() {
@@ -29,7 +29,7 @@ function checkValid() {
 <body>
 <%@include file="../common/header.jsp"%>
 
-<caption><h2 align="center">공지사항 등록 or 수정 폼</h2></caption>
+<caption><h2 align="center">공지사항 등록 폼</h2></caption>
 
 <form name="writeForm" method="post" action="${path}/front?key=notice&methodName=insert" 
   onSubmit='return checkValid()' enctype="multipart/form-data">
@@ -87,7 +87,7 @@ function checkValid() {
 					</div>
 					
 					<div class="col-sm-2">
-						<button type="button" class="btn btn-light" >수정하기</button>
+						<button type="button" class="btn btn-light"   onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
 					</div>
 				
 				</div><p>

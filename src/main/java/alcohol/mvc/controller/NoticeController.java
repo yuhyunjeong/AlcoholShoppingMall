@@ -17,6 +17,8 @@ import alcohol.mvc.service.NoticeServiceImpl;
 
 
 
+
+
 public class NoticeController implements Controller {
 	
 	private NoticeService noService = new NoticeServiceImpl();
@@ -116,13 +118,56 @@ public class NoticeController implements Controller {
 	}
 	
 	/**
+	 * 수정폼
+	 * */
+	public ModelAndView updateForm(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		int noNumber = Integer.parseInt(request.getParameter("noNumber"));
+		NoticeDTO notice = noService.noticeSelect(noNumber, false); //false는 조회수 증가시키지 않는다.
+		request.setAttribute("notice", notice);
+		
+		return new ModelAndView("board/noticeUpdate.jsp");
+	}
+	
+	/**
 	 * 수정하기
 	 * */
+	public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		int noNumber = Integer.parseInt(request.getParameter("noNumber"));
+		String userId = request.getParameter("userId");
+		String noTitle = request.getParameter("noTitle");
+		String noContent = request.getParameter("noContent");
+		
+		NoticeDTO notice = new NoticeDTO(userId, noTitle, noContent);
+		
+		noService.noticeUpdate(notice);
+		
+		//상세보기페이지로 이동
+		NoticeDTO noticeDetail = noService.noticeSelect(noNumber, false);
+		request.setAttribute("notice", noticeDetail);
+		
+		return new ModelAndView("board/noticeRead.jsp");
+	}
 	
 	/**
 	 * 삭제하기
 	 * */
-	
+	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		int noNumber = Integer.parseInt(request.getParameter("noNumber"));
+		
+		//String path = request.getServletContext().getRealPath("/save");
+		String path = "C:\\Edu\\log";
+		
+		noService.noticeDelete(noNumber);
+		
+		ModelAndView mv = this.select(request,response);
+		
+
+		return mv;
+	}
 	
 
 }
