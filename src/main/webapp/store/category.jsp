@@ -66,28 +66,28 @@
     	<h3>베스트</h3>
   		<div class="col-lg-4" >
   			<div class="row">
-  				<a href="product.jsp"><img src="../img/기다림 흑미 약주.jpg" class="rounded" style="width: 200px; height: 250px"></a>
+  				<a href="product.jsp"><img src="../img/B/기다림 흑미 약주.jpg" class="rounded" style="width: 200px; height: 250px"></a>
   			</div>
   			얘는 클릭했을때 뒤로가기가 가능한데 svg로 감싸진 이미지는 새창에서 뜬다 통일시키기
   		</div>
   		<div class="col-lg-4" >
-  			<img src="../img/꽃길을 여는 술들.jpg" class="rounded" style="width: 200px; height: 250px">
+  			<img src="../img/Gi/꽃길을 여는 술들.jpg" class="rounded" style="width: 200px; height: 250px">
   		</div>
   		<div class="col-lg-4" >
-  			<img src="../img/만강에 비친 달.jpg" class="rounded" style="width: 200px; height: 250px">
+  			<img src="../img/A/만강에 비친 달.jpg" class="rounded" style="width: 200px; height: 250px">
   		</div>
     </div>
     
     <div class="row m-5" >
     	<h3>신상품</h3>
   		<div class="col-lg-4" >
-  			<img src="../img/동백꽃 제주.jpg" class="rounded"style="width: 200px; height: 250px">
+  			<img src="../img/C/동백꽃 제주.jpg" class="rounded"style="width: 200px; height: 250px">
   		</div>
   		<div class="col-lg-4" >
-  			<img src="../img/크라테 자두 와인.jpg" class="rounded" style="width: 200px; height: 250px">
+  			<img src="../img/C/크라테 자두 와인.jpg" class="rounded" style="width: 200px; height: 250px">
   		</div>
   		<div class="col-lg-4" >
-  			<img src="../img/서설.jpg" class="rounded" style="width: 200px; height: 250px">
+  			<img src="../img/D/서울의 밤.jpg" class="rounded" style="width: 200px; height: 250px">
   		</div>
     </div>
 </div>
