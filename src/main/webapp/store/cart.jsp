@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+
 <jsp:include page="../common/header.jsp"/>
 
 <!DOCTYPE html>
@@ -23,6 +25,10 @@
 <h2 align="center">장바구니</h2><p>
 
 <div class="container" style="padding-left: 250px;">
+
+<%-- <form action="${path}/front" method="get">
+ <input type="hidden" name="key" value="cart" /> 
+ <input type="hidden" name="methodName" value="select" /> --%>
 
 <div class="row"> 
 
@@ -59,18 +65,18 @@
        
        <div class="row">
         <div class="col">
-        <div class="text-start"><h4><b>냥이탁주</b></h4></div>
+        <div class="text-start"><h4><b><input value="${cart.pCode}"/></b></h4></div>
       </div>
      </div><p>
      
      <div class="row"> 
      
      <div class="col">
-     <input name="items" type="number" class="datail-quantity form-control text-center input-sm" value="1" >
+     <input type="number" value="${cart.countCount}" class="datail-quantity form-control text-center input-sm" value="1" >
      </div>
       
       <div class="col">
-        <div class="text-end">15000원</div>
+        <div class="text-end"><fmt:formatNumber value="${cart.Price}" pattern="###,###"/>원</div>
       </div>   
       </div><hr>
        
@@ -82,7 +88,7 @@
               </div> 
               
               <div class="col">
-               <div class="text-end">15000원</div><p> 
+               <div class="text-end">${cart.p_price}원</div><p> 
                <div class="text-end"><b>15000원</b></div> 
               </div>
            </div>
@@ -112,7 +118,7 @@
    </div><!--계산서카드 바디-->
   </div><!--계산서카드--> <p><p>
   
-   <a href="${path}/store/order.jsp"><button type="button" class="btn btn-primary btn-lg">주문하기</button></a>
+   <button type="submit" class="btn btn-primary btn-lg">주문하기</button>
   
 </div><!--그리드--><p>
 
@@ -177,6 +183,8 @@
 
 
  </div><!--form-check -->    
+
+<!-- </form> -->
 
  
 </div><!--컨테이너-->

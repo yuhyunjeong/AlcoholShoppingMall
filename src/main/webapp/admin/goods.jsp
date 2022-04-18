@@ -54,8 +54,7 @@ button {
 					<th scope="col">상품가격</th>
 					<th scope="col">재고수량</th>
 					<th scope="col">등록일</th>
-					<th scope="col"><a href="${path}/admin/goods.jsp"><button
-								type="button" class="btn btn-sm btn-dark">삭제</button></a></th>
+					<th scope="col">삭제</th>
 				</tr>
 			</thead>
 
