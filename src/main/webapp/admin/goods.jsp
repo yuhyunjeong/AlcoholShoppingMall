@@ -21,7 +21,6 @@ button{border:none; }
 
 <script type="text/javascript">
 
-
 </script>
 
 </head>
@@ -56,27 +55,19 @@ button{border:none; }
 <th><a href="${path}/store/product.jsp"><button type="button" class="btn btn-sm btn-dark">삭제</button></a></th>
 </tr>
 
-<c:choose>
-  <c:when test="${empty proList}">
-     <td colspan="9"><p align="center">등록된 상품이 없습니다</p></td>
-  </c:when>
-  <c:otherwise>
-<c:forEach items="${proList}" var="product">
+
+<c:forEach items="${list}" var="product">
  <tr>
-  <td>${proList.cateCode}</td>
-  <td>${proList.pCode}</td>
-  <td>${proList.pName}</td>
-  <td>${proList.pDetail}</td>
-  <td><fmt:formatNumber value="${proList.pAlcohol}"/></td>
-  <td><fmt:formatNumber value="${proList.pPrice}"/></td>
-  <td><fmt:formatNumber value="${proList.pStuck}"/></td>
-  <td>${proList.pDate}</td>
+  <td>${product.cateCode}</td>
+  <td>${product.pCode}</td>
+  <td>${product.pName}</td>
+  <td>${product.pDetail}</td>
+  <td>${product.pAlcohol}</td>
+  <td>${product.pPrice}</td>
+  <td>${product.pStuck}</td>
+  <td>${product.pDate}</td>
  </tr> 
-
 </c:forEach>
- </c:otherwise>
-
-</c:choose> 
 
 <div>
   <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
