@@ -9,23 +9,23 @@ import alcohol.mvc.dto.OrdersDTO;
 
 public class OrderServiceImpl implements OrderService{
 	
-	private OrderDAO dao = new OrderDAOImpl();
+	private OrderDAO orderdao = new OrderDAOImpl();
 
 	@Override
 	public void orderInsert(List<OrdersDTO> list) throws SQLException {
-		// TODO Auto-generated method stub
 		
+		int result = orderdao.orderInsert(list);
 	}
 
 	@Override
 	public void orderUpdate(OrdersDTO ordersDTO) throws SQLException {
-		// TODO Auto-generated method stub
 		
+		int result = orderdao.orderUpdate(ordersDTO);
 	}
 
 	@Override
 	public String orderStatus(String oCode) throws SQLException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

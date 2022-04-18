@@ -1,11 +1,13 @@
 package alcohol.mvc.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import alcohol.mvc.dto.OrdersDTO;
 import alcohol.mvc.service.OrderService;
 import alcohol.mvc.service.OrderServiceImpl;
 
@@ -46,9 +48,13 @@ public class OrderController implements Controller{
 		return null;
 	}
 	
-	//배송상태출력 select DELI_STATUS
+	//배송상태출력 SELECT DELI_STATUS FROM ORDERS WHERE ORDER_CODE=?
 	public ModelAndView select(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+		
+		
+		
+		
+		
 		return null;
 	}
 	
