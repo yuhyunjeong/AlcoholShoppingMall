@@ -48,8 +48,14 @@ public interface ProductDAO {
 	public ProductDTO searchBy(String pCode)throws SQLException;
 	
 	/**
-	 * 카테고리 검색 SELECT * FROM CATEGORY
+	 * 도수별  검색
 	 * */
 	public List<ProductDTO> selectCategory(String type,String alcohol)throws SQLException;
+	
+	
+	/**
+	 * 날짜 판매량 검색
+	 * */
+	public List<ProductDTO> selectDate(String type,String alcohol)throws SQLException;
 	
 }

@@ -50,4 +50,8 @@ public interface ProductService {
 	 * 도수별 검색
 	 * */
 	public List<ProductDTO> selectCategory(String type,String alcohol)throws SQLException;
+	/**
+	 *날짜 판매 
+	 * */
+	public List<ProductDTO> selectDate(String type,String alcohol)throws SQLException;
 }
