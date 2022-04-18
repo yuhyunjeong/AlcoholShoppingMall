@@ -38,7 +38,7 @@ public interface ProductDAO {
          step 14 dbcp dao처럼
 	 * 
 	 * */
-	public  List<ProductDTO> selectAll(String type)throws SQLException;
+	public  List<ProductDTO> selectAll(String type,String filter)throws SQLException;
 	
 
 	

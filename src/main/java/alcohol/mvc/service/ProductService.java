@@ -37,7 +37,7 @@ public interface ProductService {
          이런느낌   
 	 * 
 	 * */
-	public  List<ProductDTO> selectAll(String type)throws SQLException;
+	public  List<ProductDTO> selectAll(String type,String filter)throws SQLException;
 	
 
 	

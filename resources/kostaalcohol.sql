@@ -292,6 +292,8 @@ insert into orders values(orders_no_seq.nextval,'jung',payment_no_seq.currval,sy
 '결제완료','배송대기중','서울시 강남구','대치동','010-8548-5426');
 insert into orders values(orders_no_seq.nextval,'kim',payment_no_seq.currval,sysdate,
 '결제완료','배송대기중','경기도 성남시','구미동','010-1567-5759');
+
+
 ---------------------------------------------------------------------------------
 create table order_line( --주문상세
  order_line_code number primary key, --주문상세코드
