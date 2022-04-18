@@ -14,6 +14,19 @@
  
 </style>
 
+<script type="text/javascript">
+  
+  $(function(){
+	  alert("주문이 완료되었습니다");
+  })
+	  
+ 
+
+
+</script>
+
+
+
 </head>
 <body>
 <h2 align="center">구매하기</h2><p>
@@ -148,8 +161,8 @@
  
 </div>
 
-<div align="center">
-<a href="${path}/#"><button type="button" class="btn btn-light" >결제하기</button></a>
+<div align="center" class="btn">
+<button type="button" onclick="order()" class="btn btn-light">결제하기</button>
 </div><p> 
 
  
