@@ -5,13 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>공지글 보기</title>
+
+<SCRIPT language=javascript>
+function sendUpdate(){
+	document.requestForm.methodName.value ="updateForm";
+	document.requestForm.submit();
+}
+
+
+
+</script>
+
 </head>
 <body>
 <%@include file="../common/header.jsp"%>
 <caption><h2 align="center">공지사항</h2></caption>
 
 
-<form>
 
 <div class="col-md-7 col-lg-8" style="float: none; margin:0 auto;">
 	<div class="container">
@@ -55,20 +65,29 @@
 			      ${requestScope.notice.noDate}
 			    </div>
 			 </div>
-			 
+ 
 		
 				<p>
+           <form name="requestForm" method=post action="board/noticeUpdate.jsp">				
 				<div class="row m-5" align="right">
-					 <div class="col-sm-12">
+					<div class="col-sm-10">
+					<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
+							<input type=hidden name="noNumber" value="${notice.noNumber}">
+							<input type=hidden name="key" value="notice" >
+							<input type=hidden name="methodName" >
+							<input type=button class="btn btn-light" value="수정하기" onClick="sendUpdate()">
+					<!-- 	<button type="button" onclick="location.href='${path}/board/noticeUpdate.jsp'" class="btn btn-light" >수정하기</button> -->
+					</div>
+					 <div class="col-sm-2">
 						<button type="button" class="btn btn-light"  onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
 					</div>
 				</div>
-				
+	          </form>			
 			</div>
 		</div>
 	</div>
 </div>
-</form>
+
 
 
 

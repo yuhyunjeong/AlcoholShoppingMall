@@ -16,7 +16,7 @@
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
+
 		/* $(".plus").click(function(){
 			   var num = $(".numBox").val();
 			   var plusNum = Number(num) + 1;
@@ -54,7 +54,7 @@
 			   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
 			   			data: {key :"product", methodName:"searchBy", name : "${param.pName}"},
 			   			success :function(result){
-
+							let pCode="";
 			   				let content ="";
 			   				let price = "";
 			   				let pAlcohol = "";
@@ -64,6 +64,7 @@
 			   					price +=`가격 : ${'${item.pPrice}'}원`;
 			   					pAlcohol +=`<b>도수 : ${'${item.pAlcohol}'}%</b>`;
 			   					price2 = `${'${item.pPrice}'}`;
+			   					pCode=`${'${item.pCode}'}`;
 			   				});
 			   				
 			   				$(".plus").click(function(){
@@ -94,8 +95,8 @@
 			   				   }
 			   				  });
 			   				
-			   				
-			   				$("#totalPrice").val(price2+"원");
+			   				$(".pCode").val(pCode);
+			   				$(".priceBox").val(price2+"원");
 							$(".content").html(content);
 							$("#price").html(price);
 							$("#pAlcohol").html(pAlcohol);	
@@ -141,52 +142,58 @@
 					        	<div class="content"></div>
 					        	
 					        	<p> <b>별점 : <i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star-half"></i></b>   <a href="#">[리뷰]</a>
-					        	<p> <div><b>주종 : ${param.title}</b></div>
+					        	<p> <div><b>주종 : ${param.title} </b></div>
 								<p> <div id="pAlcohol"></div>
-								<p><h4 class="text-center" id = "price"></h4>
-					        	
-					        	
-					        	
-					        	
+								<p><h4 class="text-center" id = "price"></h4>	
 							</p>
 					        <p class="card-text"><small class="text-muted"></small></p>
 					      </div>
 					    </div>
-				    
 				  </div>
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<form action="">
+				
 					<div class="col">
 						<div class="card rounded-3 shadow-sm text-center">
 				          <div class="card-body mx-auto">
 				          	<span style="text-align: right">수량</span>
-				          	<div class="card rounded-3 shadow-sm">     		
-				          		<div class="card-main ">
-				          			
-				          			<button type="button" class="minus" style="border: none; background: none;">-</button>
-				          			<input type="number" class="numBox" min="1" max="99" value="1" readonly="readonly" style="border: none; background: none; text-align: center;"/>
-				          			<button type="button" class="plus" style="border: none; background: none;">+</button>
-				          		</div>       	
-				          	</div>
-				            
-				            
-				            <div class="card rounded-3 shadow-sm mt-5">
-				          		<div class="card-header text-end bg-white">총가격</div>
-				          		<div class="card-main text-center">
-				          			<input type="text" class="priceBox" id="totalPrice" readonly="readonly" style="border: none; text-align: center;" />          			
-				          		</div>       	
-				          	</div>
-				            
-				            
-				            <button type="button" class="btn btn-lg btn-primary mt-5">장바구니 담기</button><br>
-				            <button type="button" class="btn btn-lg btn-primary mt-3">바로 구매하기</button>
+				          	<form action="${path}/front">	
+					          	<div class="card rounded-3 shadow-sm">     		
+					          		<div class="card-main ">
+					          		
+					          			<button type="button" class="minus" style="border: none; background: none;">-</button>
+					          			<input type="number" name="count" class="numBox" min="1" max="99" value="1" readonly="readonly" style="border: none; background: none; text-align: center;"/>
+					          			<button type="button" class="plus" style="border: none; background: none;">+</button>
+					          		</div>       	
+					          	</div>
+					            
+					            
+					            <div class="card rounded-3 shadow-sm mt-5">
+					          		<div class="card-header text-end bg-white">총가격</div>
+					          		<div class="card-main text-center">
+					          			<input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" />          			
+					          		</div>       	
+					          	</div>
+					          	
+			            		<input type="hidden" name="key" value = "cart" /> <!-- Controller를 찾는 정보 -->
+								<input type="hidden" name="methodName" value = "insert" /><!-- 메소드이름 -->
+								<input type="hidden" name="id" value = "${loginUser.userId}" /> <!-- userID --> 
+								<input type="hidden" class="pCode" name="pCode" />								            
+					            <button type="submit" class="btn btn-lg btn-primary mt-5">장바구니 담기</button><br>
+							</form>
+							<form action="${path}/store/order.jsp">
+								<input type="hidden" name="type" value = "${param.type}" />
+								<input type="hidden" name="pName" value = "${param.pName}" />
+					            <input type="hidden" class="priceBox"  readonly="readonly" style="border: none; text-align: center;" />
+								<input type="hidden" class="numBox" min="1" max="99" value="1" readonly="readonly" style="border: none; background: none; text-align: center;"/>
+					            <button type="submit" class="btn btn-lg btn-primary mt-3">바로 구매하기</button>
+					        </form>
 				          </div>
 				        </div>
 						
 					</div>
-				</form>
+				
 			</div>
 	</div>
 	<div class="row mt-5">

@@ -56,8 +56,7 @@ $(function(){
    			success :function(result){
 
    				let strr ="";
-   				$.each(result, function(index, item) {
-   					alert('${param.title}');
+   				$.each(result, function(index, item) {	
    					strr+="<div class='col-lg-3 col-md-6'>";
    					strr+="<div class='card mb-3 h-100'>";			
    					strr+=`<a href = '${path}/store/productDetail.jsp?pName=${"${item.pName}"}&type=${param.type}&title=${param.title}'>`
@@ -150,7 +149,7 @@ $(function(){
 		      	<select id="se" class="form-select form-select-sm " aria-label=".form-select-sm example" style="width:100px;height:38px;">
 				  <option selected value="0">기본순</option>
 				  <option value="1">판매순</option>
-				  <option value="2">별점순</option>
+				  <option value="2">인기순</option>
 				</select>  
 			</div>
 		</div>

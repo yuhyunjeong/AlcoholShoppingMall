@@ -82,7 +82,7 @@ public class OrderController implements Controller{
 		
 		String deliStatus = request.getParameter("delistatus");
 		
-		OrdersDTO orDto = new OrdersDTO(deliStatus);
+		//OrdersDTO orDto = new OrdersDTO(deliStatus);
 		
 		return new ModelAndView("store/order.jsp");
 	}

@@ -36,10 +36,17 @@
 
 <div class="row">
  <div class="col">
+<<<<<<< HEAD
   <div class="text-start"><h3><b>${cart.pcode}</b></h3></div> 
  </div>
  <div class="col">
   <img src="../img/${cart.type}/${cart.image}.jpg" class="rounded float-end" style="width:180px; height:250px;">   
+=======
+  <div class="text-start"><h3><b>${param.pName}</b></h3></div> 
+ </div>
+ <div class="col">
+  <img src="../img/${param.type}/${param.pName}.jpg" class="rounded float-end" alt="냥이탁주" style="width:180px; height:250px;">   
+>>>>>>> c90d2f84c45b9bb82ddbe72244876b84af5bf309
  </div>
 </div>  
   
