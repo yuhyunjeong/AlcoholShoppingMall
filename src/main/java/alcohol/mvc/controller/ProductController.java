@@ -16,6 +16,7 @@ import net.sf.json.JSONArray;
 public class ProductController implements Controller {
 	private ProductService proService = new ProductServiceImpl();
 	private int alcoholtype = 0;
+
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -23,45 +24,41 @@ public class ProductController implements Controller {
 		return null;
 	}
 
-	public ModelAndView productSelectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void productSelectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		String type = request.getParameter("cate");
+		List<ProductDTO> proList = proService.selectAll(type);
+		JSONArray arr = JSONArray.fromObject(proList);
+
+		PrintWriter out = response.getWriter();
+		out.print(arr);
+
 		/*
-		 * String type= request.getParameter("type"); List<ProductDTO> proList =
-		 * proService.selectAll(type); JSONArray arr = JSONArray.fromObject(proList);
+		 * alcoholtype =0; String type= request.getParameter("type"); List<ProductDTO>
+		 * proList = proService.selectAll(type);
 		 * 
 		 * 
+		 * request.setAttribute("proList", proList);
+		 * request.setAttribute("alcohotype",alcoholtype); ModelAndView mv = new
+		 * ModelAndView("store/product.jsp");
 		 * 
-		 * PrintWriter out = response.getWriter(); out.print(arr);
+		 * 
+		 * return mv;
 		 */
-		 alcoholtype =0;
-		 String type= request.getParameter("type");
-		 List<ProductDTO> proList = proService.selectAll(type);
-		 
-		  
-		 request.setAttribute("proList", proList);
-		 request.setAttribute("alcohotype", alcoholtype);
-		 ModelAndView mv = new ModelAndView("store/product.jsp");
-		  
-		 
-		 return mv;
-		
 
 	}
-	
-	
+
 	public ModelAndView alcoFilter(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		 String type = request.getParameter("type");
-		 String alcohol= request.getParameter("alcohol");
-		 alcoholtype=1;
-		 List<ProductDTO> proList = proService.selectCategory(type,alcohol);
-		 
-		  
-		 request.setAttribute("proList", proList); 
-		 request.setAttribute("alcohotype", alcoholtype);
-		 ModelAndView mv = new ModelAndView("store/product.jsp");
-		  
-		 
-		 return mv;
-		
+		String type = request.getParameter("type");
+		String alcohol = request.getParameter("alcohol");
+		alcoholtype = 1;
+		List<ProductDTO> proList = proService.selectCategory(type, alcohol);
+
+		request.setAttribute("proList", proList);
+		request.setAttribute("alcohotype", alcoholtype);
+		ModelAndView mv = new ModelAndView("store/product.jsp");
+
+		return mv;
 
 	}
 

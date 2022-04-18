@@ -42,20 +42,20 @@ public interface UserDAO {
 	
 	
 	/**
-	 * 회원 탈퇴 DELETE FROM USERS WHERE U_ID=?\
+	 * 회원 탈퇴 DELETE FROM USERS WHERE U_ID=?, U_PWD=?
 	 * */
-	public int delete(String id)throws SQLException;
+	public int delete(String id, String pwd)throws SQLException;
 	
 	
 	/**
-	 * 아이디 찾기 SELECT U_ID FROM USERS WHERE U_JUMIN = ? AND U_PHONE =?
+	 * 아이디 찾기 SELECT U_ID FROM USERS WHERE U_NAME = ? AND U_PHONE =? AND U_EMAIL=?
 	 * */
-	public String idFind(String jumin, String phone)throws SQLException;
+	public String idFind(String name, String phone, String email)throws SQLException;
 	
 	/**
-	 * 비밀번호 찾기 SELECT U_PWD FROM USERS WHERE U_ID=? AND U_JUMIN = ? AND U_PHONE =?
+	 * 비밀번호 찾기 SELECT U_PWD FROM USERS WHERE U_ID=? U_NAME = ? AND U_PHONE =? AND U_EMAIL=?
 	 * */
-	public String pwdFind(String id ,String jumin, String phone)throws SQLException;
+	public String pwdFind(String id , String name, String phone, String email)throws SQLException;
 	
 	
 	
