@@ -15,7 +15,7 @@ public class ProductDTO {
 	
 	public ProductDTO() {}
 
-	public ProductDTO(String pCode, String cateCode, String pName, int pAlcohol, int pPrice, int pStuck, String pDetail) {
+	public ProductDTO(String pCode, String cateCode, String pName, int pAlcohol, int pPrice, int pStuck, String pDate ,String pDetail) {
 		this.pCode = pCode;
 		this.cateCode = cateCode;
 		this.pName = pName;
@@ -28,10 +28,11 @@ public class ProductDTO {
 	}
 
 	
-
 	public ProductDTO(String pCode, String cateCode, String pName, int pAlcohol, int pPrice, int pStuck, String pDate,
 			String pImage, String pImage2, String pImage3, String pDetail) {
-		this(pCode,cateCode,pName, pAlcohol, pPrice, pStuck, pDate, pDetail);
+		
+		this(pCode,cateCode,pName,pAlcohol,pPrice,pStuck,pDate,pDetail);
+		
 		this.pImage = pImage;
 		this.pImage2 = pImage2;
 		this.pImage3 = pImage3;
