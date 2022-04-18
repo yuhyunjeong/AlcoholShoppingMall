@@ -182,9 +182,9 @@
 								<input type="hidden" class="pCode" name="pCode" />								            
 					            <button type="submit" class="btn btn-lg btn-primary mt-5">장바구니 담기</button><br>
 							</form>
-							<form action="">
-								<input type="hidden" name="key" value = "order" /> <!-- Controller를 찾는 정보 -->
-								<input type="hidden" name="methodName" value = "login" />  <!-- 메소드이름 -->	
+							<form action="${path}/store/order.jsp">
+								<input type="hidden" name="type" value = "${param.type}" />
+								<input type="hidden" name="pName" value = "${param.pName}" />
 					            <input type="hidden" class="priceBox"  readonly="readonly" style="border: none; text-align: center;" />
 								<input type="hidden" class="numBox" min="1" max="99" value="1" readonly="readonly" style="border: none; background: none; text-align: center;"/>
 					            <button type="submit" class="btn btn-lg btn-primary mt-3">바로 구매하기</button>
