@@ -48,7 +48,7 @@ public class UserDAOImpl implements UserDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "INSERT INTO USERS(U_ID, U_PWD,U_NAME,U_JUMIN,U_PHONE,U_EMAIL,U_ADDR,U_ADDR2,U_ADDR3,U_GRADE,U_POINT,JOIN_DATE) VALUES(?,?,?,?,?,?,?,?,0,0,SYSDATE)";
+		String sql = "INSERT INTO USERS(U_ID, U_PWD,U_NAME,U_JUMIN,U_PHONE,U_EMAIL,U_ADDR,U_ADDR2,U_ADDR3,U_GRADE,U_POINT,JOIN_DATE) VALUES(?,?,?,?,?,?,?,?,?,0,0,SYSDATE)";
 
 		try {
 
@@ -63,7 +63,7 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(6, userDTO.getUserEmail());
 			ps.setString(7, userDTO.getUserAddr());
 			ps.setString(8, userDTO.getUserAddr2());
-			ps.setString(8, userDTO.getUserAddr3());
+			ps.setString(9, userDTO.getUserAddr3());
 
 			result = ps.executeUpdate();
 
