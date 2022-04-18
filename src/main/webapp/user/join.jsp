@@ -113,6 +113,8 @@ input:focus::-webkit-input-placeholder {
 				<p>
 			</div>
 			<div class="m-5">
+				<input type="hidden" name="key" value = "user" /> <!-- Controller를 찾는 정보 -->
+				<input type="hidden" name="methodName" value = "join" />  <!-- 메소드이름 -->
 				<input class="w-25 btn btn-dark" type="submit" value="가입완료">
 			</div>
 			<p>
