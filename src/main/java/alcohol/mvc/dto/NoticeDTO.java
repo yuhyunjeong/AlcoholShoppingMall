@@ -9,7 +9,14 @@ public class NoticeDTO {
 	private int viewCount;
 	
 	public NoticeDTO() {}
-
+	
+	public NoticeDTO(String userId, String noTitle,String noContent) {
+		super();
+		this.userId = userId;
+		this.noTitle = noTitle;
+		this.noContent = noContent;
+	}
+	
 	public NoticeDTO(int noNumber, String userId, String noTitle, String noContent, String noDate, int viewCount) {
 		super();
 		this.noNumber = noNumber;

@@ -5,6 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>공지등록</title>
+
+<SCRIPT language=javascript>
+function checkValid() {
+    var f = window.document.writeForm;
+		
+	if ( f.no_title.value == "") {
+	    alert( "제목을 입력해 주세요." );
+	    f.no_title.focus();
+		return false;
+    }
+	if ( f.no_content.value == "" ) {
+		alert( "내용을 입력해 주세요." );
+		f.no_content.focus();
+		return false;
+	}
+
+	
+    return true;
+}
+</SCRIPT>
 </head>
 <body>
 <%@include file="../common/header.jsp"%>
@@ -32,14 +52,14 @@
 			<div class="row m-5">
 			    <label for="inputTitle" class="col-sm-2 col-form-label">제목</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="inputTitle" placeholder="제목을 입력해주세요.">
+			      <input type="text" name="no_title" class="form-control" id="inputTitle" placeholder="제목을 입력해주세요.">
 			    </div>
 			 </div>
 			 
 			 <div class="row m-5">
 			    <label for="inputContent" class="col-sm-2 col-form-label">내용</label>
 			    <div class="col-sm-10">
-			      <textarea class="form-control" id="inputContent" rows="10">내용에 이미지 추가는 어떻게</textarea>
+			      <textarea class="form-control" name="no_content" id="inputContent" rows="10">내용에 이미지 추가는 어떻게</textarea>
 			    </div>
 			 </div>
 			 
@@ -63,7 +83,7 @@
 				
 				<div class="row m-5" align="right">
 					 <div class="col-sm-10">
-						<button type="button" class="btn btn-light" >등록하기</button>
+						<button type="submit" class="btn btn-light" >등록하기</button>
 					</div>
 					
 					<div class="col-sm-2">

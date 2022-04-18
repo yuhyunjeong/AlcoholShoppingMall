@@ -23,7 +23,7 @@ a:link , a:visited{
 <div class="container" >
 	
 		<div class="d-grid gap-2 d-md-block">
-			<a class="btn btn-primary" href="${path}/board/noticeWrite.jsp""  role="button" value="등록하기">등록하기</a>
+			<a class="btn btn-primary" href="${path}/board/noticeWrite.jsp"  role="button" value="등록하기">등록하기</a>
 	</div>
 	<p>
 	
