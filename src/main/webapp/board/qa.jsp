@@ -21,7 +21,7 @@ div {margin 100px;
 
 	<div class="col-sm-6, container">
 		<div class="d-grid gap-2 d-md-block">
-			<a class="btn btn-primary" href="${path}/board/noticeWrite.jsp"
+			<a class="btn btn-primary" href="${path}/board/qaWrite.jsp"
 				role="button" value="등록하기">등록하기</a>
 		</div>
 		<p>
@@ -42,7 +42,7 @@ div {margin 100px;
 				</thead>
 
 				<tbody>
-					<c:forEach items="${qaList}" var="notice">
+					<c:forEach items="${qaList}" var="qa">
 						<tr>
 							<th scope="row">${qa.qaNumber}</th>
 							<td><a
