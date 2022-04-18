@@ -52,7 +52,7 @@ button{border:none; }
 <th>상품가격</th>
 <th>재고수량</th>
 <th>등록일</th>
-<th><a href="${path}/store/product.jsp"><button type="button" class="btn btn-sm btn-dark">삭제</button></a></th>
+<th><a href="${path}/store/goods.jsp"><button type="button" class="btn btn-sm btn-dark">삭제</button></a></th>
 </tr>
 
 

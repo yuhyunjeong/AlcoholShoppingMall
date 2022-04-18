@@ -169,11 +169,9 @@ public class ProductDAOImpl implements ProductDAO {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			
-			ps.setString(1, sql);
-			
+					
 			while(rs.next()) {
-				proDto = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7),rs.getString(8));
+				proDto = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7),rs.getString(11));
 			 
 				list.add(proDto);
 			
