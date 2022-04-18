@@ -41,7 +41,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 input:focus::-webkit-input-placeholder {
-	color:transparent; 
+	color: transparent;
 }
 </style>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -74,39 +74,7 @@ input:focus::-webkit-input-placeholder {
 		})
 	}
 
-	/* 	// 로그인 
-	 function loginWithKakao() {
-	 Kakao.Auth.login({
-	 success: function(authObj) {
-	 alert(JSON.stringify(authObj))
-	 },
-	 fail: function(err) {
-	 alert(JSON.stringify(err))
-	 },
-	 })
-	 } */
-
-	/*       // 엑세스 토큰을 발급받고, 아래 함수를 호출시켜서 사용자 정보를 받아옴.
-	 function getInfo() {
-	 Kakao.API.request({
-	 url: '/v2/user/me',
-	 success: function (res) {
-	 console.log(res);
-	 // 이메일, 연령대, 생일 
-	 var email = res.kakao_account.email;
-	 var age_range = res.kakao_account.age_range;
-	 var birthday = res.kakao_account.birthday;
-
-	 console.log(email, age_range, birthday);
-	 },
-	 fail: function (error) {
-	 alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
-	 }
-	 });
-	 } */
-
-	Kakao.Auth
-			.createLoginButton({
+	Kakao.Auth.createLoginButton({
 				container : '#kakao-login-btn',
 				success : function(authObj) {
 					Kakao.API
@@ -156,7 +124,7 @@ input:focus::-webkit-input-placeholder {
 				<h6>비밀번호</h6>
 				<input type="password" name="pwd" placeholder="비밀번호를 입력해주세요.">
 			</div>
-			
+
 			<p>
 			<p>
 			<p>
@@ -167,29 +135,32 @@ input:focus::-webkit-input-placeholder {
 					src="../img/kakao_login_medium_wide.png" width="300"
 					alt="카카오 로그인 버튼" />
 				</a>
-				<p><p>
-					<input type="hidden" name="key" value = "user" /> <!-- Controller를 찾는 정보 -->
-					<input type="hidden" name="methodName" value = "login" />  <!-- 메소드이름 -->
+				<p>
+				<p>
 					<input class="w-25 btn btn-dark" type="submit" value="로그인">
-				<p>			
+					<input type="hidden" name="key" value="user" />
+					<!-- Controller를 찾는 정보 -->
+					<input type="hidden" name="methodName" value="login" />
+					<!-- 메소드이름 -->
+				<p>
 			</div>
-			</form>
-			<div class="m-5">
-				<input class="w-25 btn btn-dark" type="button" value="회원가입" onclick="location.href='join.jsp'">
-			</div>
+		</form>
+		<div class="m-5">
+			<input class="w-25 btn btn-dark" type="button" value="회원가입"
+				onclick="location.href='join.jsp'">
+		</div>
+		<p>
+
+			<!-- <button class="api-btn" onclick="kakaoLogout()">로그아웃</button> -->
+		<p>
+		<div class="m-5">
+			<a href="#" style="text-decoration: none;">아이디 찾기</a>
 			<p>
-
-				<!-- <button class="api-btn" onclick="kakaoLogout()">로그아웃</button> -->
 			<p>
-
-
-			<div class="m-5">
-				<a href="#" style="text-decoration: none;">아이디 찾기</a>
-			<p><p>
 				<a href="#" style="text-decoration: none;">비밀번호 찾기</a>
 			<p>
-			</div>
-		
+		</div>
+
 	</div>
 	<p>
 
