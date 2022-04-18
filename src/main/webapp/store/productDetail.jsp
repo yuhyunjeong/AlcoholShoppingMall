@@ -5,10 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 상세</title>
+<style type="text/css">
+	.card-img-top{
+		height: 15rem;
+		object-fit : cover;
+	}
+
+
+</style>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$(".plus").click(function(){
+		
+		/* $(".plus").click(function(){
 			   var num = $(".numBox").val();
 			   var plusNum = Number(num) + 1;
 
@@ -34,8 +43,74 @@
 			    $(".numBox").val(minusNum);    
 			    $(".priceBox").val(minusNum+"원");
 			   }
-			  });
+			  }); */
 		
+			  
+			  
+			  function selectAll(){	
+					$.ajax({
+			   			url :"../ajax" , //서버요청주소
+			   			type:"post", //요청방식(method방식 : get | post | put | delete )
+			   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+			   			data: {key :"product", methodName:"searchBy", name : "${param.pName}"},
+			   			success :function(result){
+
+			   				let content ="";
+			   				let price = "";
+			   				let pAlcohol = "";
+			   				let price2 = 0;
+			   				$.each(result, function(index, item) {
+			   					content += `<h5>${"${item.pDetail}"}</h5>`;
+			   					price +=`가격 : ${'${item.pPrice}'}원`;
+			   					pAlcohol +=`<b>도수 : ${'${item.pAlcohol}'}%</b>`;
+			   					price2 = `${'${item.pPrice}'}`;
+			   				});
+			   				
+			   				$(".plus").click(function(){
+			   				   var num = $(".numBox").val();
+			   				   var plusNum = Number(num) + 1;
+							   var price = price2;
+			   				    if(plusNum >= 99) {
+			   				    $(".numBox").val(num);
+			   				    $(".priceBox").val((price2*num)+"원");
+			   				    
+			   				    
+			   				   } else {
+			   				    $(".numBox").val(plusNum);     
+			   				    $(".priceBox").val((price2*plusNum)+"원");
+			   				   }
+			   				  });
+			   				  
+			   				  $(".minus").click(function(){
+			   				   var num = $(".numBox").val();
+			   				   var minusNum = Number(num) - 1;
+			   				   var price = price2;
+			   				   if(minusNum <= 0) {
+			   				    $(".numBox").val(num);
+			   				    $(".priceBox").val((price2*num)+"원");
+			   				   } else {
+			   				    $(".numBox").val(minusNum);    
+			   				    $(".priceBox").val((price2*minusNum)+"원");
+			   				   }
+			   				  });
+			   				
+			   				
+			   				$("#totalPrice").val(price2+"원");
+							$(".content").html(content);
+							$("#price").html(price);
+							$("#pAlcohol").html(pAlcohol);	
+			   			},error : function(err){  
+			   				alert(err+"에러 발생했어요.");
+			   			}  //실팽했을때 실행할 함수 
+			   		});
+					
+				}
+			  
+			  
+			  
+			  
+			  selectAll();
+			  
 		
 		
 	});
@@ -52,20 +127,33 @@
 	
 	<div class="row">	
 			<div class="col-lg-8">
-				<div class="row">
-					<div class="col-xxl-8">
-						<img src="../img/A/냥이탁주.jpg" class="rounded">
-			
-			
-					</div>
-					<div class="col-xxl-4">
-						<h3>상품명</h3>
-						<p> <b>별점</b>   <a href="#">[리뷰]</a>
-						<p> <b>주종</b> : 탁주
-						<p> <b>도수</b> : 12
-						<h4>10000원</h4>
-						
-					</div>	
+				<div class="card mb-3 h-100 w-100" >
+				  <div class="row g-0 h-100 w-100">
+				  	
+					    <div class="col-lg-7">
+					      <img src="../img/${param.type}/${param.pName}.jpg" class="img-fluid img-thumbnail rounded-start" style="width:100%;height: 100%;">
+	
+					    </div>
+					    <div class="col-lg-5">
+					      <div class="card-body">
+					        <h4 class="card-title">${param.pName}</h4>
+					        <p class="card-text">
+					        	<div class="content"></div>
+					        	
+					        	<p> <b>별점 : <i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star-half"></i></b>   <a href="#">[리뷰]</a>
+					        	<p> <div><b>주종 : ${param.title}</b></div>
+								<p> <div id="pAlcohol"></div>
+								<p><h4 class="text-center" id = "price"></h4>
+					        	
+					        	
+					        	
+					        	
+							</p>
+					        <p class="card-text"><small class="text-muted"></small></p>
+					      </div>
+					    </div>
+				    
+				  </div>
 				</div>
 			</div>
 			<div class="col-lg-4">
@@ -87,7 +175,7 @@
 				            <div class="card rounded-3 shadow-sm mt-5">
 				          		<div class="card-header text-end bg-white">총가격</div>
 				          		<div class="card-main text-center">
-				          			<input type="text" class="priceBox"  value="0원" readonly="readonly" style="border: none; text-align: center;" />          			
+				          			<input type="text" class="priceBox" id="totalPrice" readonly="readonly" style="border: none; text-align: center;" />          			
 				          		</div>       	
 				          	</div>
 				            
@@ -103,7 +191,7 @@
 	</div>
 	<div class="row mt-5">
 		<div class="col">
-			<img src="../img/A/냥이탁주.jpg"  valeu="상세설명자리" width="100%" height="100%">		
+			<img src="../img/A/냥이탁주.jpg" class="rounded img-thumbnail" width="100%" height="100%">		
 		</div>
 	</div>
 	
@@ -127,7 +215,7 @@
 				      <td>너무 맛있었다</td>
 				      <td>별점이다</td>
 				      <td>2022-04-05</td>
-				      <td><img src="../img/A/냥이탁주.jpg" width="50" height="50"></td>
+				      <td><img src="../img/A/냥이탁주.jpg" class="rounded float-end" alt="..."></td>
 				    </tr>
 				  </tbody>
 				</table>	

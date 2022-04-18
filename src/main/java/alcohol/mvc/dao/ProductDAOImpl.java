@@ -89,9 +89,25 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public ProductDTO searchBy(String pCode) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public ProductDTO searchBy(String name) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps =null;
+		ResultSet rs = null;
+		ProductDTO product = null;
+		String sql = "SELECT * FROM PRODUCT WHERE P_NAME=?";		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, name);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				product = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7)
+						,rs.getString(8),rs.getString(10),rs.getString(11),rs.getString(9),rs.getInt(12));
+			}	
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return product;
 	}
 
 	@Override
