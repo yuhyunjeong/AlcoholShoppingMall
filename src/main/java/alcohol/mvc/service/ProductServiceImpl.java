@@ -80,6 +80,12 @@ public class ProductServiceImpl implements ProductService {
 		List<OrderLineDTO> dto =dao.cateSelect();
 		return dto;
 	}
+
+	@Override
+	public List<ProductDTO> selectByCode(List<OrderLineDTO> list) throws SQLException {
+		List<ProductDTO> dto = dao.selectByCode(list);
+		return dto;
+	}
 	
 	
 

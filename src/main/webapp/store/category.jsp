@@ -18,24 +18,20 @@ $(function(){
 
    				let str ="";
    				$.each(result, function(index, item) {
-   					str+="<div class='col-lg-3 col-md-6'>";
-   					str+="<div class='card mb-3 h-100'>";
    					
-   					str+=`<a href = '${path}/store/productDetail.jsp?pName=${"${item.pName}"}&type=${param.type}&title=${param.title}'>`
-   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`; 
-   					str+="<div class='card-body'>";
-   					str+="<p class='card-text'>";
-   					str+=`<b>${'${item.pName}'}</b><p><p>`;
-   					str+=`<b>가격 : ${'${item.pPrice}'} 원</b><p>`;
-   					str+="<hr>";
-   					str+="<b>상품 설명</b><p>";    
+   					str+="<div class='col-lg-4'>";
+   					str+="<div class='row'>";
+   					
+   					str+=`<a href='productDetail.jsp?pName=${"${item.pName}"}&type=${item.cateCode}'>`;
+   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class='rounded' style='width: 200px; height: 250px'></a>`;
+   					str+="</div>";
    					str+=`${'${item.pDetail}'}`;
-   					str+="</p></div></div></div>";
+   					str+="</div>";
    				});
    				//$("rrr").remove();
 
-   				$("#rrr").empty();
-				$("#rrr").html(str);
+   				$("[name=best]").empty();
+				$("[name=best]").html(str);
 					
    			},error : function(err){  
    				alert(err+"에러 발생했어요.");
@@ -101,21 +97,11 @@ $(function(){
     </div><!-- /.row -->
 
     <hr class="featurette-divider">
-    
-    <div class="row m-5">
-    	<h3>베스트</h3>
-  		<div class="col-lg-4" >
-  			<div class="row">
-  				<a href="product.jsp"><img src="../img/B/기다림 흑미 약주.jpg" class="rounded" style="width: 200px; height: 250px"></a>
-  			</div>
-  			얘는 클릭했을때 뒤로가기가 가능한데 svg로 감싸진 이미지는 새창에서 뜬다 통일시키기
-  		</div>
-  		<div class="col-lg-4" >
-  			<img src="../img/Gi/꽃길을 여는 술들.jpg" class="rounded" style="width: 200px; height: 250px">
-  		</div>
-  		<div class="col-lg-4" >
-  			<img src="../img/A/만강에 비친 달.jpg" class="rounded" style="width: 200px; height: 250px">
-  		</div>
+    <h3>베스트</h3>
+    <div class="row m-5" name="best">
+    	
+  		
+  		
     </div>
     
     <div class="row m-5" >

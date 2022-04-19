@@ -69,4 +69,6 @@ public interface ProductService {
 	
 	public List<OrderLineDTO> cateSelect() throws SQLException;
 	
+	public List<ProductDTO> selectByCode(List<OrderLineDTO> list) throws SQLException;
+	
 }

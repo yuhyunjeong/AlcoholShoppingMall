@@ -108,9 +108,11 @@ public class ProductController implements Controller {
 		response.setContentType("text/html;charset=UTF-8");
 		
 		List<OrderLineDTO> list = proService.cateSelect();
+		System.out.println(list.size()+"cateSelect");
+		List<ProductDTO> proList = proService.selectByCode(list);
+		System.out.println(proList.get(0).getCateCode());
 		
-		
-		JSONArray arr = JSONArray.fromObject(list);
+		JSONArray arr = JSONArray.fromObject(proList);
 		// System.out.println(dto.getpName()+"나와라");
 		PrintWriter out = response.getWriter();
 		out.print(arr);
