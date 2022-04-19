@@ -19,14 +19,18 @@ $(function(){
    				let str ="";
    				$.each(result, function(index, item) {
    					
-   					str+="<div class='col-lg-4'>";
-   					str+="<div class='row'>";
+   					str+="<div class='col-lg-4 col-md-6'>";
+   					//str+="<div class='row'>";
+   					str+="<div class='card mb-3 h-100'>";
    					
    					str+=`<a href='productDetail.jsp?pName=${"${item.pName}"}&type=${"${item.cateCode}"}'>`;
-   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class='rounded' style='width: 200px; height: 250px'></a>`;
-   					str+="</div>";
-   					str+=`${'${item.pDetail}'}`;
-   					str+="</div>";
+   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`;
+   					str+="<div class='card-body'>";
+   					str+="<p class='card-text'>";
+   					
+   					str+=`<b>${'${item.pName}'}</b>`;
+   					//str+="</div>";
+   					str+="</p></div></div></div>";
    				});
    				//$("rrr").remove();
 
