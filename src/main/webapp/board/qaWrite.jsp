@@ -22,7 +22,7 @@
 					<div class="col">
 
 						<div class="row m-5">
-							<label for="inputTitle" class="col-sm-2 col-form-label">제목</label>
+							<label for="inputTitle" class="col-sm-2 col-form-label">카테고리</label>
 							<div class="col-sm-10">
 								<input type="text" name="qaTitle" class="form-control"
 									id="inputTitle" placeholder="제목을 입력해주세요.">
@@ -52,10 +52,12 @@
 							</div>
 						</div>
 
-
+							
 						<p>
 						<div class="row m-5" align="right">
 							<div class="col-sm-10">
+								<input type="hidden" name="key" value="">
+								<input type="hidden" name="methodName" value="insert">
 								<button type="submit" class="btn btn-light">등록하기</button>
 							</div>
 

@@ -48,7 +48,11 @@ public class QAController implements Controller {
 	 */
 	public ModelAndView selectByQANum(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return null;
+		int qaNumber = Integer.parseInt(request.getParameter("qaNubmer"));
+		QADTO qa = qaService.qaSelect(qaNumber);
+		request.setAttribute("qa", qa);
+		
+		return new ModelAndView("board/qaRead.jsp");
 	}
 
 	/**
