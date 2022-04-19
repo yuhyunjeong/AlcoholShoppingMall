@@ -31,4 +31,12 @@ public interface QADAO {
 	 * 상세검색 SELECT * FROM QA WHERE QA_NUMBER=?
 	 * */
 	public QADTO qaSelect(int qaNumber)throws SQLException;
+	
+
+	/**
+	 * 조건검색(검색필드와 검색단어를 전달받아 검색필드에 검색단어를포함한 레코드를 검색하기 )
+	 *   SELECT * FROM QA WHERE QA_CATEGORY = ?
+	 *  step 14 dbcp dao처럼
+	 * */
+	public List<QADTO> qaSelectAll(int categoryNum) throws SQLException;
 }

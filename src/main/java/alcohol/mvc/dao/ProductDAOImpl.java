@@ -266,9 +266,15 @@ public class ProductDAOImpl implements ProductDAO {
 
 		List<OrderLineDTO> list = new ArrayList<OrderLineDTO>();
 		OrderLineDTO dto = null;
+<<<<<<< HEAD
 
 		String sql = "select * from (select  p_code, sum(order_line_count) from order_line group by p_code order by sum(order_line_count) desc) where rownum<=3;";
 
+=======
+		
+		String sql = "select * from (select  p_code, sum(order_line_count) from order_line group by p_code order by sum(order_line_count) desc) where rownum<=3";
+		
+>>>>>>> 8674651e9220603738955a64f37d22a436e745bc
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -289,6 +295,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return list;
 	}
 
+<<<<<<< HEAD
 	//goods.writer
 	public int insertwrite(ProductDTO dto) throws SQLException {
 
@@ -323,4 +330,38 @@ public class ProductDAOImpl implements ProductDAO {
 
 
 
+=======
+	@Override
+	public List<ProductDTO> selectByCode(List<OrderLineDTO> list) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps =null;
+		ResultSet rs = null;
+		
+		List<ProductDTO> proList = new ArrayList<ProductDTO>();
+		ProductDTO proDto = null;
+		
+		String sql = "SELECT * FROM PRODUCT WHERE P_CODE=?";		
+		try {
+			for( OrderLineDTO orderDto : list) {
+				con = DbUtil.getConnection();
+				ps = con.prepareStatement(sql);
+				ps.setString(1, orderDto.getpCode());
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					
+					proDto = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7)
+							,rs.getString(8),rs.getString(10),rs.getString(11),rs.getString(9),rs.getInt(12));
+					
+					proList.add(proDto);
+			}
+			
+			}	
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return proList;
+	}
+	
+>>>>>>> 8674651e9220603738955a64f37d22a436e745bc
 }

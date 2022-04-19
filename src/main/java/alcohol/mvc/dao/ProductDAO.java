@@ -75,4 +75,6 @@ public interface ProductDAO {
 	insert into values(?,?,?,?,?,?,?,?)*/
 	public int insertwrite(ProductDTO dto) throws SQLException;
 	
+	public List<ProductDTO> selectByCode(List<OrderLineDTO> list) throws SQLException;
+	
 }

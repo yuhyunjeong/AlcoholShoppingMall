@@ -14,18 +14,24 @@
 	</caption>
 
 
+	<form name="writeForm" method="post" action="${path}/front">
+		<div class="col-md-7 col-lg-8" style="float: none; margin: 0 auto;">
+			<div class="container">
 
-	<div class="col-md-7 col-lg-8" style="float: none; margin: 0 auto;">
-		<div class="container">
-			<form name="writeForm" method="post" action="${path}/front">
 				<div class="row mb-5">
 					<div class="col">
 
 						<div class="row m-5">
 							<label for="inputTitle" class="col-sm-2 col-form-label">카테고리</label>
 							<div class="col-sm-10">
-								<input type="text" name="qaTitle" class="form-control"
-									id="inputTitle" placeholder="제목을 입력해주세요.">
+								<select id="lg" class="form-select" aria-label="Default select example"
+									style="width: 300px; height: 38px;">
+									<option selected value="0">-----문의 유형을 선택해주세요.-----</option>
+									<option value="1">1.상품문의</option>
+									<option value="2">2.결제/환불/교환 문의</option>
+									<option value="3">3.쿠폰/포인트 문의</option>
+									<option value="4">4.기타 문의</option>
+								</select>
 							</div>
 						</div>
 
@@ -46,18 +52,19 @@
 						</div>
 
 						<div class="row m-5">
-							<label for="inputTitle" class="col-sm-2 col-form-label">비밀글 설정</label>
+							<label for="inputTitle" class="col-sm-2 col-form-label">비밀글
+								설정</label>
 							<div class="col-sm-10">
 								<input type="checkbox" name="secret" value="">
 							</div>
 						</div>
 
-							
+
 						<p>
 						<div class="row m-5" align="right">
 							<div class="col-sm-10">
-								<input type="hidden" name="key" value="">
-								<input type="hidden" name="methodName" value="insert">
+								<input type="hidden" name="key" value="qa"> <input
+									type="hidden" name="methodName" value="insert">
 								<button type="submit" class="btn btn-light">등록하기</button>
 							</div>
 
@@ -70,12 +77,12 @@
 						<p>
 					</div>
 				</div>
-			</form>
+
+			</div>
 		</div>
-	</div>
 
 
-
+	</form>
 
 
 	<%@include file="../common/footer.jsp"%>

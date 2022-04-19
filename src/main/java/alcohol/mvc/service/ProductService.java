@@ -73,4 +73,6 @@ public interface ProductService {
 	//goodswrite.jsp
 	public void insertwrite(ProductDTO dto) throws SQLException;
 	
+	public List<ProductDTO> selectByCode(List<OrderLineDTO> list) throws SQLException;
+	
 }
