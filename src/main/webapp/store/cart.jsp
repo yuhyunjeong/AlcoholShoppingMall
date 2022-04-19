@@ -33,7 +33,6 @@ $(document).ready(function() {
 	
 });
   
- 
 
 </script>
 
@@ -50,7 +49,7 @@ $(document).ready(function() {
 <div class="container" style="padding-left: 250px;">
 
 <form action="${path}/front" method="get">
- <input type="hidden" name="key" value="cart" /> 
+ <input type="hidden" name="key" value=order /> 
  <input type="hidden" name="methodName" value="insert" />
 
 <div class="row"> 
@@ -86,7 +85,7 @@ $(document).ready(function() {
 
 							<div class="card-body">
 								<div class="col-md-4">
-									<img src="../img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg"
+									<img src="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg"
 										class="rounded float-start" style="max-width: 150px;">
 								</div>
 
@@ -139,7 +138,7 @@ $(document).ready(function() {
 						</div>
 						<!--상품카드-->
 					</c:forEach>	
-					</div><!--그리드-->
+					</div><!--그리드--> <p>
 					
 					
        
