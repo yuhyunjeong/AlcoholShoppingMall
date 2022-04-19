@@ -81,19 +81,22 @@ public class NoticeDAOImpl implements NoticeDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql = "UPDATE NOTICE SET NO_TITLE=? ,NO_CONTENT=? WHERE NO_NUMBER=?";
+		String sql = "UPDATE NOTICE SET NO_TITLE=? ,NO_CONTENT=?,NO_DATE =? WHERE NO_NUMBER=?";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(1, noticeDto.getNoTitle());
 			ps.setString(2, noticeDto.getNoContent());
-			ps.setInt(3, noticeDto.getNoNumber());
+			ps.setString(3, noticeDto.getNoDate());
+			ps.setInt(4, noticeDto.getNoNumber());
 					
 			result = ps.executeUpdate();
 		}finally {
 			DbUtil.dbClose(ps, con);
 		}
+		
+		System.out.println(result);
 		return result;
 	}
 

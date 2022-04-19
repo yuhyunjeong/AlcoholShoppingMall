@@ -5,7 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>공지 수정</title>
+<script type="text/javascript">
+$(function(){
+	$("[name=noContent]").val($("#inputContent").val());
+	$("[name=noTitle]").val($("#inputTitle").val());
+	$("[name=noDate]").val($("#date").val());
+	
+})
 
+</script>
 <SCRIPT language=javascript>
 function checkValid() {
     var f = window.document.updateForm;
@@ -31,65 +39,71 @@ function checkValid() {
 
 <caption><h2 align="center">공지사항 수정 폼</h2></caption>
 
-<form name="updateForm" method="post" action="${path}/front?key=notice&methodName=select" 
-  onSubmit='return checkValid()' >
-    <input type="hidden" name="key" value="notice" >
-    <input type="hidden" name="methodName" value="update" >
-    <input type='hidden' name='noNumber' value="${notice.noNumber}">
-  
 	<div class="col-md-7 col-lg-8" style="float: none; margin:0 auto;">
 		<div class="container">
-		
+			<form name="updateForm" method="post" action="${path}/front">
 			<div class="row mb-5">
 				<div class="col">
 				
 				<div class="row m-5">
 				    <label for="inputTitle" class="col-sm-2 col-form-label">제목</label>
 				    <div class="col-sm-10">
-				      <input type="text" name="no_title" class="form-control" id="inputTitle" value="${notice.noTitle}" placeholder="제목을 입력해주세요.">
+				    
+				      <input type="text" name="noTitle" class="form-control" id="inputTitle" value="${param.noTitle}" placeholder="제목을 입력해주세요.">
 				    </div>
-				 </div>
+				</div>
 				 
-				 <div class="row m-5">
+				<div class="row m-5">
 				    <label for="inputContent" class="col-sm-2 col-form-label">내용</label>
 				    <div class="col-sm-10">
-				      <textarea class="form-control" name="no_content" id="inputContent" rows="10">${notice.noContent}</textarea>
+				      <textarea class="form-control" name="noContent" id="inputContent" rows="10">${param.noContent}</textarea>
 				    </div>
-				 </div>
+				</div>
 				 
-				 <div class="row m-5">
+				<div class="row m-5">
 				    <div class="col-sm-2"></div>
 				    <div class="col-sm-10">
 					  <label for="formFileMultiple" class="form-label"></label>
 					  <input class="form-control" type="file" id="formFileMultiple" multiple>
 					</div>
-				 </div>
+				</div>
 				 
 				 <div class="row m-5">
 				    <label for="date" class="col-sm-2 col-form-label">날짜</label>
 				    <div class="col-sm-10">
-				      <input type="date" class="form-control" id="date" value="${notice.noDate}">
+				      <input type="date" name="noDate" class="form-control" id="date" value="${param.noDate}">
 				    </div>
 				 </div>
 				 
 			
 					<p>
-					
+
 					<div class="row m-5" align="right">
 						 <div class="col-sm-10">
-							<button type="submit" class="btn btn-light" >수정하기</button>
+						 
+						 	
+   								 <input type="hidden" name="key" value="notice" >
+   								 <input type="hidden" name="methodName" value="update" >
+   								 <input type='hidden' name='noNumber' value="${param.noNumber}">
+   								 <button type="submit" class="btn btn-light" >수정하기</button>
+						 	
+						 
+						 
+						
 						</div>
 						
 						<div class="col-sm-2">
+						
 							<button type="button" class="btn btn-light"   onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
 						</div>
 					
 					</div><p>
-					
+				
 				</div>
 			</div>
+			</form>	
 		</div>
 	</div>
-</form>
+
 </body>
 </html>

@@ -136,18 +136,19 @@ public class NoticeController implements Controller {
 			throws Exception {
 		
 		int noNumber = Integer.parseInt(request.getParameter("noNumber"));
-		String userId = request.getParameter("userId");
 		String noTitle = request.getParameter("noTitle");
 		String noContent = request.getParameter("noContent");
-		
-		NoticeDTO notice = new NoticeDTO(userId, noTitle, noContent);
+		String 	noDate	= request.getParameter("noDate");
+		System.out.println(noTitle);
+		System.out.println(noContent);
+		NoticeDTO notice = new NoticeDTO(noNumber, noTitle, noContent,noDate);
 		
 		noService.noticeUpdate(notice);
 		
 		//상세보기페이지로 이동
 		NoticeDTO noticeDetail = noService.noticeSelect(noNumber, false);
 		request.setAttribute("notice", noticeDetail);
-		
+		System.out.println(noticeDetail);
 		return new ModelAndView("board/noticeRead.jsp");
 	}
 	
