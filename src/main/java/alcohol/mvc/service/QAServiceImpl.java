@@ -35,7 +35,9 @@ public class QAServiceImpl implements QAService {
 	@Override
 	public void qaUpdate(QADTO qaDTO) throws SQLException {
 		
-		if(qaDao.qaUpdate(qaDTO)==0) {
+		int result = qaDao.qaUpdate(qaDTO);
+		
+		if(result==0) {
 			throw new SQLException("수정되지 않았습니다.");
 		}
 
