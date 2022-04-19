@@ -2,7 +2,9 @@ package alcohol.mvc.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,27 +29,31 @@ public class QAController implements Controller {
 	/**
 	 * 전체검색하기
 	 */
-	public void select(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+	public ModelAndView select(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("ddddD");
 		String paging = request.getParameter("paging"); // 현재 페이지 번호
 		if (paging == null || paging.equals("")) {
 			paging = "1";
 		}
 
 		List<QADTO> qaList = qaService.qaAll(Integer.parseInt(paging));
-
-		//request.setAttribute("qaList", qaList);
-		//request.setAttribute("paging", paging); // 뷰에서 사용 ${requestScope.paging}
-
-		System.out.println(qaList.size());
-
-		//return new ModelAndView("board/qa.jsp");
-
+		Map<String, Object> map = new HashMap<String, Object>();
 		
-		JSONArray arr = JSONArray.fromObject(qaList);
+		
+		request.setAttribute("qaList", qaList);
+		request.setAttribute("paging", paging); // 뷰에서 사용 ${requestScope.paging}
+
+		System.out.println(qaList.size()+"페이징처리 값 나옴?");
+
+		return new ModelAndView("board/qa.jsp");
+		
+		//map.put("qaList", qaList);
+		//map.put("paging", paging);
+		/*
+		JSONArray arr = JSONArray.fromObject(map);
 		System.out.println("나옴?" + qaList.size());
 		PrintWriter out = response.getWriter();
-		out.print(arr);
+		out.print(arr);*/
 	}
 
 	/**

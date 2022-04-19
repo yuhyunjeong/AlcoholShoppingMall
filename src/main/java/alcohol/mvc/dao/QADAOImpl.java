@@ -92,8 +92,7 @@ public class QADAOImpl implements QADAO {
 
 			// 전체 레코드 수를 구해서 총 페이지 수를 구하고 DB에서 꺼내올 게시물의 개수를 pagesize만큼 가져온다.
 			int totalCount = this.getTotalCount();
-			int totalPage = totalCount % PageCnt.getPagesize() == 0 ? totalCount / PageCnt.getPagesize()
-					: (totalCount / PageCnt.getPagesize()) + 1;
+			int totalPage = totalCount % PageCnt.getPagesize() == 0 ? totalCount / PageCnt.getPagesize():(totalCount / PageCnt.getPagesize()) + 1;
 
 			PageCnt pageCnt = new PageCnt();
 			pageCnt.setPageCnt(totalPage); // 전체 페이지 수를 저장해준다.
@@ -102,8 +101,8 @@ public class QADAOImpl implements QADAO {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 
-			ps.setInt(1, (paging - 1) * PageCnt.pagesize + 1); // 시작점 번호
-			ps.setInt(2, paging * pageCnt.pagesize); // 끝점 번호
+			ps.setInt(1, (paging-1)*PageCnt.pagesize+1); // 시작점 번호
+			ps.setInt(2, paging*pageCnt.pagesize); // 끝점 번호
 
 			rs = ps.executeQuery();
 
