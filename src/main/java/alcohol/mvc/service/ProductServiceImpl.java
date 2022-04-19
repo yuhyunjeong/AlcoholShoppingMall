@@ -89,8 +89,10 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void insertwrite(ProductDTO dto) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		int result = dao.insertwrite(dto);
+		if(result==0) {
+			throw new SQLException("등록 오류가 발생했습니다.");
+		}
 	}
 	
 	

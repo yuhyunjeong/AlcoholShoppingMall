@@ -299,7 +299,7 @@ public class ProductDAOImpl implements ProductDAO {
 		PreparedStatement ps = null;
 		int result = 0;
 
-		String sql = "insert into product values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into product(p_code, cate_code, p_name,p_alcohol,p_price,p_stuck,p_date,p_detail)  values(?,?,?,?,?,?,?,?)";
 
 				try {
 					con = DbUtil.getConnection();

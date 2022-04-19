@@ -122,19 +122,21 @@ public class ProductController implements Controller {
 		System.out.println("ProductController select 나오나?");
 		
 		 String pCode = request.getParameter("pCode");
-		 String cateCode = request.getParameter("cateCode"); 
+		 String cateCode = request.getParameter("category"); 
 		 String pName = request.getParameter("pName"); 
-		 String pAlcohol = request.getParameter("pAlcohol"); 
-		 String pPrice = request.getParameter("pPrice"); 
-		 String pStuck = request.getParameter("pStuck"); 
+		 int pAlcohol =Integer.parseInt(request.getParameter("pAlcohol")); 
+		 int pPrice = Integer.parseInt(request.getParameter("pPrice")); 
+		 int pStuck = Integer.parseInt(request.getParameter("pStuck")); 
 		 String pDate = request.getParameter("pDate");
 		 String pDetail = request.getParameter("pDetail");
 		 
 		 
-		 ProductDTO dto = new ProductDTO(); proService.insert(dto);
+		 ProductDTO dto = new ProductDTO(pCode,cateCode,pName,pAlcohol,pPrice,pStuck,pDate,pDetail); 
+		 
 		 proService.insertwrite(dto);
-
-		ModelAndView mv = new ModelAndView("admin/goods.jsp", true);
+		 this.select(request, response);
+		 
+		ModelAndView mv = new ModelAndView("admin/goods.jsp");
 
 		return mv;
 	}
