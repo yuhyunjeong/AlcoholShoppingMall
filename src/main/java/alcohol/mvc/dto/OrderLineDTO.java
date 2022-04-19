@@ -8,6 +8,16 @@ public class OrderLineDTO {
 
 	public OrderLineDTO() {
 	}
+	
+	
+
+	public OrderLineDTO(String pCode, int orderLineCount) {
+		super();
+		this.pCode = pCode;
+		this.orderLineCount = orderLineCount;
+	}
+
+
 
 	public OrderLineDTO(int orderLineCode, int orderCode, String pCode, int orderLineCount) {
 		super();

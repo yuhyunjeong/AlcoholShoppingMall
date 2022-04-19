@@ -5,8 +5,48 @@
 <head>
 <meta charset="UTF-8">
 <title>안다미로_상품카테고리</title>
+<script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	function selectAll(){
+		$.ajax({
+   			url :"../ajax" , //서버요청주소
+   			type:"post", //요청방식(method방식 : get | post | put | delete )
+   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+   			data: {key :"product", methodName:"cateSelect"},
+   			success :function(result){
 
+   				let str ="";
+   				$.each(result, function(index, item) {
+   					str+="<div class='col-lg-3 col-md-6'>";
+   					str+="<div class='card mb-3 h-100'>";
+   					
+   					str+=`<a href = '${path}/store/productDetail.jsp?pName=${"${item.pName}"}&type=${param.type}&title=${param.title}'>`
+   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`; 
+   					str+="<div class='card-body'>";
+   					str+="<p class='card-text'>";
+   					str+=`<b>${'${item.pName}'}</b><p><p>`;
+   					str+=`<b>가격 : ${'${item.pPrice}'} 원</b><p>`;
+   					str+="<hr>";
+   					str+="<b>상품 설명</b><p>";    
+   					str+=`${'${item.pDetail}'}`;
+   					str+="</p></div></div></div>";
+   				});
+   				//$("rrr").remove();
 
+   				$("#rrr").empty();
+				$("#rrr").html(str);
+					
+   			},error : function(err){  
+   				alert(err+"에러 발생했어요.");
+   			}  //실팽했을때 실행할 함수 
+   		});
+		
+	}
+	selectAll();
+	
+});
+</script>
 </head>
 <body>
 <%@include file="../common/header.jsp"%>

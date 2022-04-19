@@ -38,7 +38,16 @@ public class NoticeController implements Controller {
 		
 		String field = request.getParameter("field");
 		
+
+		///paging처리하기 //////////////////////////////////////
+		String pageNo = request.getParameter("pageNo");//현재페이지번호 
+		if(pageNo==null || pageNo.equals("")) {
+			pageNo="1";
+		}
+		
 		List<NoticeDTO> noticeList = noService.noticeAll();
+		
+		
 		request.setAttribute("noticeList", noticeList);
 		for (NoticeDTO n : noticeList) {
 			System.out.println(n.getNoContent());
