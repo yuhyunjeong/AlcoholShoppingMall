@@ -47,16 +47,16 @@
 							<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
 							<form name="requestForm" method="get"
 								action="${path}/board/noticeUpdate.jsp">
-								<input type=hidden name="noNumber" value="${notice.noNumber}">
-								<input type=hidden name="noTitle" value="${notice.noTitle}">
-								<input type=hidden name="noContent" value="${notice.noContent}">
+								<input type=hidden name="qaNumber" value="${qa.qaNumber}">
+								<input type=hidden name="qaTitle" value="${qa.qaTitle}">
+								<input type=hidden name="qaContent" value="${qa.qaContent}">
 								<input type=submit class="btn btn-light" value="수정하기">
 							</form>
 							<!-- 	<button type="button" onclick="location.href='${path}/board/noticeUpdate.jsp'" class="btn btn-light" >수정하기</button> -->
 						</div>
 						<div class="col-sm-2">
 							<button type="button" class="btn btn-light"
-								onclick="location.href='${path}/front?key=notice&methodName=select'">목록</button>
+								onclick="location.href='${path}/front?key=qa&methodName=select'">목록</button>
 						</div>
 					</div>
 

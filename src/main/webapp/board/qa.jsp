@@ -11,7 +11,8 @@ h1 {
 	text-align: center;
 }
 
-div {margin 100px;
+div {
+	margin 100px;
 	
 }
 </style>
@@ -115,7 +116,7 @@ div {margin 100px;
 						<tr>
 							<th scope="row">${qa.qaNumber}</th>
 							<td>${qa.userId}</td>
-							<td>${qa.qaTitle }</td>
+							<td>${qa.qaTitle}</td>
 							<td><a
 								href="${path}/front?key=qa&methodName=selectByQANum&qaNumber=${qa.qaNumber}">${qa.qaContent}</a>
 							</td>
