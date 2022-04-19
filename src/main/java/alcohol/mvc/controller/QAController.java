@@ -61,10 +61,12 @@ public class QAController implements Controller {
 	 */
 	public ModelAndView selectByQANum(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		int qaNumber = Integer.parseInt(request.getParameter("qaNubmer"));
+		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
 		QADTO qa = qaService.qaSelect(qaNumber);
 		request.setAttribute("qa", qa);
 
+		System.out.println("상세보기 나오냐아아아아아아ㅏ아ㅓㄱ악" + qaNumber );
+		
 		return new ModelAndView("board/qaRead.jsp");
 	}
 
@@ -75,18 +77,19 @@ public class QAController implements Controller {
 
 		// 전송된 데이터 받기
 //		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
-		String userName = request.getParameter("userName");
+		String userId = request.getParameter("userId");
 		String qaTitle = request.getParameter("qaTitle");
-		String qaCategory = request.getParameter("qaCategory");
 		String qaContent = request.getParameter("qaContent");
-		String qaDate = request.getParameter("qaDate");
-		int qaSecret = Integer.parseInt(request.getParameter("secret"));
 
-		System.out.println(qaCategory);
+		System.out.println("QA등록하기 잘 나오니잉");
 		
-		QADTO qa = new QADTO();
+		QADTO qa = new QADTO(userId, qaTitle, qaContent);
+		
+		qaService.qaInsert(qa);
+		
+		ModelAndView mv = this.select(request, response);
 
-		return null;
+		return mv;
 	}
 
 	/**

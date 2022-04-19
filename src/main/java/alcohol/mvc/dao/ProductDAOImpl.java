@@ -375,6 +375,36 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 		return proList;
 	}
+
+	@Override
+	public List<ProductDTO> selectAll() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps =null;
+		ResultSet rs = null;
+		List<ProductDTO> list = new ArrayList<ProductDTO>();
+
+		String sql ="SELECT * FROM PRODUCT";
+		
+		ProductDTO product = null;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+		
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				product = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7)
+						,rs.getString(8),rs.getString(10),rs.getString(11),rs.getString(9),rs.getInt(12));
+				list.add(product);
+			}
+
+
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		System.out.println(list.get(0).getpName());
+		return list;
+	}
 	
 
 }

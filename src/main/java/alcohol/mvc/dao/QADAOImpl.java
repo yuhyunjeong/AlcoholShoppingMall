@@ -19,7 +19,7 @@ public class QADAOImpl implements QADAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "INSERT INTO NOTICE VALUES(qa_no_seq.nextval,?,?,?,?,sysdate,?)";
+		String sql = "INSERT INTO QA VALUES(qa_no_seq.nextval,?,?,?,?,sysdate,?)";
 
 		try {
 			con = DbUtil.getConnection();

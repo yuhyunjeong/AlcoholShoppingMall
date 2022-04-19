@@ -75,4 +75,6 @@ public interface ProductService {
 	
 	public List<ProductDTO> selectByCode(List<OrderLineDTO> list) throws SQLException;
 	
+	public  List<ProductDTO> selectAll()throws SQLException;
+	
 }
