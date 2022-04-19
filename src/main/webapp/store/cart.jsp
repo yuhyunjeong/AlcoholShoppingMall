@@ -85,7 +85,7 @@ $(document).ready(function() {
 
 							<div class="card-body">
 								<div class="col-md-4">
-									<img src="../img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg"
+									<img src="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg"
 										class="rounded float-start" style="max-width: 150px;">
 								</div>
 
