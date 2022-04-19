@@ -59,12 +59,24 @@
 			   				let price = "";
 			   				let pAlcohol = "";
 			   				let price2 = 0;
+			   				let review = "";
 			   				$.each(result, function(index, item) {
 			   					content += `<h5>${"${item.pDetail}"}</h5>`;
 			   					price +=`가격 : ${'${item.pPrice}'}원`;
 			   					pAlcohol +=`<b>도수 : ${'${item.pAlcohol}'}%</b>`;
 			   					price2 = `${'${item.pPrice}'}`;
 			   					pCode=`${'${item.pCode}'}`;
+			   					
+			   					
+			   					
+			   					/* review+=`<tr id="review">`
+			   					review+=`<th scope="row">1</th>`
+			   					review+=`<td>김정현</td>`
+			   					review+=`<td>이거 디비에서 뺴와야한다</td>`
+			   					review+=`<td>별점이다</td>`
+			   					review+=`<td>2022-04-05</td>`
+			   					review+=`<td><img id=reviewImg src='${path}/img/${"${param.type}"}/${"${param.pName}"}2.jpg'  class='rounded float-end' style='width: 50px; height: 50px'></td>`
+			   					review+=`</tr>`	 */
 			   				});
 			   				
 			   				$(".plus").click(function(){
@@ -94,7 +106,8 @@
 			   				    $(".priceBox").val((price2*minusNum)+"원");
 			   				   }
 			   				  });
-			   				
+			   				$("#listTable tr:gt(0)").remove();
+			   				$("#listTable tr:eq(0)").after(review);
 			   				$(".pCode").val(pCode);
 			   				$(".priceBox").val(price2+"원");
 							$(".content").html(content);
@@ -106,13 +119,9 @@
 			   		});
 					
 				}
-			  
-			  
-			  
-			  
+
 			  selectAll();
 			  
-		
 		
 	});
 
@@ -197,15 +206,16 @@
 			</div>
 	</div>
 	<div class="row mt-5">
-		<div class="col">
-			<img src="../img/A/냥이탁주.jpg" class="rounded img-thumbnail" width="100%" height="100%">		
+		<div class="col" id = "content">
+			<img src="../img/${param.type}/${param.pName}2.jpg" class="rounded img-thumbnail" width="100%" height="100%">
+
+			<img src="../img/${param.type}/${param.pName}3.jpg" class="rounded img-thumbnail" width="100%" height="100%">		
 		</div>
 	</div>
 	
 	<div class="row mt-5">
 		<div class="col">
-				<table class="table table-hover">
-				  <thead>
+				<table id="listTable" class="table table-hover">
 				    <tr>
 				      <th scope="col">#</th>
 				      <th scope="col">글쓴이</th>
@@ -214,17 +224,7 @@
 				      <th scope="col">등록일</th>
 				      <th scope="col">사진</th>
 				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <th scope="row">1</th>
-				      <td>김정현</td>
-				      <td>너무 맛있었다</td>
-				      <td>별점이다</td>
-				      <td>2022-04-05</td>
-				      <td><img src="../img/A/냥이탁주.jpg" class="rounded float-end" alt="..."></td>
-				    </tr>
-				  </tbody>
+				    
 				</table>	
 		</div>
 	</div>
