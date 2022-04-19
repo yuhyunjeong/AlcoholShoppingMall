@@ -11,27 +11,49 @@ h1 {
 	text-align: center;
 }
 
-div {
-	margin 100px;
+div {margin 100px;
 	
 }
 </style>
 <script type="text/javascript">
-	$(function() {
-		
-		function qaFilter(v){	
-			$.ajax({
-	   			url :"../ajax" , //서버요청주소
-	   			type:"post", //요청방식(method방식 : get | post | put | delete )
-	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-	   			data: {key :"qa", methodName:"selectAll", cate:"v"},
-	   			success :function(result){
-					 alert(1);
-	   			}
-			})
-		}
-	});
+$(function(){
+	alert("jquery");
+	function qaFilter(c){
+		alert("qfliter");
+		$.ajax({
+   			url :"../ajax" , //서버요청주소
+   			type:"post", //요청방식(method방식 : get | post | put | delete )
+   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+   			data: {key :"qa", methodName:"selectAll", cate : c},
+   			success :function(result){
+   				alert("success");
+   				let str ="";
+   				$.each(result, function(index, item) {
+   					str += "<tr>";
+					str += `<th scope='row'>${'${item.qaNumber}'}</th>`;
+					str += `<td>${'${item.userId}'}</td>`;
+					str += `<td>${'${item.qaTitle}'}</td>`;
+					str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaNumber}"}'>${'${item.qaContent}'}</a></td>`;
+					str += `<td>${'${item.qaDate}'}</td>`;
+					str += "</tr>"
+   				});
+   				//$("rrr").remove();
 
+   				$("#qaTable tr:gt(0)").remove();
+				$("#qaTalbe tr:eq(0)").after(str);
+					
+   			},error : function(err){  
+   				alert(err+"에러 발생했어요.");
+   			}  //실팽했을때 실행할 함수 
+   		});	
+	}//function 끝
+	$("[name=btn]").click(function(){
+		qaFilter($(this).val());
+	})
+	
+	
+	
+})//jQuery끝
 	
 </script>
 </head>
