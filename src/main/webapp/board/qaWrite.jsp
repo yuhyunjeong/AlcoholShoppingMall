@@ -14,10 +14,10 @@
 	</caption>
 
 
+	<form name="writeForm" method="post" action="${path}/front">
+		<div class="col-md-7 col-lg-8" style="float: none; margin: 0 auto;">
+			<div class="container">
 
-	<div class="col-md-7 col-lg-8" style="float: none; margin: 0 auto;">
-		<div class="container">
-			<form name="writeForm" method="post" action="${path}/front">
 				<div class="row mb-5">
 					<div class="col">
 
@@ -46,17 +46,18 @@
 						</div>
 
 						<div class="row m-5">
-							<label for="inputTitle" class="col-sm-2 col-form-label">비밀글 설정</label>
+							<label for="inputTitle" class="col-sm-2 col-form-label">비밀글
+								설정</label>
 							<div class="col-sm-10">
 								<input type="checkbox" name="secret" value="">
 							</div>
 						</div>
 
-							
+
 						<p>
 						<div class="row m-5" align="right">
 							<div class="col-sm-10">
-								<input type="hidden" name="key" value="">
+								<input type="hidden" name="key" value="qa"> 
 								<input type="hidden" name="methodName" value="insert">
 								<button type="submit" class="btn btn-light">등록하기</button>
 							</div>
@@ -70,12 +71,12 @@
 						<p>
 					</div>
 				</div>
-			</form>
+
+			</div>
 		</div>
-	</div>
 
 
-
+	</form>
 
 
 	<%@include file="../common/footer.jsp"%>

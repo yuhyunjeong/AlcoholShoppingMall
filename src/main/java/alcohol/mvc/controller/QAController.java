@@ -1,6 +1,7 @@
 package alcohol.mvc.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import alcohol.mvc.dto.QADTO;
 import alcohol.mvc.service.QAService;
 import alcohol.mvc.service.QAServiceImpl;
+import net.sf.json.JSONArray;
 
 public class QAController implements Controller {
 
@@ -27,20 +29,20 @@ public class QAController implements Controller {
 	 */
 	public ModelAndView select(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		String paging = request.getParameter("paging"); // 현재 페이지 번호 
-		if(paging==null || paging.equals("")) {
+		String paging = request.getParameter("paging"); // 현재 페이지 번호
+		if (paging == null || paging.equals("")) {
 			paging = "1";
 		}
-		
+
 		List<QADTO> qaList = qaService.qaAll(Integer.parseInt(paging));
-		
+
 		request.setAttribute("qaList", qaList);
 		request.setAttribute("paging", paging); // 뷰에서 사용 ${requestScope.paging}
 
 		System.out.println(qaList.size());
 
 		return new ModelAndView("board/qa.jsp");
-		
+
 	}
 
 	/**
@@ -51,7 +53,7 @@ public class QAController implements Controller {
 		int qaNumber = Integer.parseInt(request.getParameter("qaNubmer"));
 		QADTO qa = qaService.qaSelect(qaNumber);
 		request.setAttribute("qa", qa);
-		
+
 		return new ModelAndView("board/qaRead.jsp");
 	}
 
@@ -64,7 +66,11 @@ public class QAController implements Controller {
 		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
 		String userName = request.getParameter("userName");
 		String qaTitle = request.getParameter("qaTitle");
+		String qaContent = request.getParameter("qaContent");
 		String qaDate = request.getParameter("qaDate");
+		int qaSecret = Integer.parseInt(request.getParameter("secret"));
+
+		System.out.println(qaTitle);
 
 		return null;
 	}
@@ -83,6 +89,21 @@ public class QAController implements Controller {
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		return null;
+	}
+	
+	
+	public void selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		
+		int categoryNum = Integer.parseInt(request.getParameter("cate"));
+		
+		List<QADTO> qaList = qaService.qaSelectAll(categoryNum);
+		JSONArray arr = JSONArray.fromObject(qaList);
+		System.out.println("나옴?" + qaList.size());
+		PrintWriter out = response.getWriter();
+		out.print(arr);
+		
 	}
 
 }

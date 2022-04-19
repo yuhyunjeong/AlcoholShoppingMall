@@ -89,7 +89,7 @@ public class QADAOImpl implements QADAO {
 		String sql = "select * from (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM QA ORDER BY QA_DATE desc) a) where  rnum>=? and rnum <=?";
 
 		try {
-			
+
 			// 전체 레코드 수를 구해서 총 페이지 수를 구하고 DB에서 꺼내올 게시물의 개수를 pagesize만큼 가져온다.
 			int totalCount = this.getTotalCount();
 			int totalPage = totalCount % PageCnt.getPagesize() == 0 ? totalCount / PageCnt.getPagesize()
@@ -101,15 +101,15 @@ public class QADAOImpl implements QADAO {
 
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			
+
 			ps.setInt(1, (paging - 1) * PageCnt.pagesize + 1); // 시작점 번호
 			ps.setInt(2, paging * pageCnt.pagesize); // 끝점 번호
 
-			
 			rs = ps.executeQuery();
-			
+
 			while (rs.next()) {
-				QADTO qaDTO = new QADTO(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(5), rs.getString(6));
+				QADTO qaDTO = new QADTO(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(5),
+						rs.getString(6));
 
 				qaList.add(qaDTO);
 			}
@@ -147,7 +147,7 @@ public class QADAOImpl implements QADAO {
 
 		return totalCount;
 	}
-	
+
 	@Override
 	public QADTO qaSelect(int qaNumber) throws SQLException {
 		Connection con = null;
@@ -170,6 +170,35 @@ public class QADAOImpl implements QADAO {
 			DbUtil.dbClose(rs, ps, con);
 		}
 		return qa;
+	}
+
+	@Override
+	public List<QADTO> qaSelectAll(int categoryNum) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<QADTO> list = new ArrayList<QADTO>();
+		
+		String sql = "SELECT * FROM QA WHERE QA_CATEGORY=?";
+
+		
+		try {
+			
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, categoryNum);
+
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				QADTO qa = new QADTO(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(5), rs.getString(6));
+						
+				list.add(qa);
+
+			}
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return list;
 	}
 
 }

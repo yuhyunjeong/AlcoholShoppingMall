@@ -30,4 +30,6 @@ public interface QAService {
 	 * 상세검색
 	 * */
 	public QADTO qaSelect(int qaNumber)throws SQLException;
+	
+	public List<QADTO> qaSelectAll(int categoryNum) throws SQLException;
 }
