@@ -68,5 +68,9 @@ public interface ProductService {
 	public List<ProductDTO> cartSelect(List<CartDTO> list) throws SQLException;
 	
 	public List<OrderLineDTO> cateSelect() throws SQLException;
+
+
+	//goodswrite.jsp
+	public void insertwrite(ProductDTO dto) throws SQLException;
 	
 }

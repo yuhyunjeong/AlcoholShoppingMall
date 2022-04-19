@@ -25,11 +25,7 @@ public class ProductDTO {
 		this.pStuck = pStuck;
 		this.pDate = pDate;
 		this.pDetail = pDetail;
-		
 	}
-
-	
-	
 
 	public ProductDTO(String pCode, String cateCode, String pName, int pAlcohol, int pPrice, int pStuck, String pDate,
 			String pImage, String pImage2, String pImage3, String pDetail,int rStar) {
@@ -41,6 +37,8 @@ public class ProductDTO {
 		this.pImage3 = pImage3;
 		this.rStar = rStar;
 	}
+
+	
 
 	public String getpCode() {
 		return pCode;

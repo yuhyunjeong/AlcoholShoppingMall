@@ -15,7 +15,7 @@
 	src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(document).ready(function() { //전체선택 해제
 		$("#flexCheckDefault").click(function() {
 			if ($("#flexCheckDefault").is(":checked"))
 				$("input[name=chk]").prop("checked", true);
@@ -32,6 +32,17 @@
 			else
 				$("#flexCheckDefault").prop("checked", true);
 		});
+		
+		//수량*값 
+        var num = document.getElementById('num'); 
+		num.addEventListener('change',function(){ 
+			var result = document.getElementById('result'); 
+			var price = document.getElementById('price'); 
+			result.value = Number(price.value)*Number(this.value); });
+
+
+		
+		
 
 	});
 </script>
@@ -62,13 +73,13 @@
 
 				</div>
 			</div>
-
-
+			
 			<div class="row">
+		
                     <form action="${path}/store/order.jsp">
-                    
+      
 				<div class="col-md-5 mr-3">
-
+				
 					<c:forEach items="${cartList}" var="cartList" varStatus="status">
 
 						<div class="card w-85">
@@ -108,7 +119,7 @@
 
 									<div class="col">
 										<div class="text-end">
-											<input type="number" name="count"
+											<input type="number" name="count" id="count"
 												value="${cartList.cartCount}" min="1" max="99">개
 										</div>
 									</div>
@@ -144,12 +155,10 @@
 						<p>
 							<!--상품카드-->
 					</c:forEach>
-					
-					
-					
-				</div><!--col-md-5 mr-3 -->
 
-				<div class="col-md-offset-2 col-md-4">
+				</div><!--col-md-5 mr-3 -->
+   
+                  <div class="col-md-offset-2 col-md-4">
 					<div class="card" style="width: 18rem;">
 						<div class="card-body">
 							<b>계산서</b>
@@ -188,14 +197,21 @@
 					</div><p><p>
 					<!--계산서카드-->
 					
-	
-
-					<button type="submit" class="btn btn-primary btn-lg">주문하기</button>
-					</div>
 					
+					<input type="hidden" name="img" value="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg">
+					<button type="submit" class="btn btn-primary btn-lg">주문하기</button>
+					
+					</div><!--col-md-offset-2 col-md-4-->
+                  
+   
+				
+				
 					</form>
-    
-                </div>  
+              
+              
+
+              
+                </div> 
 				<!--row 그리드-->
 				
 			</div>

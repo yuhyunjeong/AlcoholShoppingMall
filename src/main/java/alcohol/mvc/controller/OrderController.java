@@ -1,6 +1,7 @@
 package alcohol.mvc.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,8 +12,11 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 
 import alcohol.mvc.dto.OrdersDTO;
+import alcohol.mvc.dto.ProductDTO;
+import alcohol.mvc.dto.UserDTO;
 import alcohol.mvc.service.OrderService;
 import alcohol.mvc.service.OrderServiceImpl;
+import net.sf.json.JSONArray;
 
 public class OrderController implements Controller{
 	
@@ -76,13 +80,26 @@ public class OrderController implements Controller{
 		String orderStatus = request.getParameter("orderstatus");
 		
 		HttpSession session = request.getSession();
-		String uId = (String)session.getAttribute("uId");
+		UserDTO uId = (UserDTO)session.getAttribute("userId");
 		
-		String pImage = request.getParameter("pImage");
+		String Name = uId.getUserName();
+		String Addr = uId.getUserAddr();
+		String Addr2 = uId.getUserAddr2();
+		String Phone = uId.getUserPhone();
+		int Point = uId.getUserPoint();
+		
+		String coupon = request.getParameter("coupon");
+		
 		String pName = request.getParameter("pName");
+		String pImage = request.getParameter("pImage");
+		String pPrice = request.getParameter("pPrice");
 		
+		/*
+		 * DTO dto = proService.searchBy(name); JSONArray arr =
+		 * JSONArray.fromObject(dto); //System.out.println(dto.getpName()+"나와라");
+		 * PrintWriter out = response.getWriter(); out.print(arr);
+		 */
 		
-	
 		return new ModelAndView("store/order.jsp");
 	}
 	
@@ -105,7 +122,5 @@ public class OrderController implements Controller{
 		
 		return new ModelAndView("store/order.jsp");
 	}
-	
-	
 
 }

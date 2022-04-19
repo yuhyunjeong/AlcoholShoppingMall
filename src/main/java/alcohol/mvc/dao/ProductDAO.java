@@ -70,5 +70,9 @@ public interface ProductDAO {
 	public List<ProductDTO> cartSelect(List<CartDTO> list) throws SQLException;
 	
 	public List<OrderLineDTO> cateSelect() throws SQLException;
+
+	/*goodswrite.jsp
+	insert into values(?,?,?,?,?,?,?,?)*/
+	public int insertwrite(ProductDTO dto) throws SQLException;
 	
 }

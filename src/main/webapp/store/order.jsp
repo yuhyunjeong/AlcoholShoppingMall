@@ -21,7 +21,7 @@
 
 <script type="text/javascript">
 
-  $(function(){
+    $(function(){
 	 
 	 function selectAll(){
 		 $.ajax({
@@ -35,8 +35,10 @@
 	   				
 	   				$.each(result, function(index, item) {
 	   			
-	   					str+=`${item.uId}`;
-	   					
+	   					str+="<div class='row'>";
+	   					str+="<div class='col'>";
+	   					str+=`<div class='text-start'><h3><b>${'${item.pName}'}</b></h3></div>`;
+	   					str+="</div>"
 	   				});
 	   				//$("rrr").remove();
 
@@ -50,7 +52,7 @@
 		 
 	 }
 	 selectAll()
- }) 
+ })      
   
 </script>
 
@@ -67,14 +69,14 @@
 <div class="container row" style="float: none; margin:100 auto;">
 <div class="col-md-9 col-lg-9" style="float: none; margin:0 auto;"><p>
 
-
-
 <div class="row">
  <div class="col">
-  <div class="text-start"><h3><b>${proList.pName}</b></h3></div> 
+  <div class="text-start">${pName}</div> 
  </div>
+
+
  <div class="col">
-  <img src="${path}/img/${proList.cateCode}/${proList.pImage}.jpg" class="rounded float-end" style="width:180px; height:250px;">   
+  <img src="${path}/img/${param.proList}/${param.proList.pImage}.jpg" class="rounded float-end" style="width:180px; height:250px;">   
  </div>
 </div>
 
@@ -85,7 +87,7 @@
  <div class="text-start">수량</div> 
  </div> 
  <div class="col">
- <div class="text-center"><fmt:formatNumber value="${proList.pPrice}" pattern="###,###" />원</div><p>
+ <div class="text-center"><fmt:formatNumber value="${param.pPrice}" pattern="###,###"/>원</div><p>
  <div class="text-center">${param.count}개</div>
  </div> 
 </div>
