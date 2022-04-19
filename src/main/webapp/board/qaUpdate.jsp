@@ -34,7 +34,7 @@
 							<div class="col-sm-10">
 								<input type="hidden" name="key" value="qa"> <input
 									type="hidden" name="methodName" value="update"> <input
-									type='hidden' name='qaNumber' value="${param.noNumber}">
+									type='hidden' name='qaNumber' value="${param.qaNumber}">
 								<button type="submit" class="btn btn-light">수정하기</button>
 							</div>
 
