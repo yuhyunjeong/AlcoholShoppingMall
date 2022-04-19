@@ -33,10 +33,22 @@
 				$("#flexCheckDefault").prop("checked", true);
 		});
 		
+		 
 		
-		  
+		function result(){
+			
+			var result = 0;
 
-
+			$().each(function(){
+				result = 
+			})
+			
+			if(document.getElementById("count").value && document.getElementById("price").value){
+				document.getElementById("total").value = document.getElementById("count").value *  
+				document.getElementById("count").value;
+			}
+		}
+	 
 	});
 </script>
 
@@ -103,9 +115,10 @@
                                  <div class="row">
 
 									<div class="col">
-										<div class="text-end">
-											<input type="number" name="count" id="count"
-												value="${cartList.cartCount}" min="1" max="99">개
+										<div class="text-end"> 
+										   <input type="button" onclick="count('plus')" value="+">
+											<input id="count" value="${cartList.cartCount}">개
+										   <input type="button" onclick="count('minus')" value="-">
 										</div>
 									</div>
 								</div><p><p><p><!--row-->
@@ -119,15 +132,20 @@
 										</div>
 									</div>
 
+									
 									<div class="col">
 										<div class="text-end">
-											<fmt:formatNumber value="${proList[status.index].pPrice}" pattern="###,###"/>원
+											<input id="price" value="<fmt:formatNumber value="${proList[status.index].pPrice}" 
+											pattern="###,###"/>" readonly>원
 										</div>
 										<p>
 										<div class="text-end">
-											<b><fmt:formatNumber value="" pattern="###,###"/>원</b>
+											<b><input id="result" value="<fmt:formatNumber value="" pattern="###,###"/>" readonly>원</b>
 										</div>
 									</div>
+									
+								
+								
 								</div><!--row-->
 								
 								
@@ -161,17 +179,17 @@
 								</div>
 								<div class="col">
 									<div class="text-end">
-										<fmt:formatNumber value="${cart.totalprice}" pattern="###,###" />
+										<fmt:formatNumber value="" pattern="###,###" />
 										원
 									</div>
 									<p>
 									<div class="text-end">
-										<fmt:formatNumber value="${cart.charge}" pattern="###,###" />
+										<fmt:formatNumber value="3000" pattern="###,###" />
 										원
 									</div>
 									<p>
 									<div class="text-end">
-										<b><fmt:formatNumber value="${cart.total}"
+										<b><fmt:formatNumber value=""
 												pattern="###,###" />원</b>
 									</div>
 									<p>

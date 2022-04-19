@@ -23,6 +23,11 @@ button {
 
 <script type="text/javascript">
 
+  function "localhref='goods.jsp'"(){
+	  
+	  document.read.methodName.value="delete";
+	  document.read.submit();
+  }
 
 
 </script>
@@ -73,7 +78,7 @@ button {
 						<td>${product.pPrice}</td>
 						<td>${product.pStuck}</td>
 						<td>${product.pDate}</td>
-						<td><input type="button" name="delete" id="delete" value="삭제" onclick="localhref='goods.jsp'"></td>
+						<td><input type="button" id="delete" value="삭제" onclick="localhref='goods.jsp'"></td>
 					</tr>
 				</c:forEach>
 
