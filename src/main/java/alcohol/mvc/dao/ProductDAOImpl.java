@@ -9,6 +9,7 @@ import java.util.List;
 
 import alcohol.mvc.dto.CartDTO;
 import alcohol.mvc.dto.CategoryDTO;
+import alcohol.mvc.dto.OrderLineDTO;
 import alcohol.mvc.dto.ProductDTO;
 import alcohol.mvc.util.DbUtil;
 import oracle.jdbc.driver.DBConversion;
@@ -253,6 +254,37 @@ public class ProductDAOImpl implements ProductDAO {
 		} finally {
 			DbUtil.dbClose(rs, ps, con);	
 		}
+		return list;
+	}
+
+	@Override
+	public List<OrderLineDTO> cateSelect() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		List<OrderLineDTO> list = new ArrayList<OrderLineDTO>();
+		OrderLineDTO dto = null;
+		
+		String sql = "select * from (select  p_code, sum(order_line_count) from order_line group by p_code order by sum(order_line_count) desc) where rownum<=3;";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+					
+			while(rs.next()) {
+				dto = new OrderLineDTO(rs.getString(1),rs.getInt(2));
+			 
+				list.add(dto);
+			
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		
+		}
+	
 		return list;
 	}
 	

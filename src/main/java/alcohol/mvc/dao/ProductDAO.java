@@ -5,6 +5,7 @@ import java.util.List;
 
 import alcohol.mvc.dto.CartDTO;
 import alcohol.mvc.dto.CategoryDTO;
+import alcohol.mvc.dto.OrderLineDTO;
 import alcohol.mvc.dto.ProductDTO;
 
 public interface ProductDAO {
@@ -41,7 +42,7 @@ public interface ProductDAO {
 	 * */
 	public  List<ProductDTO> selectAll(String type,String filter)throws SQLException;
 	
-
+	
 	
 	/**
 	 * 상품 상세 검색 SELECT * FROM PRODUCT WHERE P_CODE=?
@@ -67,4 +68,7 @@ public interface ProductDAO {
 	 * cartSelect
 	 * */
 	public List<ProductDTO> cartSelect(List<CartDTO> list) throws SQLException;
+	
+	public List<OrderLineDTO> cateSelect() throws SQLException;
+	
 }

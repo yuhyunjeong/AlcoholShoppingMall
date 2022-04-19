@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import alcohol.mvc.dto.OrderLineDTO;
 import alcohol.mvc.dto.ProductDTO;
 import alcohol.mvc.service.ProductService;
 import alcohol.mvc.service.ProductServiceImpl;
@@ -102,7 +103,19 @@ public class ProductController implements Controller {
 		return mv;
 	}
 	
-	
+	public void cateSelect(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		response.setContentType("text/html;charset=UTF-8");
+		
+		List<OrderLineDTO> list = proService.cateSelect();
+		
+		
+		JSONArray arr = JSONArray.fromObject(list);
+		// System.out.println(dto.getpName()+"나와라");
+		PrintWriter out = response.getWriter();
+		out.print(arr);
+
+	}
 	
 		
 

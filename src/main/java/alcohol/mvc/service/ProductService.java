@@ -5,6 +5,7 @@ import java.util.List;
 
 import alcohol.mvc.dto.CartDTO;
 import alcohol.mvc.dto.CategoryDTO;
+import alcohol.mvc.dto.OrderLineDTO;
 import alcohol.mvc.dto.ProductDTO;
 
 public interface ProductService {
@@ -65,4 +66,7 @@ public interface ProductService {
 	 * cartSelect
 	 * */
 	public List<ProductDTO> cartSelect(List<CartDTO> list) throws SQLException;
+	
+	public List<OrderLineDTO> cateSelect() throws SQLException;
+	
 }
