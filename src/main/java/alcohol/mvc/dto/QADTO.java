@@ -18,6 +18,15 @@ public class QADTO {
 		this.qaDate = qaDate;
 	}
 
+	public QADTO(int qaNumber, String userId, String qaTitle, String qaContent ,String qaDate) {
+		super();
+		this.qaNumber = qaNumber;
+		this.userId = userId;
+		this.qaContent = qaContent;
+		this.qaTitle = qaTitle;
+		this.qaDate = qaDate;
+	}
+
 	public QADTO(int qaNumber, String userId, int qaCategory, String qaTitle, String qaContent, String qaDate,
 			int qaSecret) {
 		this(qaTitle, qaContent, qaDate);

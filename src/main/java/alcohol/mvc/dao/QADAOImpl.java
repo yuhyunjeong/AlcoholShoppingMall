@@ -109,8 +109,7 @@ public class QADAOImpl implements QADAO {
 			rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				QADTO qaDTO = new QADTO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5),
-						rs.getNString(6), rs.getInt(7));
+				QADTO qaDTO = new QADTO(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(5), rs.getString(6));
 
 				qaList.add(qaDTO);
 			}
