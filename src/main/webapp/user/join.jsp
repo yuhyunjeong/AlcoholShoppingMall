@@ -70,6 +70,8 @@ input:focus::-webkit-input-placeholder {
 			}
 		}).open();
 	}
+
+
 </script>
 </head>
 <body>
@@ -78,14 +80,16 @@ input:focus::-webkit-input-placeholder {
 	<p>
 	<p>
 	<div class="col-sm-6, container">
-		<form method="post" action="${path}/front">
+		<form name="inForm" id="inForm" method="post" action="${path}/front">
 
 			<div class="m-3">
 				<h6>아이디</h6>
-				<input type="text" name="id" placeholder="아이디를 입력해주세요." required="required">
+				<input type="text" name="id" placeholder="아이디를 입력해주세요." onclick="idCheck()"
+					required="required">
 				<p>
 				<h6>비밀번호</h6>
-				<input type="password" name="pwd" placeholder="8자 이상 영문/숫자를 조합해주세요." required="required">
+				<input type="password" name="pwd" placeholder="8자 이상 영문/숫자를 조합해주세요."
+					required="required">
 
 				<p>
 				<h6>비밀번호 확인</h6>
@@ -93,29 +97,36 @@ input:focus::-webkit-input-placeholder {
 					placeholder="비밀번호를 한번 더 입력해주세요." required="required">
 				<p>
 				<h6>이름</h6>
-				<input type="text" name="name" placeholder="이름을 입력해주세요." required="required">
+				<input type="text" name="name" placeholder="이름을 입력해주세요."
+					required="required">
 				<p>
 				<h6>주민등록번호</h6>
-				<input type="text" name="jumin" placeholder="주민등록번호를 입력해주세요." required="required">
+				<input type="text" name="jumin" placeholder="주민등록번호를 입력해주세요."
+					required="required">
 				<p>
 				<h6>연락처</h6>
-				<input type="text" name="tel" placeholder="연락처를 입력해주세요." required="required">
+				<input type="text" name="tel" placeholder="연락처를 입력해주세요."
+					required="required">
 				<p>
 				<h6>이메일</h6>
-				<input type="text" name="email" placeholder="이메일을 입력해주세요." required="required">
+				<input type="text" name="email" placeholder="이메일을 입력해주세요."
+					required="required">
 				<p>
-				<h6>주소</h6> 
-				<input type="text" name="addr" id="member_post" placeholder="Zip Code" readonly
-					onclick="findAddr()"><br>
-				<input type="text" name="addr2" id="member_addr" placeholder="Address"><br>
-				<input type="text" name="addr3" placeholder="Detailed Address">
+				<h6>주소</h6>
+				<input type="text" name="addr" id="member_post"
+					placeholder="Zip Code" readonly onclick="findAddr()"><br>
+				<input type="text" name="addr2" id="member_addr"
+					placeholder="Address"><br> <input type="text"
+					name="addr3" placeholder="Detailed Address">
 				<p>
 				<p>
 			</div>
 			<div class="m-5">
-				<input type="hidden" name="key" value = "user" /> <!-- Controller를 찾는 정보 -->
-				<input type="hidden" name="methodName" value = "join" />  <!-- 메소드이름 -->
-				<input class="w-25 btn btn-dark" type="submit" value="가입완료">
+				<input type="hidden" name="key" value="user" />
+				<!-- Controller를 찾는 정보 -->
+				<input type="hidden" name="methodName" value="join" />
+				<!-- 메소드이름 -->
+				<input class="w-25 btn btn-dark" type="submit" value="가입완료" id="btn">
 			</div>
 			<p>
 		</form>
