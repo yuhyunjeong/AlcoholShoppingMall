@@ -21,20 +21,6 @@
 				<div class="col">
 
 					<div class="row m-5">
-						<label for="inputNumber" class="col-sm-2 col-form-label">글번호</label>
-						<div class="col-sm-10">
-							<textarea readonly class="form-control-plaintext" id="inputNumber">${qa.qaNumber}</textarea>
-						</div>
-					</div>
-
-					<div class="row m-5">
-						<label for="inputId" class="col-sm-2 col-form-label">작성자</label>
-						<div class="col-sm-10">
-							<textarea readonly class="form-control-plaintext" id="inputId">${qa.userId}</textarea>
-						</div>
-					</div>
-
-					<div class="row m-5">
 						<label for="inputCategory" class="col-sm-2 col-form-label">카테고리</label>
 						<div class="col-sm-10">
 							<textarea readonly class="form-control-plaintext" id="inputCategory">${qa.qaCategory}</textarea>
