@@ -16,12 +16,41 @@ html,body{
  <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
  <script type="text/javascript">
  	$(function(){
-
- 		$("#count").change(function(){
- 			var price = $("#price").val();
- 			var priceTotal = $("#count").val()*price;
- 
- 		});
+		function selectAll(){
+			$.ajax({
+	   			url :"../ajax" , //서버요청주소
+	   			type:"post", //요청방식(method방식 : get | post | put | delete )
+	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+	   			data: {key :"product", methodName:"selectAll"},
+	   			success :function(result){
+					let pCode="";
+	   				let content ="";
+	   				let price = "";
+	   				let pAlcohol = "";
+	   				let price2 = 0;
+	   				let review = "";
+	   				
+	   				$("#count").change(function(){
+	   		 			//var price = $("#price").val();
+	   		 			var price=29000;
+	   		 			var priceTotal = Number($("#count").val()*price);
+	   		 			
+	   		 		//$(".numBox").val(num);
+   				    $(".priceBox").val((priceTotal)+"원");
+	   		 
+	   		 		});
+	   				
+	   			},error : function(err){  
+	   				alert(err+"에러 발생했어요.");
+	   			}  //실팽했을때 실행할 함수 
+	   		});
+			
+		};
+ 		
+ 		
+ 		
+		 selectAll();
+ 		
  		
  	});
  	<%LocalDate now = LocalDate.now();
@@ -65,10 +94,11 @@ html,body{
            			</div>
            			<div class="row">
 	           			<div class="col">
-								<h4>총 구독료 : </h4>
+								<h4>총 구독료 : 
+								</h4>
 						</div>
 						<div class="col">
-								<h4 class="text-end" ><fmt:formatNumber value="${priceTotal}"/>원</h4>
+								<h4 class="text-end" ><input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" /></h4>
 						</div>
 					</div>
            		</div>
