@@ -32,7 +32,11 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void delete(String pCode) throws SQLException {
-		// TODO Auto-generated method stub
+		int result = dao.delete(pCode);
+		
+		if(dao.delete(pCode)==0){
+			throw new SQLException(pCode+"의 게시물을 삭제할 수 없습니다.");
+		}
 
 	}
 

@@ -33,16 +33,9 @@
 				$("#flexCheckDefault").prop("checked", true);
 		});
 		
-		//수량*값 
-        var num = document.getElementById('num'); 
-		num.addEventListener('change',function(){ 
-			var result = document.getElementById('result'); 
-			var price = document.getElementById('price'); 
-			result.value = Number(price.value)*Number(this.value); });
-
-
 		
-		
+		  
+
 
 	});
 </script>
@@ -57,37 +50,31 @@
 
 	<h2 align="center">장바구니</h2>
 	<p>
-	<div class="container" style="padding-left: 250px;">
-
-      
+	
+	<div class="container" style="padding-left: 200px;">
 
 		<div class="row">
 
-                
-
 			<div class="col">
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value=""
-						id="flexCheckDefault" checked="checked" name="chk"> <label
-						class="form-check-label" for="flexCheckDefault">전체선택</label>
-
+					<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked="checked" name="chk"> 
+					<label class="form-check-label" for="flexCheckDefault">전체선택</label>
 				</div>
 			</div>
 			
-			<div class="row">
-		
-                    <form action="${path}/store/order.jsp">
-      
-				<div class="col-md-5 mr-3">
-				
-					<c:forEach items="${cartList}" var="cartList" varStatus="status">
-
-						<div class="card w-85">
+			<!-- <div class="row"> -->
+			    
+			    <form action="${path}/store/order.jsp">
+			    
+			   <div class="col-md-5 mr-3">
+			   
+			      <c:forEach items="${cartList}" var="cartList" varStatus="status">
+	
+			   <div class="card w-85">
 							<div class="row">
 								<div class="col text-start">
 									<div style="padding-left: 5px;">
-										<input class="form-check-input" type="checkbox"
-											id="flexCheckDefault" value="" aria-label="..."
+										<input class="form-check-input" type="checkbox" id="flexCheckDefault" value="" aria-label="..."
 											checked="checked" name="chk">
 									</div>
 								</div>
@@ -95,13 +82,12 @@
 								<div class="col text-end">
 									<button type="button" class="btn-close" aria-label="Close"></button>
 								</div>
-							</div>
-
-							<div class="card-body">
+						
+						      <div class="card-body">
 								<div class="col-md-4">
 									<img
 										src="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg"
-										class="rounded float-start" style="max-width: 150px;">
+										class="rounded float-start" style="max-width: 200px;">
 								</div>
 
 								<div class="row">
@@ -112,10 +98,9 @@
 											</h4>
 										</div>
 									</div>
-								</div>
-								<p>
-								
-								<div class="row">
+                               </div><p><p><p><!--row-->
+
+                                 <div class="row">
 
 									<div class="col">
 										<div class="text-end">
@@ -123,10 +108,8 @@
 												value="${cartList.cartCount}" min="1" max="99">개
 										</div>
 									</div>
-								</div>
-								<hr>
-
-
+								</div><p><p><p><!--row-->
+								
 								<div class="row">
 									<div class="col">
 										<div class="text-start">상품 금액</div>
@@ -138,27 +121,29 @@
 
 									<div class="col">
 										<div class="text-end">
-											<fmt:formatNumber value="${proList[status.index].pPrice}"
-												pattern="###,###" />
-											원
+											<fmt:formatNumber value="${proList[status.index].pPrice}" pattern="###,###"/>원
 										</div>
 										<p>
 										<div class="text-end">
-											<b><fmt:formatNumber value="" pattern="###,###" />원</b>
+											<b><fmt:formatNumber value="" pattern="###,###"/>원</b>
 										</div>
 									</div>
-								</div>
+								</div><!--row-->
+								
+								
 
-							</div>
-							<!--상품카드바디-->
-						</div>
-						<p>
-							<!--상품카드-->
-					</c:forEach>
-
-				</div><!--col-md-5 mr-3 -->
-   
-                  <div class="col-md-offset-2 col-md-4">
+							</div><!--카드바디-->	
+							
+							</div><!--2번 row-->
+			   </div><p><!--카드-->
+			   
+			   </c:forEach>
+			  	   
+			   
+			</div><!--col-md-5 mr-3-->
+			
+			 <div class="col-md-offset-2 col-md-4">
+			    
 					<div class="card" style="width: 18rem;">
 						<div class="card-body">
 							<b>계산서</b>
@@ -191,37 +176,28 @@
 									</div>
 									<p>
 								</div>
-							</div>
-						</div>
-						<!--계산서카드 바디-->
-					</div><p><p>
-					<!--계산서카드-->
-					
-					
+							</div><!--계산서 row  -->
+						</div><!--계산서카드 바디-->
+						
+					</div><p><p><!--계산서카드-->
+
+
 					<input type="hidden" name="img" value="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg">
 					<button type="submit" class="btn btn-primary btn-lg">주문하기</button>
 					
 					</div><!--col-md-offset-2 col-md-4-->
-                  
-   
-				
-				
-					</form>
-              
-              
+			
+			
 
-              
-                </div> 
-				<!--row 그리드-->
-				
-			</div>
-			<!-- 카드row -->
 
-		</div>
-		<!--전체row-->
+			</form>
 
+		<!-- </div>1번 row -->
+		
+	</div><!--전체row-->
 	
-	<!--컨테이너-->
+    </div><!--컨테이너-->
+
 
 </body>
 </html>

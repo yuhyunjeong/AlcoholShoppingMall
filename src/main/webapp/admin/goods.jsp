@@ -22,7 +22,9 @@ button {
 </style>
 
 <script type="text/javascript">
-	
+
+
+
 </script>
 
 </head>
@@ -71,7 +73,7 @@ button {
 						<td>${product.pPrice}</td>
 						<td>${product.pStuck}</td>
 						<td>${product.pDate}</td>
-						<td><input type="button"  name="delete" id="delete" value="삭제" onclick="localhref='goods.jsp'"></td>
+						<td><input type="button" name="delete" id="delete" value="삭제" onclick="localhref='goods.jsp'"></td>
 					</tr>
 				</c:forEach>
 

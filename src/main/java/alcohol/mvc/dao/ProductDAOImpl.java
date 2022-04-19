@@ -37,8 +37,25 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public int delete(String pCode) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		
+		String sql = "DELETE FROM PRODUCT WHERE P_CODE=?";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, pCode);
+			
+			result = ps.executeUpdate();
+			
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		
+		return result;
 	}
 	/**
 	 * 상품 전체 검색 SELECT * FROM PRODUCT  뒤에 정렬은 나중에 정하기로함 
