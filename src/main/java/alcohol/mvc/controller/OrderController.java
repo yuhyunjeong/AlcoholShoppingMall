@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 
@@ -74,8 +75,14 @@ public class OrderController implements Controller{
 		
 		String orderStatus = request.getParameter("orderstatus");
 		
-		request.setAttribute("orderStatus", orderStatus);
+		HttpSession session = request.getSession();
+		String uId = (String)session.getAttribute("uId");
 		
+		String pImage = request.getParameter("pImage");
+		String pName = request.getParameter("pName");
+		
+		
+	
 		return new ModelAndView("store/order.jsp");
 	}
 	

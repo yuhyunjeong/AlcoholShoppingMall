@@ -9,6 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>구매하기</title>
+
+<script src="../js/jquery-3.6.0.js"></script>
+
 <style type="text/css">
  
  .card{text-align: center;}
@@ -17,6 +20,37 @@
 </style>
 
 <script type="text/javascript">
+
+  $(function(){
+	 
+	 function selectAll(){
+		 $.ajax({
+	   			url :"../ajax" , //서버요청주소
+	   			type:"post", //요청방식(method방식 : get | post | put | delete )
+	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+	   			data: {key :"order", methodName:"selectorder"},
+	   			success :function(result){
+                   
+	   				let str ="";
+	   				
+	   				$.each(result, function(index, item) {
+	   			
+	   					str+=`${item.uId}`;
+	   					
+	   				});
+	   				//$("rrr").remove();
+
+	   				$("#rrr").empty();
+					$("#rrr").html(str);
+						
+	   			},error : function(err){  
+	   				alert(err+"에러 발생했어요.");
+	   			}  //실팽했을때 실행할 함수 
+	   		});
+		 
+	 }
+	 selectAll()
+ }) 
   
 </script>
 
@@ -33,27 +67,26 @@
 <div class="container row" style="float: none; margin:100 auto;">
 <div class="col-md-9 col-lg-9" style="float: none; margin:0 auto;"><p>
 
-<c:forEach items="${proList}" var="proList" varStatus="status">
+
 
 <div class="row">
  <div class="col">
-  <div class="text-start"><h3><b>${proList[status.index].pName}</b></h3></div> 
+  <div class="text-start"><h3><b>${proList.pName}</b></h3></div> 
  </div>
  <div class="col">
-  <img src="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg" class="rounded float-end" style="width:180px; height:250px;">   
+  <img src="${path}/img/${proList.cateCode}/${proList.pImage}.jpg" class="rounded float-end" style="width:180px; height:250px;">   
  </div>
 </div>
 
-</c:forEach>  
-  
+ 
 <div class="row">  
  <div class="col">
  <div class="text-start">상품 금액</div><p> 
  <div class="text-start">수량</div> 
  </div> 
  <div class="col">
- <div class="text-center"><fmt:formatNumber value="${proList[status.index].pPrice}" pattern="###,###" />원</div><p>
- <div class="text-center">${cart.cartcount}개</div>
+ <div class="text-center"><fmt:formatNumber value="${proList.pPrice}" pattern="###,###" />원</div><p>
+ <div class="text-center">${param.count}개</div>
  </div> 
 </div>
 

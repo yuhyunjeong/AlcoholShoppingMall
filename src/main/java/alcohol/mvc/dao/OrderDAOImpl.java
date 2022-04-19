@@ -85,8 +85,6 @@ public class OrderDAOImpl implements OrderDAO{
 				status = rs.getString(1);
 			}
 
-			
-			
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}

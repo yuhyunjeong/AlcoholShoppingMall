@@ -48,7 +48,11 @@
 	<p>
 	<div class="container" style="padding-left: 250px;">
 
+      
+
 		<div class="row">
+
+                
 
 			<div class="col">
 				<div class="form-check">
@@ -61,6 +65,7 @@
 
 
 			<div class="row">
+                    <form action="${path}/store/order.jsp">
                     
 				<div class="col-md-5 mr-3">
 
@@ -182,11 +187,13 @@
 						<!--계산서카드 바디-->
 					</div><p><p>
 					<!--계산서카드-->
-					<a href="${path}/store/order.jsp?type=order&title=구매하기">
-					<button type="submit" class="btn btn-primary btn-lg">주문하기</button></a>
+					
+	
+
+					<button type="submit" class="btn btn-primary btn-lg">주문하기</button>
 					</div>
 					
-					
+					</form>
     
                 </div>  
 				<!--row 그리드-->
@@ -197,7 +204,7 @@
 		</div>
 		<!--전체row-->
 
-	</div>
+	
 	<!--컨테이너-->
 
 </body>
