@@ -20,9 +20,9 @@
         	<image href="${pageContext.request.contextPath}/img/A/자연담은 복분자 막걸리.jpg" height="100%" width="100%"/>
         </svg>
 	   </a>
-        <p></p>
-        
+
         <h3>탁주</h3>
+         <p></p>
       </div>
       
       <div class="col-lg-3" >

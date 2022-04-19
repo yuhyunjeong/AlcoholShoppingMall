@@ -35,7 +35,7 @@ public class QAController implements Controller {
 		List<QADTO> qaList = qaService.qaAll(Integer.parseInt(paging));
 		
 		request.setAttribute("qaList", qaList);
-		request.setAttribute("paging", paging); // 뷰에서 사용 ${request.paging}
+		request.setAttribute("paging", paging); // 뷰에서 사용 ${requestScope.paging}
 
 		System.out.println(qaList.size());
 

@@ -27,7 +27,7 @@ html,body{
  	<%LocalDate now = LocalDate.now();
  		//String month = now.getMonth().toString();
  		int monthValue = now.getMonthValue();
-
+		int price = 29000;
 
  	%>
  
@@ -58,7 +58,7 @@ html,body{
 		           			<p class="text-start" >개수</p>
 	           			</div>
 	           		<div class="col">
-	           					
+	           				<p class="text-end" ><%=price%>원</p>
 		           			<p class="text-end" ><input id="count" ame="items" type="number" class="detail-quantity form-control text-center input-sm" min="0" value="1" ></p>
 	           			</div>
 	           			
