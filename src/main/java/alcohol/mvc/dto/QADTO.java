@@ -12,10 +12,11 @@ public class QADTO {
 	public QADTO() {
 	}
 
-	public QADTO(String qaTitle, String qaContent, String qaDate) {
+	public QADTO(String userId, String qaTitle, String qaContent) {
+		this.userId = userId;
 		this.qaTitle = qaTitle;
 		this.qaContent = qaContent;
-		this.qaDate = qaDate;
+
 	}
 
 	public QADTO(int qaNumber, String userId, String qaTitle, String qaContent ,String qaDate) {

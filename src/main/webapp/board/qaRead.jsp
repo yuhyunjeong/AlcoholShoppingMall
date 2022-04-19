@@ -21,9 +21,9 @@
 				<div class="col">
 
 					<div class="row m-5">
-						<label for="inputCategory" class="col-sm-2 col-form-label">카테고리</label>
+						<label for="inputTitle" class="col-sm-2 col-form-label">카테고리</label>
 						<div class="col-sm-10">
-							<textarea readonly class="form-control-plaintext" id="inputCategory">${qa.qaCategory}</textarea>
+							<textarea readonly class="form-control-plaintext" id="inputTitle">${qa.qaTitle}</textarea>
 						</div>
 					</div>
 
@@ -47,10 +47,10 @@
 							<form name="requestForm" method="get"
 								action="${path}/board/qaUpdate.jsp">
 								<input type=hidden name="qaNumber" value="${qa.qaNumber}">
-								<input type=hidden name="qaCategory" value="${qa.qaCategory}">
+								<input type=hidden name="qaCategory" value="${qa.qaTitle}">
 								<input type=hidden name="qaContent" value="${qa.qaContent}">
-								<input type=hidden name="qaDate" value="${qa.qaDate}"> <input
-									type=submit class="btn btn-light" value="수정하기">
+								<input type=hidden name="qaDate" value="${qa.qaDate}"> 
+								<input type=submit class="btn btn-light" value="수정하기">
 							</form>
 							<!-- 	<button type="button" onclick="location.href='${path}/board/noticeUpdate.jsp'" class="btn btn-light" >수정하기</button> -->
 						</div>

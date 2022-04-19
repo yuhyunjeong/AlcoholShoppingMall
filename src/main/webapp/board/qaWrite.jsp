@@ -45,7 +45,7 @@
 						</div>
 
 						<div class="row m-5">
-							<label for="date" class="col-sm-2 col-form-label">날짜</label>
+							<label for="date" class="col-sm-2 col-form-label">작성일</label>
 							<div class="col-sm-10">
 								<input type="date" class="form-control" name="qaDate" id="date">
 							</div>
@@ -63,8 +63,15 @@
 						<p>
 						<div class="row m-5" align="right">
 							<div class="col-sm-10">
-								<input type="hidden" name="key" value="qa"> <input
-									type="hidden" name="methodName" value="insert">
+								<input type=hidden name="key" value="qa"> 
+								<input type=hidden name="methodName" value="insert">
+								<input type=hidden name="qaNumber" value="${qa.qaNumber}">
+								<input type=hidden name="userId" value="${qa.userId}">
+								<input type=hidden name="qaCategory" value="${qa.qaCategory}">
+								<input type=hidden name="qaTitle" value="${qa.qaTitle}">
+								<input type=hidden name="qaContent" value="${qa.qaContent}">
+								<input type=hidden name="qaDate" value="${qa.qaDate}"> 
+								<input type=hidden name="qaSecret" value="${qa.qaSecret}"> 
 								<button type="submit" class="btn btn-light">등록하기</button>
 							</div>
 
