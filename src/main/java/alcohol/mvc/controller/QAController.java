@@ -63,14 +63,17 @@ public class QAController implements Controller {
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		// 전송된 데이터 받기
-		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
+//		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
 		String userName = request.getParameter("userName");
 		String qaTitle = request.getParameter("qaTitle");
+		String qaCategory = request.getParameter("qaCategory");
 		String qaContent = request.getParameter("qaContent");
 		String qaDate = request.getParameter("qaDate");
 		int qaSecret = Integer.parseInt(request.getParameter("secret"));
 
-		System.out.println(qaTitle);
+		System.out.println(qaCategory);
+		
+		QADTO qa = new QADTO();
 
 		return null;
 	}

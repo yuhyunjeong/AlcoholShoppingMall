@@ -46,10 +46,10 @@
 						<div class="col-sm-10">
 							<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
 							<form name="requestForm" method="get"
-								action="${path}/board/noticeUpdate.jsp">
-								<input type=hidden name="qaNumber" value="${qa.qaNumber}">
-								<input type=hidden name="qaTitle" value="${qa.qaTitle}">
+								action="${path}/board/qaUpdate.jsp">
+								<input type=hidden name="qaCategory" value="${qa.qaCategory}">
 								<input type=hidden name="qaContent" value="${qa.qaContent}">
+								<input type=hidden name="qaDate" value="${qa.qaDate}">
 								<input type=submit class="btn btn-light" value="수정하기">
 							</form>
 							<!-- 	<button type="button" onclick="location.href='${path}/board/noticeUpdate.jsp'" class="btn btn-light" >수정하기</button> -->
