@@ -154,10 +154,10 @@ input:focus::-webkit-input-placeholder {
 			<!-- <button class="api-btn" onclick="kakaoLogout()">로그아웃</button> -->
 		<p>
 		<div class="m-5">
-			<a href="#" style="text-decoration: none;">아이디 찾기</a>
+			<a href="idFind.jsp" style="text-decoration: none;">아이디 찾기</a>
 			<p>
 			<p>
-				<a href="#" style="text-decoration: none;">비밀번호 찾기</a>
+				<a href="pwdFind.jsp" style="text-decoration: none;">비밀번호 찾기</a>
 			<p>
 		</div>
 

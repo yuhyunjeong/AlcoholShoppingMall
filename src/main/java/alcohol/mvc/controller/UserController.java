@@ -1,7 +1,7 @@
 package alcohol.mvc.controller;
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -27,6 +27,9 @@ public class UserController implements Controller {
 		return null;
 	}
 
+	/**
+	 * 로그인 
+	 */
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("UserController login도 제대로 오나?");
 		// 넘어오는 userID,pwd 받기
@@ -50,6 +53,10 @@ public class UserController implements Controller {
 
 	}
 
+	
+	/**
+	 * 회원가입
+	 */
 	public ModelAndView join(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		System.out.println("UserController join입니다.");
@@ -77,6 +84,47 @@ public class UserController implements Controller {
 
 		return mv;
 
+	}
+	
+
+	/**
+	 * 아이디 중복체크
+	 */
+	public void idCheck(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		response.setContentType("text/html;charset=utf-8");
+
+		String id = request.getParameter("id");
+		
+		userService.idCheck(id);
+
+	}
+	
+	/**
+	 * 아이디 찾기 
+	 */
+	public void idFind(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		
+		userService.idFind(name, phone, email);
+		
+	}
+	
+	/**
+	 * 비밀번호 찾기 
+	 */
+	public void pwdFind(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String id = request.getParameter("id");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		
+		userService.pwdFind(id, name, phone, email);
+		
 	}
 
 }
