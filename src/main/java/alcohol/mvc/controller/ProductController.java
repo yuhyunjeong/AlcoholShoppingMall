@@ -140,5 +140,19 @@ public class ProductController implements Controller {
 
 		return mv;
 	}
+	
+	//goods.jsp에서 delete
+	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("delete??");
+		
+		String pCode = request.getServletContext().getRealPath("/save");
+		
+		proService.delete(pCode);
+		
+		ModelAndView mv = new ModelAndView("admin/goods.jsp");
+
+		return mv;
+	}
+	
 
 }

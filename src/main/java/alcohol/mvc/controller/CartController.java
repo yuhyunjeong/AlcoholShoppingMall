@@ -111,7 +111,7 @@ public class CartController implements Controller {
 		
 		cartService.cartDelete(Integer.parseInt(cartNo));
 		
-		return new ModelAndView("front" , true);
+		return new ModelAndView("/front" , true);
 	}
 	
 	
