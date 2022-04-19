@@ -98,6 +98,12 @@ public class ProductServiceImpl implements ProductService {
 			throw new SQLException("등록 오류가 발생했습니다.");
 		}
 	}
+
+	@Override
+	public List<ProductDTO> selectAll() throws SQLException {
+		List<ProductDTO> list =dao.selectAll();
+		return list;
+	}
 	
 	
 

@@ -154,5 +154,21 @@ public class ProductController implements Controller {
 		return mv;
 	}
 	
+	//구독에 쓸거
+	public void selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		String type = request.getParameter("cate");
+		String filter = request.getParameter("filter") + "";
+
+		System.out.println(type);
+		System.out.println(filter);
+		List<ProductDTO> proList = proService.selectAll(type, filter);
+		JSONArray arr = JSONArray.fromObject(proList);
+		System.out.println("나오냐" + proList.size());
+		PrintWriter out = response.getWriter();
+		out.print(arr);
+
+
+	}
 
 }
