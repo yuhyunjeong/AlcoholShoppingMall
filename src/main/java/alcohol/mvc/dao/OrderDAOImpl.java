@@ -70,23 +70,28 @@ public class OrderDAOImpl implements OrderDAO{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
+		String status = null;
+		
 		String sql = "SELECT ORDER_STATUS FROM ORDERS WHERE ORDER_CODE=?";
 		
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, oCode);
+			
 			rs = ps.executeQuery();
 			
-			while(rs.next()) {
-				rs.getInt(1);
-					
+			if(rs.next()) {
+				status = rs.getString(1);
 			}
+
+			
 			
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
 				
-		return null;
+		return status;
 	}
 
 	@Override
@@ -119,24 +124,26 @@ public class OrderDAOImpl implements OrderDAO{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
+		String status = null;
+		
 		String sql = "SELECT DELI_STATUS FROM ORDERS WHERE ORDER_CODE=?";
 		
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
+			ps.setInt(1, oCode);
 			
-			while(rs.next()) {
-				rs.getInt(1);
-				
+            rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				status = rs.getString(1);
 			}
 				
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
 		
-		
-		return null;
+		return status;
 	}
 
 }

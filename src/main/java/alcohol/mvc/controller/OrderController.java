@@ -41,6 +41,8 @@ public class OrderController implements Controller{
 		String deliAddr2 = m.getParameter("deli_addr2");
 		String orderphone = m.getParameter("order_phone");
 		
+		
+		
 		OrdersDTO orDto = 
 				new OrdersDTO(Integer.parseInt(orderCode), uId, Integer.parseInt(payCode), orderDate, orderStatus, deliStatus, deliAddr, deliAddr2, orderphone);
 		

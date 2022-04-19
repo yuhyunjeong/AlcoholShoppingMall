@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <jsp:include page="../common/header.jsp"/>
     
@@ -7,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>구매</title>
+<title>구매하기</title>
 <style type="text/css">
  
  .card{text-align: center;}
@@ -27,21 +28,23 @@
 
 <div class="container">
 
-<form action="${path}/front" method="get">
- <input type="hidden" name="key" value="order" /> 
- <input type="hidden" name="methodName" value="select" />
+
 
 <div class="container row" style="float: none; margin:100 auto;">
 <div class="col-md-9 col-lg-9" style="float: none; margin:0 auto;"><p>
 
+<c:forEach items="${proList}" var="proList" varStatus="status">
+
 <div class="row">
  <div class="col">
-  <div class="text-start"><h3><b>${param.pName}</b></h3></div> 
+  <div class="text-start"><h3><b>${proList[status.index].pName}</b></h3></div> 
  </div>
  <div class="col">
-  <img src="../img/${param.type}/${param.pName}.jpg" class="rounded float-end" alt="냥이탁주" style="width:180px; height:250px;">   
+  <img src="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg" class="rounded float-end" style="width:180px; height:250px;">   
  </div>
-</div>  
+</div>
+
+</c:forEach>  
   
 <div class="row">  
  <div class="col">
@@ -49,7 +52,7 @@
  <div class="text-start">수량</div> 
  </div> 
  <div class="col">
- <div class="text-center"><fmt:formatNumber value="${cart.price}" pattern="###,###"/>원</div><p>
+ <div class="text-center"><fmt:formatNumber value="${proList[status.index].pPrice}" pattern="###,###" />원</div><p>
  <div class="text-center">${cart.cartcount}개</div>
  </div> 
 </div>
@@ -160,20 +163,24 @@
  
 </div>
 
+
+
 <div align="center">
 <button type="submit" onclick="order()" class="btn btn-light">결제하기</button>
 </div><p> 
 
  
 </div>
-</div>
-
+</div><!--계산서 전체를 위한....-->
 
 </div><!--container row-->
 
-</form>
+</div><!--container--> 
 
-</div><!--container-->
+
+
+
+
 </body>
 </html>
 <jsp:include page="../common/footer.jsp"/>
