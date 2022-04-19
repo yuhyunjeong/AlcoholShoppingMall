@@ -27,7 +27,7 @@ public class QAController implements Controller {
 	/**
 	 * 전체검색하기
 	 */
-	public ModelAndView select(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void select(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		String paging = request.getParameter("paging"); // 현재 페이지 번호
 		if (paging == null || paging.equals("")) {
@@ -36,13 +36,18 @@ public class QAController implements Controller {
 
 		List<QADTO> qaList = qaService.qaAll(Integer.parseInt(paging));
 
-		request.setAttribute("qaList", qaList);
-		request.setAttribute("paging", paging); // 뷰에서 사용 ${requestScope.paging}
+		//request.setAttribute("qaList", qaList);
+		//request.setAttribute("paging", paging); // 뷰에서 사용 ${requestScope.paging}
 
 		System.out.println(qaList.size());
 
-		return new ModelAndView("board/qa.jsp");
+		//return new ModelAndView("board/qa.jsp");
 
+		
+		JSONArray arr = JSONArray.fromObject(qaList);
+		System.out.println("나옴?" + qaList.size());
+		PrintWriter out = response.getWriter();
+		out.print(arr);
 	}
 
 	/**
@@ -95,7 +100,7 @@ public class QAController implements Controller {
 	}
 	
 	
-	public void selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void selectFilter(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		

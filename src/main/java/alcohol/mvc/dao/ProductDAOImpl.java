@@ -266,15 +266,11 @@ public class ProductDAOImpl implements ProductDAO {
 
 		List<OrderLineDTO> list = new ArrayList<OrderLineDTO>();
 		OrderLineDTO dto = null;
-<<<<<<< HEAD
 
-		String sql = "select * from (select  p_code, sum(order_line_count) from order_line group by p_code order by sum(order_line_count) desc) where rownum<=3;";
-
-=======
 		
 		String sql = "select * from (select  p_code, sum(order_line_count) from order_line group by p_code order by sum(order_line_count) desc) where rownum<=3";
 		
->>>>>>> 8674651e9220603738955a64f37d22a436e745bc
+
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -295,7 +291,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return list;
 	}
 
-<<<<<<< HEAD
+
 	//goods.writer
 	public int insertwrite(ProductDTO dto) throws SQLException {
 
@@ -330,7 +326,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 
 
-=======
+
 	@Override
 	public List<ProductDTO> selectByCode(List<OrderLineDTO> list) throws SQLException {
 		Connection con = null;
@@ -363,5 +359,5 @@ public class ProductDAOImpl implements ProductDAO {
 		return proList;
 	}
 	
->>>>>>> 8674651e9220603738955a64f37d22a436e745bc
+
 }

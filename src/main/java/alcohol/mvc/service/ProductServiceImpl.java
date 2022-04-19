@@ -86,6 +86,12 @@ public class ProductServiceImpl implements ProductService {
 		List<ProductDTO> dto = dao.selectByCode(list);
 		return dto;
 	}
+
+	@Override
+	public void insertwrite(ProductDTO dto) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 
