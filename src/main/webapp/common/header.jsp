@@ -65,22 +65,22 @@
 				      <a href="${path}/index.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
 				        <span class="fs-4">안다미로</span>
 				      </a>
-					<div class="col-md-5 text-end">
-					
-						<form action="${path}/front" method="get">
+					<div class="col-md-6 text-end">
+						<form action="${path}/front" method="post">
 						<input type="hidden" name="key" value="cart" /> 
  						<input type="hidden" name="methodName" value="select" />
 						<input type="hidden" name="userId" value="${loginUser.userId}"/>
-						<input type="submit" class="bi bi-cart4 me-2" value="임시장바구니"/>
-						<!-- <a href="#" ><i class="bi bi-cart4 me-2"></i></a>	 -->
+						<button type="submit" style="border: none; background: none;"><i class="bi bi-cart4 me-2"></i></button>
 						</form>
-						
-						<b>${loginName}님</b>
-						<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/myPage/myPage.jsp'">마이페이지</button>
-				        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/subscription.jsp'">구 독</button>
-				        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/category.jsp'">스토어</button>
-				        <button type="button" class="btn btn-primary me-2" >로그아웃</button>
-				    </div>
+					</div>
+						<div>
+							<b>${loginName}님</b>
+							<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/myPage/myPage.jsp'">마이페이지</button>
+					        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/subscription.jsp'">구 독</button>
+					        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/category.jsp'">스토어</button>
+					        <button type="button" class="btn btn-primary me-2" >로그아웃</button>
+						</div>
+				    
 				    </header>
 				</div>
 				<div class="container">
@@ -117,18 +117,20 @@
 				        <span class="fs-4">안다미로</span>
 				      </a>
 					<div class="col-md-6 text-end">
-						<b>${loginName}님</b>
-						<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/admin/member.jsp'">회원관리</button>
 						
-						<form action="${path}/front" method="get">			
+						
+						<form action="${path}/front" method="get">	
+							<b>${loginName}님</b>
+							<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/admin/member.jsp'">회원관리</button>		
 				        	<button type="submit" class="btn btn-primary me-2" >상품관리</button>
 				        	<input type="hidden" name="key" value = "product" /> <!-- Controller를 찾는 정보 -->
 							<input type="hidden" name="methodName" value = "select" />  <!-- 메소드이름 -->
+							<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/admin/orders.jsp'">주문관리</button>
+				        	<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/admin/boards.jsp'">게시판관리</button>
+				        	<button type="button" class="btn btn-primary me-2" >로그아웃</button>
 				        </form>
 				        
-				        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/admin/orders.jsp'">주문관리</button>
-				        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/admin/boards.jsp'">게시판관리</button>
-				        <button type="button" class="btn btn-primary me-2" >로그아웃</button>
+				        
 				    </div>
 				    </header>
 				</div>

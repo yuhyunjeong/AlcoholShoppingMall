@@ -25,34 +25,10 @@ div {margin 100px;
 	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
 	   			data: {key :"qa", methodName:"selectAll", cate:"v"},
 	   			success :function(result){
-					
-					let str = "";
-					$.each(result, function(index, item) { // item이 customer 
-						str += "<tr>";
-						str += `<th scope="row">${'${item.qaNumber}'}</th>`;
-						str += `<td>${'${item.userId}'}</td>`;
-						str += `<td>${'${item.qaTitle}'}</td>`;
-						str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaNumber}"}'>${'${item.qaContent}'}</a></td>`;
-						str += `<td>${'${item.qaDate}'}</td>`;
-						str += "</tr>"
-
-					});
-					
-					$("#qaTable tr:gt(0)").remove();
-					$("#qaTalbe tr:eq(0)").after(str);
-				
-					
-				}, // 성공했을 때 실행할 함수 
-				error : function(err) {
-					alert(err + " 에러가 발생했어요.");
-				}// 실패했을 때 실행할 함수  
+					 alert(1);
 	   			}
 			})
 		}
-		$("[name=btn]").click(function(){
-			qaFilter($(this).val());
-		})
-		qaFilter();
 	});
 
 	
