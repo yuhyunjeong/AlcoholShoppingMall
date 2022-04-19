@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import alcohol.mvc.dto.CartDTO;
 import alcohol.mvc.dto.CategoryDTO;
 import alcohol.mvc.dto.ProductDTO;
 import alcohol.mvc.util.DbUtil;
@@ -218,6 +219,39 @@ public class ProductDAOImpl implements ProductDAO {
 		
 		}
 	
+		return list;
+	}
+
+	@Override
+	public List<ProductDTO> cartSelect(List<CartDTO> cartlist) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		List<ProductDTO> list = new ArrayList<ProductDTO>();
+		
+		ProductDTO proDto = null;
+		
+		String sql = "SELECT * FROM PRODUCT WHERE P_CODE=?";
+
+		try {
+			for (CartDTO cart : cartlist) {
+				
+				con = DbUtil.getConnection();
+				ps = con.prepareStatement(sql);	
+				ps.setString(1, cart.getpCode());
+				rs = ps.executeQuery();
+						
+				while(rs.next()) {
+					proDto = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7),rs.getString(8));
+				 
+					list.add(proDto);			
+				}	
+			}
+	
+		} finally {
+			DbUtil.dbClose(rs, ps, con);	
+		}
 		return list;
 	}
 	

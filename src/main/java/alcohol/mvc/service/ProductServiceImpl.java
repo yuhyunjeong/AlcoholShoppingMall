@@ -5,6 +5,7 @@ import java.util.List;
 
 import alcohol.mvc.dao.ProductDAO;
 import alcohol.mvc.dao.ProductDAOImpl;
+import alcohol.mvc.dto.CartDTO;
 import alcohol.mvc.dto.CategoryDTO;
 import alcohol.mvc.dto.ProductDTO;
 
@@ -66,6 +67,15 @@ public class ProductServiceImpl implements ProductService {
 		
 		return list;
 	}
+
+	@Override
+	public List<ProductDTO> cartSelect(List<CartDTO> list) throws SQLException {
+		List<ProductDTO> dto =dao.cartSelect(list);
+		return dto;
+	}
+	
+	
+
 	
 	
 

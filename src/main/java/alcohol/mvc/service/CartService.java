@@ -29,5 +29,5 @@ public interface CartService {
 	/**
 	 * 장바구니 담은거 전체검색 
 	 * */
-	public List<CartDTO> selectAll()throws SQLException;
+	public List<CartDTO> selectAll(String id)throws SQLException;
 }

@@ -3,6 +3,7 @@ package alcohol.mvc.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import alcohol.mvc.dto.CartDTO;
 import alcohol.mvc.dto.CategoryDTO;
 import alcohol.mvc.dto.ProductDTO;
 
@@ -61,4 +62,9 @@ public interface ProductDAO {
 	//good.jsp
 	public List<ProductDTO> selectGoods() throws SQLException;
 	
+
+	/**
+	 * cartSelect
+	 * */
+	public List<ProductDTO> cartSelect(List<CartDTO> list) throws SQLException;
 }

@@ -28,16 +28,22 @@ $(document).ready(function() {
 		if(total != checked) $("#flexCheckDefault").prop("checked", false);
 		else $("#flexCheckDefault").prop("checked", true); 
 	});
+	
+	
+	
 });
   
  
 
 </script>
 
-
-
 </head>
 <body>
+<%-- 
+1) <c:forEach></c:forEach>
+
+2) ajax 
+--%>
 
 <h2 align="center">장바구니</h2><p>
 
@@ -60,59 +66,85 @@ $(document).ready(function() {
 
 <div class="row">
   <div class="col-md-5 mr-3">
-  
-    <div class="card w-85">
 
-<div class="row"> 
-<div class="col text-start">  
-<div style="padding-left:5px;">  
- <input class="form-check-input" type="checkbox" id="flexCheckDefault" value="" aria-label="..." checked="checked" name="chk"> 
- </div>
-</div>  
+					<c:forEach items="${cartList}" var="cartList" varStatus="status">
+					${proList[status.index].pStuck}
+						<div class="card w-85">
+							<div class="row">
+								<div class="col text-start">
+									<div style="padding-left: 5px;">
+										<input class="form-check-input" type="checkbox"
+											id="flexCheckDefault" value="" aria-label="..."
+											checked="checked" name="chk">
+									</div>
+								</div>
 
-<div class="col text-end">
-  <button type="button" class="btn-close" aria-label="Close"></button>
-</div>
-</div>
-    
- <div class="card-body">     
-       <div class="col-md-4">
-          <img src="../img/${cart.type}/${cart.image}.jpg" class="rounded float-start" style="max-width:150px;">
-       </div>
-       
-       <div class="row">
-        <div class="col">
-        <div class="text-start"><h4><b>${cart.pcode}</b></h4></div>
-      </div>
-     </div><p>
-     
-     <div class="row"> 
-     
-      <div class="col">
-        <div class="text-end"><input type="number" name="count" value="${cart.cartcount}" min="1" max="99">개</div>
-      </div>   
-      </div><hr>
-       
-       
-       <div class="row">  
-               <div class="col">
-               <div class="text-start">상품 금액</div><p> 
-               <div class="text-start"><b>총 금액</b></div> 
-              </div> 
-              
-              <div class="col">
-               <div class="text-end"><fmt:formatNumber value="${cart.price}" pattern="###,###"/>원</div><p> 
-               <div class="text-end"><b><fmt:formatNumber value="${cart.totalprice}" pattern="###,###"/>원</b></div> 
-              </div>
-           </div>
+								<div class="col text-end">
+									<button type="button" class="btn-close" aria-label="Close"></button>
+								</div>
+							</div>
 
-       </div><!--상품카드바디-->
-    </div><!--상품카드-->  
+							<div class="card-body">
+								<div class="col-md-4">
+									<img src="../img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg"
+										class="rounded float-start" style="max-width: 150px;">
+								</div>
 
-  </div><!--그리드-->
+								<div class="row">
+									<div class="col">
+										<div class="text-start">
+											<h4>
+												<b>${proList[status.index].pName}</b>
+											</h4>
+										</div>
+									</div>
+								</div>
+								<p>
+								<div class="row">
+
+									<div class="col">
+										<div class="text-end">
+											<input type="number" name="count" value="${cartList.cartCount}"
+												min="1" max="99">개
+										</div>
+									</div>
+								</div>
+								<hr>
+
+
+								<div class="row">
+									<div class="col">
+										<div class="text-start">상품 금액</div>
+										<p>
+										<div class="text-start">
+											<b>총 금액</b>
+										</div>
+									</div>
+
+									<div class="col">
+										<div class="text-end">
+											<fmt:formatNumber value="${proList[status.index].pPrice}" pattern="###,###" />
+											원
+										</div>
+										<p>
+										<div class="text-end">
+											<b><fmt:formatNumber value=""
+													pattern="###,###" />원</b>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!--상품카드바디-->
+						</div>
+						<!--상품카드-->
+					</c:forEach>	
+					</div><!--그리드-->
+					
+					
        
                
-<div class="col-md-offset-2 col-md-4">
+<%-- <div class="col-md-offset-2 col-md-4">
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <b>계산서</b><p><hr>
@@ -133,66 +165,11 @@ $(document).ready(function() {
   
    <button type="submit" class="btn btn-primary btn-lg">주문하기</button>
   
-</div><!--그리드--><p>
+</div><!--그리드--><p> --%>
 
 </div><!--1번 row-->
 
-<div class="row">
-  <div class="col-md-5 mr-3">
-    <div class="card w-85">
-
-
-<div class="row"> 
-<div class="col text-start">  
-<div style="padding-left:5px;">  
- <input class="form-check-input" type="checkbox" id="flexCheckDefault" value="" aria-label="..." checked="checked" name="chk"> 
- </div>
-</div>  
-
-<div class="col text-end">
- <button type="button" class="btn-close" aria-label="Close"></button>
-</div>
-</div>
- 
-<div class="card-body">       
-  <div class="col-md-4">
-     <img src="../img/${cart.type}/${cart.image}.jpg" class="rounded float-start" style="max-width:150px;">
-  </div>
-       
-       <div class="row">
-        <div class="col">
-        <div class="text-start"><h4><b>${cart.pcode}</b></h4></div>
-      </div>
-     </div><p>
-     
-     <div class="row"> 
-     
-     <div class="col">
-     <div class="text-end"><input type="number" value="${cart.cartcount}" min="1" max="99">개</div>
-     </div><p>
-      
-     <hr>
-       
-       <div class="row">  
-               <div class="col">
-               <div class="text-start">상품 금액</div><p> 
-               <div class="text-start"><b>총 금액</b></div> 
-              </div> 
-              
-              <div class="col">
-               <div class="text-end"><fmt:formatNumber value="${cart.price}" pattern="###,###"/>원</div><p> 
-               <div class="text-end"><b><fmt:formatNumber value="${cart.totalprice}" pattern="###,###"/>원</b></div> 
-              </div>
-           </div>
-
-       </div><!--상품카드바디-->
-    </div><!--상품카드-->      
-  </div><!--그리드--><p>
-</div><!--2번 row-->
-
-
-
- </div><!--form-check -->    
+   
 
 <!-- </form> -->
 

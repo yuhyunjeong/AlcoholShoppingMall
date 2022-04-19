@@ -66,7 +66,15 @@
 				        <span class="fs-4">안다미로</span>
 				      </a>
 					<div class="col-md-5 text-end">
-						<a href="${path}/store/cart.jsp"><i class="bi bi-cart4 me-2"></i></a>
+					
+						<form action="${path}/front" method="get">
+						<input type="hidden" name="key" value="cart" /> 
+ 						<input type="hidden" name="methodName" value="select" />
+						<input type="hidden" name="userId" value="${loginUser.userId}"/>
+						<input type="submit" class="bi bi-cart4 me-2" value="임시장바구니"/>
+						<!-- <a href="#" ><i class="bi bi-cart4 me-2"></i></a>	 -->
+						</form>
+						
 						<b>${loginName}님</b>
 						<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/myPage/myPage.jsp'">마이페이지</button>
 				        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/subscription.jsp'">구 독</button>
