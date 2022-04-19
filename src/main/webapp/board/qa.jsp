@@ -45,9 +45,9 @@ div {margin 100px;
 					<c:forEach items="${qaList}" var="qa">
 						<tr>
 							<th scope="row">${qa.qaNumber}</th>
-							<td>${qa.qaUserId}</td>
+							<td>${qa.userId}</td>
 							<td><a
-								href="${path}/front?key=qa&methodName=selectByQANum&qsNumber=${qa.qaNumber}">${qa.qaTitle}</a></td>
+								href="${path}/front?key=qa&methodName=selectByQANum&qaNumber=${qa.qaNumber}">${qa.qaTitle}</a></td>
 							<td>${qa.qaContent}</td>
 							<td>${qa.qaDate}</td>
 							<td><input type="checkbox" name="delete" value=""></td>

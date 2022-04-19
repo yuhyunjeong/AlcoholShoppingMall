@@ -8,18 +8,22 @@ public class QADTO {
 	private String qaContent;
 	private String qaDate;
 	private int qaSecret;
-	
-	public QADTO() {}
 
-	public QADTO(int qaNumber, String userId, int qaCategory, String qaTitle, String qaContent, String qaDate,
-			int qaSecret) {
-		super();
-		this.qaNumber = qaNumber;
-		this.userId = userId;
-		this.qaCategory = qaCategory;
+	public QADTO() {
+	}
+
+	public QADTO(String qaTitle, String qaContent, String qaDate) {
 		this.qaTitle = qaTitle;
 		this.qaContent = qaContent;
 		this.qaDate = qaDate;
+	}
+
+	public QADTO(int qaNumber, String userId, int qaCategory, String qaTitle, String qaContent, String qaDate,
+			int qaSecret) {
+		this(qaTitle, qaContent, qaDate);
+		this.qaNumber = qaNumber;
+		this.userId = userId;
+		this.qaCategory = qaCategory;
 		this.qaSecret = qaSecret;
 	}
 
@@ -78,5 +82,5 @@ public class QADTO {
 	public void setQaSecret(int qaSecret) {
 		this.qaSecret = qaSecret;
 	}
-	
+
 }

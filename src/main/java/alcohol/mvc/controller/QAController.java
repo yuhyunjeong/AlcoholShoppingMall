@@ -27,7 +27,20 @@ public class QAController implements Controller {
 	 */
 	public ModelAndView select(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return null;
+		String paging = request.getParameter("paging"); // 현재 페이지 번호 
+		if(paging==null || paging.equals("")) {
+			paging = "1";
+		}
+		
+		List<QADTO> qaList = qaService.qaAll(Integer.parseInt(paging));
+		
+		request.setAttribute("qaList", qaList);
+		request.setAttribute("paging", paging); // 뷰에서 사용 ${request.paging}
+
+		System.out.println(qaList.size());
+
+		return new ModelAndView("board/qa.jsp");
+		
 	}
 
 	/**
@@ -42,6 +55,12 @@ public class QAController implements Controller {
 	 * 등록하기
 	 */
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		// 전송된 데이터 받기
+		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
+		String userName = request.getParameter("userName");
+		String qaTitle = request.getParameter("qaTitle");
+		String qaDate = request.getParameter("qaDate");
 
 		return null;
 	}
