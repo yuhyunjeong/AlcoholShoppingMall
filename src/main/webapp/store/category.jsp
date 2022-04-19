@@ -22,7 +22,7 @@ $(function(){
    					str+="<div class='col-lg-4'>";
    					str+="<div class='row'>";
    					
-   					str+=`<a href='productDetail.jsp?pName=${"${item.pName}"}&type=${item.cateCode}'>`;
+   					str+=`<a href='productDetail.jsp?pName=${"${item.pName}"}&type=${"${item.cateCode}"}'>`;
    					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class='rounded' style='width: 200px; height: 250px'></a>`;
    					str+="</div>";
    					str+=`${'${item.pDetail}'}`;
