@@ -75,7 +75,7 @@ button {
 						<td>${product.pDate}</td>
 						<td>
 						<input type="hidden" name = "key" value="product">
-						<input type="hidden" name="methodName" value="delete">
+						<input type="hidden" name="methodName" value="cartDelete">
 						
 						<input type="button" class="btn" value="삭제" onclick="localhref='goods.jsp'"></td>
 					    

@@ -111,7 +111,11 @@ public class CartController implements Controller {
 		
 		cartService.cartDelete(cartNo);
 		
-		return new ModelAndView("store/cart.jsp", true);
+        System.out.println("cart dele???");
+		
+        ModelAndView mv = new ModelAndView("store/cart.jsp");
+
+		return mv;
 	}
 	
 	
