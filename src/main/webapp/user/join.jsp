@@ -73,10 +73,10 @@ input:focus::-webkit-input-placeholder {
 
 	// 유효성 검사! 
 	$(function(){
-		// 비밀번호 확인
+		// 비밀번호 확인 - 영문+숫자포함 8글자 이상 
 	    $('#pwd').keyup(function(){
 	    	 $('#checkPwd').html('');
-	      if($(this).val().length < 8) { //  - 영문+숫자포함 8글자 이상 
+	      if($(this).val().length < 8) { // 글자수 
 	          $('#pwdInput').html('비밀번호는 영문+숫자를 조합해 8자리 이상 입력해주세요.<br><br>');
 	          $('#pwdInput').attr('color', '#f82a2aa3');
 	      } else {
@@ -109,11 +109,15 @@ input:focus::-webkit-input-placeholder {
 	    	}
 	    });
 	    
-	    // 이메일 확인 - @ 포함해야함 
+	    // 이메일 확인 - 영문+숫자만 입력가능하게 해야함 
 	    $('#email').keyup(function() {
 	    	$('#checkEmail').html('');
 	    	
-	    	if($(this).val() )
+	    	// @ 포함 
+	    	if($(this).val().indexOf('@') == -1) {
+	    		  $('#checkEmail').html('이메일은 @를 포함하여 입력해주세요.<br><br>');
+		          $('#checkEmail').attr('color', '#f82a2aa3');
+	    	}
 	    })
 	    
 	    
