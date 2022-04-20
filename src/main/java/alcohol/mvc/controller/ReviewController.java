@@ -32,12 +32,19 @@ public class ReviewController implements Controller {
 		String name = request.getParameter("pName");
 		System.out.println(name);
 		
+		
+		
 		List<ReviewDTO> reviewList=service.reviewSelect(name, Integer.parseInt(pageNo));
-		
-
-		
+		int star=0;
+		if(reviewList != null && reviewList.size()!=0) {
+		  star = service.avgReview(reviewList.get(0).getpCode());
+		}else {
+			star=0;
+		}
+		System.out.println(star);
 		request.setAttribute("reviewList", reviewList); 
 		request.setAttribute("pageNo", pageNo);
+		request.setAttribute("star", star);
 
 		
 		return new ModelAndView("store/productDetail.jsp");

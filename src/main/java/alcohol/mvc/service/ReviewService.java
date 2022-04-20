@@ -30,4 +30,10 @@ public interface ReviewService {
 	 * 선택상품 검색
 	 * */
 	public List<ReviewDTO> reviewSelect(String pName,int paging)throws SQLException;
+	
+	/**
+	 * 리뷰 평점 계산
+	 * SELECT * FROM (select  p_code, AVG(VIEW_SCORE) from REVIEW group by p_code) where p_code=?
+	 * */
+	public int avgReview(String pCode)throws SQLException;
 }

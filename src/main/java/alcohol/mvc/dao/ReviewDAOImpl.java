@@ -118,4 +118,65 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return totalCount;
 	}
 
+
+
+	@Override
+	public int avgReview(String pCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps =null;
+		ResultSet rs = null;
+		int result = 0;
+		//int check = this.checkReviewStar(pCode);
+		//System.out.println(check+"확인");
+		String sql ="SELECT * FROM(select p_code, ROUND(AVG(VIEW_SCORE),2) from REVIEW group by p_code) where p_code=?";
+		//switch (check) {
+		//case 0:
+			//sql ="select p_code,view_score from product where p_code=?";			
+			//break;
+		//}
+
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, pCode);
+			
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				result = rs.getInt(2);
+			}
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return result;
+	}
+	
+	public int checkReviewStar(String pCode)throws SQLException{
+		Connection con = null;
+		PreparedStatement ps =null;
+		ResultSet rs = null;
+		int result = 0 ; 
+		String sql ="select view_score from product where p_code=?";
+		
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, pCode);
+			
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				result = rs.getInt(2);
+			}
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return result;
+		
+	}
+	
+	
+
 }

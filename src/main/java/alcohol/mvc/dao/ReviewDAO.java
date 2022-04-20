@@ -32,4 +32,8 @@ public interface ReviewDAO {
 	 * 선택상품 검색 select * from review where p_code =(select p_code from product where p_name = ?)
 	 * */
 	public List<ReviewDTO> reviewSelect(String pName,int paging)throws SQLException;
+	
+	
+	
+	public int avgReview(String pCode)throws SQLException;
 }

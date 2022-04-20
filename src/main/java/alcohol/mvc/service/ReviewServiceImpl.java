@@ -39,4 +39,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return list;
 	}
 
+	@Override
+	public int avgReview(String pCode) throws SQLException {
+		int result = dao.avgReview(pCode);
+		return result;
+	}
+
 }

@@ -22,7 +22,7 @@
 <script type="text/javascript">
 $(function(){
 	
-	$(".plus").click(function(){
+	/* $(".plus").click(function(){
 		   var num = $(".numBox").val();
 		   var plusNum = Number(num) + 1;
 		   var price = `${param.price}`;
@@ -48,19 +48,79 @@ $(function(){
 		    $(".numBox").val(minusNum);    
 		    $(".priceBox").val((price*minusNum)+"원");
 		   }
-		  });
-	
+		  }); */
+		  
+		  function selectAll(){	
+				$.ajax({
+		   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
+		   			type:"post", //요청방식(method방식 : get | post | put | delete )
+		   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+		   			data: {key :"product", methodName:"searchBy", name : "${param.pName}"},
+		   			success :function(result){
+						let pCode="";
+		   				let content ="";
+		   				let price = "";
+		   				let pAlcohol = "";
+		   				let price2 = 0;
+		   				let review = "";
+		   				$.each(result, function(index, item) {
+		   					content += `<h5>${"${item.pDetail}"}</h5>`;
+		   					price +=`가격 : ${'${item.pPrice}'}원`;
+		   					pAlcohol +=`<b>도수 : ${'${item.pAlcohol}'}%</b>`;
+		   					price2 = `${'${item.pPrice}'}`;
+		   					pCode=`${'${item.pCode}'}`;
+		   					
+		   				});
+		   				
+		   				$(".plus").click(function(){
+		   				   var num = $(".numBox").val();
+		   				   var plusNum = Number(num) + 1;
+						   var price = price2;
+		   				    if(plusNum >= 99) {
+		   				    $(".numBox").val(num);
+		   				    $(".priceBox").val((price2*num)+"원");
+		   				    
+		   				    
+		   				   } else {
+		   				    $(".numBox").val(plusNum);     
+		   				    $(".priceBox").val((price2*plusNum)+"원");
+		   				   }
+		   				  });
+		   				  
+		   				  $(".minus").click(function(){
+		   				   var num = $(".numBox").val();
+		   				   var minusNum = Number(num) - 1;
+		   				   var price = price2;
+		   				   if(minusNum <= 0) {
+		   				    $(".numBox").val(num);
+		   				    $(".priceBox").val((price2)+"원");
+		   				   } else {
+		   				    $(".numBox").val(minusNum);    
+		   				    $(".priceBox").val((price2*minusNum)+"원");
+		   				   }
+		   				  });
+
+		   				$(".pCode").val(pCode);
+		   				$(".priceBox").val(price2+"원");
+						$(".content").html(content);
+						$("#price").html(price);
+						$("#pAlcohol").html(pAlcohol);	
+		   			},error : function(err){  
+		   				alert(err+"에러 발생했어요.");
+		   			}  //실팽했을때 실행할 함수 
+		   		});
+				
+			}
 			
 
+		  selectAll()
 		  
-		  
-		  
-		/*  $(document).on("click",".page-item",function(){
-			alert(왜안되는거니);
-			  $("html").animate({scrollTop: $("#listTable").offset().top}, 400);
-		  }) */
 	
+ 	 
+			 
 });
+
+
 </script>
 
 </head>
@@ -85,8 +145,48 @@ $(function(){
 					        <p class="card-text">
 					        	<div class="content"></div>
 					        	
-					        	<p> <b>별점 : <i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star-half"></i></b>   <a href="#">[리뷰]</a>
+					        	<p> <b>별점 : 
+
+					        		<c:choose>
+					        			<c:when test="${star==0}">
+					        				<i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+					        			</c:when>
+					        			<c:when test="${star<=0.5}">
+					        				<i class="bi bi-star-half"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+					        			</c:when>
+					        			<c:when test="${star<=1}">
+					        				<i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+					        			</c:when>
+					        			<c:when test="${star<=1.5}">
+					        				<i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+					        			</c:when>
+					        			<c:when test="${star<=2}">
+					        				<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+					        			</c:when>
+					        			<c:when test="${star<=2.5}">
+					        				<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+					        			</c:when>
+					        			<c:when test="${star<=3}">
+					        				<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>
+					        			</c:when>
+					        			<c:when test="${star<=3.5}">
+					        				<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star"></i>
+					        			</c:when>
+					        			<c:when test="${star<=4}">
+					        				<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+					        			</c:when>
+					        			<c:when test="${star<=4.5}">
+					        				<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star-half"></i>
+					        			</c:when>
+					        			<c:when test="${star<=5}">
+					        				<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+					        			</c:when>
+					        		</c:choose>
+					        		</b>   
+					        	<a href="#a">[리뷰]</a>
 					        	<p> <div><b>주종 : ${param.title} </b></div>
+					        	<h5>${item.pDetail}</h5><p>
+
 								<p> <div id="pAlcohol"></div>
 								<p><h4 class="text-center" id = "price"></h4>	
 							</p>
@@ -149,7 +249,7 @@ $(function(){
 	</div>
 	
 	<div class="row mt-5">
-		<div class="col">
+		<div class="col"><div style="position:absolute; top:2500px;"><a name="a" id="a"></a></div>
 				<table id="listTable" class="table table-hover">
 				    <tr>
 				      <th scope="col">#</th>
@@ -184,7 +284,7 @@ $(function(){
 
 		<li class="page-item">
 			<c:if test="${(startPage-p.blockcount) > 0}"> <!-- (-2) > 0  -->
-				<a class="page-link" href="${path}/front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${startPage-1}" aria-label="Previous">
+				<a class="page-link" style="color: black" href="${path}/front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${startPage-1}" aria-label="Previous">
 				<span aria-hidden="true">&laquo;</span>
 				</a>   
 			</c:if>
@@ -195,13 +295,13 @@ $(function(){
 				<c:set var="doneLoop" value="true"/>
 			</c:if> 
 			<c:if test="${not doneLoop}" >
-			<li class="page-item"><a class="${i==pageNo?'pagination-active':page} page-link" id="page" href="${path}/front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${i}">${i}</a></li> 
+			<li class="page-item"><a style="color: black" class="${i==pageNo?'pagination-active':page} page-link" id="page" href="${path}/front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${i}">${i}</a></li> 
 			</c:if>			  
 		</c:forEach>
 
     <li class="page-item">
 	    <c:if test="${(startPage+p.blockcount)<=p.pageCnt}">
-	      <a class="page page-link" href="front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${startPage+p.blockcount}" aria-label="Next">
+	      <a class="page-link" style="color: black" href="front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${startPage+p.blockcount}" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	      </a>
 	    </c:if>
