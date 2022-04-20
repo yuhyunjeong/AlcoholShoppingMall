@@ -9,6 +9,9 @@
 <title>카테고리 눌렀을때</title>
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+
+
+
 $(function(){
 
 	function selectAll(fi){	
@@ -23,8 +26,7 @@ $(function(){
    				$.each(result, function(index, item) {
    					str+="<div class='col-lg-3 col-md-6'>";
    					str+="<div class='card mb-3 h-100'>";
-   					
-   					str+=`<a href = '${path}/store/productDetail.jsp?pName=${"${item.pName}"}&type=${param.type}&title=${param.title}'>`
+   					str+=`<a href = '${path}/front?key=product&methodName=searchBy&pName=${"${item.pName}"}&type=${param.type}&title=${param.title}'>`						
    					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`; 
    					str+="<div class='card-body'>";
    					str+="<p class='card-text'>";
@@ -59,7 +61,7 @@ $(function(){
    				$.each(result, function(index, item) {	
    					strr+="<div class='col-lg-3 col-md-6'>";
    					strr+="<div class='card mb-3 h-100'>";			
-   					strr+=`<a href = '${path}/store/productDetail.jsp?pName=${"${item.pName}"}&type=${param.type}&title=${param.title}'>`
+   					strr+=`<a href = '${path}/store/productDetail.jsp?pName=${"${item.pName}"}&title=${param.title}'>`
    					strr+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`;
    					strr+="<div class='card-body'>";
    					strr+="<p class='card-text'>";
@@ -162,12 +164,14 @@ $(function(){
 
 
 
-
+<form action="/front">
 <div class='container mb-4'>
 	<div id='rrr' class='row row-cols-1 row-cols-md-4 g-4'>
 	</div>
 </div>
-
+<input type ="hidden" name="key" value="product"/>
+<input type ="hidden" name="methodName" value="methodName"/>
+</form>
 
 <%-- <jsp:include page="../store/productMain.jsp"/> --%>
 <jsp:include page="../common/footer.jsp"/>

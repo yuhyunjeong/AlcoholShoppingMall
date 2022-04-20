@@ -72,17 +72,24 @@ public class ProductController implements Controller {
 	/**
 	 * 상세검색
 	 */
-	public void searchBy(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView searchBy(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		response.setContentType("text/html;charset=UTF-8");
 		String name = request.getParameter("name");
 		System.out.println(name);
 
 		ProductDTO dto = proService.searchBy(name);
-		JSONArray arr = JSONArray.fromObject(dto);
+		
+		request.setAttribute("product", dto); 
+
+		
+		return new ModelAndView("store/productDetail.jsp");
+
+
+		//JSONArray arr = JSONArray.fromObject(dto);
 		// System.out.println(dto.getpName()+"나와라");
-		PrintWriter out = response.getWriter();
-		out.print(arr);
+		//PrintWriter out = response.getWriter();
+		//out.print(arr);
 
 	}
 
