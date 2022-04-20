@@ -26,7 +26,7 @@ public interface ProductService {
 	public void updateStuck(ProductDTO productDTO)throws SQLException;
 	
 	/**
-	 * 상품 제거 delete from pCode
+	 * 상품 제거 delete from product where pCode
 	 * */
 	public void delete(String pCode)throws SQLException;
 	

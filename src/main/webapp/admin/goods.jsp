@@ -23,11 +23,7 @@ button {
 
 <script type="text/javascript">
 
-  function "localhref='goods.jsp'"(){
-	  
-	  document.read.methodName.value="delete";
-	  document.read.submit();
-  }
+ 
 
 
 </script>
@@ -49,7 +45,7 @@ button {
 	<div class="container">
 		<!-- 전체 컨테이너의 절반 크기로 띄우게 됨 -->
 
-	<form  name="read" method="post" action="${path}/admin/goods.jsp" style="text-align: center;">
+	<form name="read" method="post" action="${path}/admin/goods.jsp" style="text-align: center;">
 		<table class="table table-sm">
 			<thead class="table-light">
 				<tr>
@@ -78,7 +74,10 @@ button {
 						<td>${product.pPrice}</td>
 						<td>${product.pStuck}</td>
 						<td>${product.pDate}</td>
-						<td><input type="button" id="delete" value="삭제" onclick="localhref='goods.jsp'"></td>
+						<td>
+						<input type="hidden" name = "key" value="product">
+						<input type="hidden" name="methodName" value="delete">
+						<input type="button" value="삭제" onclick="localhref='goods.jsp'"></td>
 					</tr>
 				</c:forEach>
 

@@ -34,20 +34,8 @@
 		});
 		
 		 
+		 
 		
-		function result(){
-			
-			var result = 0;
-
-			$().each(function(){
-				result = 
-			})
-			
-			if(document.getElementById("count").value && document.getElementById("price").value){
-				document.getElementById("total").value = document.getElementById("count").value *  
-				document.getElementById("count").value;
-			}
-		}
 	 
 	});
 </script>
@@ -92,7 +80,7 @@
 								</div>
 
 								<div class="col text-end">
-									<button type="button" class="btn-close" aria-label="Close"></button>
+									<button type="button" class="btn-close" aria-label="Close" ></button>
 								</div>
 						
 						      <div class="card-body">
@@ -112,15 +100,21 @@
 									</div>
                                </div><p><p><p><!--row-->
 
+                                 <form>
+                                 
+                                 
                                  <div class="row">
 
+                                
+         
 									<div class="col">
 										<div class="text-end"> 
-										   <input type="button" onclick="count('plus')" value="+">
-											<input id="count" value="${cartList.cartCount}">개
-										   <input type="button" onclick="count('minus')" value="-">
+											<input type="number" value="${cartList.cartCount}" min="1" max="99">개
 										</div>
 									</div>
+									
+									
+									
 								</div><p><p><p><!--row-->
 								
 								<div class="row">
@@ -135,12 +129,11 @@
 									
 									<div class="col">
 										<div class="text-end">
-											<input id="price" value="<fmt:formatNumber value="${proList[status.index].pPrice}" 
-											pattern="###,###"/>" readonly>원
+											<fmt:formatNumber value="${proList[status.index].pPrice}" pattern="###,###"/>원
 										</div>
 										<p>
 										<div class="text-end">
-											<b><input id="result" value="<fmt:formatNumber value="" pattern="###,###"/>" readonly>원</b>
+											<b><fmt:formatNumber value="" pattern="###,###"/>원</b>
 										</div>
 									</div>
 									
@@ -148,7 +141,7 @@
 								
 								</div><!--row-->
 								
-								
+								</form>
 
 							</div><!--카드바디-->	
 							
