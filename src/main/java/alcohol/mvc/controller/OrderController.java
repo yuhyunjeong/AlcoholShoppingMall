@@ -136,29 +136,45 @@ public class OrderController implements Controller{
 	public void orderSelect(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html;charset=UTF-8");
 		String pName = request.getParameter("pName");//사진이랑 
-		System.out.println(pName+" 이름출력");
+		
 		String uId = request.getParameter("id");//쿠폰이랑 적립금 때문에 불러옴
 		int count =Integer.parseInt(request.getParameter("count"));
-		
+		System.out.println(uId+" 이름출력");
 		
 		UserService userService = new UserServiceImpl();
 		
-		UserDTO uDTO = userService.selectByUserId(uId);
+
 		
 		CouponService couService = new CouponServiceImpl();
-		List<CouponDTO> couList=couService.couponAll(pName);
+		List<CouponDTO> couList=couService.couponAll(uId);
 		
+	
 		ProductService pservice = new ProductServiceImpl();
 		ProductDTO dto =pservice.searchBy(pName);
 		int toPrice = (dto.getpPrice()*count);
 		Map<Object, Object> map = new HashMap<Object, Object>();
-		map.put("uDTO", uDTO);//적립금
 		map.put("couList", couList); //쿠폰내역
 		map.put("pDTO", dto);//사진 가격 등등
 		map.put("toPrice",toPrice);//토탈가격
 		
 
 		JSONArray arr = JSONArray.fromObject(map); //System.out.println(dto.getpName()+"나와라");
+		PrintWriter out = response.getWriter();
+		out.print(arr);
+		 
+
+	}
+	
+	
+	public void couponSelect(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		String id = request.getParameter("id");//사진이랑 
+		System.out.println(id+"안나오는거?");
+		CouponService couService = new CouponServiceImpl(); 
+		
+		List<CouponDTO> couList=couService.couponAll(id);
+		System.out.println(couList.size());
+		JSONArray arr = JSONArray.fromObject(couList); //System.out.println(dto.getpName()+"나와라");
 		PrintWriter out = response.getWriter();
 		out.print(arr);
 		 
