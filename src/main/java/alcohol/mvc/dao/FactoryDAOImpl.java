@@ -32,6 +32,8 @@ public class FactoryDAOImpl implements FactoryDAO {
 //			e.printStackTrace();
 //		}
 //	}
+	
+	
 
 	@Override
 	public List<FactoryDTO> factoryAll() throws SQLException {
