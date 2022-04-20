@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
 		int result = dao.delete(pCode);
 		
 		if(result==0){
-			throw new SQLException(pCode+"의 게시물을 삭제할 수 없습니다.");
+			throw new SQLException(pCode + "게시물을 삭제할 수 없습니다.");
 		}
 
 	}

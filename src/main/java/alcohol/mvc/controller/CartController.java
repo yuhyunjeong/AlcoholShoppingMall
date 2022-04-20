@@ -107,7 +107,7 @@ public class CartController implements Controller {
 	//delete 
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		int cartNo = Integer.parseInt(request.getParameter("cartNo"));/*getServletContext().getRealPath("/save")*/;
+		int cartNo = Integer.parseInt(request.getParameter("cartNo"));
 		System.out.println(cartNo);
 
 		cartService.cartDelete(cartNo);

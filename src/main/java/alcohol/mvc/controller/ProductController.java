@@ -155,7 +155,7 @@ public class ProductController implements Controller {
 		
 		String pCode = request.getParameter("pCode");
 		
-		System.out.println(pCode);
+		System.out.println("pCode" + pCode);
 		
 		proService.delete(pCode);
 		this.select(request, response);

@@ -22,7 +22,36 @@ button {
 </style>
 
 <script type="text/javascript">
+  $(function(){
+	 
+	  //삭제
+	  
+	  $(document).on("click", "[value=삭제]" , function(){
+			//alert( $(this).attr("name") ) 
+			/* $.ajax({
+				url : "../ajax", //서버요청주소
+				type : "post", //요청방식(method방식 : get | post | put | delete )
+				dataType : "text", //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+				data : { key : "customer" , methodName : "delete" , id : $(this).attr("name") } , // serialize()는 폼전송 하는 기능 
+				success : function(result) {//성공했을때 실행할 함수 
+                  if (result == 0) {
+						alert("삭제되지 않았습니다")
+					} else {
+						selectAll(); //화면갱신 
+					}
 
+				},
+
+				error : function(err) { //실팽했을때 실행할 함수 
+					alert(err + "에러 발생했어요.");
+				}
+			});//ajax */
+
+		});
+
+		select();
+	  
+  });
  
 
 </script>
@@ -36,15 +65,14 @@ button {
 	<p>
 	<div class="container">
 		<div align=left>
-			<a href="${path}/admin/goodsWrite.jsp"><button type="button"
-					class="btn btn-light">등록하기</button></a>
+			<a href="${path}/admin/goodsWrite.jsp">
+			<button type="button" class="btn btn-light">등록하기</button></a>
 		</div>
 	</div>
 	<p>
 	<div class="container">
 		<!-- 전체 컨테이너의 절반 크기로 띄우게 됨 -->
 
-	<form name="read" method="post" action="${path}/admin/goods.jsp" style="text-align: center;">
 		<table class="table table-sm">
 			<thead class="table-light">
 				<tr>
@@ -73,21 +101,19 @@ button {
 						<td>${product.pPrice}</td>
 						<td>${product.pStuck}</td>
 						<td>${product.pDate}</td>
+						
 						<td>
-						
-						
-                        <input type="hidden" name ="key" value="product">
-						<input type="hidden" name="methodName" value="delete">
-						<input type="hidden" name="pCode" value="${list.pCode}">
-						
-						<input type="submit" class="btn" value="삭제" src="${path}/front?key=&methodName=&pCode=${list.pCode}"></td>
+						<input type="button" class="btn" name="${product.pCode}" value="삭제"> 
+						</td>
 					    
 					</tr>
 				</c:forEach>
 				
 			</tbody>
 		</table>
-	</form>
+	
+	
+	
 	</div>
 
 
