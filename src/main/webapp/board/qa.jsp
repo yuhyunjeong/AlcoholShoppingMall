@@ -30,7 +30,6 @@ div {
 	   			data: {key :"qa", methodName:"selectFilter", cate:v},
 	   			success :function(result){//map이나옴
 
-					
 					let str = "";
 					$.each(result, function(index, item) { // item이 customer 
 						str += "<tr>";
@@ -40,10 +39,10 @@ div {
 						str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaList.qaNumber}"}'>${'${item.qaList.qaContent}'}</a></td>`;
 						str += `<td>${'${item.qaList.qaDate}'}</td>`;
 						str += "</tr>"
+						str +="나오냐"
 					});	
 					$("#qaTable tr:gt(0)").remove();
 					$("#qaTalbe tr:eq(0)").after(str);
-					
 					
 					
 				}, // 성공했을 때 실행할 함수 
@@ -55,6 +54,7 @@ div {
 		}
 		$("[name=btn]").click(function(){
 			qaFilter($(this).val());
+			$("#test").html($(this).val());
 		})
 
 	});
@@ -101,17 +101,29 @@ div {
 				role="button">등록하기</a>
 		</div>
 		<p>
-			<table class="table table-hover" id="qaTable">
-					<!-- <tr>
+	</div>
+
+			<table class="table table-hover" id="1qaTable">
+					<tr id="qaTable">
 						<th scope="col">글번호</th>
 						<th scope="col">작성자</th>
 						<th scope="col">카테고리</th>
 						<th scope="col">제목</th>
 						<th scope="col">작성일</th>
-					</tr> -->
+					</tr>
+					<c:forEach items="${qaList}" var="qa">
+						<tr>
+							<th scope="row">${qa.qaNumber}</th>
+							<td>${qa.userId}</td>
+							<td>${qa.qaTitle}</td>
+							<td><a href="${path}/front?key=qa&methodName=selectByQANum&qaNumber=${qa.qaNumber}">${qa.qaContent}</a>
+							</td>
+							<td>${qa.qaDate}</td>
+						</tr>
+					</c:forEach>
 			</table>
 
-	</div>
+	
 	<!-- 페이징처리 -->
 	<jsp:useBean class="alcohol.mvc.paging.PageCnt" id="p" />
 	<nav class="pagination-container">
@@ -142,7 +154,6 @@ div {
 
 		</div>
 	</nav>
-
-	<%@include file="../common/footer.jsp"%>
+<%@include file="../common/footer.jsp"%>
 </body>
 </html>
