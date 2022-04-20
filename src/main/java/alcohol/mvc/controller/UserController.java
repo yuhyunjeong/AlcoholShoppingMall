@@ -1,10 +1,8 @@
 package alcohol.mvc.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -36,16 +34,18 @@ public class UserController implements Controller {
 		String userId = request.getParameter("id");
 		String userPwd = request.getParameter("pwd");
 		//System.out.println(userId + userPwd);
+		
 		// 서비스 호출
 		UserDTO dbDTO = userService.loginCheck(new UserDTO(userId, userPwd));
-		// 그결과를 받아서 성공했으면
+		
+		// 그결과를 받아서 성공했으면 sessionScope에 저장 
 		//System.out.println(dbDTO);
-
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", dbDTO); // ${loginUser.userId}
 		session.setAttribute("loginName", dbDTO.getUserName());
 		session.setAttribute("loginGrade", dbDTO.getUserGrade());
 		session.setAttribute("loginAddr", dbDTO.getUserAddr()+" "+dbDTO.getUserAddr2());
+
 		// index.jsp -> redirect
 		ModelAndView mv = new ModelAndView("index.jsp", true);
 
@@ -145,4 +145,17 @@ public class UserController implements Controller {
 		
 	}
 
+	/**
+	 * 로그아웃 
+	 */
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		System.out.println("로그아웃 되냥");
+		
+		// 모든 세션의 정보를 삭제 
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		return new ModelAndView("index.jsp", true);
+	}
 }
