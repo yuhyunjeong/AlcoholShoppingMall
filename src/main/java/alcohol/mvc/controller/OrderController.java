@@ -16,6 +16,8 @@ import alcohol.mvc.dto.ProductDTO;
 import alcohol.mvc.dto.UserDTO;
 import alcohol.mvc.service.OrderService;
 import alcohol.mvc.service.OrderServiceImpl;
+import alcohol.mvc.service.ProductService;
+import alcohol.mvc.service.ProductServiceImpl;
 import net.sf.json.JSONArray;
 
 public class OrderController implements Controller{
@@ -77,23 +79,20 @@ public class OrderController implements Controller{
 	//주문상태출력 select ORDER_STATUS
 	public void selectorder(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String orderStatus = request.getParameter("orderstatus");
+		String pName = request.getParameter("pName");
 		
 		HttpSession session = request.getSession();
 		UserDTO uId = (UserDTO)session.getAttribute("userId");
+		
+		
 		
 		//String Name = uId.getUserName();
 		//String Addr = uId.getUserAddr();
 		//String Addr2 = uId.getUserAddr2();
 		//String Phone = uId.getUserPhone();
-		//int Point = uId.getUserPoint();
+		//int Point = uId.getUserPoint();		
 		
-		String coupon = request.getParameter("coupon");
-		
-		String pName = request.getParameter("pName");
-		String pImage = request.getParameter("pImage");
-		String pPrice = request.getParameter("pPrice");
-		
+
 		
 		 //DTO dto = proService.searchBy(name); 
 		// JSONArray arr = JSONArray.fromObject(dto); //System.out.println(dto.getpName()+"나와라");
@@ -123,4 +122,28 @@ public class OrderController implements Controller{
 		return new ModelAndView("store/order.jsp");
 	}
 
+	
+	/**
+	 * 주문결재창 출력
+	 * */
+	public void orderSelect(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String pName = request.getParameter("pName");
+		
+		HttpSession session = request.getSession();
+		UserDTO uId = (UserDTO)session.getAttribute("userId");
+		
+		ProductService pservice = new ProductServiceImpl();
+		ProductDTO dto =pservice.searchBy(pName);
+		
+
+		
+		 //DTO dto = proService.searchBy(name); 
+		// JSONArray arr = JSONArray.fromObject(dto); //System.out.println(dto.getpName()+"나와라");
+		// PrintWriter out = response.getWriter(); out.print(arr);
+		 
+		
+		//return new ModelAndView("store/order.jsp");
+	}
+	
 }
