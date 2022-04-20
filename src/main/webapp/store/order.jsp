@@ -21,39 +21,42 @@
 
 <script type="text/javascript">
 
-$(function(){
-    alert(1)
-	 
+$(function(){ 
 	function selectAll(){
-    	alert(2)
+
 		$.ajax({
 	   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
 	   			type:"post", //요청방식(method방식 : get | post | put | delete )
 	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-	   			data: {key :"order", methodName:"orderSelect", pName : '${param.pName}'},
+	   			data: {key :"order", methodName:"orderSelect", pName : '${param.pName}',count:'${param.count}'},
 	   			success :function(result){
-                   alert(result);
+
 	   				let str ="";
+	   				var toPrice =0;
+	   				
 	   				
 	   				$.each(result, function(index, item) {
-	   			
-
-	   					
-	   					
-	   					
-	   					
-	   					
-	   					
-	   					
-	   					
-	   					
-	   				});
-		
+	   					str+=`<div class='col-md-9 col-lg-9' style='float: none; margin:0 auto;'><p>`;
+	   					str+=`<div class='row'><div class='col align-self-center'>`;
+	   					str+=`<div class='row text-start'>${param.pName}</div>`	;
+	   					str+=`</div><div class='col'>`;
+	   					str+=`<img src='${path}/img/${"${item.pDTO.cateCode}"}/${"${item.pDTO.pName}"}.jpg' class='rounded float-end' style='width:180px; height:250px;'>`;   
+	   					str+=`</div></div><div class='row'><div class='col'><div class='text-start'>상품 금액</div><p><div class='text-start'>수량</div></div>` ;
+	   					str+=`<div class='col'>`;
+	   					str+=`<div class='text-center'>${'${item.toPrice}'}원</div><p>`;
+	   					str+=`<div class="text-center">${param.count}개</div>`;
+	   					str+=`</div></div><hr></div>`
+	   					toPrice =`${'${item.toPrice}'}` ;
+	   				});;
+					
+	   				$("#productList").empty();
+					$("#productList").html(str);
+	   				$("#totalPrice").html(toPrice+"원");
+	   				
 	   			},error : function(err){  
 	   				alert(err+"에러 발생했어요.");
 	   			}  //실팽했을때 실행할 함수 
 	   		});
-		 
 	 }
 	 selectAll()
  })      
@@ -71,43 +74,44 @@ $(function(){
 
 
 <div class="container row" style="float: none; margin:100 auto;">
+<div id="productList"></div>
+	<%-- <div class="col-md-9 col-lg-9" style="float: none; margin:0 auto;"><p>
+		
+		<div class="row">
+			<div class="col align-self-center">
+				<div class="row text-start">${param.pName}</div> 
+			</div>
+			
+			
+			<div class="col">
+				<img src="" class="rounded float-end" style="width:180px; height:250px;">   
+			</div>
+		</div>
+		
+		 
+		<div class="row">  
+			<div class="col">
+				<div class="text-start">상품 금액</div><p> 
+				<div class="text-start">수량</div> 
+			</div> 
+			<div class="col">
+				<div class="text-center">1222</div><p>
+				<div class="text-center">${param.count}개</div>
+			</div> 
+		</div>
+		<hr>
+	</div> --%>
+	
+
 <div class="col-md-9 col-lg-9" style="float: none; margin:0 auto;"><p>
-
-<div class="row">
- <div class="col align-self-center">
-  <div class="row text-start">${param.pName}</div> 
- </div>
-
-
- <div class="col">
-  <img src="" class="rounded float-end" style="width:180px; height:250px;">   
- </div>
-</div>
-
- 
-<div class="row">  
- <div class="col">
- <div class="text-start">상품 금액</div><p> 
- <div class="text-start">수량</div> 
- </div> 
- <div class="col">
- <div class="text-center">1222</div><p>
- <div class="text-center">${param.count}개</div>
- <hr>
- </div> 
-</div>
-</div>
-
-<div class="col-md-9 col-lg-9" style="float: none; margin:0 auto;"><p>
-<div class="row">  
- <div class="col">
- <div class="text-start"><b>총 상품 금액</b></div> 
- </div> 
- <div class="col">
- <div class="text-center"><b>23232</b></div><p> 
-</div> 
-</div> 
-
+	<div class="row">  
+		<div class="col">
+			<div class="text-start"><b>총 상품 금액</b></div> 
+		</div> 
+		<div class="col">
+			<div class="text-center"><b id="totalPrice"></b></div><p> 
+		</div> 
+	</div> 
 </div><!--그리드 가운데 정렬?-->
 
 <p>
