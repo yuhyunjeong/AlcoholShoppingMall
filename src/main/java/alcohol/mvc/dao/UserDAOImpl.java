@@ -271,8 +271,8 @@ public class UserDAOImpl implements UserDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "SELECT U_ID FROM USERS WHERE U_NAME = ? AND U_PHONE =? AND U_EMAIL=?";
 		String id = null;
+		String sql = "SELECT U_ID FROM USERS WHERE U_NAME=? AND U_PHONE=? AND U_EMAIL=?";
 
 		try {
 			con = DbUtil.getConnection();
@@ -298,8 +298,8 @@ public class UserDAOImpl implements UserDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "SELECT U_PWD FROM USERS WHERE U_ID=? U_NAME = ? AND U_PHONE =? AND U_EMAIL=?";
 		String pwd = null;
+		String sql = "SELECT U_PWD FROM USERS WHERE U_ID=? AND U_NAME=? AND U_PHONE=? AND U_EMAIL=?";
 
 		try {
 			con = DbUtil.getConnection();

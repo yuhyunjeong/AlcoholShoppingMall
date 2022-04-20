@@ -42,6 +42,26 @@ input:focus::-webkit-input-placeholder {
 	color: transparent;
 }
 </style>
+<script type="text/javascript">
+/* function idFind() { 
+ 	var frm = document.idFind;
+
+ 	if (frm.name.value.length < 1) {
+	  alert("이름을 입력해주세요");
+	  return;
+	 }
+
+	 if (frm.phone.value.length != 13) {
+		  alert("핸드폰번호를 정확하게 입력해주세요");
+		  return;
+	 }
+
+ frm.method = "post";
+ frm.action = "idFindAfter.jsp"; //넘어간화면
+ frm.submit();  
+ } */
+
+</script>
 </head>
 <body>
 <jsp:include page="../common/header.jsp" />
@@ -51,14 +71,14 @@ input:focus::-webkit-input-placeholder {
 	<p>
 	<p>
 	<div class="col-sm-6, container">
-		<form method="post" action="${path}/front">
+		<form method="post" action="${path}/front" name="idFind">
 
 			<div class="m-3">
 				<h6>이름</h6>
 				<input type="text" name="name" placeholder="이름을 입력해주세요.">
 				<p>
 				<h6>전화번호</h6>
-				<input type="text" name="pwd" placeholder="전화번호를 입력해주세요.">
+				<input type="text" name="phone" placeholder="전화번호를 입력해주세요.">
 				<p>
 				<h6>이메일</h6>
 				<input type="text" name="email" placeholder="이메일을 입력해주세요.">
@@ -70,14 +90,15 @@ input:focus::-webkit-input-placeholder {
 			<p>
 			<p>
 			<div class="m-5">
-					<input class="w-25 btn btn-dark" type="submit" value="아이디 찾기">
-					<input type="hidden" name="key" value="user" />
-					<!-- Controller를 찾는 정보 -->
-					<input type="hidden" name="methodName" value="idFind" />
-					<!-- 메소드이름 -->
+					<input type="hidden" name="key" value="user">
+					<input type="hidden" name="methodName" value="idFind">
+					<input class="w-25 btn btn-dark" type="submit" value="아이디 찾기" onClick="idFind()">
 				<p>
 			</div>
 		</form>
+		<div class="m-5">
+			<input class="w-25 btn btn-dark" type="button" value="로그인 페이지로 이동" onclick="location.href='login.jsp'">
+		</div>
 		<p>
 	</div>
 	<p>

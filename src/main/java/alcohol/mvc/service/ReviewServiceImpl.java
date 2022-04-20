@@ -22,8 +22,8 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewDTO> reviewAll(String pCode, int paging) throws SQLException {
-		List<ReviewDTO> list = dao.reviewAll(pCode, paging);
+	public List<ReviewDTO> reviewAll(int paging) throws SQLException {
+		List<ReviewDTO> list = dao.reviewAll(paging);
 		return list;
 	}
 
@@ -31,6 +31,12 @@ public class ReviewServiceImpl implements ReviewService {
 	public void reviewUpdate(ReviewDTO dto) throws SQLException {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<ReviewDTO> reviewSelect(String pName, int pageNo) throws SQLException {
+		List<ReviewDTO> list = dao.reviewSelect(pName, pageNo);
+		return list;
 	}
 
 }

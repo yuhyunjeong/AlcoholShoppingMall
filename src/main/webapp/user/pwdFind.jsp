@@ -61,7 +61,7 @@ input:focus::-webkit-input-placeholder {
 				<input type="text" name="name" placeholder="이름을 입력해주세요.">
 				<p>
 				<h6>전화번호</h6>
-				<input type="text" name="pwd" placeholder="전화번호를 입력해주세요.">
+				<input type="text" name="phone" placeholder="전화번호를 입력해주세요.">
 				<p>
 				<h6>이메일</h6>
 				<input type="text" name="email" placeholder="이메일을 입력해주세요.">
@@ -73,14 +73,15 @@ input:focus::-webkit-input-placeholder {
 			<p>
 			<p>
 			<div class="m-5">
+				<input type="hidden" name="key" value="user">
+				<input type="hidden" name="methodName" value="pwdFind">
 				<input class="w-25 btn btn-dark" type="submit" value="비밀번호 찾기">
-				<input type="hidden" name="key" value="user" />
-				<!-- Controller를 찾는 정보 -->
-				<input type="hidden" name="methodName" value="pwdFind" />
-				<!-- 메소드이름 -->
 				<p>
 			</div>
 		</form>
+		<div class="m-5">
+			<input class="w-25 btn btn-dark" type="button" value="로그인 페이지로 이동" onclick="location.href='login.jsp'">
+		</div>
 		<p>
 		<p>
 	</div>

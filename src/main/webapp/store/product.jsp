@@ -26,7 +26,7 @@ $(function(){
    				$.each(result, function(index, item) {
    					str+="<div class='col-lg-3 col-md-6'>";
    					str+="<div class='card mb-3 h-100'>";
-   					str+=`<a href = '${path}/front?key=product&methodName=searchBy&pName=${"${item.pName}"}&type=${param.type}&title=${param.title}'>`						
+   					str+=`<a href = '${path}/front?key=review&methodName=reviewSelect&pName=${"${item.pName}"}&type=${param.type}&title=${param.title}&price=${"${item.pPrice}"}'>`						
    					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`; 
    					str+="<div class='card-body'>";
    					str+="<p class='card-text'>";

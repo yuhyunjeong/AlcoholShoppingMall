@@ -107,7 +107,7 @@ public class UserServiceImpl implements UserService {
 		String result = userDao.pwdFind(id, name, phone, email);
 		
 		if(result == null) {
-			throw new SQLException("입력하신 정보에 해당하는 id가 존재하지 않습니다.");
+			throw new SQLException("입력하신 정보에 해당하는 pwd가 존재하지 않습니다.");
 		}
 		
 		return result;

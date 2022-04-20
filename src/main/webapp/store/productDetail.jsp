@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,119 +16,42 @@
 
 
 </style>
-<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-	$(function(){
-
-		/* $(".plus").click(function(){
-			   var num = $(".numBox").val();
-			   var plusNum = Number(num) + 1;
-
-			    if(plusNum >= 99) {
-			    $(".numBox").val(num);
-			    $(".priceBox").val(num+"원");
-			    
-			    
-			   } else {
-			    $(".numBox").val(plusNum);     
-			    $(".priceBox").val(plusNum+"원");
-			   }
-			  });
-			  
-			  $(".minus").click(function(){
-			   var num = $(".numBox").val();
-			   var minusNum = Number(num) - 1;
-			   
-			   if(minusNum <= 0) {
-			    $(".numBox").val(num);
-			    $(".priceBox").val(num+"원");
-			   } else {
-			    $(".numBox").val(minusNum);    
-			    $(".priceBox").val(minusNum+"원");
-			   }
-			  }); */
-		
-			  
-			  
-			  function selectAll(){	
-					$.ajax({
-			   			url :"../ajax" , //서버요청주소
-			   			type:"post", //요청방식(method방식 : get | post | put | delete )
-			   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-			   			data: {key :"product", methodName:"searchBy", name : "${param.pName}"},
-			   			success :function(result){
-							let pCode="";
-			   				let content ="";
-			   				let price = "";
-			   				let pAlcohol = "";
-			   				let price2 = 0;
-			   				let review = "";
-			   				$.each(result, function(index, item) {
-			   					content += `<h5>${"${item.pDetail}"}</h5>`;
-			   					price +=`가격 : ${'${item.pPrice}'}원`;
-			   					pAlcohol +=`<b>도수 : ${'${item.pAlcohol}'}%</b>`;
-			   					price2 = `${'${item.pPrice}'}`;
-			   					pCode=`${'${item.pCode}'}`;
-			   					
-			   					
-			   					
-			   					/* review+=`<tr id="review">`
-			   					review+=`<th scope="row">1</th>`
-			   					review+=`<td>김정현</td>`
-			   					review+=`<td>이거 디비에서 뺴와야한다</td>`
-			   					review+=`<td>별점이다</td>`
-			   					review+=`<td>2022-04-05</td>`
-			   					review+=`<td><img id=reviewImg src='${path}/img/${"${param.type}"}/${"${param.pName}"}2.jpg'  class='rounded float-end' style='width: 50px; height: 50px'></td>`
-			   					review+=`</tr>`	 */
-			   				});
-			   				
-			   				$(".plus").click(function(){
-			   				   var num = $(".numBox").val();
-			   				   var plusNum = Number(num) + 1;
-							   var price = price2;
-			   				    if(plusNum >= 99) {
-			   				    $(".numBox").val(num);
-			   				    $(".priceBox").val((price2*num)+"원");
-			   				    
-			   				    
-			   				   } else {
-			   				    $(".numBox").val(plusNum);     
-			   				    $(".priceBox").val((price2*plusNum)+"원");
-			   				   }
-			   				  });
-			   				  
-			   				  $(".minus").click(function(){
-			   				   var num = $(".numBox").val();
-			   				   var minusNum = Number(num) - 1;
-			   				   var price = price2;
-			   				   if(minusNum <= 0) {
-			   				    $(".numBox").val(num);
-			   				    $(".priceBox").val((price2*num)+"원");
-			   				   } else {
-			   				    $(".numBox").val(minusNum);    
-			   				    $(".priceBox").val((price2*minusNum)+"원");
-			   				   }
-			   				  });
-			   				$("#listTable tr:gt(0)").remove();
-			   				$("#listTable tr:eq(0)").after(review);
-			   				$(".pCode").val(pCode);
-			   				$(".priceBox").val(price2+"원");
-							$(".content").html(content);
-							$("#price").html(price);
-							$("#pAlcohol").html(pAlcohol);	
-			   			},error : function(err){  
-			   				alert(err+"에러 발생했어요.");
-			   			}  //실팽했을때 실행할 함수 
-			   		});
-					
-				}
-
-			  selectAll();
-			  
-		
-	});
-
-
+$(function(){
+	
+	$(".plus").click(function(){
+		   var num = $(".numBox").val();
+		   var plusNum = Number(num) + 1;
+		   var price = `${param.price}`;
+		    if(plusNum >= 99) {
+		    $(".numBox").val(num);
+		    $(".priceBox").val((price*num)+"원");
+		    
+		    
+		   } else {
+		    $(".numBox").val(plusNum);     
+		    $(".priceBox").val((price*plusNum)+"원");
+		   }
+		  });
+		  
+		  $(".minus").click(function(){
+		   var num = $(".numBox").val();
+		   var minusNum = Number(num) - 1;
+		   var price = `${param.price}`;
+		   if(minusNum <= 0) {
+		    $(".numBox").val(num);
+		    $(".priceBox").val((price)+"원");
+		   } else {
+		    $(".numBox").val(minusNum);    
+		    $(".priceBox").val((price*minusNum)+"원");
+		   }
+		  });
+	
+	
+	
+	
+})
 </script>
 
 </head>
@@ -141,7 +67,7 @@
 				  <div class="row g-0 h-100 w-100">
 				  	
 					    <div class="col-lg-7">
-					      <img src="../img/${param.type}/${param.pName}.jpg" class="img-fluid img-thumbnail rounded-start" style="width:100%;height: 100%;">
+					      <img src="${path }/img/${param.type}/${param.pName}.jpg" class="img-fluid img-thumbnail rounded-start" style="width:100%;height: 100%;">
 	
 					    </div>
 					    <div class="col-lg-5">
@@ -181,7 +107,7 @@
 					            <div class="card rounded-3 shadow-sm mt-5">
 					          		<div class="card-header text-end bg-white">총가격</div>
 					          		<div class="card-main text-center">
-					          			<input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" />          			
+					          			<input type="text" class="priceBox" name="totalPrice" value=${param.price}원 readonly="readonly" style="border: none; text-align: center;" />          			
 					          		</div>       	
 					          	</div>
 					          	
@@ -207,9 +133,9 @@
 	</div>
 	<div class="row mt-5">
 		<div class="col" id = "content">
-			<img src="../img/${param.type}/${param.pName}2.jpg" class="rounded img-thumbnail" width="100%" height="100%">
+			<img src="${path}/img/${param.type}/${param.pName}2.jpg" class="rounded img-thumbnail" width="100%" height="100%">
 
-			<img src="../img/${param.type}/${param.pName}3.jpg" class="rounded img-thumbnail" width="100%" height="100%">		
+			<img src="${path}/img/${param.type}/${param.pName}3.jpg" class="rounded img-thumbnail" width="100%" height="100%">		
 		</div>
 	</div>
 	
@@ -223,11 +149,98 @@
 				      <th scope="col">별점</th>
 				      <th scope="col">등록일</th>
 				      <th scope="col">사진</th>
-				    </tr>
-				    
+				    </tr> 
+				    <c:forEach items="${reviewList}" var="list">
+						<tr id="review">
+	   					<th scope="row">1</th>
+	   					<td>${list.userId}</td>
+	   					<td>${list.viewContent}</td>
+	   					<td>${list.viewScore}</td>
+	   					<td>2022-04-05</td>
+	   					<td><img id=reviewImg src="${path}/img/${param.type}/${param.pName}2.jpg"  class='rounded float-end' style='width: 50px; height: 50px'></td>
+	   					</tr>
+				    </c:forEach>     
 				</table>	
 		</div>
-	</div>
+   	<jsp:useBean class="alcohol.mvc.paging.PageCnt" id="p"/> <p>
+	 	<nav class="pagination-container">
+			<div class="pagination">
+				<c:set var="doneLoop" value="false"/>
+				<c:set var="temp" value="${(pageNo-1) % p.blockcount}"/> <!-- (1-1)%2   , (2-1)%2    1 , (3-1)%2  0 -->
+				<c:set var="startPage" value="${pageNo - temp}"/> <!--   1- 1 --> <br>
+	
+			
+			 	 <c:if test="${(startPage-p.blockcount) > 0}"> <!-- (-2) > 0  -->
+			      <a class="pagination-newer" href="${path}/front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${startPage-1}">PREV</a>
+			     </c:if>
+			
+					<span class="pagination-inner"> 
+					  <c:forEach var='i' begin='${startPage}' end='${(startPage-1)+p.blockcount}'> 
+					  <c:if test="${(i-1)>=p.pageCnt}">
+					       <c:set var="doneLoop" value="true"/>
+					    </c:if> 
+					  <c:if test="${not doneLoop}" >
+					         <a class="${i==pageNo?'pagination-active':page}" href="${path}/front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${i}">${i}</a> 
+					  </c:if>
+					  
+						</c:forEach>
+					</span> 
+					 <c:if test="${(startPage+p.blockcount)<=p.pageCnt}">
+					     <a class="pagination-older" href="front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${startPage+p.blockcount}">NEXT</a>
+					 </c:if>
+	
+			</div>
+		</nav> 
+	</div>	
+
+
+<nav aria-label="Page navigation example">
+	<ul class="pagination">
+  
+		<li class="page-item">
+			<c:if test="${(startPage-p.blockcount) > 0}"> <!-- (-2) > 0  -->
+				<a class="page-link" href="${path}/front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${startPage-1}" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+				</a>   
+			</c:if>
+		</li>
+		
+		
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+
+
+
+
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    
+    
+    
+  </ul>
+</nav>
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
 	<div class="row mt-5 mb-5">
 		<div class="col">
 				<div class="accordion accordion-flush" id="accordionFlushExample">
@@ -265,8 +278,8 @@
 				</div>
 		</div>
 	</div>
-	
 </div>
+
 
 
 
