@@ -169,7 +169,7 @@ public class NoticeController implements Controller {
 		int noNumber = Integer.parseInt(request.getParameter("noNumber"));
 		
 		//String path = request.getServletContext().getRealPath("/save");
-		String path = "C:\\Edu\\log";
+		//String path = "C:\\Edu\\log";
 		
 		noService.noticeDelete(noNumber);
 		
