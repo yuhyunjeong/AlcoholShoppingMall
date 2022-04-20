@@ -101,17 +101,17 @@ public class CartController implements Controller {
 		
 		CartDTO cart = new CartDTO(Integer.parseInt(cartNo), uId, pCode, Integer.parseInt(cartCount));
 		
-		return new ModelAndView("store/cart.jsp");
+		return new ModelAndView("store/cart.jsp",true);
 	}
 	
 	//delete 
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String cartNo = request.getServletContext().getRealPath("/save");
+		int cartNo = Integer.parseInt(request.getParameter("cartNo"));/*getServletContext().getRealPath("/save")*/;
 		
-		cartService.cartDelete(Integer.parseInt(cartNo));
+		cartService.cartDelete(cartNo);
 		
-		return new ModelAndView("/front" , true);
+		return new ModelAndView("store/cart.jsp", true);
 	}
 	
 	

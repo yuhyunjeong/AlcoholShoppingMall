@@ -27,7 +27,7 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public void cartDelete(int cartNo) throws SQLException {
-		int cartDB = cartdao.cartDelete(cartNo);
+		int result = cartdao.cartDelete(cartNo);
 		
 		if(cartdao.cartDelete(cartNo) ==0) {
 			throw new SQLException(cartNo + "게시물을 삭제할 수 없습니다.");

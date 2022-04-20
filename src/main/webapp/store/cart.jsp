@@ -34,7 +34,7 @@
 		
 	});
 	
-	$(function(){ 
+	/* $(function(){ 
 		////계산.....]
 		var num = $("[name=items]").val();
 		var price = ""
@@ -42,7 +42,7 @@
 
 			 
 		
-	});
+	}); */
 </script>
 
 </head>
@@ -88,7 +88,7 @@
 					  </div>
 					  
 					  <div class="col text-end">
-						<button type="button" class="btn-close" aria-label="Close" />
+						<button type="button" name="cartDelete" class="btn-close" aria-label="cartDelete" />
 					  </div>
 					  
 					  <div class="card-body">
@@ -188,7 +188,8 @@
                  
                  </div><p><p><p><!--카드-->
                  
-                  
+                 <input type="hidden" name="key" value="cart"/>
+                 <input type="hidden" name="methodName" value="cartDelete"/>
                  <input type="hidden" name="img" value="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg">
 				 <button type="submit" class="btn btn-primary btn-lg">주문하기</button>
                  
