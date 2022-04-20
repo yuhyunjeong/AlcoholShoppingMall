@@ -17,6 +17,8 @@
 
 </style>
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
+
+
 <script type="text/javascript">
 $(function(){
 	
@@ -48,10 +50,17 @@ $(function(){
 		   }
 		  });
 	
+			
+
+		  
+		  
+		  
+		/*  $(document).on("click",".page-item",function(){
+			alert(왜안되는거니);
+			  $("html").animate({scrollTop: $("#listTable").offset().top}, 400);
+		  }) */
 	
-	
-	
-})
+});
 </script>
 
 </head>
@@ -152,7 +161,7 @@ $(function(){
 				    </tr> 
 				    <c:forEach items="${reviewList}" var="list">
 						<tr id="review">
-	   					<th scope="row">1</th>
+	   					<th scope="row">${list.viewNumber}</th>
 	   					<td>${list.userId}</td>
 	   					<td>${list.viewContent}</td>
 	   					<td>${list.viewScore}</td>
@@ -161,65 +170,47 @@ $(function(){
 	   					</tr>
 				    </c:forEach>     
 				</table>	
-		</div>
-   	<jsp:useBean class="alcohol.mvc.paging.PageCnt" id="p"/> <p>
-	 	<nav class="pagination-container">
-			<div class="pagination">
-				<c:set var="doneLoop" value="false"/>
-				<c:set var="temp" value="${(pageNo-1) % p.blockcount}"/> <!-- (1-1)%2   , (2-1)%2    1 , (3-1)%2  0 -->
-				<c:set var="startPage" value="${pageNo - temp}"/> <!--   1- 1 --> <br>
-	
-			
-			 	 <c:if test="${(startPage-p.blockcount) > 0}"> <!-- (-2) > 0  -->
-			      <a class="pagination-newer" href="${path}/front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${startPage-1}">PREV</a>
-			     </c:if>
-			
-					<span class="pagination-inner"> 
-					  <c:forEach var='i' begin='${startPage}' end='${(startPage-1)+p.blockcount}'> 
-					  <c:if test="${(i-1)>=p.pageCnt}">
-					       <c:set var="doneLoop" value="true"/>
-					    </c:if> 
-					  <c:if test="${not doneLoop}" >
-					         <a class="${i==pageNo?'pagination-active':page}" href="${path}/front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${i}">${i}</a> 
-					  </c:if>
-					  
-						</c:forEach>
-					</span> 
-					 <c:if test="${(startPage+p.blockcount)<=p.pageCnt}">
-					     <a class="pagination-older" href="front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${startPage+p.blockcount}">NEXT</a>
-					 </c:if>
-	
-			</div>
-		</nav> 
+		</div>	
 	</div>	
+	
 
-
+<jsp:useBean class="alcohol.mvc.paging.PageCnt" id="p"/> 
 <nav aria-label="Page navigation example">
-	<ul class="pagination">
-  
+
+		<c:set var="doneLoop" value="false"/>
+		<c:set var="temp" value="${(pageNo-1) % p.blockcount}"/> <!-- (1-1)%2   , (2-1)%2    1 , (3-1)%2  0 -->
+		<c:set var="startPage" value="${pageNo - temp}"/> <!--   1- 1 -->
+	<ul class="pagination  justify-content-center">
+
 		<li class="page-item">
 			<c:if test="${(startPage-p.blockcount) > 0}"> <!-- (-2) > 0  -->
 				<a class="page-link" href="${path}/front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${startPage-1}" aria-label="Previous">
 				<span aria-hidden="true">&laquo;</span>
 				</a>   
 			</c:if>
-		</li>
-		
-		
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-
-
-
+		</li>	
+ 
+		<c:forEach var='i' begin='${startPage}' end='${(startPage-1)+p.blockcount}'> 
+			<c:if test="${(i-1)>=p.pageCnt}">
+				<c:set var="doneLoop" value="true"/>
+			</c:if> 
+			<c:if test="${not doneLoop}" >
+			<li class="page-item"><a class="${i==pageNo?'pagination-active':page} page-link" id="page" href="${path}/front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${i}">${i}</a></li> 
+			</c:if>			  
+		</c:forEach>
 
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
+	    <c:if test="${(startPage+p.blockcount)<=p.pageCnt}">
+	      <a class="page page-link" href="front?key=review&methodName=reviewSelect&pName=${param.pName}&type=${param.type}&title=${param.title}&price=${param.price}&pageNo=${startPage+p.blockcount}" aria-label="Next">
+	        <span aria-hidden="true">&raquo;</span>
+	      </a>
+	    </c:if>
     </li>
     
-    
-    
+
+    	
   </ul>
+
 </nav>
 
 		
