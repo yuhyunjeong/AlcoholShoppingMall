@@ -44,7 +44,7 @@ input:focus::-webkit-input-placeholder {
 }
 </style>
 
-
+<script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
@@ -71,6 +71,29 @@ input:focus::-webkit-input-placeholder {
 		}).open();
 	}
 
+	// 유효성 검사! 
+	$(function(){
+		// 비밀번호 확인 
+	    $('#pwd').keyup(function(){
+	      $('#checkNotice').html('');
+	    });
+
+	    $('#pwdCheck').keyup(function(){
+
+	        if($('#pwd').val() != $('#pwdCheck').val()){
+	          $('#checkNotice').html('비밀번호 일치하지 않음<br><br>');
+	          $('#checkNotice').attr('color', '#f82a2aa3');
+	        } else{
+	          $('#checkNotice').html('비밀번호 일치함<br><br>');
+	          $('#checkNotice').attr('color', '#199894b3');
+	        }
+	    });
+	    
+	    // 주민등록번호 
+	    $('#jumin').keyup(function() {
+	    	
+	    });
+	});
 
 </script>
 </head>
@@ -87,21 +110,24 @@ input:focus::-webkit-input-placeholder {
 				<input type="text" name="id" placeholder="아이디를 입력해주세요." onclick="idCheck()"
 					required="required">
 				<p>
+
 				<h6>비밀번호</h6>
-				<input type="password" name="pwd" placeholder="8자 이상 영문/숫자를 조합해주세요."
+				<input type="password" name="pwd" id="pwd" placeholder="8자 이상 영문/숫자를 조합해주세요."
 					required="required">
 
 				<p>
 				<h6>비밀번호 확인</h6>
-				<input type="password" name="pwdCheck"
+				<input type="password" name="pwdCheck" id="pwdCheck"
 					placeholder="비밀번호를 한번 더 입력해주세요." required="required">
+				<div><font id="checkNotice" size="2"></font></div>
+
 				<p>
 				<h6>이름</h6>
 				<input type="text" name="name" placeholder="이름을 입력해주세요."
 					required="required">
 				<p>
 				<h6>주민등록번호</h6>
-				<input type="text" name="jumin" placeholder="주민등록번호를 입력해주세요."
+				<input type="text" name="jumin" id="jumin" placeholder="주민등록번호를 입력해주세요."
 					required="required">
 				<p>
 				<h6>연락처</h6>
