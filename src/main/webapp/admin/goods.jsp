@@ -25,7 +25,6 @@ button {
 
  
 
-
 </script>
 
 </head>
@@ -77,7 +76,9 @@ button {
 						<td>
 						<input type="hidden" name = "key" value="product">
 						<input type="hidden" name="methodName" value="delete">
-						<input type="button" value="삭제" onclick="localhref='goods.jsp'"></td>
+						
+						<input type="button" class="btn" value="삭제" onclick="localhref='goods.jsp'"></td>
+					    
 					</tr>
 				</c:forEach>
 
