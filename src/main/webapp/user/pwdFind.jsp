@@ -79,6 +79,9 @@ input:focus::-webkit-input-placeholder {
 				<p>
 			</div>
 		</form>
+		<div class="m-5">
+			<input class="w-25 btn btn-dark" type="button" value="로그인 페이지로 이동" onclick="location.href='login.jsp'">
+		</div>
 		<p>
 		<p>
 	</div>

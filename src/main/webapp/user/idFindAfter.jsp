@@ -10,6 +10,7 @@
 <jsp:include page="../common/header.jsp" />
 	<h1>아이디 찾기 결과</h1>
 	
+	
 
 <jsp:include page="../common/footer.jsp" />
 </body>
