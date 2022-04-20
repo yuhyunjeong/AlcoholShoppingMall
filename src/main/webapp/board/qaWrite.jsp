@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	$(function() {
+		// 셀렉트박스에 onchange 이벤트 생성 
+		$("#inputCateSelect option:selected").text();
+		alert(this)
+	})
+</script>
 </head>
 <body>
 	<%@include file="../common/header.jsp"%>
@@ -22,17 +29,22 @@
 					<div class="col">
 
 						<div class="row m-5">
-							<label for="inputTitle" class="col-sm-2 col-form-label">카테고리</label>
+							<label for="inputCategory" class="col-sm-2 col-form-label">카테고리</label>
 							<div class="col-sm-10">
-								<select id="inputTitle" class="form-select" aria-label="Default select example"
+								<select id="inputCateSelect" class="form-select" aria-label="Default select example"
 									style="width: 300px; height: 38px;">
 									<option selected value="0">-----문의 유형을 선택해주세요.-----</option>
-									<option value="1">1.상품문의</option>
-									<option value="2">2.결제/환불/교환 문의</option>
-									<option value="3">3.쿠폰/포인트 문의</option>
-									<option value="4">4.기타 문의</option>
-								</select>
+									<option value="1">1. 상품문의</option>
+									<option value="2">2. 결제/환불/교환 문의</option>
+									<option value="3">3. 쿠폰/포인트 문의</option>
+									<option value="4">4. 기타 문의</option>
+								</select> <br>
+								<textarea id="inputCate"></textarea>
+								
 							</div>
+						</div>
+
+							
 						</div>
 
 						<div class="row m-5">

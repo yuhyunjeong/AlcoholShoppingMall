@@ -76,7 +76,6 @@ public class QAController implements Controller {
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		// 전송된 데이터 받기
-//		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
 		String userId = request.getParameter("userId");
 		String qaTitle = request.getParameter("qaTitle");
 		String qaContent = request.getParameter("qaContent");
@@ -87,7 +86,6 @@ public class QAController implements Controller {
 		
 		qaService.qaInsert(qa);
 		
-		request.setAttribute("", qaContent);
 		
 		ModelAndView mv = this.select(request, response);
 
@@ -107,7 +105,17 @@ public class QAController implements Controller {
 	 */
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return null;
+		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
+		
+		qaService.qaDelete(qaNumber);
+		
+		System.out.println("qa삭제잘되나");
+		
+		ModelAndView mv = new ModelAndView("board/qa.jsp");
+		
+		
+		
+		return mv;
 	}
 	
 	
