@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import alcohol.mvc.dto.ProductDTO;
 import alcohol.mvc.dto.ReviewDTO;
+import alcohol.mvc.paging.PageCnt;
 import alcohol.mvc.util.DbUtil;
 
 public class ReviewDAOImpl implements ReviewDAO {
@@ -26,7 +26,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
-	public List<ReviewDTO> reviewAll(String pCode, int paging) throws SQLException {
+	public List<ReviewDTO> reviewAll(int paging) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps =null;
 		ResultSet rs = null;
@@ -58,6 +58,64 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public int reviewUpdate(ReviewDTO dto) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<ReviewDTO> reviewSelect(String pName, int pageNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps =null;
+		ResultSet rs = null;
+		List<ReviewDTO> list = new ArrayList<ReviewDTO>();
+
+		String sql ="select * from  (SELECT a.*, ROWNUM rnum FROM (select * from review where p_code =(select p_code from product where p_name = ?)) a) where  rnum>=? and rnum <=?";
+		
+		ReviewDTO dto = null;
+		try {
+			int totalCount = this.getTotalCount();
+			int totalPage = totalCount%PageCnt.getPagesize()==0 ?totalCount/PageCnt.getPagesize() : (totalCount/PageCnt.getPagesize())+1;
+			
+			PageCnt pageCnt = new PageCnt();
+			pageCnt.setPageCnt(totalPage);//전체페이지수 저장
+			PageCnt.setPageNo(pageNo);
+			
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, pName);
+			ps.setInt(2, (pageNo-1)*PageCnt.pagesize+1); //시작점
+			ps.setInt(3, pageNo*PageCnt.pagesize); //끝점
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				dto = new ReviewDTO(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6));
+				list.add(dto);
+			}
+
+
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+
+		return list;
+	}
+	
+	private int getTotalCount() throws SQLException{
+		Connection con = null;
+		PreparedStatement ps =null;
+		ResultSet rs = null;
+		int totalCount = 0;
+		String sql ="select count(*) from review";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				totalCount =rs.getInt(1);
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return totalCount;
 	}
 
 }

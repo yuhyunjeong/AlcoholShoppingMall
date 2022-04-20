@@ -19,10 +19,15 @@ public interface ReviewService {
 	/**
 	 * 전체검색
 	 **/
-	public List<ReviewDTO> reviewAll(String pCode, int paging)throws SQLException;
+	public List<ReviewDTO> reviewAll(int paging)throws SQLException;
 	
 	/**
 	 * 수정하기
 	 * */
 	public void reviewUpdate(ReviewDTO dto)throws SQLException;
+	
+	/**
+	 * 선택상품 검색
+	 * */
+	public List<ReviewDTO> reviewSelect(String pName,int paging)throws SQLException;
 }

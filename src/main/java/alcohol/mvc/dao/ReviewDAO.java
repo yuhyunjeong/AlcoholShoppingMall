@@ -19,10 +19,17 @@ public interface ReviewDAO {
 	/**
 	 * 전체검색 SELECT * FROM REVIEW WHERE P_CODE=?
 	 **/
-	public List<ReviewDTO> reviewAll(String pCode, int paging)throws SQLException;
+	public List<ReviewDTO> reviewAll(int paging)throws SQLException;
 	
 	/**
 	 * 수정하기 UPDATE REVIEW SET VIEW_CONTENT=? WHERE VIEW_NUMBER=?
 	 * */
 	public int reviewUpdate(ReviewDTO dto)throws SQLException;
+	
+	
+	
+	/**
+	 * 선택상품 검색 select * from review where p_code =(select p_code from product where p_name = ?)
+	 * */
+	public List<ReviewDTO> reviewSelect(String pName,int paging)throws SQLException;
 }
