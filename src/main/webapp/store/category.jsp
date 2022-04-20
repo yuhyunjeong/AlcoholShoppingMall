@@ -48,7 +48,7 @@ $(function(){
    			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
    			data: {key :"product", methodName:"selectByDate"},
    			success :function(result){
-
+				alert(result);
    				let str ="";
    				$.each(result, function(index, item) {
    					
@@ -57,7 +57,7 @@ $(function(){
    					str+="<div class='card mb-3 h-100'>";
    					
    					str+=`<a href='productDetail.jsp?pName=${"${item.pName}"}&type=${"${item.cateCode}"}'>`;
-   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='이미지가 없습니다.'></a>`;
+   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pName}"}.jpg' class=card-img-top alt='이미지가 없습니다.'></a>`;
    					str+="<div class='card-body'>";
    					str+="<p class='card-text'>";
    					
