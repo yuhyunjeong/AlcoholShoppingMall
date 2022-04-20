@@ -36,7 +36,9 @@
 
 					<div class="row m-5">
 						<label for="date" class="col-sm-2 col-form-label">작성일</label>
-						<div class="col-sm-10">${qa.qaDate}</div>
+						<div class="col-sm-10">
+							 <input type="text" class="form-control" id="date">
+						</div>
 					</div>
 
 
