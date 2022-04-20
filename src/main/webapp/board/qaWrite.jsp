@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function() {
-		// 셀렉트박스에 onchange 이벤트 생성 
-		$("#inputCateSelect option:selected").text();
-		alert(this)
+		if(document.getElementById("input_check").checked) {
+		    document.getElementById("input_check_hidden").disabled = true;
+		}
+
 	})
 </script>
 </head>
@@ -32,14 +33,14 @@
 							<label for="inputCategory" class="col-sm-2 col-form-label">카테고리</label>
 							<div class="col-sm-10">
 								<select id="inputCateSelect" class="form-select" aria-label="Default select example"
-									style="width: 300px; height: 38px;">
+									style="width: 300px; height: 38px;" name="qaTitle">
 									<option selected value="0">-----문의 유형을 선택해주세요.-----</option>
 									<option value="1">1. 상품문의</option>
 									<option value="2">2. 결제/환불/교환 문의</option>
 									<option value="3">3. 쿠폰/포인트 문의</option>
 									<option value="4">4. 기타 문의</option>
 								</select> <br>
-								<textarea id="inputCate"></textarea>
+								<!-- <textarea id="inputCate"></textarea> -->
 								
 							</div>
 						</div>
@@ -67,7 +68,8 @@
 							<label for="inputTitle" class="col-sm-2 col-form-label">비밀글
 								설정</label>
 							<div class="col-sm-10">
-								<input type="checkbox" name="secret" value="">
+								<input type="checkbox" name="open" value="1" id="open">
+								<input type="checkbox" name="secret" value="0" id="secret">
 							</div>
 						</div>
 
@@ -80,10 +82,9 @@
 								<input type=hidden name="qaNumber" value="${qa.qaNumber}">
 								<input type=hidden name="userId" value="${qa.userId}">
 								<input type=hidden name="qaCategory" value="${qa.qaCategory}">
-								<input type=hidden name="qaTitle" value="${qa.qaTitle}">
+<%-- 								<input type=hidden name="qaTitle" value="${qa.qaTitle}">
 								<input type=hidden name="qaContent" value="${qa.qaContent}">
-								<input type=hidden name="qaDate" value="${qa.qaDate}"> 
-								<input type=hidden name="qaSecret" value="${qa.qaSecret}"> 
+								<input type=hidden name="qaSecret" value="${qa.qaSecret}">  --%>
 								<button type="submit" class="btn btn-light">등록하기</button>
 							</div>
 
