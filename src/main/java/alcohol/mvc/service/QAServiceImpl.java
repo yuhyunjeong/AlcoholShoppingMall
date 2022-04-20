@@ -64,8 +64,8 @@ public class QAServiceImpl implements QAService {
 	}
 
 	@Override
-	public List<QADTO> qaSelectAll(int categoryNum) throws SQLException {
-		List<QADTO> list = qaDao.qaSelectAll(categoryNum);
+	public List<QADTO> qaFilter(int categoryNum,int pageNo) throws SQLException{
+		List<QADTO> list = qaDao.qaFilter(categoryNum,pageNo);
 		return list;
 	}
 

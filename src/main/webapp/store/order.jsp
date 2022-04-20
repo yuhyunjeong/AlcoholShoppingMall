@@ -144,17 +144,15 @@ $(function(){
 </div><!--배송지 카드--><p>
   
 <div class="col-md-5 col-lg-5" style="float: none; margin:0 auto;">  
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">사용 가능한 쿠폰</h5>
-        <select class="form-select" aria-label="Default select example">
-         <option selected>선택</option>
-         <option value="1">Welcome coupon</option>
-         <option value="2">Birthday coupon</option>
-         <option value="3">New Product coupon</option>
-        </select>
-      </div>
-    </div>
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">사용 가능한 쿠폰</h5>
+				<select class="form-select" aria-label="Default select example">
+					<option selected>선택</option>
+					<option value="1">Welcome coupon</option>
+				</select>
+		</div>
+	</div>
 </div><!--쿠폰--><p>
     
 <div class="col-md-5 col-lg-5" style="float: none; margin:0 auto;">  
