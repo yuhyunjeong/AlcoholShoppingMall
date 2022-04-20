@@ -54,6 +54,7 @@
 								<input type=hidden name="qaCategory" value="${qa.qaCategory }">
 								<input type=hidden name="qaTitle" value="${qa.qaTitle}">
 								<input type=hidden name="qaContent" value="${qa.qaContent}">
+								
 								<input type=submit class="btn btn-light" value="수정하기">
 							</form>
 							<!-- 	<button type="button" onclick="location.href='${path}/board/noticeUpdate.jsp'" class="btn btn-light" >수정하기</button> -->

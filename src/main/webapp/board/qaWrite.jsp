@@ -5,15 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<%@include file="../common/header.jsp"%>
 <script type="text/javascript">
 	$(function() {
-		if(document.getElementById("input_check").checked) {
+		/*if(document.getElementById("input_check").checked) {
 		    document.getElementById("input_check_hidden").disabled = true;
-		}
+		}*/
 		
 		
 		
-		if($("[name=qaTitle]").val() == "상품문의"){
+		/*if($("[name=qaTitle]").val() == "상품문의"){
 			$("[name=category]").val("1");
 		}else if($("[name=qaTitle]").val() == "결제/환불/교환 문의"){
 			$("[name=category]").val("2");
@@ -21,18 +25,16 @@
 			$("[name=category]").val("3");
 		}else if($("[name=qaTitle]").val() == "기타 문의"){
 			$("[name=category]").val("4");
-		}
+		}*/
 		
 		
-		
+		$("select[name=qaTitle]").change(function(){
+			$("#qa_category").val(this.selectedIndex);
+		})
 		
 		
 	})
 </script>
-</head>
-<body>
-	<%@include file="../common/header.jsp"%>
-
 	<caption>
 		<h2 align="center">Q&A</h2>
 	</caption>
@@ -96,7 +98,8 @@
 								<input type=hidden name="key" value="qa"> 
 								<input type=hidden name="methodName" value="insert">
 								<input type=hidden name="category">
-								<input type=hidden name="id" value="${userId}">
+								<input type=hidden name="userId" value="${loginUser.userId}"><!-- 로그인 -->
+								<input type=hidden name="qa_category" id="qa_category">
 								
 <%-- 								<input type=hidden name="qaTitle" value="${qa.qaTitle}">
 								<input type=hidden name="qaContent" value="${qa.qaContent}">

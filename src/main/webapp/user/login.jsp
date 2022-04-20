@@ -119,10 +119,10 @@ input:focus::-webkit-input-placeholder {
 
 			<div class="m-3">
 				<h6>아이디</h6>
-				<input type="text" name="id" placeholder="아이디를 입력해주세요.">
+				<input type="text" name="id" placeholder="아이디를 입력해주세요." required="required">
 				<p>
 				<h6>비밀번호</h6>
-				<input type="password" name="pwd" placeholder="비밀번호를 입력해주세요.">
+				<input type="password" name="pwd" placeholder="비밀번호를 입력해주세요." required="required">
 			</div>
 
 			<p>

@@ -95,11 +95,11 @@ public class UserDTO {
 	}
 
 	public String getUserAddr2() {
-		return userAddr;
+		return userAddr2;
 	}
 
 	public void setUserAddr2(String userAddr2) {
-		this.userAddr = userAddr2;
+		this.userAddr2 = userAddr2;
 	}
 
 	public String getUserAddr3() {

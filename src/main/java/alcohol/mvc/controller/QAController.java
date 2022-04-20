@@ -82,14 +82,15 @@ public class QAController implements Controller {
 		// 전송된 데이터 받기
 		HttpSession session = request.getSession();
 		
-		String userId = request.getParameter("id");
+
+		String userId = request.getParameter("userId");
 		String qaTitle = request.getParameter("qaTitle");
 		String qaContent = request.getParameter("qaContent");
-		String category = request.getParameter("category");
-		System.out.println(category);
+		int qaCategory = Integer.parseInt(request.getParameter("qa_category"));
+		System.out.println(qaCategory);
 		System.out.println("QA등록하기 잘 나오니잉");
 		
-		QADTO qa = new QADTO(userId, qaTitle, qaContent);
+		QADTO qa = new QADTO(userId, qaCategory, qaTitle, qaContent);
 		
 		qaService.qaInsert(qa);
 		
@@ -124,13 +125,17 @@ public class QAController implements Controller {
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
-		String userId = request.getParameter("userId");
-		String qaTitle = request.getParameter("qaTitle");
 		String qaContent = request.getParameter("qaContent");
 		
-//		QADTO qaDTO = new QADTO(qaNumber, userId, qaTitle, qaContent);
+		QADTO qaDTO = new QADTO(qaNumber, qaContent);
 		
-		System.out.println("qa수정수정수정");
+		qaService.qaUpdate(qaDTO);
+		
+		// 페이지 이동 
+		QADTO qa = qaService.qaSelect(qaNumber);
+		request.setAttribute("qa", qa);
+		
+		System.out.println("qa수정수정수정" + qaContent);
 		
 		ModelAndView mv = new ModelAndView("board/qaRead.jsp");
 		
@@ -148,7 +153,7 @@ public class QAController implements Controller {
 		
 		System.out.println("qa삭제잘되나");
 		
-		ModelAndView mv = new ModelAndView("board/qa.jsp");
+		ModelAndView mv = this.select(request,response);
 		
 		return mv;
 	}

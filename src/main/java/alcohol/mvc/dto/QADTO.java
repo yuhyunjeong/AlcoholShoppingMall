@@ -18,6 +18,16 @@ public class QADTO {
 		this.qaContent = qaContent;
 
 	}
+	public QADTO(int qaNumber, String qaContent) {
+		this.qaNumber = qaNumber;
+		this.qaContent = qaContent;
+
+	}
+	
+	public QADTO(String userId, int qaCategory, String qaTitle, String qaContent) {
+		this(userId, qaTitle, qaContent);
+		this.qaCategory = qaCategory;
+	}
 
 	public QADTO(int qaNumber, String userId, String qaTitle, String qaContent ,String qaDate) {
 		super();
@@ -30,10 +40,11 @@ public class QADTO {
 
 	public QADTO(int qaNumber, String userId, int qaCategory, String qaTitle, String qaContent, String qaDate,
 			int qaSecret) {
-		this(qaTitle, qaContent, qaDate);
+		this(userId, qaTitle, qaContent);
+		
 		this.qaNumber = qaNumber;
-		this.userId = userId;
 		this.qaCategory = qaCategory;
+		this.qaDate = qaDate;
 		this.qaSecret = qaSecret;
 	}
 

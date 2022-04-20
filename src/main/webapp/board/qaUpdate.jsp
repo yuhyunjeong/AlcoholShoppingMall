@@ -18,6 +18,13 @@
 			<form name="updateForm" method="post" action="${path}/front">
 				<div class="row mb-5">
 					<div class="col">
+						<div class="row m-5">
+							<label for="inputTitle" class="col-sm-2 col-form-label">카테고리</label>
+							<div class="col-sm-10">
+								<textarea readonly class="form-control-plaintext"
+									id="inputTitle">${param.qaTitle}</textarea>
+							</div>
+						</div>
 
 						<div class="row m-5">
 							<label for="inputContent" class="col-sm-2 col-form-label">문의
@@ -35,10 +42,6 @@
 								<input type=hidden name="key" value="qa"> 
 								<input type=hidden name="methodName" value="update"> 
 								<input type=hidden name='qaNumber' value="${param.qaNumber}">
-								<input type=hidden name="qaCategory" value="${param.qaCategory }">
-								<input type=hidden name="qaTitle" value="${param.qaTitle}">
-								<input type=hidden name="qaContent" value="${param.qaContent}">
-								<input type=hidden name="qaDate" value="${param.qaDate}"> 
 								 
 								<button type="submit" class="btn btn-light">수정하기</button>
 							</div>

@@ -40,12 +40,12 @@ public class UserController implements Controller {
 		UserDTO dbDTO = userService.loginCheck(new UserDTO(userId, userPwd));
 		// 그결과를 받아서 성공했으면
 		//System.out.println(dbDTO);
-		// sessionScope에 loginUser loginName 저장                         
+
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", dbDTO); // ${loginUser.userId}
 		session.setAttribute("loginName", dbDTO.getUserName());
 		session.setAttribute("loginGrade", dbDTO.getUserGrade());
-
+		session.setAttribute("loginAddr", dbDTO.getUserAddr()+" "+dbDTO.getUserAddr2());
 		// index.jsp -> redirect
 		ModelAndView mv = new ModelAndView("index.jsp", true);
 

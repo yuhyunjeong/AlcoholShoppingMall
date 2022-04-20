@@ -25,10 +25,10 @@
 	 
 	 function selectAll(){
 		 $.ajax({
-	   			url :"../ajax" , //서버요청주소
+	   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
 	   			type:"post", //요청방식(method방식 : get | post | put | delete )
 	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-	   			data: {key :"order", methodName:"selectorder"},
+	   			data: {key :"order", methodName:"selectorder", pName : ${param.pName}},
 	   			success :function(result){
                    
 	   				let str ="";
@@ -40,18 +40,14 @@
 	   					str+=`<div class='text-start'><h3><b>${'${item.pName}'}</b></h3></div>`;
 	   					str+="</div>"
 	   				});
-	   				//$("rrr").remove();
-
-	   				$("#rrr").empty();
-					$("#rrr").html(str);
-						
+		
 	   			},error : function(err){  
 	   				alert(err+"에러 발생했어요.");
 	   			}  //실팽했을때 실행할 함수 
 	   		});
 		 
 	 }
-	 selectAll()
+	 //selectAll()
  })      
   
 </script>
@@ -87,7 +83,7 @@
  <div class="text-start">수량</div> 
  </div> 
  <div class="col">
- <div class="text-center"><fmt:formatNumber value="${param.pPrice}" pattern="###,###"/>원</div><p>
+ <div class="text-center"><fmt:formatNumber value="${param.pPrice}" pattern="###,###"/>${param.pPrice}원</div><p>
  <div class="text-center">${param.count}개</div>
  </div> 
 </div>
@@ -113,12 +109,12 @@
         <h5 class="card-title">배송지</h5>
          <div class="input-group mb-3">
          <span class="input-group-text" id="basic-addon1">수령인</span>
-         <input type="text" class="form-control" placeholder="수령인" aria-label="Username" aria-describedby="basic-addon1">
+         <input type="text" class="form-control" placeholder="${loginName}" aria-label="Username" aria-describedby="basic-addon1">
          </div><p>
          
          <div class="input-group mb-3">
          <span class="input-group-text" id="basic-addon1">주소</span>
-         <input type="text" class="form-control" placeholder="주소" aria-label="Username" aria-describedby="basic-addon1">
+         <input type="text" class="form-control" placeholder="${loginAddr}" aria-label="Username" aria-describedby="basic-addon1">
          </div><p>
                   
          <div class="input-group mb-3">
@@ -128,7 +124,7 @@
          
          <div class="input-group mb-3">
          <span class="input-group-text" id="basic-addon1">연락처</span>
-         <input type="text" class="form-control" placeholder="010-0000-0000" aria-label="Username" aria-describedby="basic-addon1">
+         <input type="text" class="form-control" placeholder="${loginUser.userPhone}" aria-label="Username" aria-describedby="basic-addon1">
          </div>              
       </div><p>
 </div>
@@ -139,7 +135,7 @@
       <div class="card-body">
         <h5 class="card-title">사용 가능한 쿠폰</h5>
         <select class="form-select" aria-label="Default select example">
-         <option selected>select</option>
+         <option selected>선택</option>
          <option value="1">Welcome coupon</option>
          <option value="2">Birthday coupon</option>
          <option value="3">New Product coupon</option>
