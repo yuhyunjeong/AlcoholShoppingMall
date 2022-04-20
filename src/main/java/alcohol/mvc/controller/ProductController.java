@@ -176,5 +176,22 @@ public class ProductController implements Controller {
 
 
 	}
+	
+	public void selectByDate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		response.setContentType("text/html;charset=UTF-8");
+
+		List<ProductDTO> list = proService.selectByDate();
+
+		System.out.println(list.size()+"cateSelect");
+
+		
+		JSONArray arr = JSONArray.fromObject(list);
+
+		// System.out.println(dto.getpName()+"나와라");
+		PrintWriter out = response.getWriter();
+		out.print(arr);
+
+	}
 
 }
