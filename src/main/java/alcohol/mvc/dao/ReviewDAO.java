@@ -36,4 +36,10 @@ public interface ReviewDAO {
 	
 	
 	public int avgReview(String pCode)throws SQLException;
+	
+	
+	
+	
+	
+	
 }

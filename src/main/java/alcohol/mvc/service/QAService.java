@@ -31,5 +31,8 @@ public interface QAService {
 	 * */
 	public QADTO qaSelect(int qaNumber)throws SQLException;
 	
-	public List<QADTO> qaSelectAll(int categoryNum) throws SQLException;
+	/**
+	 * 페이징처리 , filter
+	 * */
+	public List<QADTO> qaFilter(int categoryNum,int pageNo) throws SQLException;
 }

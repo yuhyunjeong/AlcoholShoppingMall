@@ -22,30 +22,28 @@ div {
 	$(function() {
 		
 		function qaFilter(v){	
-			alert(111)
+
 			$.ajax({
 	   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
 	   			type:"post", //요청방식(method방식 : get | post | put | delete )
 	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-	   			data: {key :"qa", methodName:"selectaaa", cate:"v"},
-	   			success :function(result){
-	   				alert(result)
-					
-					/*let str = "";
+	   			data: {key :"qa", methodName:"selectFilter", cate:v},
+	   			success :function(result){//map이나옴
+
+					let str = "";
 					$.each(result, function(index, item) { // item이 customer 
 						str += "<tr>";
-						str += `<th scope="row">${'${item.qaNumber}'}</th>`;
-						str += `<td>${'${item.userId}'}</td>`;
-						str += `<td>${'${item.qaTitle}'}</td>`;
-						str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaNumber}"}'>${'${item.qaContent}'}</a></td>`;
-						str += `<td>${'${item.qaDate}'}</td>`;
+						str += `<th scope="row">${'${item.qaList.qaNumber}'}</th>`;
+						str += `<td>${'${item.qaList.userId}'}</td>`;
+						str += `<td>${'${item.qaList.qaTitle}'}</td>`;
+						str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaList.qaNumber}"}'>${'${item.qaList.qaContent}'}</a></td>`;
+						str += `<td>${'${item.qaList.qaDate}'}</td>`;
 						str += "</tr>"
-
-					});
-					
+						str +="나오냐"
+					});	
 					$("#qaTable tr:gt(0)").remove();
 					$("#qaTalbe tr:eq(0)").after(str);
-				*/
+					
 					
 				}, // 성공했을 때 실행할 함수 
 				error : function(err) {
@@ -56,6 +54,7 @@ div {
 		}
 		$("[name=btn]").click(function(){
 			qaFilter($(this).val());
+			$("#test").html($(this).val());
 		})
 
 	});
@@ -102,18 +101,16 @@ div {
 				role="button">등록하기</a>
 		</div>
 		<p>
-			<table class="table table-hover" id="qaTable">
-				<thead>
-					<tr>
+	</div>
+
+			<table class="table table-hover" id="1qaTable">
+					<tr id="qaTable">
 						<th scope="col">글번호</th>
 						<th scope="col">작성자</th>
 						<th scope="col">카테고리</th>
 						<th scope="col">제목</th>
 						<th scope="col">작성일</th>
 					</tr>
-				</thead>
-
-				<tbody>
 					<c:forEach items="${qaList}" var="qa">
 						<tr>
 							<th scope="row">${qa.qaNumber}</th>
@@ -124,10 +121,9 @@ div {
 							<td>${qa.qaDate}</td>
 						</tr>
 					</c:forEach>
-				</tbody>
 			</table>
 
-	</div>
+	
 	<!-- 페이징처리 -->
 	<jsp:useBean class="alcohol.mvc.paging.PageCnt" id="p" />
 	<nav class="pagination-container">
@@ -158,7 +154,6 @@ div {
 
 		</div>
 	</nav>
-
-	<%@include file="../common/footer.jsp"%>
+<%@include file="../common/footer.jsp"%>
 </body>
 </html>

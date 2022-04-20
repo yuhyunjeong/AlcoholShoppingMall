@@ -67,7 +67,10 @@
 				<p>
            			
 				<div class="row m-5" align="right">
-					<div class="col-sm-10">
+					<div class="col-sm-2">
+						<button type="button" class="btn btn-light"  onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
+					</div>
+					<div class="col-sm-8">
 					<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
 					<form name="requestForm" method="get" action="${path}/board/noticeUpdate.jsp">	
 							<input type=hidden name="noNumber" value="${notice.noNumber}">
@@ -78,7 +81,7 @@
 					<!-- 	<button type="button" onclick="location.href='${path}/board/noticeUpdate.jsp'" class="btn btn-light" >수정하기</button> -->
 					</div>
 					 <div class="col-sm-2">
-						<button type="button" class="btn btn-light"  onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
+						<button type="button" class="btn btn-light"  onclick= "location.href='${path}/front?key=notice&methodName=delete&noNumber=${notice.noNumber}'">삭제하기</button>
 					</div>
 				</div>
 	          			

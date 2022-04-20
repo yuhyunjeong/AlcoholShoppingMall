@@ -80,37 +80,35 @@ public class QADAOImpl implements QADAO {
 	}
 
 	@Override
-	public List<QADTO> qaAll(int paging) throws SQLException {
+	public List<QADTO> qaAll(int pageNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-
 		List<QADTO> qaList = new ArrayList<QADTO>();
+
 		String sql = "select * from (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM QA ORDER BY QA_DATE desc) a) where  rnum>=? and rnum <=?";
-
+		
+		QADTO dto = null;
 		try {
-
-			// 전체 레코드 수를 구해서 총 페이지 수를 구하고 DB에서 꺼내올 게시물의 개수를 pagesize만큼 가져온다.
 			int totalCount = this.getTotalCount();
-			int totalPage = totalCount % PageCnt.getPagesize() == 0 ? totalCount / PageCnt.getPagesize():(totalCount / PageCnt.getPagesize()) + 1;
-
+			int totalPage = totalCount%PageCnt.getPagesize()==0 ?totalCount/PageCnt.getPagesize() : (totalCount/PageCnt.getPagesize())+1;
+			
 			PageCnt pageCnt = new PageCnt();
-			pageCnt.setPageCnt(totalPage); // 전체 페이지 수를 저장해준다.
-			pageCnt.setPageNo(paging); // 사용자가 클릭한 page의 번호를 설정
-
+			pageCnt.setPageCnt(totalPage);//전체페이지수 저장
+			PageCnt.setPageNo(pageNo);
+			
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-
-			ps.setInt(1, (paging-1)*PageCnt.pagesize+1); // 시작점 번호
-			ps.setInt(2, paging*pageCnt.pagesize); // 끝점 번호
-
+			ps.setInt(1, (pageNo-1)*PageCnt.pagesize+1); //시작점
+			ps.setInt(2, pageNo*PageCnt.pagesize); //끝점
+			
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				QADTO qaDTO = new QADTO(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(5),
+				dto = new QADTO(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(5),
 						rs.getString(6));
 
-				qaList.add(qaDTO);
+				qaList.add(dto);
 			}
 
 		} finally {
@@ -172,32 +170,45 @@ public class QADAOImpl implements QADAO {
 	}
 
 	@Override
-	public List<QADTO> qaSelectAll(int categoryNum) throws SQLException {
+	public List<QADTO> qaFilter(int categoryNum,int pageNo) throws SQLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<QADTO> list = new ArrayList<QADTO>();
-		
-		String sql = "SELECT * FROM QA WHERE QA_CATEGORY=?";
+		List<QADTO> qaList = new ArrayList<QADTO>();
 
+		String sql = "select * from (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM QA WHERE QA_CATEGORY =? ORDER BY QA_DATE desc) a) where  rnum>=? and rnum <=?";
 		
+		QADTO dto = null;
 		try {
+			int totalCount = this.getTotalCount();
+			int totalPage = totalCount%PageCnt.getPagesize()==0 ?totalCount/PageCnt.getPagesize() : (totalCount/PageCnt.getPagesize())+1;
+			
+			PageCnt pageCnt = new PageCnt();
+			pageCnt.setPageCnt(totalPage);//전체페이지수 저장
+			PageCnt.setPageNo(pageNo);
 			
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, categoryNum);
-
+			ps.setInt(1, categoryNum);//카테고리 
+			ps.setInt(2, (pageNo-1)*PageCnt.pagesize+1); //시작점
+			ps.setInt(3, pageNo*PageCnt.pagesize); //끝점
+			
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				QADTO qa = new QADTO(rs.getInt(1), rs.getString(2), rs.getString(4), rs.getString(5), rs.getString(6));
-						
-				list.add(qa);
 
+			while (rs.next()) {
+				dto = new QADTO(rs.getInt(1), rs.getString(2),rs.getInt(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7));
+				
+				qaList.add(dto);
 			}
+			
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
-		return list;
+		System.out.println("dao " +qaList.get(0).getQaCategory());
+		System.out.println("dao " +qaList.get(0).getQaTitle());
+		System.out.println("dao " +qaList.get(0).getQaNumber());
+		return qaList;
 	}
 
 }

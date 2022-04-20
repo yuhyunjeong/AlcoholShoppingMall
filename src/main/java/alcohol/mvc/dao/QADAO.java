@@ -38,5 +38,7 @@ public interface QADAO {
 	 *   SELECT * FROM QA WHERE QA_CATEGORY = ?
 	 *  step 14 dbcp dao처럼
 	 * */
-	public List<QADTO> qaSelectAll(int categoryNum) throws SQLException;
+	public List<QADTO> qaFilter(int categoryNum,int pageNo) throws SQLException;
+	
+
 }

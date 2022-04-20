@@ -62,7 +62,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql = "DELECT FROM NOTICE WHERE NO_NUMBER=?";
+		String sql = "DELETE FROM NOTICE WHERE NO_NUMBER=?";
 		
 		try {
 			con = DbUtil.getConnection();

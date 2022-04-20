@@ -159,18 +159,29 @@ public class QAController implements Controller {
 	}
 	
 	
-	public void selectFilter(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+	public void selectFilter(HttpServletRequest request, HttpServletResponse response) throws Exception {	
 		response.setContentType("text/html;charset=UTF-8");
-		
+		String pageNo =request.getParameter("pageNo"); // 현재 페이지 번호
+		if (pageNo == null || pageNo.equals("")) {
+			pageNo = "1";
+		}
 		int categoryNum = Integer.parseInt(request.getParameter("cate"));
+		System.out.println("categoryNum"+categoryNum);
+		List<QADTO> qaList = qaService.qaFilter(categoryNum,Integer.parseInt(pageNo));
 		
-		List<QADTO> qaList = qaService.qaSelectAll(categoryNum);
-		JSONArray arr = JSONArray.fromObject(qaList);
-		System.out.println("나옴?" + qaList.size());
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("qaList", qaList);
+		map.put("pageNo", pageNo);
+		
+		JSONArray arr = JSONArray.fromObject(map);
+		System.out.println("사이즈 "+qaList.size());
+	
 		PrintWriter out = response.getWriter();
 		out.print(arr);
 		
 	}
+	
+	
+	
 
 }
