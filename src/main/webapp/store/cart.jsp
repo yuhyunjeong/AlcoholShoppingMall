@@ -69,9 +69,7 @@
         
         <div class="row">
         
-           
-        
-             <form action="${path}/store/order.jsp">
+             <form action="${path}/front" method="post">
 
               <div class="col-md-5 mr-3">
    
@@ -87,9 +85,13 @@
 						</div>
 					  </div>
 					  
+			            
 					  <div class="col text-end">
-						<button type="button" name="cartDelete" class="btn-close" aria-label="cartDelete" />
+					    <input type="hidden" name="key" value="cart"/>
+                        <input type="hidden" name="methodName" value="delete"/>  
+						<input type="submit" src="${path}/front?key=cart&methodName=delete&cartNo=${cartList.cartNumber}" class="btn-close" aria-label="Close"></button>
 					  </div>
+					 
 					  
 					  <div class="card-body">
 						<div class="col-md-4">
@@ -188,8 +190,7 @@
                  
                  </div><p><p><p><!--카드-->
                  
-                 <input type="hidden" name="key" value="cart"/>
-                 <input type="hidden" name="methodName" value="cartDelete"/>
+                 
                  <input type="hidden" name="img" value="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg">
 				 <button type="submit" class="btn btn-primary btn-lg">주문하기</button>
                  
@@ -201,7 +202,7 @@
                         
             </form>
             
-           
+            
         
         </div>
         
