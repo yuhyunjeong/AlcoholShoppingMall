@@ -24,7 +24,7 @@ $(function(){
    					str+="<div class='card mb-3 h-100'>";
    					
    					str+=`<a href='productDetail.jsp?pName=${"${item.pName}"}&type=${"${item.cateCode}"}'>`;
-   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`;
+   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='이미지가 없습니다.'></a>`;
    					str+="<div class='card-body'>";
    					str+="<p class='card-text'>";
    					
@@ -36,6 +36,39 @@ $(function(){
 
    				$("[name=best]").empty();
 				$("[name=best]").html(str);
+					
+   			},error : function(err){  
+   				alert(err+"에러 발생했어요.");
+   			}  //실팽했을때 실행할 함수 
+   		});
+		
+		$.ajax({
+   			url :"../ajax" , //서버요청주소
+   			type:"post", //요청방식(method방식 : get | post | put | delete )
+   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+   			data: {key :"product", methodName:"selectByDate"},
+   			success :function(result){
+
+   				let str ="";
+   				$.each(result, function(index, item) {
+   					
+   					str+="<div class='col-lg-4 col-md-6'>";
+   					//str+="<div class='row'>";
+   					str+="<div class='card mb-3 h-100'>";
+   					
+   					str+=`<a href='productDetail.jsp?pName=${"${item.pName}"}&type=${"${item.cateCode}"}'>`;
+   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='이미지가 없습니다.'></a>`;
+   					str+="<div class='card-body'>";
+   					str+="<p class='card-text'>";
+   					
+   					str+=`<b>${'${item.pName}'}</b>`;
+   					//str+="</div>";
+   					str+="</p></div></div></div>";
+   				});
+   				//$("rrr").remove();
+
+   				$("[name=lately]").empty();
+				$("[name=lately]").html(str);
 					
    			},error : function(err){  
    				alert(err+"에러 발생했어요.");
@@ -101,24 +134,17 @@ $(function(){
     </div><!-- /.row -->
 
     <hr class="featurette-divider">
+    <p></p>
     <h3>베스트</h3>
     <div class="row m-5" name="best">
     	
   		
   		
     </div>
+    <h3>신상품</h3>
+    <div class="row m-5"  name="lately">
     
-    <div class="row m-5" >
-    	<h3>신상품</h3>
-  		<div class="col-lg-4" >
-  			<img src="../img/C/동백꽃 제주.jpg" class="rounded"style="width: 200px; height: 250px">
-  		</div>
-  		<div class="col-lg-4" >
-  			<img src="../img/C/크라테 자두 와인.jpg" class="rounded" style="width: 200px; height: 250px">
-  		</div>
-  		<div class="col-lg-4" >
-  			<img src="../img/D/서울의 밤.jpg" class="rounded" style="width: 200px; height: 250px">
-  		</div>
+  		
     </div>
 </div>
 

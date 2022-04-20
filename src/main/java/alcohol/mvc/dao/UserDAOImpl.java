@@ -32,8 +32,9 @@ public class UserDAOImpl implements UserDAO {
 
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				dbDTO = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),rs.getString(12),rs.getInt(9), rs.getInt(10), rs.getString(11));
+				dbDTO = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(12), rs.getInt(9),
+						rs.getInt(10), rs.getString(11));
 			}
 
 		} finally {
@@ -105,7 +106,8 @@ public class UserDAOImpl implements UserDAO {
 
 			while (rs.next()) {
 				UserDTO userDTO = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),rs.getString(12),rs.getInt(9), rs.getInt(10), rs.getString(11));
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(12),
+						rs.getInt(9), rs.getInt(10), rs.getString(11));
 
 				userList.add(userDTO);
 			}
@@ -140,7 +142,8 @@ public class UserDAOImpl implements UserDAO {
 
 			if (rs.next()) {
 				userDTO = new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),rs.getString(12),rs.getInt(9), rs.getInt(10), rs.getString(11));
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(12),
+						rs.getInt(9), rs.getInt(10), rs.getString(11));
 			}
 
 		} finally {
@@ -294,7 +297,7 @@ public class UserDAOImpl implements UserDAO {
 
 	// 비밀번호 찾기
 	@Override
-	public String pwdFind(String id , String name, String phone, String email) throws SQLException {
+	public String pwdFind(String id, String name, String phone, String email) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -311,7 +314,7 @@ public class UserDAOImpl implements UserDAO {
 
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				pwd = rs.getString(2);
+				pwd = rs.getString(1);
 			}
 
 		} finally {

@@ -65,12 +65,12 @@ public class UserController implements Controller {
 		String userId = request.getParameter("id");
 		String userPwd = request.getParameter("pwd");
 		String userName = request.getParameter("name");
-		String userJumin = request.getParameter("userJumin");
+		String userJumin = request.getParameter("jumin");
 		String userPhone = request.getParameter("tel");
-		String userEmail = request.getParameter("userEmail");
-		String userAddr = request.getParameter("userAddr");
-		String userAddr2 = request.getParameter("userAddr2");
-		String userAddr3 = request.getParameter("userAddr3");
+		String userEmail = request.getParameter("email");
+		String userAddr = request.getParameter("addr");
+		String userAddr2 = request.getParameter("addr2");
+		String userAddr3 = request.getParameter("addr3");
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		String date = df.format(new Date());
 

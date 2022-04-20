@@ -45,7 +45,7 @@ public class QADAOImpl implements QADAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "DELECT FROM QA WHERE QA_NUMBER=?";
+		String sql = "DELETE FROM QA WHERE QA_NUMBER=?";
 
 		try {
 			con = DbUtil.getConnection();

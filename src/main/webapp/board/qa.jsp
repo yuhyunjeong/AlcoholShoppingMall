@@ -22,14 +22,16 @@ div {
 	$(function() {
 		
 		function qaFilter(v){	
+			alert(111)
 			$.ajax({
-	   			url :"../ajax" , //서버요청주소
+	   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
 	   			type:"post", //요청방식(method방식 : get | post | put | delete )
 	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
 	   			data: {key :"qa", methodName:"selectaaa", cate:"v"},
 	   			success :function(result){
+	   				alert(result)
 					
-					let str = "";
+					/*let str = "";
 					$.each(result, function(index, item) { // item이 customer 
 						str += "<tr>";
 						str += `<th scope="row">${'${item.qaNumber}'}</th>`;
@@ -43,7 +45,7 @@ div {
 					
 					$("#qaTable tr:gt(0)").remove();
 					$("#qaTalbe tr:eq(0)").after(str);
-				
+				*/
 					
 				}, // 성공했을 때 실행할 함수 
 				error : function(err) {

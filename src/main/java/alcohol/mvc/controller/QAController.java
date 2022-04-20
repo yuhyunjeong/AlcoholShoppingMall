@@ -2,6 +2,9 @@ package alcohol.mvc.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +33,7 @@ public class QAController implements Controller {
 	 * 전체검색하기
 	 */
 	public ModelAndView select(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("ddddD");
+
 		String paging = request.getParameter("paging"); // 현재 페이지 번호
 		if (paging == null || paging.equals("")) {
 			paging = "1";
@@ -76,7 +79,6 @@ public class QAController implements Controller {
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		// 전송된 데이터 받기
-//		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
 		String userId = request.getParameter("userId");
 		String qaTitle = request.getParameter("qaTitle");
 		String qaContent = request.getParameter("qaContent");
@@ -87,11 +89,29 @@ public class QAController implements Controller {
 		
 		qaService.qaInsert(qa);
 		
-		request.setAttribute("", qaContent);
 		
 		ModelAndView mv = this.select(request, response);
 
 		return mv;
+		
+//		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
+//		String userId = request.getParameter("userId");
+//		int qaCategory = Integer.parseInt(request.getParameter("qaCategory"));
+//		String qaTitle = request.getParameter("qaTitle");
+//		String qaContent = request.getParameter("qaContent");
+//		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+//		String qaDate = df.format(new Date());
+//		int qaSecret = Integer.parseInt(request.getParameter("qaSecret"));
+//
+//		System.out.println("QA등록하기 잘 나오니잉");
+//		
+//		QADTO qa = new QADTO(qaNumber, userId, qaCategory, qaTitle, qaContent, qaDate, qaSecret);
+//		
+//		qaService.qaInsert(qa);
+//		
+//		ModelAndView mv = this.select(request, response);
+//
+//		return mv;
 	}
 
 	/**
@@ -99,7 +119,18 @@ public class QAController implements Controller {
 	 */
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return null;
+		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
+		String userId = request.getParameter("userId");
+		String qaTitle = request.getParameter("qaTitle");
+		String qaContent = request.getParameter("qaContent");
+		
+//		QADTO qaDTO = new QADTO(qaNumber, userId, qaTitle, qaContent);
+		
+		System.out.println("qa수정수정수정");
+		
+		ModelAndView mv = new ModelAndView("board/qaRead.jsp");
+		
+		return mv;
 	}
 
 	/**
@@ -107,7 +138,15 @@ public class QAController implements Controller {
 	 */
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return null;
+		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
+		
+		qaService.qaDelete(qaNumber);
+		
+		System.out.println("qa삭제잘되나");
+		
+		ModelAndView mv = new ModelAndView("board/qa.jsp");
+		
+		return mv;
 	}
 	
 	

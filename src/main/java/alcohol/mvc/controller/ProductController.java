@@ -29,7 +29,7 @@ public class ProductController implements Controller {
 		response.setContentType("text/html;charset=UTF-8");
 		String type = request.getParameter("cate");
 		String filter = request.getParameter("filter") + "";
-
+		
 		System.out.println(type);
 		System.out.println(filter);
 		List<ProductDTO> proList = proService.selectAll(type, filter);
@@ -72,7 +72,7 @@ public class ProductController implements Controller {
 	/**
 	 * 상세검색
 	 */
-	public ModelAndView searchBy(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void searchBy(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		response.setContentType("text/html;charset=UTF-8");
 		String name = request.getParameter("name");
@@ -80,16 +80,18 @@ public class ProductController implements Controller {
 
 		ProductDTO dto = proService.searchBy(name);
 		
-		request.setAttribute("product", dto); 
+		/*
+		 * request.setAttribute("product", dto);
+		 * 
+		 * 
+		 * return new ModelAndView("store/productDetail.jsp");
+		 */
 
-		
-		return new ModelAndView("store/productDetail.jsp");
 
-
-		//JSONArray arr = JSONArray.fromObject(dto);
-		// System.out.println(dto.getpName()+"나와라");
-		//PrintWriter out = response.getWriter();
-		//out.print(arr);
+		JSONArray arr = JSONArray.fromObject(dto);
+		System.out.println(dto.getpName()+"나와라");
+		PrintWriter out = response.getWriter();
+		out.print(arr);
 
 	}
 
@@ -174,6 +176,23 @@ public class ProductController implements Controller {
 		PrintWriter out = response.getWriter();
 		out.print(arr);
 
+
+	}
+	
+	public void selectByDate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		response.setContentType("text/html;charset=UTF-8");
+
+		List<ProductDTO> list = proService.selectByDate();
+
+		System.out.println(list.size()+"cateSelect");
+
+		
+		JSONArray arr = JSONArray.fromObject(list);
+
+		// System.out.println(dto.getpName()+"나와라");
+		PrintWriter out = response.getWriter();
+		out.print(arr);
 
 	}
 

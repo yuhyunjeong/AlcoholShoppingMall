@@ -77,4 +77,6 @@ public interface ProductService {
 	
 	public  List<ProductDTO> selectAll()throws SQLException;
 	
+	public  List<ProductDTO> selectByDate()throws SQLException;
+	
 }

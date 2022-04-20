@@ -37,7 +37,7 @@
 					<div class="row m-5">
 						<label for="date" class="col-sm-2 col-form-label">작성일</label>
 						<div class="col-sm-10">
-							 <input type="text" class="form-control" id="date">
+							${qa.qaDate}
 						</div>
 					</div>
 
@@ -46,7 +46,7 @@
 					<div class="row m-5" align="right">
 						<div class="col-sm-10">
 							<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
-							<form name="requestForm" method="get"
+							<form name="requestForm" method="post"
 								action="${path}/board/qaUpdate.jsp">
 								<input type=hidden name="key" value="qa"> 
 								<input type=hidden name="methodName" value="update"> 
@@ -54,14 +54,13 @@
 								<input type=hidden name="qaCategory" value="${qa.qaCategory }">
 								<input type=hidden name="qaTitle" value="${qa.qaTitle}">
 								<input type=hidden name="qaContent" value="${qa.qaContent}">
-								<input type=hidden name="qaDate" value="${qa.qaDate}"> 
 								<input type=submit class="btn btn-light" value="수정하기">
 							</form>
 							<!-- 	<button type="button" onclick="location.href='${path}/board/noticeUpdate.jsp'" class="btn btn-light" >수정하기</button> -->
 						</div>
 						<div class="col-sm-2">
-							<button type="button" class="btn btn-light"
-								onclick="location.href='${path}/front?key=qa&methodName=select'">목록</button>
+							<button type="button" class="btn btn-light" onclick="location.href='${path}/front?key=qa&methodName=select'">목록</button>
+							<button type="button" class="btn btn-light" onclick="location.href='${path}/front?key=qa&methodName=delete&qaNumber=${qa.qaNumber}'">삭제</button>
 						</div>
 					</div>
 
