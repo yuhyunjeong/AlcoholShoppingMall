@@ -41,8 +41,8 @@ div {
 						str += "</tr>"
 						str +="나오냐"
 					});	
-					$("#qaTable tr:gt(0)").remove();
-					$("#qaTalbe tr:eq(0)").after(str);
+					$("#qaTable").remove();
+					$("#qaTalbe").append(str);
 					
 					
 				}, // 성공했을 때 실행할 함수 
@@ -103,24 +103,19 @@ div {
 		<p>
 	</div>
 
-			<table class="table table-hover" id="1qaTable">
-					<tr id="qaTable">
+			<table class="table table-hover">
+			<thead>
+					<tr>
 						<th scope="col">글번호</th>
 						<th scope="col">작성자</th>
 						<th scope="col">카테고리</th>
 						<th scope="col">제목</th>
 						<th scope="col">작성일</th>
 					</tr>
-					<c:forEach items="${qaList}" var="qa">
-						<tr>
-							<th scope="row">${qa.qaNumber}</th>
-							<td>${qa.userId}</td>
-							<td>${qa.qaTitle}</td>
-							<td><a href="${path}/front?key=qa&methodName=selectByQANum&qaNumber=${qa.qaNumber}">${qa.qaContent}</a>
-							</td>
-							<td>${qa.qaDate}</td>
-						</tr>
-					</c:forEach>
+			</thead>
+			<tbody id= "qaTable">
+			
+			</tbody>
 			</table>
 
 	
