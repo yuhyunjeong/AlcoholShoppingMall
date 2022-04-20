@@ -316,7 +316,7 @@ public class ProductDAOImpl implements ProductDAO {
 		PreparedStatement ps = null;
 		int result = 0;
 
-		String sql = "insert into product(p_code, cate_code, p_name,p_alcohol,p_price,p_stuck,p_date,p_detail)  values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into product values(?,?,?,?,?,?,?,?,?,?,?,0)";
 
 				try {
 					con = DbUtil.getConnection();
@@ -329,7 +329,11 @@ public class ProductDAOImpl implements ProductDAO {
 					ps.setInt(5, dto.getpPrice());
 					ps.setInt(6, dto.getpStuck());
 					ps.setString(7, dto.getpDate());
-					ps.setString(8, dto.getpDetail());
+					ps.setString(8, dto.getpImage());
+					ps.setString(9, dto.getpDetail());
+					ps.setString(10, dto.getpImage()+"2");
+					ps.setString(11, dto.getpImage()+"3");
+
 					
 					result = ps.executeUpdate();
 

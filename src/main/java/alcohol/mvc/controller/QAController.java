@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import alcohol.mvc.dto.QADTO;
 import alcohol.mvc.service.QAService;
@@ -79,10 +80,13 @@ public class QAController implements Controller {
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		// 전송된 데이터 받기
-		String userId = request.getParameter("userId");
+		HttpSession session = request.getSession();
+		
+		String userId = request.getParameter("id");
 		String qaTitle = request.getParameter("qaTitle");
 		String qaContent = request.getParameter("qaContent");
-
+		String category = request.getParameter("category");
+		System.out.println(category);
 		System.out.println("QA등록하기 잘 나오니잉");
 		
 		QADTO qa = new QADTO(userId, qaTitle, qaContent);
