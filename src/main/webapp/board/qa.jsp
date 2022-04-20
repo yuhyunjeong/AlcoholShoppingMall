@@ -120,35 +120,44 @@ div {
 
 	
 	<!-- 페이징처리 -->
-	<jsp:useBean class="alcohol.mvc.paging.PageCnt" id="p" />
-	<nav class="pagination-container">
-		<div class="pagination">
-			<c:set var="doneLoop" value="false" />
-			<c:set var="temp" value="${(pageNo-1) % p.blockcount}" />
-			<c:set var="startPage" value="${pageNo - temp}" />
+<jsp:useBean class="alcohol.mvc.paging.PageCnt" id="p"/> 
+<nav aria-label="Page navigation example">
 
-			<c:if test="${(startPage-p.blockcount) > 0 }">
-				<a class="pagination-newer" href="${path}/front?key=qa&methodName=select&pageNo=${startPage-1}">PREV</a>
+		<c:set var="doneLoop" value="false"/>
+		<c:set var="temp" value="${(pageNo-1) % p.blockcount}"/> <!-- (1-1)%2   , (2-1)%2    1 , (3-1)%2  0 -->
+		<c:set var="startPage" value="${pageNo - temp}"/> <!--   1- 1 -->
+	<ul class="pagination  justify-content-center">
+
+		<li class="page-item">
+			<c:if test="${(startPage-p.blockcount) > 0}"> <!-- (-2) > 0  -->
+				<a class="page-link" style="color: black" href="${path}/front?key=qa&methodName=select&pageNo=${startPage-1}" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+				</a>   
 			</c:if>
+		</li>	
+ 
+		<c:forEach var='i' begin='${startPage}' end='${(startPage-1)+p.blockcount}'> 
+			<c:if test="${(i-1)>=p.pageCnt}">
+				<c:set var="doneLoop" value="true"/>
+			</c:if> 
+			<c:if test="${not doneLoop}" >
+			<li class="page-item"><a style="color: black" class="${i==pageNo?'pagination-active':page} page-link" id="page" href="${path}/front?key=qa&methodName=select&pageNo=${i}">${i}</a></li> 
+			</c:if>			  
+		</c:forEach>
 
-			<span class="pagination-inner"> 
-				<c:forEach var='i' begin='${startPage}' end='${(startPage-1) + p.blockcount}'>
-					<c:if test="${(i-1) >= p.pageCnt}">
-						<c:set var="doneLoop" value="true" />
-					</c:if>
-					<c:if test="${not doneLoop}">
-						<a class="${i==pageno?'pagination-active':page}" href="${path}/front?key=qa&methodName=select&pageNo=${i}">${i}</a>
-					</c:if>
-				</c:forEach>
+    <li class="page-item">
+	    <c:if test="${(startPage+p.blockcount)<=p.pageCnt}">
+	      <a class="page-link" style="color: black" href="front?key=qa&methodName=select&pageNo=${startPage+p.blockcount}" aria-label="Next">
+	        <span aria-hidden="true">&raquo;</span>
+	      </a>
+	    </c:if>
+    </li>
+    
 
-			</span>
+    	
+  </ul>
 
-			<c:if test="${(startPage+p.blockcount)<=p.pageCnt}">
-				<a class="pagination-older" href="${path}/front?key=qa&methodName=select&pageNo=${startPage+p.blockcount}">NEXT</a>
-			</c:if>
-
-		</div>
-	</nav>
+</nav>
 <%@include file="../common/footer.jsp"%>
 </body>
 </html>
