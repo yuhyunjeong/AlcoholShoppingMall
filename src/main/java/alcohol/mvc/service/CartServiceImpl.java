@@ -29,7 +29,7 @@ public class CartServiceImpl implements CartService {
 	public void cartDelete(int cartNo) throws SQLException {
 		int result = cartdao.cartDelete(cartNo);
 		
-		if(cartdao.cartDelete(cartNo) ==0) {
+		if(result ==0) {
 			throw new SQLException(cartNo + "게시물을 삭제할 수 없습니다.");
 		}
 		

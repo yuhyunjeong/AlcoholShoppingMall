@@ -61,7 +61,7 @@
         
         <div class="row">
         
-             <form action="${path}/front" method="post">
+             
 
               <div class="col-md-5 mr-3">
    
@@ -79,9 +79,13 @@
 					  
 			            
 					  <div class="col text-end">
-					    <input type="hidden" name="key" value="cart"/>
-                        <input type="hidden" name="methodName" value="delete"/>  
-						<input type="submit" src="${path}/front?key=cart&methodName=delete&cartNo=${cartList.cartNumber}" class="btn-close" aria-label="Close"/>
+					  	<form action="${path}/front">
+					  	<input type="hidden" name="key" value="cart" >
+   						<input type="hidden" name="methodName" value="delete" >
+   						<input type="hidden" name="userId" value="${loginUser.userId}" >
+   						<input type="hidden" name="cartNo" value="${cartList.cartNumber}" >			  	
+						<input type="submit" class="btn-close" aria-label="Close"/>
+						</form>
 					  </div>
 					 
 					  
@@ -103,10 +107,6 @@
                      <div class="row">
                          <div class="col">
 							<div class="text-end"> 
-							   <%-- <button type="button" class="minus" style="border: none; background: none;">-</button>
-							   <input type="number" name="count" value="${cartList.cartCount}" 
-								      class="numBox" min="1" max="99" readonly="readonly"/>
-							   <button type="button" class="plus" style="border: none; background: none;">+</button>	 --%>
 								<input id="count" name="items" type="number" class="detail-quantity form-control text-center input-sm" min="0" value="${cartList.cartCount}" >			
 							</div>
 						</div>
@@ -145,10 +145,12 @@
                 <input type="hidden" class="pricebox" readonly="readonly" size="5" value="${proList[status.index].pPrice}"> --%>
                 
                 </c:forEach>
-              
+              	<form action="${path}/front" method="post">
                   <div class="col-md-5 mr-3"> 
                  <div class="card" style="width: 18rem;">
                    <div class="card-body">
+                   
+                   
                    
                      <b>계산서</b>
 					 <p><hr>
@@ -163,8 +165,9 @@
 							<b>총 결제 금액</b>
 						</div>
 					  </div>
-					  <div class="col">
-					    <%-- <div class="text-end">
+					  
+					  <div class="col">				  
+					    <div class="text-end">
 						  <input type="text" class="priceBox" name="totalprice" value="${proList[status.index].pPrice}" readonly="readonly" size="5">원
 						</div><p>
 						<div class="text-end">
@@ -172,7 +175,7 @@
 						</div><p>
 						<div class="text-end">
 						<b><input type="text" class="priceBox" name="total" value="${proList[status.index].pPrice}"readonly="readonly" size="5">원</b><!--최종금액-->
-						</div><p> --%>
+						</div><p>
 						<input id="count" name="items" type="number" class="detail-quantity form-control text-center input-sm" min="0" value="1" >
 					  </div>
 					  
@@ -185,14 +188,14 @@
                  
                  <input type="hidden" name="img" value="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg">
 				 <button type="submit" class="btn btn-primary btn-lg">주문하기</button>
-                 
+                 </form>
+            
                  </div>
                  
                  
                 
               </div>
                         
-            </form>
             
             
         

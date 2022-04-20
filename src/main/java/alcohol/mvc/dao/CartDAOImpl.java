@@ -109,7 +109,8 @@ import alcohol.mvc.util.DbUtil;
 			} finally {
 				DbUtil.dbClose(ps, con);
 			}
-					
+			
+			System.out.println(result);
 			return result;
 		}
 			

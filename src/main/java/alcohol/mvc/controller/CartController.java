@@ -108,10 +108,11 @@ public class CartController implements Controller {
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		int cartNo = Integer.parseInt(request.getParameter("cartNo"));/*getServletContext().getRealPath("/save")*/;
-		
+		System.out.println(cartNo);
+
 		cartService.cartDelete(cartNo);
-		
-        ModelAndView mv = this.select(request,response);
+		this.select(request, response);
+        ModelAndView mv = new ModelAndView("store/cart.jsp");
 		return mv;
 	}
 	
