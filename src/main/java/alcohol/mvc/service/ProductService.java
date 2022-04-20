@@ -27,6 +27,7 @@ public interface ProductService {
 	
 	/**
 	 * 상품 제거 delete from product where pCode
+	 * @return 
 	 * */
 	public void delete(String pCode)throws SQLException;
 	

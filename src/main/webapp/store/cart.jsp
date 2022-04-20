@@ -124,7 +124,7 @@
 					<div class="text-end">
 
 					
-						   value="${cartList.cartCount*proList[status.index].pPrice}" size="5" readonly="readonly"/>원
+						  ${cartList.cartCount*proList[status.index].pPrice}원
 					</div>
 					
 					<p> </div>
