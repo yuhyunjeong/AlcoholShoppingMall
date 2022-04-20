@@ -48,4 +48,9 @@ public interface UserService {
 	 * 비밀번호 찾기 
 	 * */
 	public String pwdFind(String id , String name, String phone, String email)throws SQLException;
+	
+	
+	public UserDTO selectByUserId(String id) throws SQLException;
+	
+	
 }

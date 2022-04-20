@@ -113,4 +113,12 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	@Override
+	public UserDTO selectByUserId(String id) throws SQLException {
+		UserDTO dto = userDao.selectByUserId(id);
+		return dto;
+	}
+	
+	
+
 }
