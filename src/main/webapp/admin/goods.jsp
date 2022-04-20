@@ -74,19 +74,17 @@ button {
 						<td>${product.pStuck}</td>
 						<td>${product.pDate}</td>
 						<td>
-						<input type="hidden" name = "key" value="product">
-						<input type="hidden" name="methodName" value="cartDelete">
 						
-						<input type="button" class="btn" value="삭제" onclick="localhref='goods.jsp'"></td>
+						
+                        <input type="hidden" name ="key" value="product">
+						<input type="hidden" name="methodName" value="delete">
+						<input type="hidden" name="pCode" value="${list.pCode}">
+						
+						<input type="submit" class="btn" value="삭제" src="${path}/front?key=&methodName=&pCode=${list.pCode}"></td>
 					    
 					</tr>
 				</c:forEach>
-
-<!-- 				<div>
-					<input class="form-check-input" type="checkbox"
-						id="checkboxNoLabel" value="" aria-label="...">
-				</div> -->
-
+				
 			</tbody>
 		</table>
 	</form>

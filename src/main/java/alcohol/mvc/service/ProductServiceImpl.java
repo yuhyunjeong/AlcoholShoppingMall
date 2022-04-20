@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
 	public void delete(String pCode) throws SQLException {
 		int result = dao.delete(pCode);
 		
-		if(dao.delete(pCode)==0){
+		if(result==0){
 			throw new SQLException(pCode+"의 게시물을 삭제할 수 없습니다.");
 		}
 

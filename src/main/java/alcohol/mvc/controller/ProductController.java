@@ -155,7 +155,10 @@ public class ProductController implements Controller {
 		
 		String pCode = request.getParameter("pCode");
 		
+		System.out.println(pCode);
+		
 		proService.delete(pCode);
+		this.select(request, response);
 		
 		ModelAndView mv = new ModelAndView("admin/goods.jsp");
 
