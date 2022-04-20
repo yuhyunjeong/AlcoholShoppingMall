@@ -48,7 +48,6 @@ $(function(){
    			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
    			data: {key :"product", methodName:"selectByDate"},
    			success :function(result){
-				alert(result);
    				let str ="";
    				$.each(result, function(index, item) {
    					
