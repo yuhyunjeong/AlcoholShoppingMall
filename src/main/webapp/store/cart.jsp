@@ -168,6 +168,9 @@
         
                 </div><p><!--w85카드-->
                 
+                <%-- <input type="hidden" class="numBox" min="1" max="99" readonly="readonly" value="${cartList.cartCount}" >
+                <input type="hidden" class="pricebox" readonly="readonly" size="5" value="${proList[status.index].pPrice}"> --%>
+                
                 </c:forEach>
               
                   <div class="col-md-5 mr-3"> 
@@ -189,13 +192,13 @@
 					  </div>
 					  <div class="col">
 					    <div class="text-end">
-						  <input type="text" class="priceBox" name="totalprice" value="" readonly="readonly" size="5">원
+						  <input type="text" class="priceBox" name="totalprice" value="${proList[status.index].pPrice}" readonly="readonly" size="5">원
 						</div><p>
 						<div class="text-end">
 						  <input type="text" class="priceBox" name="charge" value="3000" readonly="readonly" size="5">원<!--배송비-->
 						</div><p>
 						<div class="text-end">
-						<b><input type="text" class="priceBox" name="total" value="" readonly="readonly" size="5">원</b><!--최종금액-->
+						<b><input type="text" class="priceBox" name="total" value="${proList[status.index].pPrice}"readonly="readonly" size="5">원</b><!--최종금액-->
 						</div><p>
 					  </div>
 					  
@@ -205,8 +208,7 @@
                  
                  </div><p><p><p><!--카드-->
                  
-                  <%-- <input type="hidden" class="numBox" min="1" max="99" readonly="readonly" value="${cartList.cartCount}" >
-                 <input type="hidden" class="pricebox" readonly="readonly" size="5" value="${proList[status.index].pPrice}"> --%>
+                  
                  <input type="hidden" name="img" value="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg">
 				 <button type="submit" class="btn btn-primary btn-lg">주문하기</button>
                  
