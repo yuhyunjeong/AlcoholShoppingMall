@@ -82,14 +82,15 @@ public class QAController implements Controller {
 		// 전송된 데이터 받기
 		HttpSession session = request.getSession();
 		
-		String userId = request.getParameter("id");
+
+		String userId = request.getParameter("userId");
 		String qaTitle = request.getParameter("qaTitle");
 		String qaContent = request.getParameter("qaContent");
-		String category = request.getParameter("category");
-		System.out.println(category);
+		int qaCategory = Integer.parseInt(request.getParameter("qa_category"));
+		System.out.println(qaCategory);
 		System.out.println("QA등록하기 잘 나오니잉");
 		
-		QADTO qa = new QADTO(userId, qaTitle, qaContent);
+		QADTO qa = new QADTO(userId, qaCategory, qaTitle, qaContent);
 		
 		qaService.qaInsert(qa);
 		
