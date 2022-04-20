@@ -157,11 +157,12 @@ public class ProductController implements Controller {
 		
 		System.out.println("pCode" + pCode);
 		
-		int result = proService.delete(pCode);
+		proService.delete(pCode);
 		this.select(request, response);
-		PrintWriter out = response.getWriter();
-		out.print(result);
 		
+		ModelAndView mv = new ModelAndView("admin/goods.jsp");
+
+		return mv;
 	}
 	
 	//구독에 쓸거

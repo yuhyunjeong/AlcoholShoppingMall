@@ -27,15 +27,15 @@ button {
 $(function(){
 	//삭제하기
 		$(document).on("click", "[value=삭제]" , function(){
-			//alert( $(this).attr("name")) 
-			 $.ajax({
+			alert( $(this).attr("name")) 
+			  $.ajax({
 				url : "../ajax", //서버요청주소
 				type : "post", //요청방식(method방식 : get | post | put | delete )
 				dataType : "text", //서버가 보내온 데이터(응답)타입(text | html | xml | json )
 				data : { key : "product" , methodName : "delete" , pCode : $(this).attr("name") } , // serialize()는 폼전송 하는 기능 
 				success : function(result) {//성공했을때 실행할 함수 
-                  if (result == 0) {
-					  
+					 if (result == 0) {
+						 alert("삭제되지 않았습니다")
 					} else {
 						select(); //화면갱신 
 					}
@@ -44,7 +44,7 @@ $(function(){
 				error : function(err) { //실팽했을때 실행할 함수 
 					alert(err + "에러 발생했어요.");
 				}
-			});//ajax */
+			});//ajax 
 
 		});
 
@@ -101,7 +101,7 @@ $(function(){
 						<td>${product.pDate}</td>
 						
 						<td>
-						<input type="button" class="btn" name="${product.pCode}" value="삭제">
+						<input type="button" class="btn2" name="${product.pCode}" value="삭제">
 						</td>
 					    
 					</tr>
