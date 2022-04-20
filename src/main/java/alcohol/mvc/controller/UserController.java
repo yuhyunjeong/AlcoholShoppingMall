@@ -103,27 +103,45 @@ public class UserController implements Controller {
 	/**
 	 * 아이디 찾기 
 	 */
-	public void idFind(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView idFind(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String name = request.getParameter("name");
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
 		
+		System.out.println("나오냐아아ㅏ" + name);
+		System.out.println("나오냐아아ㅏ" + phone);
+		System.out.println("나오냐아아ㅏ" + email);
+		
 		userService.idFind(name, phone, email);
+		
+		ModelAndView mv = new ModelAndView("user/idFindAfter.jsp");
+
+		return mv;
+	
 		
 	}
 	
 	/**
 	 * 비밀번호 찾기 
 	 */
-	public void pwdFind(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView pwdFind(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
 		
+		System.out.println("나오냐야아아으ㅏ으아으ㅏ " + id);
+		System.out.println("나오냐야아아으ㅏ으아으ㅏ " + name);
+		System.out.println("나오냐야아아으ㅏ으아으ㅏ " + phone);
+		System.out.println("나오냐야아아으ㅏ으아으ㅏ " + email);
+		
 		userService.pwdFind(id, name, phone, email);
+		
+		ModelAndView mv = new ModelAndView("user/pwdFindAfter.jsp");
+
+		return mv;
 		
 	}
 
