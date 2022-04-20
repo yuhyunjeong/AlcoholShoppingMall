@@ -22,7 +22,7 @@
 							<label for="inputTitle" class="col-sm-2 col-form-label">카테고리</label>
 							<div class="col-sm-10">
 								<textarea readonly class="form-control-plaintext"
-									id="inputTitle">${qa.qaTitle}</textarea>
+									id="inputTitle">${param.qaTitle}</textarea>
 							</div>
 						</div>
 
@@ -42,9 +42,6 @@
 								<input type=hidden name="key" value="qa"> 
 								<input type=hidden name="methodName" value="update"> 
 								<input type=hidden name='qaNumber' value="${param.qaNumber}">
-								<input type=hidden name="qaCategory" value="${param.qaCategory }">
-								<input type=hidden name="qaTitle" value="${param.qaTitle}">
-								<input type=hidden name="qaContent" value="${param.qaContent}">
 								 
 								<button type="submit" class="btn btn-light">수정하기</button>
 							</div>
