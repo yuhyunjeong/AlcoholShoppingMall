@@ -150,7 +150,7 @@ public class UserDAOImpl implements UserDAO {
 			DbUtil.dbClose(rs, ps, con);
 		}
 
-		return null;
+		return userDTO;
 	}
 
 	/**

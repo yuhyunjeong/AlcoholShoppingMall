@@ -78,7 +78,7 @@
 							<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/myPage/myPage.jsp'">마이페이지</button>
 					        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/subscription.jsp'">구 독</button>
 					        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/category.jsp'">스토어</button>
-					        <button type="button" class="btn btn-primary me-2" >로그아웃</button>
+					        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/front?key=user&methodName=logout'">로그아웃</button>
 						</div>
 				    
 				    </header>
@@ -127,7 +127,7 @@
 							<input type="hidden" name="methodName" value = "select" />  <!-- 메소드이름 -->
 							<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/admin/orders.jsp'">주문관리</button>
 				        	<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/admin/boards.jsp'">게시판관리</button>
-				        	<button type="button" class="btn btn-primary me-2" >로그아웃</button>
+				        	<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/front?key=user&methodName=logout'">로그아웃</button>
 				        </form>
 				        
 				        

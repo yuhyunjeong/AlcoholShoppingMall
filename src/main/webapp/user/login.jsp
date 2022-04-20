@@ -131,10 +131,10 @@ input:focus::-webkit-input-placeholder {
 			<p>
 			<p>
 			<div class="m-5">
-				<a id="custom-login-btn" href="javascript:loginWithKakao()"> <img
+		<!-- 		<a id="custom-login-btn" href="javascript:loginWithKakao()"> <img
 					src="../img/kakao_login_medium_wide.png" width="300"
 					alt="카카오 로그인 버튼" />
-				</a>
+				</a> -->
 				<p>
 				<p>
 					<input class="w-25 btn btn-dark" type="submit" value="로그인">

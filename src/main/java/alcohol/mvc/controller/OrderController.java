@@ -2,7 +2,9 @@ package alcohol.mvc.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,13 +13,18 @@ import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 
+import alcohol.mvc.dto.CouponDTO;
 import alcohol.mvc.dto.OrdersDTO;
 import alcohol.mvc.dto.ProductDTO;
 import alcohol.mvc.dto.UserDTO;
+import alcohol.mvc.service.CouponService;
+import alcohol.mvc.service.CouponServiceImpl;
 import alcohol.mvc.service.OrderService;
 import alcohol.mvc.service.OrderServiceImpl;
 import alcohol.mvc.service.ProductService;
 import alcohol.mvc.service.ProductServiceImpl;
+import alcohol.mvc.service.UserService;
+import alcohol.mvc.service.UserServiceImpl;
 import net.sf.json.JSONArray;
 
 public class OrderController implements Controller{
@@ -128,22 +135,33 @@ public class OrderController implements Controller{
 	 * */
 	public void orderSelect(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String pName = request.getParameter("pName");
+		String pName = request.getParameter("pName");//사진이랑 
+		System.out.println(pName+" 이름출력");
+		String uId = request.getParameter("id");//쿠폰이랑 적립금 때문에 불러옴
 		
-		HttpSession session = request.getSession();
-		UserDTO uId = (UserDTO)session.getAttribute("userId");
+		
+		
+		UserService userService = new UserServiceImpl();
+		
+		UserDTO uDTO = userService.selectByUserId(uId);
+		
+		CouponService couService = new CouponServiceImpl();
+		List<CouponDTO> couList=couService.couponAll(pName);
 		
 		ProductService pservice = new ProductServiceImpl();
 		ProductDTO dto =pservice.searchBy(pName);
 		
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("uDTO", uDTO);
+		map.put("couList", couList);
+		map.put("pDTO", dto);
+		
 
-		
-		 //DTO dto = proService.searchBy(name); 
-		// JSONArray arr = JSONArray.fromObject(dto); //System.out.println(dto.getpName()+"나와라");
-		// PrintWriter out = response.getWriter(); out.print(arr);
+		JSONArray arr = JSONArray.fromObject(map); //System.out.println(dto.getpName()+"나와라");
+		PrintWriter out = response.getWriter();
+		out.print(arr);
 		 
-		
-		//return new ModelAndView("store/order.jsp");
+
 	}
 	
 }
