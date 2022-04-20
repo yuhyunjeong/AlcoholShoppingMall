@@ -104,9 +104,15 @@ input:focus::-webkit-input-placeholder {
 			alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
 		})
 	}
+	
+	// 로그인 후 뒤로갔을때 로그인창 안뜨게하기
+ 	function noBack() {
+		window.history.forward();
+	} 
+
 </script>
 </head>
-<body>
+<body onload="noBack()" onpageshow="if(event.persisted) noBack();" onunload="">
 	<jsp:include page="../common/header.jsp" />
 	<h1>로그인</h1>
 	<p>
