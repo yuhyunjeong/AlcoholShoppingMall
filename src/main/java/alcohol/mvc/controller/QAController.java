@@ -87,6 +87,8 @@ public class QAController implements Controller {
 		
 		qaService.qaInsert(qa);
 		
+		request.setAttribute("", qaContent);
+		
 		ModelAndView mv = this.select(request, response);
 
 		return mv;

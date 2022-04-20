@@ -24,7 +24,7 @@
 						<div class="row m-5">
 							<label for="inputTitle" class="col-sm-2 col-form-label">카테고리</label>
 							<div class="col-sm-10">
-								<select id="lg" class="form-select" aria-label="Default select example"
+								<select id="inputTitle" class="form-select" aria-label="Default select example"
 									style="width: 300px; height: 38px;">
 									<option selected value="0">-----문의 유형을 선택해주세요.-----</option>
 									<option value="1">1.상품문의</option>
