@@ -35,34 +35,12 @@
 	});
 	
 	$(function(){ 
-		////계산.....
-		$(".plus").click(function(){
-			   var num = $(".numBox").val();
-			   var plusNum = Number(num) + 1;
-			   var price = `${proList[status.index].pPrice}`;
-			    if(plusNum >= 99) {
-			    $(".numBox").val(num);
-			    $(".priceBox").val((price*num));
-			    
-			    
-			   } else {
-			    $(".numBox").val(plusNum);     
-			    $(".priceBox").val((price*plusNum));
-			   }
-			  });
-			  
-			  $(".minus").click(function(){
-			   var num = $(".numBox").val();
-			   var minusNum = Number(num) - 1;
-			   var price = `${proList[status.index].pPrice}`;
-			   if(minusNum <= 0) {
-			    $(".numBox").val(num);
-			    $(".priceBox").val((price));
-			   } else {
-			    $(".numBox").val(minusNum);    
-			    $(".priceBox").val((price*minusNum));
-			   }
-			  });
+		////계산.....]
+		var num = $("[name=items]").val();
+		var price = ""
+		
+
+			 
 		
 	});
 </script>
@@ -131,11 +109,11 @@
                      <div class="row">
                          <div class="col">
 							<div class="text-end"> 
-							   <button type="button" class="minus" style="border: none; background: none;">-</button>
+							   <%-- <button type="button" class="minus" style="border: none; background: none;">-</button>
 							   <input type="number" name="count" value="${cartList.cartCount}" 
 								      class="numBox" min="1" max="99" readonly="readonly"/>
-							   <button type="button" class="plus" style="border: none; background: none;">+</button>	
-											
+							   <button type="button" class="plus" style="border: none; background: none;">+</button>	 --%>
+								<input id="count" name="items" type="number" class="detail-quantity form-control text-center input-sm" min="0" value="${cartList.cartCount}" >			
 							</div>
 						</div>
 					</div><p><p><p>
@@ -150,6 +128,7 @@
 			        
 			       <div class="col">
 					<div class="text-end">
+
 					<input type="text" class="priceBox" name="totalprice" 
 						   value="${cartList.cartCount*proList[status.index].pPrice}" size="5" readonly="readonly"/>원
 					</div>
@@ -191,7 +170,7 @@
 						</div>
 					  </div>
 					  <div class="col">
-					    <div class="text-end">
+					    <%-- <div class="text-end">
 						  <input type="text" class="priceBox" name="totalprice" value="${proList[status.index].pPrice}" readonly="readonly" size="5">원
 						</div><p>
 						<div class="text-end">
@@ -199,7 +178,8 @@
 						</div><p>
 						<div class="text-end">
 						<b><input type="text" class="priceBox" name="total" value="${proList[status.index].pPrice}"readonly="readonly" size="5">원</b><!--최종금액-->
-						</div><p>
+						</div><p> --%>
+						<input id="count" name="items" type="number" class="detail-quantity form-control text-center input-sm" min="0" value="1" >
 					  </div>
 					  
 					</div> 

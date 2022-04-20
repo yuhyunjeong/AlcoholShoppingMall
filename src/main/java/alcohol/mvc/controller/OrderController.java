@@ -75,18 +75,18 @@ public class OrderController implements Controller{
 	}
 	
 	//주문상태출력 select ORDER_STATUS
-	public ModelAndView selectorder(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void selectorder(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String orderStatus = request.getParameter("orderstatus");
 		
 		HttpSession session = request.getSession();
 		UserDTO uId = (UserDTO)session.getAttribute("userId");
 		
-		String Name = uId.getUserName();
-		String Addr = uId.getUserAddr();
-		String Addr2 = uId.getUserAddr2();
-		String Phone = uId.getUserPhone();
-		int Point = uId.getUserPoint();
+		//String Name = uId.getUserName();
+		//String Addr = uId.getUserAddr();
+		//String Addr2 = uId.getUserAddr2();
+		//String Phone = uId.getUserPhone();
+		//int Point = uId.getUserPoint();
 		
 		String coupon = request.getParameter("coupon");
 		
@@ -94,13 +94,13 @@ public class OrderController implements Controller{
 		String pImage = request.getParameter("pImage");
 		String pPrice = request.getParameter("pPrice");
 		
-		/*
-		 * DTO dto = proService.searchBy(name); JSONArray arr =
-		 * JSONArray.fromObject(dto); //System.out.println(dto.getpName()+"나와라");
-		 * PrintWriter out = response.getWriter(); out.print(arr);
-		 */
 		
-		return new ModelAndView("store/order.jsp");
+		 //DTO dto = proService.searchBy(name); 
+		// JSONArray arr = JSONArray.fromObject(dto); //System.out.println(dto.getpName()+"나와라");
+		// PrintWriter out = response.getWriter(); out.print(arr);
+		 
+		
+		//return new ModelAndView("store/order.jsp");
 	}
 	
 	//배송상태수정 update orders
