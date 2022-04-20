@@ -30,7 +30,7 @@ public class QAController implements Controller {
 	 * 전체검색하기
 	 */
 	public ModelAndView select(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("ddddD");
+
 		String paging = request.getParameter("paging"); // 현재 페이지 번호
 		if (paging == null || paging.equals("")) {
 			paging = "1";

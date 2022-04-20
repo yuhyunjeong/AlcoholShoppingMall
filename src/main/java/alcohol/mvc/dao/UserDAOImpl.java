@@ -300,7 +300,7 @@ public class UserDAOImpl implements UserDAO {
 		ResultSet rs = null;
 		String pwd = null;
 		String sql = "SELECT U_PWD FROM USERS WHERE U_ID=? AND U_NAME=? AND U_PHONE=? AND U_EMAIL=?";
-
+        
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -311,7 +311,7 @@ public class UserDAOImpl implements UserDAO {
 
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				pwd = rs.getString(2);
+				pwd = rs.getString(1);
 			}
 
 		} finally {
