@@ -73,26 +73,50 @@ input:focus::-webkit-input-placeholder {
 
 	// 유효성 검사! 
 	$(function(){
-		// 비밀번호 확인 
+		// 비밀번호 확인
 	    $('#pwd').keyup(function(){
-	      $('#checkNotice').html('');
+	    	 $('#checkPwd').html('');
+	      if($(this).val().length < 8) { //  - 영문+숫자포함 8글자 이상 
+	          $('#pwdInput').html('비밀번호는 영문+숫자를 조합해 8자리 이상 입력해주세요.<br><br>');
+	          $('#pwdInput').attr('color', '#f82a2aa3');
+	      } else {
+	    	  $('#pwdInput').html('사용가능한 비밀번호입니다.');
+	    	  $('#pwdInput').attr('color', '#199894b3');
+	      }
 	    });
 
 	    $('#pwdCheck').keyup(function(){
-
 	        if($('#pwd').val() != $('#pwdCheck').val()){
-	          $('#checkNotice').html('비밀번호 일치하지 않음<br><br>');
-	          $('#checkNotice').attr('color', '#f82a2aa3');
+	          $('#checkPwd').html('비밀번호가 일치하지 않습니다.<br><br>');
+	          $('#checkPwd').attr('color', '#f82a2aa3');
 	        } else{
-	          $('#checkNotice').html('비밀번호 일치함<br><br>');
-	          $('#checkNotice').attr('color', '#199894b3');
+	          $('#checkPwd').html('비밀번호가 일치합니다.<br><br>');
+	          $('#checkPwd').attr('color', '#199894b3');
 	        }
 	    });
 	    
-	    // 주민등록번호 
+	    // 주민등록번호 확인 - 숫자만 입력가능하게해야함
 	    $('#jumin').keyup(function() {
+	    	$('#checkJumin').html('');
 	    	
+	    	// 글자수 확인 
+	    	if($(this).val().length != 14) {
+		          $('#checkJumin').html('주민등록번호는 하이픈(-)을 포함해 14자리를 입력해주세요.<br><br>');
+		          $('#checkJumin').attr('color', '#f82a2aa3');
+	    	} else {
+		          $('#checkJumin').html('주민등록번호가 일치합니다.<br><br>');
+		          $('#checkJumin').attr('color', '#199894b3');
+	    	}
 	    });
+	    
+	    // 이메일 확인 - @ 포함해야함 
+	    $('#email').keyup(function() {
+	    	$('#checkEmail').html('');
+	    	
+	    	if($(this).val() )
+	    })
+	    
+	    
 	});
 
 </script>
@@ -114,12 +138,13 @@ input:focus::-webkit-input-placeholder {
 				<h6>비밀번호</h6>
 				<input type="password" name="pwd" id="pwd" placeholder="8자 이상 영문/숫자를 조합해주세요."
 					required="required">
+				<div><font id="pwdInput" size="2"></font></div>
 
 				<p>
 				<h6>비밀번호 확인</h6>
 				<input type="password" name="pwdCheck" id="pwdCheck"
 					placeholder="비밀번호를 한번 더 입력해주세요." required="required">
-				<div><font id="checkNotice" size="2"></font></div>
+				<div><font id="checkPwd" size="2"></font></div>
 
 				<p>
 				<h6>이름</h6>
@@ -129,14 +154,16 @@ input:focus::-webkit-input-placeholder {
 				<h6>주민등록번호</h6>
 				<input type="text" name="jumin" id="jumin" placeholder="주민등록번호를 입력해주세요."
 					required="required">
+				<div><font id="checkJumin" size="2"></font></div>
 				<p>
 				<h6>연락처</h6>
 				<input type="text" name="tel" placeholder="연락처를 입력해주세요."
 					required="required">
 				<p>
 				<h6>이메일</h6>
-				<input type="text" name="email" placeholder="이메일을 입력해주세요."
+				<input type="text" name="email" id="email" placeholder="이메일을 입력해주세요."
 					required="required">
+				<div><font id="checkEmail" size="2"></font></div>	
 				<p>
 				<h6>주소</h6>
 				<input type="text" name="addr" id="member_post"
