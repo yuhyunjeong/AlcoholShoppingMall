@@ -44,7 +44,7 @@ input:focus::-webkit-input-placeholder {
 }
 </style>
 
-
+<script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
@@ -71,6 +71,57 @@ input:focus::-webkit-input-placeholder {
 		}).open();
 	}
 
+	// 유효성 검사! 
+	$(function(){
+		// 비밀번호 확인 - 영문+숫자포함 8글자 이상 
+	    $('#pwd').keyup(function(){
+	    	 $('#checkPwd').html('');
+	      if($(this).val().length < 8) { // 글자수 
+	          $('#pwdInput').html('비밀번호는 영문+숫자를 조합해 8자리 이상 입력해주세요.<br><br>');
+	          $('#pwdInput').attr('color', '#f82a2aa3');
+	      } else {
+	    	  $('#pwdInput').html('사용가능한 비밀번호입니다.');
+	    	  $('#pwdInput').attr('color', '#199894b3');
+	      }
+	    });
+
+	    $('#pwdCheck').keyup(function(){
+	        if($('#pwd').val() != $('#pwdCheck').val()){
+	          $('#checkPwd').html('비밀번호가 일치하지 않습니다.<br><br>');
+	          $('#checkPwd').attr('color', '#f82a2aa3');
+	        } else{
+	          $('#checkPwd').html('비밀번호가 일치합니다.<br><br>');
+	          $('#checkPwd').attr('color', '#199894b3');
+	        }
+	    });
+	    
+	    // 주민등록번호 확인 - 숫자만 입력가능하게해야함
+	    $('#jumin').keyup(function() {
+	    	$('#checkJumin').html('');
+	    	
+	    	// 글자수 확인 
+	    	if($(this).val().length != 14) {
+		          $('#checkJumin').html('주민등록번호는 하이픈(-)을 포함해 14자리를 입력해주세요.<br><br>');
+		          $('#checkJumin').attr('color', '#f82a2aa3');
+	    	} else {
+		          $('#checkJumin').html('주민등록번호가 일치합니다.<br><br>');
+		          $('#checkJumin').attr('color', '#199894b3');
+	    	}
+	    });
+	    
+	    // 이메일 확인 - 영문+숫자만 입력가능하게 해야함 
+	    $('#email').keyup(function() {
+	    	$('#checkEmail').html('');
+	    	
+	    	// @ 포함 
+	    	if($(this).val().indexOf('@') == -1) {
+	    		  $('#checkEmail').html('이메일은 @를 포함하여 입력해주세요.<br><br>');
+		          $('#checkEmail').attr('color', '#f82a2aa3');
+	    	}
+	    })
+	    
+	    
+	});
 
 </script>
 </head>
@@ -87,30 +138,36 @@ input:focus::-webkit-input-placeholder {
 				<input type="text" name="id" placeholder="아이디를 입력해주세요." onclick="idCheck()"
 					required="required">
 				<p>
+
 				<h6>비밀번호</h6>
-				<input type="password" name="pwd" placeholder="8자 이상 영문/숫자를 조합해주세요."
+				<input type="password" name="pwd" id="pwd" placeholder="8자 이상 영문/숫자를 조합해주세요."
 					required="required">
+				<div><font id="pwdInput" size="2"></font></div>
 
 				<p>
 				<h6>비밀번호 확인</h6>
-				<input type="password" name="pwdCheck"
+				<input type="password" name="pwdCheck" id="pwdCheck"
 					placeholder="비밀번호를 한번 더 입력해주세요." required="required">
+				<div><font id="checkPwd" size="2"></font></div>
+
 				<p>
 				<h6>이름</h6>
 				<input type="text" name="name" placeholder="이름을 입력해주세요."
 					required="required">
 				<p>
 				<h6>주민등록번호</h6>
-				<input type="text" name="jumin" placeholder="주민등록번호를 입력해주세요."
+				<input type="text" name="jumin" id="jumin" placeholder="주민등록번호를 입력해주세요."
 					required="required">
+				<div><font id="checkJumin" size="2"></font></div>
 				<p>
 				<h6>연락처</h6>
 				<input type="text" name="tel" placeholder="연락처를 입력해주세요."
 					required="required">
 				<p>
 				<h6>이메일</h6>
-				<input type="text" name="email" placeholder="이메일을 입력해주세요."
+				<input type="text" name="email" id="email" placeholder="이메일을 입력해주세요."
 					required="required">
+				<div><font id="checkEmail" size="2"></font></div>	
 				<p>
 				<h6>주소</h6>
 				<input type="text" name="addr" id="member_post"

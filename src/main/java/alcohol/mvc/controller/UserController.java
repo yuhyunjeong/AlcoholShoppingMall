@@ -42,8 +42,10 @@ public class UserController implements Controller {
 		//System.out.println(dbDTO);
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", dbDTO); // ${loginUser.userId}
+		session.setAttribute("loginId", dbDTO.getUserId());
 		session.setAttribute("loginName", dbDTO.getUserName());
 		session.setAttribute("loginGrade", dbDTO.getUserGrade());
+		session.setAttribute("loginPoint", dbDTO.getUserPoint());
 		session.setAttribute("loginAddr", dbDTO.getUserAddr()+" "+dbDTO.getUserAddr2());
 
 		// index.jsp -> redirect

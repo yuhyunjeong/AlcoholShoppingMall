@@ -28,13 +28,12 @@ $(function(){
 	   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
 	   			type:"post", //요청방식(method방식 : get | post | put | delete )
 	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-	   			data: {key :"order", methodName:"orderSelect", pName : '${param.pName}',count:'${param.count}'},
+	   			data: {key :"order", methodName:"orderSelect", pName : '${param.pName}',count:'${param.count}', id:'${loginId}'},
 	   			success :function(result){
 
 	   				let str ="";
 	   				var toPrice =0;
-	   				
-	   				
+	   				let cou ="";
 	   				$.each(result, function(index, item) {
 	   					str+=`<div class='col-md-9 col-lg-9' style='float: none; margin:0 auto;'><p>`;
 	   					str+=`<div class='row'><div class='col align-self-center'>`;
@@ -45,20 +44,52 @@ $(function(){
 	   					str+=`<div class='col'>`;
 	   					str+=`<div class='text-center'>${'${item.toPrice}'}원</div><p>`;
 	   					str+=`<div class="text-center">${param.count}개</div>`;
-	   					str+=`</div></div><hr></div>`
-	   					toPrice =`${'${item.toPrice}'}` ;
+	   					str+=`</div></div><hr></div>`;
+	   					toPrice =`${'${item.toPrice}'}`;
+	
+	   					//cou +=`<option selected>선택</option>`;
+	   					//cou +=`<option value="${'{item.couList.cNumber}'}">${'${item.couList.cName}'}</option>`;
+	   					
+	   					
 	   				});;
-					
+
 	   				$("#productList").empty();
 					$("#productList").html(str);
 	   				$("#totalPrice").html(toPrice+"원");
-	   				
+					//$("#couponList").html(cou);
+
 	   			},error : function(err){  
 	   				alert(err+"에러 발생했어요.");
 	   			}  //실팽했을때 실행할 함수 
 	   		});
 	 }
-	 selectAll()
+	
+	function couponAll(){
+
+		$.ajax({
+	   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
+	   			type:"post", //요청방식(method방식 : get | post | put | delete )
+	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+	   			data: {key :"order", methodName:"couponSelect", id : '${loginId}' },
+	   			success :function(result){
+	   				let cou ="";
+	   				$.each(result, function(index, item) {
+	   					cou +=`<option selected>선택</option>`;
+	   					cou +=`<option value="${'{item.cNumber}'}">${'${item.cName}'}</option>`;
+	
+	   				});;
+					$("#couponList").html(cou);
+
+	   			},error : function(err){  
+	   				alert(err+"에러 발생했어요.");
+	   			}  //실팽했을때 실행할 함수 
+	   		});
+	 }
+	
+	
+	
+	couponAll();
+	selectAll();
  })      
   
 </script>
@@ -147,9 +178,8 @@ $(function(){
 	<div class="card">
 		<div class="card-body">
 			<h5 class="card-title">사용 가능한 쿠폰</h5>
-				<select class="form-select" aria-label="Default select example">
-					<option selected>선택</option>
-					<option value="1">Welcome coupon</option>
+				<select class="form-select" id="couponList" aria-label="Default select example">
+					
 				</select>
 		</div>
 	</div>
@@ -159,7 +189,7 @@ $(function(){
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">사용 가능한 적립금</h5>
-        <h6 class="text-end"><b><fmt:formatNumber value="${point}" pattern="###,###"/>원</b></h6>
+        <h6 class="text-end"><b id="point">${loginUser.userPoint}원</b></h6>
         <input class="form-control form-control-sm" type="text" placeholder="사용할 적립금을 입력하세요" aria-label=".form-control-sm example">
       </div>
     </div>
