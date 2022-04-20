@@ -34,15 +34,7 @@
 		
 	});
 	
-	/* $(function(){ 
-		////계산.....]
-		var num = $("[name=items]").val();
-		var price = ""
-		
 
-			 
-		
-	}); */
 </script>
 
 </head>
@@ -89,7 +81,7 @@
 					  <div class="col text-end">
 					    <input type="hidden" name="key" value="cart"/>
                         <input type="hidden" name="methodName" value="delete"/>  
-						<input type="submit" src="${path}/front?key=cart&methodName=delete&cartNo=${cartList.cartNumber}" class="btn-close" aria-label="Close"></button>
+						<input type="submit" src="${path}/front?key=cart&methodName=delete&cartNo=${cartList.cartNumber}" class="btn-close" aria-label="Close"/>
 					  </div>
 					 
 					  

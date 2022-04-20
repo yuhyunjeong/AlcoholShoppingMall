@@ -153,7 +153,7 @@ public class ProductController implements Controller {
 	//goods.jsp에서 delete
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String pCode = request.getServletContext().getRealPath("/save");
+		String pCode = request.getParameter("pCode");
 		
 		proService.delete(pCode);
 		
