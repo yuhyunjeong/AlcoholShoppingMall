@@ -104,6 +104,12 @@ public class ProductServiceImpl implements ProductService {
 		List<ProductDTO> list =dao.selectAll();
 		return list;
 	}
+
+	@Override
+	public List<ProductDTO> selectByDate() throws SQLException {
+		List<ProductDTO> list =dao.selectByDate();
+		return list;
+	}
 	
 	
 

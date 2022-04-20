@@ -79,4 +79,6 @@ public interface ProductDAO {
 	
 	public  List<ProductDTO> selectAll()throws SQLException;
 	
+	public  List<ProductDTO> selectByDate()throws SQLException;
+	
 }
