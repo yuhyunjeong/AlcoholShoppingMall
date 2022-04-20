@@ -151,16 +151,16 @@ public class ProductController implements Controller {
 	}
 	
 	//goods.jsp에서 delete
-	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String pCode = request.getParameter("pCode");
 		
 		System.out.println("pCode" + pCode);
 		
-		int result = proService.delete(pCode);
-		this.select(request, response);
-		PrintWriter out = response.getWriter();
-		out.print(result);
+		//int result = proService.delete(pCode);
+		//this.select(request, response);
+		//PrintWriter out = response.getWriter();
+		//out.print(result);
 		
 	}
 	

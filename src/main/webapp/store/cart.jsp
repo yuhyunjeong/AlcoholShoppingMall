@@ -107,7 +107,7 @@
                      <div class="row">
                          <div class="col">
 							<div class="text-end"> 
-								<input type="number" value="${cartList.cartCount}" min="1" max="99">			
+								<input id="count" name="items" type="number" class="detail-quantity form-control text-center input-sm" min="0" value="${cartList.cartCount}" >			
 							</div>
 						</div>
 					</div><p><p><p>
@@ -123,8 +123,8 @@
 			       <div class="col">
 					<div class="text-end">
 
-					
-						  ${cartList.cartCount*proList[status.index].pPrice}원
+					<input type="text" class="priceBox" name="totalprice" 
+						   value="${cartList.cartCount*proList[status.index].pPrice}" size="5" readonly="readonly"/>원
 					</div>
 					
 					<p> </div>

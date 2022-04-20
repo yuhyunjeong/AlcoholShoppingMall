@@ -77,15 +77,19 @@ public class CartController implements Controller {
 */
 
 			 int count = Integer.parseInt( request.getParameter("count")); 
-			 String pCode = request.getParameter("pCode");
+			 String pName = request.getParameter("pName");
 			 //String totalPrice = request.getParameter("totalPrice"); 
 			 String id = request.getParameter("userId");
 			 System.out.println(count+"이번엔 진짜 나와야한다");
-			 System.out.println(pCode+"이번엔 진짜 나와야한다");	
+			 //System.out.println(pCode+"이번엔 진짜 나와야한다");	
 			 System.out.println(id+"이번엔 진짜 나와야한다");
-
-			 CartDTO dto = new CartDTO(0, id, pCode, count);
-			 cartService.cartInsert(dto);
+			 
+			 ProductDTO dto=proService.searchBy(pName);
+			 String pCode = dto.getpCode();
+			 System.out.println(pCode);
+			 CartDTO cDto = new CartDTO(0, id, pCode, count); 
+			 cartService.cartInsert(cDto);
+			 
 			 this.select(request, response);
 			 ModelAndView mv = new ModelAndView("store/cart.jsp");
 			 return mv;

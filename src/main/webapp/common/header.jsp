@@ -97,7 +97,7 @@
 				        </button>
 				
 				        <div class="collapse navbar-collapse" id="navbarsExample09">
-				          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				          <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
 				            <li class="nav-item">
 				              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?name=이달의 술">이달의 술</a>
 				            </li>
