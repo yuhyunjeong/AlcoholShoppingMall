@@ -52,7 +52,7 @@
           <div class="carousel-caption text-start">
             <h1>특별한 날을 완성시키는 가장 쉬운 방법</h1>
             <p></p>
-            <p><a class="btn btn-lg btn-dark" href="#">확인하러 가기</a></p>
+            <p><a class="btn btn-lg btn-dark" href="${path}/store/category.jsp">확인하러 가기</a></p>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
           <div class="carousel-caption">
             <h1 style="color:black;">한 달에 한 번, 집 앞으로 찾아오는 인생 술</h1>
             <p style="color:black;">4월의 술</p>
-            <p><a class="btn btn-lg btn-dark" href="#">구독하러 가기</a></p>
+            <p><a class="btn btn-lg btn-dark" href="${path}/store/subscription.jsp">구독하러 가기</a></p>
           </div>
         </div>
       </div>
@@ -77,7 +77,7 @@
           <div class="carousel-caption text-end">
             <h1></h1>
             <p></p>
-            <p><a class="btn btn-lg btn-dark" href="#">베스트셀러 보러 가기</a></p>
+            <p><a class="btn btn-lg btn-dark" href="${path}/store/category.jsp">베스트셀러 보러 가기</a></p>
           </div>
         </div>
       </div>
@@ -99,8 +99,8 @@
         </svg>
 		
         <h2>술</h2>
-        <p>설명</p>
-        <p><a class="btn btn-secondary" href="#">보러 가기 &raquo;</a></p>
+        <p></p>
+        <p><a class="btn btn-secondary" href="${path}/store/category.jsp">보러 가기 &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       
       <div class="col-lg-6">
@@ -108,8 +108,8 @@
         <image href="${pageContext.request.contextPath}/img/Gift/문배술.jpg" height="100%" /></svg>
 		
         <h2>세트</h2>
-        <p>설명</p>
-        <p><a class="btn btn-secondary" href="#">보러 가기 &raquo;</a></p>
+        <p></p>
+        <p><a class="btn btn-secondary" href="${path}/store/product.jsp?type=Gitf&title=선물 세트">보러 가기 &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
     <!--  
       <div class="col-lg-4">
