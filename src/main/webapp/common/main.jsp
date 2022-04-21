@@ -46,11 +46,11 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/>  
-        <image href="${pageContext.request.contextPath}/img/C/신애유자2.jpg" width="100%"/>
+        <image href="${pageContext.request.contextPath}/img/바탕사진.jpeg" width="100%"/>
         </svg>
         <div class="container">
           <div class="carousel-caption text-start">
-            <h1 style="color:black;">특별한 날을 완성시키는 가장 쉬운 방법</h1>
+            <h1>특별한 날을 완성시키는 가장 쉬운 방법</h1>
             <p></p>
             <p><a class="btn btn-lg btn-dark" href="#">확인하러 가기</a></p>
           </div>
@@ -70,7 +70,7 @@
       </div>
       <div class="carousel-item">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/>
-        <image href="${pageContext.request.contextPath}/img/Gift/꽃길을 여는 술들2.jpg" width="100%"/>
+        <image href="${pageContext.request.contextPath}/img/C/신애유자2.jpg" width="100%"/>
         </svg>
 			
         <div class="container">
