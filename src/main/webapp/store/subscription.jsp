@@ -15,6 +15,12 @@ html,body{
 img{
 	margin: auto;
 }
+h4{
+	font-weight: bold;
+}
+button{
+	background-color: #EBF04D;
+}
 </style>
  <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
  <script type="text/javascript">
@@ -42,7 +48,7 @@ img{
 	   					pName +=`${'${item.pName}'}`;
 	   					//price2 += `<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.pPrice}" />`;
 						price2 +=`${'${item.pPrice}'}`;
-	   					pAlcohol +=`<b style="text-align:center;"><h4>${'${item.pName}'}</h4><br>도수 : ${'${item.pAlcohol}'}%</b>`;
+	   					pAlcohol +=`<b style="text-align:center;"><h3>${'${item.pName}'}</h3><br>도수 : ${'${item.pAlcohol}'}%</b>`;
 	   					//price2 = `${'${item.pPrice}'}`;
 	   					pCode=`${'${item.pCode}'}`;
 	   					
@@ -107,7 +113,7 @@ img{
 <div class="container">
 	<main>
     <div class="py-5 text-center">
-      <h1>정기구독</h1>     
+      <h1 style="font-weight:bolder;">정기구독</h1>     
     </div>
 	
        
@@ -140,12 +146,12 @@ img{
 									<p class="text-end">
 										<input id="count" name="items" type="number"
 											class="detail-quantity form-control text-center input-sm"
-											min="0" value="1">
+											min="1" max="99" value="1">
 									</p>
 								</div>
 							</div>
 							
-							<div class="row">
+							<div class="row" >
 								<div class="col-md-6">
 									<h4>총 구독료 :</h4>
 								</div>
@@ -200,7 +206,7 @@ img{
 		              <div class="col-sm-10">
 		             	 <input type="text" class="form-control" id="phone" placeholder="000-0000-0000 방식으로 입력해주세요.">
 			              <div class="invalid-feedback">
-			                Please enter a valid email address for shipping updates.
+			                연락처를 입력해주세요.
 			              </div>
 		           	 </div>
 				</div>
@@ -211,13 +217,13 @@ img{
 		              <div class="col-sm-10">
 		              	<input type="text" class="form-control" id="address" placeholder="주소를 입력해주세요." required>
 			              <div class="invalid-feedback">
-			                Please enter your shipping address.
+			                주소를 입력해주세요.
 			              </div>
 		            </div>
 	            </div>
 
 	            <div class="row m-4">
-	              	<label for="address2" class="col-sm-2 col-form-label">상세주소<span class="text-muted">(Optional)</span></label>
+	              	<label for="address2" class="col-sm-2 col-form-label">상세주소<span class="text-muted"></span></label>
 		              <div class="col-sm-10">
 		              		<input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요.">
 		           	 </div>
@@ -260,13 +266,13 @@ img{
           
           <div class="d-grid gap-2 col-6 mx-auto">
           <h4  class="mb-3" style="text-align: center;">
-          	<div class="col">
+          	<div class="col" style="font-weight:bolder;">
 				총 결제 금액 </div>
 			<div class="col">
 				<input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" />
 			</div>
 			</h4>
-          	<button class="btn btn-primary btn-lg" type="button"  id="pay" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="text-decoration: none;">결제 하기</button>
+          	<button class="btn-lg" type="button"  id="pay" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="text-decoration: none;">결제 하기</button>
           </div>
           <!-- Modal --> 
 									  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -280,7 +286,7 @@ img{
 									        <div class="modal-body">
 										        <div class="col mt-3 text-center">
 										        <b>주문자 : <b name="user">${loginId}</b></b><br>
-										        <b>결제 금액 : <b id="price"><input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" /></b></b><br>
+										        <b>결제 금액 : <input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" /></b><br>
 										        <b>카드 번호 : <input type="text" name="cardNum"></b></b><br>
 										        <b>카드 비밀번호 : <input type="text"  name="cardPwd"></b><br>
 												</div> 		  

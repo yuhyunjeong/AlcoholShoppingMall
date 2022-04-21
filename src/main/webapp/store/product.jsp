@@ -65,10 +65,10 @@ $(function(){
    					strr+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`;
    					strr+="<div class='card-body'>";
    					strr+="<p class='card-text'>";
-   					strr+=`<b>${'${item.pName}'}</b><p><p>`;
+   					strr+=`<h4 style='font-weight:bold;'>${'${item.pName}'}</h4><p><p>`;
    					strr+=`<b>가격 : ${'${item.pPrice}'} 원</b><p>`;
    					strr+="<hr>";
-   					strr+="<b>상품 설명</b><p>";    
+   					strr+="<b>상품 설명</b><p><p>";    
    					strr+=`${'${item.pDetail}'}`;
    					strr+="</p></div></div></div>";
    				});
@@ -111,7 +111,7 @@ $(function(){
 <body>
 <jsp:include page="../common/header.jsp"/>
 <div class="container">
-<h2 style="text-align: center;">${param.title}</h2>
+<h2 style="text-align: center; font-weight:bolder">${param.title}</h2>
 </div>
 
 
@@ -119,7 +119,7 @@ $(function(){
 <nav class="navbar navbar-expand-lg navbar-light bg-white container">
   <div class="container-fluid">
   
-    <a class="navbar-brand" >도수</a>
+    <a class="navbar-brand" ><h5>도수</h5></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"  ></span>
     </button>

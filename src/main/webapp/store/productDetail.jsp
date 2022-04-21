@@ -13,7 +13,9 @@
 		height: 15rem;
 		object-fit : cover;
 	}
-
+button{
+	background-color: #EBF04D;
+}
 
 </style>
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
@@ -141,11 +143,13 @@ $(function(){
 					    </div>
 					    <div class="col-lg-5">
 					      <div class="card-body">
-					        <h4 class="card-title">${param.pName}</h4>
+					     	 <br>
+					        <h4 class="card-title" style="font-weight:bold;">${param.pName}</h4>
+					        <br>
 					        <p class="card-text">
 					        	<div class="content"></div>
 					        	
-					        	<p> <b>별점 : 
+					        	<p> <br> <b>별점 : 
 
 					        		<c:choose>
 					        			<c:when test="${star==0}">
@@ -183,12 +187,12 @@ $(function(){
 					        			</c:when>
 					        		</c:choose>
 					        		</b>   
-					        	<a href="#a">[리뷰]</a>
+					        	<a href="#a" style="color:#A381BD; font-weight: bold;">[리뷰]</a>
 					        	<p> <div><b>주종 : ${param.title} </b></div>
 					        	<h5>${item.pDetail}</h5><p>
 
 								<p> <div id="pAlcohol"></div>
-								<p><h4 class="text-center" id = "price"></h4>	
+								<p><br><h4 class="text-center" id = "price" style="font-weight:bold;"></h4>	
 							</p>
 					        <p class="card-text"><small class="text-muted"></small></p>
 					      </div>
@@ -214,7 +218,7 @@ $(function(){
 					            
 					            
 					            <div class="card rounded-3 shadow-sm mt-5">
-					          		<div class="card-header text-end bg-white">총가격</div>
+					          		<div class="card-header text-center bg-white">총가격</div>
 					          		<div class="card-main text-center">
 					          			<input type="text" class="priceBox" name="totalPrice" value=${param.price}원 readonly="readonly" style="border: none; text-align: center;" />          			
 					          		</div>       	
@@ -224,14 +228,14 @@ $(function(){
 								<input type="hidden" name="methodName" value = "insert" /><!-- 메소드이름 -->
 								<input type="hidden" name="userId" value = "${loginUser.userId}" /> <!-- userID --> 
 								<input type="hidden" name="pName" value="${param.pName}"/>								            
-					            <button type="submit" class="btn btn-lg btn-primary mt-5">장바구니 담기</button><br>
+					            <button type="submit" class="btn-lg mt-5">장바구니 담기</button><br>
 					            
 							</form>
 							<form action="${path}/store/order.jsp">
 								<input type="hidden" name="pName" value = "${param.pName}" />
 					            <input type="hidden" name="count" class="numBox" min="1" max="99" value="1" readonly="readonly" style="border: none; background: none; text-align: center;"/>
 								<input type="hidden" class="priceBox" name="totalPrice" value=${param.price}원 readonly="readonly" style="border: none; text-align: center;" />
-					            <button type="submit" class="btn btn-lg btn-primary mt-3">바로 구매하기</button>
+					            <button type="submit" class="btn-lg mt-3" style="background-color:#A381BD; color:white;">바로 구매하기</button>
 					        </form>
 				          </div>
 				        </div>

@@ -26,7 +26,7 @@ a:link , a:visited{
 <body>
 <div class="container">
 	<div class="py-5 text-center">
-		<h1>양조장</h1>
+		<h1 style="font-weight:bold;">양조장</h1>
 	</div>
 		<div class="row">
 			<div class="col-md-5">
