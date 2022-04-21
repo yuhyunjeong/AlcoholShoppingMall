@@ -10,22 +10,14 @@ public class NoticeDTO {
 	
 	public NoticeDTO() {}
 	
-	
-	
-	
-	
-	
+
 	public NoticeDTO(int noNumber, String noTitle, String noContent, String noDate) {
 		super();
 		this.noNumber = noNumber;
 		this.noTitle = noTitle;
 		this.noContent = noContent;
-		this.noDate = noDate;
+		this.noDate = noDate.substring(0,10);
 	}
-
-
-
-
 
 
 	public NoticeDTO(String userId, String noTitle, String noContent) {
@@ -34,11 +26,6 @@ public class NoticeDTO {
 		this.noTitle = noTitle;
 		this.noContent = noContent;
 	}
-
-
-
-
-
 
 	public NoticeDTO(int noNumber, String userId, String noTitle, String noContent, String noDate, int viewCount) {
 		super();
@@ -84,6 +71,13 @@ public class NoticeDTO {
 
 	public String getNoDate() {
 		return noDate;
+	}
+	
+	public String DBgetNoDate() {
+		String date= getNoDate();
+		String a=date.substring(0,10);
+		
+		return a;
 	}
 
 	public void setNoDate(String noDate) {

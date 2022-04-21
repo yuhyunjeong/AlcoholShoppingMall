@@ -173,6 +173,7 @@ div {
 		</div>
 	</nav>
 
+
 	<div class="col-sm-6, container">
 		<div class="d-grid gap-2 d-md-block">
 			<a class="btn btn-primary" href="${path}/board/qaWrite.jsp"
@@ -191,6 +192,7 @@ div {
 					</tr>
 			</table>
 		</div>
+
 	
 	<!-- 페이징처리 -->
 <jsp:useBean class="alcohol.mvc.paging.PageCnt" id="p"/> 
