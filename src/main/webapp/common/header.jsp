@@ -87,10 +87,10 @@
 					</div>
 						<div>
 							<b>${loginName}님</b>
-							<button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/myPage/myPage.jsp'">마이페이지</button>
-					        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/subscription.jsp'">구 독</button>
-					        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/category.jsp'">스토어</button>
-					        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/front?key=user&methodName=logout'">로그아웃</button>
+							<button type="button" class="btn btn btn-dark me-2" onclick= "location.href='${path}/myPage/myPage.jsp'">마이페이지</button>
+					        <button type="button" class="btn btn btn-dark me-2" onclick= "location.href='${path}/store/subscription.jsp'">구 독</button>
+					        <button type="button" class="btn btn btn-dark me-2" onclick= "location.href='${path}/store/category.jsp'">스토어</button>
+					        <button type="button" class="btn btn btn-dark me-2" onclick= "location.href='${path}/front?key=user&methodName=logout'">로그아웃</button>
 						</div>
 				    
 				    </header>

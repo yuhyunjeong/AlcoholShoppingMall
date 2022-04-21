@@ -33,7 +33,7 @@ public class NoticeDTO {
 		this.userId = userId;
 		this.noTitle = noTitle;
 		this.noContent = noContent;
-		this.noDate = noDate
+		this.noDate = noDate;
 		this.viewCount = viewCount;
 	}
 
