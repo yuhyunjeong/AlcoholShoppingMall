@@ -43,28 +43,9 @@ public class OrderController implements Controller{
 	//주문하기 (여러개) insert 
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String saveDir = request.getServletContext().getRealPath("/save");
+
 		
-		MultipartRequest m = new MultipartRequest(request, saveDir);
-		
-		String orderCode = m.getParameter("order_code");
-		String uId = m.getParameter("u_id");
-		String payCode = m.getParameter("pay_code");
-		String orderDate = m.getParameter("order_date");
-		String orderStatus = m.getParameter("order_status");
-		String deliStatus = m.getParameter("deli_status");
-		String deliAddr = m.getParameter("deli_addr");
-		String deliAddr2 = m.getParameter("deli_addr2");
-		String orderphone = m.getParameter("order_phone");
-		
-		
-		
-		OrdersDTO orDto = 
-				new OrdersDTO(Integer.parseInt(orderCode), uId, Integer.parseInt(payCode), orderDate, orderStatus, deliStatus, deliAddr, deliAddr2, orderphone);
-		
-		orderService.orderInsert((List<OrdersDTO>) orDto);
-		
-		return new ModelAndView("front" , true);
+		return null;
 	}
 	
 	//주문수정 update orders
