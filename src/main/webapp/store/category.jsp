@@ -79,19 +79,6 @@ $(function(){
 	
 });
 </script>
-<style type="text/css">
-.profile-user-img{
-	width: 150px;
-	height: 150px;
-	border-radius: 70%;
-	overflow: hidden;
-}
-.profile-user-img-img{
-	width:100%;
-	height: 100%;
-	object-fit: cover;
-}
-</style>
 </head>
 <body>
 <%@include file="../common/header.jsp"%>
@@ -100,24 +87,23 @@ $(function(){
 
   <div class="row m-5" >
       <div class="col-lg-3" >
-      <div class="profile-user-img">
-       <a href="${path}/store/product.jsp?type=A&title=탁주">    
-        	<image href="${pageContext.request.contextPath}/img/A/자연담은 복분자 막걸리.jpg"  class="profile-user-img-img"/>        
+       <a href="${path}/store/product.jsp?type=A&title=탁주">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>       
+        	<image href="${pageContext.request.contextPath}/img/A/자연담은 복분자 막걸리.jpg" height="100%" width="100%"/>
+        </svg>
 	   </a>
-	   </div>
 		<p>
         <h3>탁주</h3>
          <p></p>
       </div>
       
       <div class="col-lg-3" >
-			 <div class="profile-user-img">
+
 	      	<a href="${path}/store/product.jsp?type=B&title=청주">	
-	       
-	        <image href="${pageContext.request.contextPath}/img/B/매화 깊은 밤.jpg" class="profile-user-img-img"/>
-	    
+	        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+	        <image href="${pageContext.request.contextPath}/img/B/매화 깊은 밤.jpg" height="100%" width="100%"/>
+	        </svg>
 			</a>
-			</div>
 			<p>
 	        <h3>청주</h3>
 	        <p></p>
@@ -125,26 +111,23 @@ $(function(){
       </div>
       
       <div class="col-lg-3" >
-		 <div class="profile-user-img">
+
 	     	<a href="${path}/store/product.jsp?type=C&title=과실주">
-	       
-	        <image href="${pageContext.request.contextPath}/img/C/크라테 자두 와인.jpg"  class="profile-user-img-img"/>
-	
+	        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+	        <image href="${pageContext.request.contextPath}/img/C/크라테 자두 와인.jpg" height="100%" width="100%"/>
+	        </svg>
 			</a>
-			</div>
 			<p>
 	        <h3>과실주</h3>
 	        <p></p>
       </div>
       
       <div class="col-lg-3" >
-      <div class="profile-user-img">
 	      	<a href="${path}/store/product.jsp?type=D&title=증류주">
-	     
-	        <image href="${pageContext.request.contextPath}/img/D/만월.jpg"  class="profile-user-img-img"/>
-
+	        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+	        <image href="${pageContext.request.contextPath}/img/D/만월.jpg" height="100%" width="100%"/>
+	        </svg>
 			</a>
-			</div>
 			<p>
 	        <h3>증류주</h3>
 	        <p></p>
