@@ -45,10 +45,13 @@ public class NoticeController implements Controller {
 			pageNo="1";
 		}
 		
-		List<NoticeDTO> noticeList = noService.noticeAll();
-		
+		//List<NoticeDTO> noticeList = noService.noticeAll();
+		List<NoticeDTO> noticeList = noService.noticeAll(Integer.parseInt(pageNo));
 		
 		request.setAttribute("noticeList", noticeList);
+		
+		 request.setAttribute("pageNo", pageNo); //뷰에서 사용하기 위해서 ${pageNo}
+		
 		for (NoticeDTO n : noticeList) {
 			System.out.println(n.getNoContent());
 		}
