@@ -50,7 +50,7 @@ public class FactoryDAOImpl implements FactoryDAO {
 			
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				FactoryDTO factory = new FactoryDTO(rs.getString(1), rs.getString(2), rs.getString(3));
+				FactoryDTO factory = new FactoryDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
 				
 				list.add(factory);
 			}
@@ -82,7 +82,7 @@ public class FactoryDAOImpl implements FactoryDAO {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				factory = new FactoryDTO(rs.getString(1), rs.getString(2), rs.getString(3));
+				factory = new FactoryDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
 				
 			}
 			

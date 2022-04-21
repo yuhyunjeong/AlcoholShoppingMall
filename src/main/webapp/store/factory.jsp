@@ -48,7 +48,7 @@ a:link , a:visited{
 								      </button>
 								    </h2>
 								    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-								      <div class="accordion-body">${factory.fType}<p>${factory.fAddr}</div>
+								      <div class="accordion-body"><p>취급 종류 : ${factory.fType}<p>주소 : ${factory.fAddr}<p>연락처 : ${factory.fPhone}</div>
 								    </div>
 								  </div>
 											
