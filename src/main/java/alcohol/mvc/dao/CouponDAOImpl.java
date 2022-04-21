@@ -40,7 +40,7 @@ public class CouponDAOImpl implements CouponDAO {
 			
 			rs = ps.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				dto = new CouponDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getString(6));
 				list.add(dto);
 			}

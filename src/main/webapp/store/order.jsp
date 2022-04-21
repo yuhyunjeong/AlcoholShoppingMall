@@ -56,6 +56,7 @@ $(function(){
 	   				$("#productList").empty();
 					$("#productList").html(str);
 	   				$("#totalPrice").html(toPrice+"원");
+	   				$("#finPrice").html(toPrice+"원");
 					//$("#couponList").html(cou);
 
 	   			},error : function(err){  
@@ -73,12 +74,11 @@ $(function(){
 	   			data: {key :"order", methodName:"couponSelect", id : '${loginId}' },
 	   			success :function(result){
 	   				let cou ="";
-	   				$.each(result, function(index, item) {
-	   					cou +=`<option selected>선택</option>`;
-	   					cou +=`<option value="${'{item.cNumber}'}">${'${item.cName}'}</option>`;
+	   				$.each(result, function(index, item) { 					
+	   					cou +=`<option value="${'{item.cRate}'}">${'${item.cName}'}${'${item.cRate}'}</option>`;
 	
 	   				});;
-					$("#couponList").html(cou);
+					$("#couponList").append(cou);
 
 	   			},error : function(err){  
 	   				alert(err+"에러 발생했어요.");
@@ -86,7 +86,7 @@ $(function(){
 	   		});
 	 }
 	
-	
+	$("#pointText").val(1000);
 	
 	couponAll();
 	selectAll();
@@ -100,7 +100,7 @@ $(function(){
 <body>
 <h2 align="center">구매하기</h2><p>
 
-<div class="container">
+<div class="container" >
 
 
 
@@ -178,7 +178,8 @@ $(function(){
 	<div class="card">
 		<div class="card-body">
 			<h5 class="card-title">사용 가능한 쿠폰</h5>
-				<select class="form-select" id="couponList" aria-label="Default select example">
+				<select class="form-select" id="couponList" name="couponList" aria-label="Default select example">
+					<option selected >선택</option>
 					
 				</select>
 		</div>
@@ -190,7 +191,7 @@ $(function(){
       <div class="card-body">
         <h5 class="card-title">사용 가능한 적립금</h5>
         <h6 class="text-end"><b id="point">${loginUser.userPoint}원</b></h6>
-        <input class="form-control form-control-sm" type="text" placeholder="사용할 적립금을 입력하세요" aria-label=".form-control-sm example">
+        <input id="pointText" class="form-control form-control-sm" type="text" placeholder="사용할 적립금을 입력하세요" aria-label=".form-control-sm example">
       </div>
     </div>
 </div><!--적립금--><p>
@@ -224,22 +225,24 @@ $(function(){
   <div class="text-start">총 배송비</div><p>
   <div class="text-start"><b>총 결제 금액</b></div><p>
  </div>
+
  <div class="col">
   <div class="text-end">&nbsp;</div><p>
-  <div class="text-end"><fmt:formatNumber value="${cart.totalprice}" pattern="###,###"/>원</div><p>
-  <div class="text-end"><fmt:formatNumber value="${discount}" pattern="###,###"/>원</div><p>
-  <div class="text-end"><fmt:formatNumber value="${point}" pattern="###,###"/>원</div><p>
-  <div class="text-end"><fmt:formatNumber value="${coupon.cname}" pattern="###,###"/>원</div><p>
-  <div class="text-end"><fmt:formatNumber value="${cart.charge}" pattern="###,###"/>원</div><p>
-  <div class="text-end"><b><fmt:formatNumber value="${cart.total}" pattern="###,###"/>원</b></div><p>
+  <div class="text-end" id="finPrice"></div><p>
+  <div class="text-end" id="finDiscount">원</div><p>
+  <div class="text-end" id="finPoint">원</div><p>
+  <div class="text-end" id="finCoupon">원</div><p>
+  <div class="text-end" id="finDelivery">원</div><p>
+  <div class="text-end" id="finfinfinPrice"><b>원</b></div><p>
  
 </div>
 
 
 
 <div align="center">
-<button type="submit" onclick="order()" class="btn btn-light">결제하기</button>
+<button type="submit" class="btn btn-light">결제하기</button>
 </div><p> 
+
 
  
 </div>
