@@ -25,7 +25,7 @@ public class ProductDTO {
 		this.pAlcohol = pAlcohol;
 		this.pPrice = pPrice;
 		this.pStuck = pStuck;
-		this.pDate = pDate.substring(0,10);;
+		this.pDate = pDate.substring(0,10);
 		this.pDetail = pDetail;
 	}
 

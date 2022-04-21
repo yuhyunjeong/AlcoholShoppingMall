@@ -16,7 +16,7 @@ public class ReplyDTO {
 		this.qaNumber = qaNumber;
 		this.userId = userId;
 		this.reContent = reContent;
-		this.reDate = reDate;
+		this.reDate = reDate.substring(0,10);
 		this.reSecret = reSecret;
 	}
 
@@ -55,6 +55,14 @@ public class ReplyDTO {
 	public String getReDate() {
 		return reDate;
 	}
+	
+	public String DBgetReDate() {
+		String date= getReDate();
+		String a=date.substring(0,10);
+		
+		return a;
+	}
+	
 
 	public void setReDate(String reDate) {
 		this.reDate = reDate;
