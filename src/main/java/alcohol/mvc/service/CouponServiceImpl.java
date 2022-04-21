@@ -11,7 +11,7 @@ public class CouponServiceImpl implements CouponService {
 	private CouponDAO dao = new CouponDAOImpl();
 	@Override
 	public void couponInsert(CouponDTO dto) throws SQLException {
-		// TODO Auto-generated method stub
+		dao.couponInsert(dto);
 
 	}
 

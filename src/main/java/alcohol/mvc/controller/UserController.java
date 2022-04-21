@@ -14,10 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import alcohol.mvc.dto.CouponDTO;
 import alcohol.mvc.dto.ProductDTO;
 import alcohol.mvc.dto.UserDTO;
 import alcohol.mvc.service.CartService;
 import alcohol.mvc.service.CartServiceImpl;
+import alcohol.mvc.service.CouponService;
+import alcohol.mvc.service.CouponServiceImpl;
 import alcohol.mvc.service.UserService;
 import alcohol.mvc.service.UserServiceImpl;
 import net.sf.json.JSONArray;
@@ -188,7 +191,26 @@ public class UserController implements Controller {
 	}
 	
 	
+public ModelAndView couponInsert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String id = request.getParameter("bbbb");
+		String items = request.getParameter("items");//갯수
+		int coupon = Integer.parseInt(request.getParameter("coupon"));
+		
+		CouponService couService = new CouponServiceImpl();
+		CouponDTO dto = new CouponDTO(id, coupon, items);
+		
+
+		for(int i=1;i<=Integer.parseInt(dto.getCount());i++) {
+			couService.couponInsert(dto);
+			System.out.println(i);
+		}
+		ModelAndView mv = new ModelAndView("admin/member.jsp",true);
+
+		return mv;
 	
+		
+	}
 	
 	
 	

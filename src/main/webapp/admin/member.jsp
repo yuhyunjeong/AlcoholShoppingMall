@@ -33,8 +33,13 @@ $(function(){
    						str +=  `<td>${'${item.userPhone}'}</td>`
    						str +=  `<td>${'${item.price}'}</td>`
    						str += 	`<td>회원</td>`
-   						str +=  `<td><input type='checkbox'  name='couponcheck' value='Mark'></td>`
-						str += "</tr>"
+   						str +=  `<td><button type='button' name="bbbb" value='${"${item.userId}"}' class='btn btn-secondary btn-sm' id='coupon' data-bs-toggle='modal' data-bs-target='#exampleModal'>쿠폰 지급</button></td>`
+   						str += "</tr>"
+						
+					
+						
+						
+						
    			        })   	          
 					$("#qaTable tr:gt(0)").remove();
 				    $("#qaTable tr:eq(0)").after(str);	   
@@ -48,7 +53,13 @@ $(function(){
 		
 	}
 	
-
+	$(document).on("click","#coupon",function(){
+		$("[name=bbbb]").empty();
+		$("[name=bbbb]").val($(this).val());
+		
+	})
+	
+	
 	seletAll();
 	
 	
@@ -65,7 +76,7 @@ $(function(){
 <div class="container ">
 	<div class="row">
 	</div>
-	<form>
+
 	<div class="row mb-3">
 		<div class="col">
 			<table class="table text-center" id="qaTable">
@@ -76,10 +87,9 @@ $(function(){
 			      <th scope="col">연락처</th>
 			      <th scope="col">총 주문 금액</th>
 			      <th scope="col">등급</th>
+			      <th scope="col">쿠폰</th>
 			      <th scope="col">
-			      <button type="button" class="btn btn-secondary btn-sm" id="coupon" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  					쿠폰 지급
-				  </button>
+			      
 				  <!-- Modal -->
 				  
 				  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -91,27 +101,36 @@ $(function(){
 				        </div>
 				        
 				        <div class="modal-body">
+				       <form action="${path}/front">
 					        <div class="col mt-3 text-center">
+					        
 					        <b>지급할 쿠폰 종류</b><br>
+					      
 					          <select name="coupon">
-							     <option value="쿠폰번호 입력하자 난수발생후 하면될듯하다" >생일쿠폰</option>
-							     <option value="쿠폰번호 입력하자 난수발생후 하면될듯하다">5000원 할인 쿠폰</option>
-							     <option value="쿠폰번호 입력하자 난수발생후 하면될듯하다">생일쿠폰2</option>
+							     <option value="3000" >welcome coupon</option>
+							     <option value="5000">birthday coupon</option>
+							     <option value="4000">new product coupon</option>
+							     
 							  </select><br>
 							</div> 
 							<div class="col mt-3 text-center">
 							<b>지급할 쿠폰 수</b> 
+					
 							<input name="items" type="number" class="datail-quantity form-control text-center input-sm" value="1" >
+							
 							</div>
-						  
-						  
-				        </div>
-				        <div class="modal-footer">
-				          <input type="hidden" name="" value="">
+				         <input type='hidden' name="bbbb">
+				          <input type="hidden" name="key" value="user" >
+   						  <input type="hidden" name="methodName" value="couponInsert" >
 				          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 				          <button type="submit" class="btn btn-primary">Submit</button>
-				        </div>
+				           </form>
+
+				       		
+				       		 </div>
+				       
 				        
+				         
 				      </div>
 				    </div>
 				  </div>
@@ -122,7 +141,7 @@ $(function(){
 		</div>
 		
 	</div>
-	</form>
+
 </div>
 
 
