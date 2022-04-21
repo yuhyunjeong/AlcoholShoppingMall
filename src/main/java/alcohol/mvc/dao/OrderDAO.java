@@ -30,4 +30,9 @@ public interface OrderDAO {
 	 * 배송 상태 출력 SELECT DELI_STATUS FROM ORDERS WHERE ORDER_CODE=?
 	 * */
 	public String deliStatus(int oCode)throws SQLException;
+	
+	/**
+	 * 배송관리 테이블 전체 출력 SELECT * FROM ORDERS
+	 */
+	public List<OrdersDTO> orderAll() throws SQLException; 
 }

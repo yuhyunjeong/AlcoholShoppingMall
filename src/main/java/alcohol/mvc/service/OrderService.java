@@ -32,5 +32,8 @@ public interface OrderService {
 	 * */
 	public String deliStatus(int oCode)throws SQLException;
 
-	
+	/**
+	 * 배송관리 테이블 전체 출력
+	 */
+	public List<OrdersDTO> orderAll() throws SQLException; 
 }
