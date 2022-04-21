@@ -47,7 +47,7 @@
 			    </div>
 			 </div>
 			 			 
-			 
+	<!--  	 
 			 <div class="row m-5">
 			    <div class="col-sm-2"></div>
 			    <div class="col-sm-10">
@@ -55,7 +55,7 @@
 				  <input class="form-control" type="file" id="formFileDisabled" disabled>
 				</div>
 			 </div>
-			 
+		-->		 
 			 <div class="row m-5">
 			    <label for="date" class="col-sm-2 col-form-label">작성일</label>
 			    <div class="col-sm-10">

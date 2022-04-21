@@ -39,7 +39,7 @@ img{
 	   				$.each(result, function(index, item) {
 	   					content += `<h5>${"${item.pDetail}"}</h5>`;
 	   					
-	   					//pName +=`${'${item.pName}'}`;
+	   					pName +=`${'${item.pName}'}`;
 	   					//price2 += `<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.pPrice}" />`;
 						price2 +=`${'${item.pPrice}'}`;
 	   					pAlcohol +=`<b style="text-align:center;"><h4>${'${item.pName}'}</h4><br>도수 : ${'${item.pAlcohol}'}%</b>`;
@@ -64,6 +64,9 @@ img{
 					
 					$("[name=price]").empty();
 					$("[name=price]").html(price2+"원");
+					
+					$("[name=goods]").empty();
+					$("[name=goods]").html(pAlcohol);
 	   				
 	   			},error : function(err){  
 	   				alert(err+"에러 발생했어요.");
@@ -79,11 +82,7 @@ img{
  		
 		 selectAll();
  		
-		 
-		 $("#btn_submit").on("click", function(){
-			 window.open("", "popup_window", "width=500, height=300, scrollbars=no");
-			 $("#myform").submit();
-		 });
+		
  		
  	});
  	<%LocalDate now = LocalDate.now();
@@ -107,7 +106,8 @@ img{
        
       <div class="col-md-7 col-lg-8" style="float: none; margin:0 auto;"> <!-- 가운데 정렬 -->
                
-        <form name="myform" id="myform" method="post" action="opoup url" target="popup_window">
+        <form name="myform" id="myform" method="post" action="" target="">
+          <input type=hidden name="noNumber" value="${notice.noNumber}">
           <div class="container">
            <div class="row mb-5">
            		<div class="col">
@@ -252,8 +252,34 @@ img{
 				<input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" />
 			</div>
 			</h4>
-          	<button class="btn btn-primary btn-lg" type="button" id="btn_submit">결제 하기</button>
+          	<button class="btn btn-primary btn-lg" type="submit"  id="pay" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="text-decoration: none;">결제 하기</button>
           </div>
+          <!-- Modal --> 
+									  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									    <div class="modal-dialog modal-sm">
+									      <div class="modal-content">
+									        <div class="modal-header">
+									          <h5 class="modal-title" id="exampleModalLabel">결제창</h5>
+									          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									        </div>
+									        
+									        <div class="modal-body">
+										        <div class="col mt-3 text-center">
+										        <b>주문자 : <b name="user">${loginId}</b></b><br>
+										        <b>결제 금액 : <b name="price"></b></b><br>
+										        <b>카드 번호 : <input type="text" name="cardNum"></b></b><br>
+										        <b>카드 비밀번호 : <input type="text"  name="cardPwd"></b><br>
+												</div> 		  
+									        </div>
+									        <div class="modal-footer">
+									          <input type="hidden" name="" value="">
+									          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+									        </div>
+									        
+									      </div>
+									    </div>
+									  </div>
+		       						  <!-- Modal End -->
           
         </form>
       </div>
