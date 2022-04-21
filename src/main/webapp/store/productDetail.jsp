@@ -14,7 +14,7 @@
 		object-fit : cover;
 	}
 button{
-	background-color: #EBF04D;
+	background-color: #F2D58F;
 }
 
 </style>
