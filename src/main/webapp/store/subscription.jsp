@@ -112,69 +112,70 @@ img{
 	
        
       <div class="col-md-7 col-lg-8" style="float: none; margin:0 auto;"> <!-- 가운데 정렬 -->
-				<div class="container">
-					<div class="row mb-5">
-						<div class="col">
-							<div class="row">
-								<p class="float-end">
+               
+        
+          
+          <div class="container">
+           <div class="row mb-5">
+           		<div class="col">
+           			<div class="row mb-5">
+           			<!-- <h4>구독할 개수</h4> -->
+           			</div>
+           			<div class="row mb-5">
+	           			<div class="col">
+		           			<p class="text-start" >구독료</p>
+		           			<p class="text-start" >개수</p>
+	           			</div>
+	           		<div class="col">
+	           				<p class="text-end"  name="price"> </p>
+		           			<p class="text-end" ><input id="count" name="items" type="number" class="detail-quantity form-control text-center input-sm" min="0" value="1" ></p>
+	           			</div>
+	           			
+           			</div>
+           			<div class="row">
+	           			<div class="col-md-6">
+								<h4>총 구독료 : 
+								</h4>
+								<br>
 								
-								<div class="row">
-									<img src="../img/Mo/<%=monthValue%>월의 술.jpg"
-										class="rounded float-end" style="width: 300px; height: 200px">
-								</div>
-				
-								<p>
-								<p>
-								<div class="row" name="goods"></div>
-
-								</p>
-
-							</div>
-							<div class="row mb-5">
-								<div class="col">
-									<p class="text-start">구독료</p>
-									<p class="text-start">개수</p>
-								</div>
-								<div class="col">
-									<p class="text-end" name="price"></p>
-									<p class="text-end">
-										<input id="count" name="items" type="number"
-											class="detail-quantity form-control text-center input-sm"
-											min="0" value="1">
-									</p>
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-md-6">
-									<h4>총 구독료 :</h4>
-								</div>
-								<div class="col-md-6">
-									<h4 class="text-end">
-										<input type="text" class="priceBox" name="totalPrice"
-											readonly="readonly" style="border: none; text-align: center;" />
-									</h4>
-								</div>
-								<div class="col"></div>
-							</div>
 						</div>
+						<div class="col-md-6">
+								<h4 class="text-end" ><input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" /></h4>
+						</div>
+						<div class="col">
+							
+						</div>
+						
 					</div>
-
-					<hr class="my-5">
-					<div class="row"></div>
+					<div class="row">
+							<h5>*매월 15일에 정기 배송 됩니다!</h5>
+           			</div>
+				
+				<div class="col" >
+					<p class="float-end">
+						
+						<div class="row"><img src="../img/Mo/<%=monthValue%>월의 술.jpg" class="rounded float-end" style="width: 300px; height: 200px"></div>
+						<br>
+						<div class="row" name="goods">
+						
+						</div>
+						<br>
+						
+						
+					</p>
+					
 				</div>
-			</div>
 								
-
+			</div>
 			
 			<hr class="my-5">
 			<div class="row">
 				
 			</div>
-
+           </div>
           
         	
-         <div class="my-4">	
+        <div class="my-4">	
           <div class="card">
           
              <div class="card-body">
@@ -226,7 +227,7 @@ img{
         	</div>
           </div>
 		</div>
-		<p>
+			<p>
 
 
           <hr class="my-5">
