@@ -228,14 +228,14 @@ $(function(){
 								<input type="hidden" name="methodName" value = "insert" /><!-- 메소드이름 -->
 								<input type="hidden" name="userId" value = "${loginUser.userId}" /> <!-- userID --> 
 								<input type="hidden" name="pName" value="${param.pName}"/>								            
-					            <button type="submit" class="btn-lg mt-5">장바구니 담기</button><br>
+					            <button type="submit" class="btn-lg mt-5 , btn btn-dark">장바구니 담기</button><br>
 					            
 							</form>
 							<form action="${path}/store/order.jsp">
 								<input type="hidden" name="pName" value = "${param.pName}" />
 					            <input type="hidden" name="count" class="numBox" min="1" max="99" value="1" readonly="readonly" style="border: none; background: none; text-align: center;"/>
 								<input type="hidden" class="priceBox" name="totalPrice" value=${param.price}원 readonly="readonly" style="border: none; text-align: center;" />
-					            <button type="submit" class="btn-lg mt-3" style="background-color:#A381BD; color:white;">바로 구매하기</button>
+					            <button type="submit" class="btn-lg mt-3 , btn btn-dark">바로 구매하기</button>
 					        </form>
 				          </div>
 				        </div>

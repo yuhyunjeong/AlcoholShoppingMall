@@ -286,7 +286,7 @@ $(function(){
 <input type=hidden name="key" value="order"> 
 <input type=hidden name="methodName" value="onlyInsert"> 
 
-<button type="submit" class="btn btn-light">결제하기</button>
+<button type="submit" class="btn btn-dark">결제하기</button>
 </div><p> 
 </div>
 

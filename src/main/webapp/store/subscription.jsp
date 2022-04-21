@@ -272,7 +272,7 @@ button{
 				<input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" />
 			</div>
 			</h4>
-          	<button class="btn-lg" type="button"  id="pay" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="text-decoration: none;">결제 하기</button>
+          	<button class="btn-lg , btn btn-dark" type="button"  id="pay" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="text-decoration: none;">결제 하기</button>
           </div>
           <!-- Modal --> 
 									  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

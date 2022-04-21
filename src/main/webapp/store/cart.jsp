@@ -129,7 +129,7 @@ $(function(){
 			    
 						<form action="${path}/store/cartOrder.jsp" method="post"> 
 							<input type="hidden" name=id value="${loginId}"/>
-							<button type="submit" class="btn btn-primary btn-lg">주문하기</button>
+							<button type="submit" class="btn btn-primary btn-sm , btn btn-dark" >주문하기</button>
 						</form>
 					</div>
 			           
