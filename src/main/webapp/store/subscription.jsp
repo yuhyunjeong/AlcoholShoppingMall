@@ -12,13 +12,16 @@
 html,body{
 	height: 100%;
 }
+img{
+	margin: auto;
+}
 </style>
  <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
  <script type="text/javascript">
  	$(function(){
 		function selectAll(){
 			let now = new Date();
-			let month = now.getMonth();
+			let month = now.getMonth()+1;
 			let name = month+"월의 술";
 			$.ajax({
 	   			url :"../ajax" , //서버요청주소
@@ -26,6 +29,7 @@ html,body{
 	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
 	   			data: {key :"product", methodName:"searchBy" , name: name},
 	   			success :function(result){
+	   				let pName="";
 					let pCode="";
 	   				let content ="";
 	   				let price = "";
@@ -34,8 +38,11 @@ html,body{
 	   				let review = "";
 	   				$.each(result, function(index, item) {
 	   					content += `<h5>${"${item.pDetail}"}</h5>`;
-	   					price2 +=`${'${item.pPrice}'}`;
-	   					pAlcohol +=`<b>도수 : ${'${item.pAlcohol}'}%</b>`;
+	   					
+	   					//pName +=`${'${item.pName}'}`;
+	   					//price2 += `<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.pPrice}" />`;
+						price2 +=`${'${item.pPrice}'}`;
+	   					pAlcohol +=`<b style="text-align:center;"><h4>${'${item.pName}'}</h4><br>도수 : ${'${item.pAlcohol}'}%</b>`;
 	   					//price2 = `${'${item.pPrice}'}`;
 	   					pCode=`${'${item.pCode}'}`;
 	   					
@@ -48,7 +55,7 @@ html,body{
 	   		 			var priceTotal = Number($("#count").val()*price);
 	   		 			
 	   		 		//$(".numBox").val(num);
-   				    $(".priceBox").val((priceTotal)+"원");
+   				    $(".priceBox").val(priceTotal+"원");
 	   		 
 	   		 		});
 	   				
@@ -114,11 +121,11 @@ html,body{
 	           			
            			</div>
            			<div class="row">
-	           			<div class="col-md-8">
+	           			<div class="col-md-6">
 								<h4>총 구독료 : 
 								</h4>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-6">
 								<h4 class="text-end" ><input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" /></h4>
 						</div>
 						<div class="col">
@@ -128,11 +135,14 @@ html,body{
            		</div>
 				
 				<div class="col" >
-		
-						<div><img src="../img/Mo/<%=monthValue%>월의 술.jpg" class="rounded float-end" style="width: 300px; height: 200px"></div>
-						<div name="goods">
+					<p class="float-end">
+						<div class="row" name="goods">
 						
 						</div>
+						<br>
+						<div class="row"><img src="../img/Mo/<%=monthValue%>월의 술.jpg" class="rounded float-end" style="width: 300px; height: 200px"></div>
+						
+					</p>
 					
 				</div>
 								

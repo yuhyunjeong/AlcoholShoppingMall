@@ -6,14 +6,18 @@ public class FactoryDTO {
 	private String fName;
 	private String fType;
 	private String fAddr;
+	private String fPhone;
 		
 	public FactoryDTO() {}
 
-	public FactoryDTO(String fName, String fType, String fAddr) {
+	
+
+	public FactoryDTO(String fName, String fType, String fAddr, String fPhone) {
 		super();
 		this.fName = fName;
 		this.fType = fType;
 		this.fAddr = fAddr;
+		this.fPhone = fPhone;
 	}
 
 	public String getfName() {
@@ -39,5 +43,14 @@ public class FactoryDTO {
 	public void setfAddr(String fAddr) {
 		this.fAddr = fAddr;
 	}
+
+	public String getfPhone() {
+		return fPhone;
+	}
+
+	public void setfPhone(String fPhone) {
+		this.fPhone = fPhone;
+	}
+	
 	
 }
