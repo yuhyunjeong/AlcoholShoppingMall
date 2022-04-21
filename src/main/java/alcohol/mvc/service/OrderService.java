@@ -35,5 +35,5 @@ public interface OrderService {
 	/**
 	 * 배송관리 테이블 전체 출력
 	 */
-	public List<OrdersDTO> orderAll() throws SQLException; 
+	public List<OrdersDTO> orderAll(int pageNo) throws SQLException; 
 }

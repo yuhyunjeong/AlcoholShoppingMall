@@ -15,9 +15,6 @@
 
 <script type="text/javascript">
 
-/*  $(function(){
-	 var total = ${cartList.cartCount*proList[status.index].pPrice} * ${cartList} ;
- }) */
 
 </script>
 
@@ -94,7 +91,7 @@
                  <div class="card" style="width: 18rem;">
                    <div class="card-body">
                    
-                  <form action="${path}/front" method="post"> 
+                  
 
                      <b>계산서</b><p><hr>
 					 
@@ -113,10 +110,16 @@
 					  
 					</div> 
 					
-					<input type="hidden" name="img" value="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg">
-				    <div class="text-end"><button type="submit" class="btn btn-primary btn-lg">주문하기</button></div>
+				
+					    <div class="text-end">
+					    
+						<form action="${path}/store/cartOrder.jsp" method="post"> 
+					    <input type="submit" name=id value="${loginId}"/>
+					    <button type="submit" class="btn btn-primary btn-lg">주문하기</button>
+					    </form>
+				    </div>
                    
-                   </form>
+                   
                    
                    </div><!--카드바디-->
 

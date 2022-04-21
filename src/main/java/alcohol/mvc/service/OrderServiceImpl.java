@@ -48,9 +48,9 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public List<OrdersDTO> orderAll() throws SQLException {
+	public List<OrdersDTO> orderAll(int pageNo) throws SQLException {
 		
-		List<OrdersDTO> list = orderdao.orderAll();
+		List<OrdersDTO> list = orderdao.orderAll(pageNo);
 		
 		return list;
 	}
