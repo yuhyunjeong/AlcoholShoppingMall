@@ -44,7 +44,7 @@ public class QADTO {
 		
 		this.qaNumber = qaNumber;
 		this.qaCategory = qaCategory;
-		this.qaDate = qaDate;
+		this.qaDate = qaDate.substring(0,10);
 		this.qaSecret = qaSecret;
 	}
 
@@ -90,6 +90,13 @@ public class QADTO {
 
 	public String getQaDate() {
 		return qaDate;
+	}
+	
+	public String DBgetpDate() {
+		String date= DBgetpDate();
+		String a=date.substring(0,10);
+		
+		return a;
 	}
 
 	public void setQaDate(String qaDate) {
