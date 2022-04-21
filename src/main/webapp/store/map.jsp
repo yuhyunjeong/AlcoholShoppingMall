@@ -14,7 +14,7 @@
 <title>Insert title here</title>
 <style type="text/css">
  .fac{
- 	color: #7C42C7; 
+ 	color: #0C0B80; 
  	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
  }
 </style>
