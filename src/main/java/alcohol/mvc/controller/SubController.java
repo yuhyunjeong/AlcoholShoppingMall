@@ -44,7 +44,7 @@ public class SubController implements Controller{
 		
 		subService.subInsert(subDTO);
 		
-		return new ModelAndView("/index.jsp" , true);
+		return new ModelAndView("index.jsp");
 	}
 	
 	/**

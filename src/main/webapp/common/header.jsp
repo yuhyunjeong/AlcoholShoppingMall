@@ -6,7 +6,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
 <style type="text/css">
+ 	* {
+ 		font-family: 'Gowun Batang', serif;
+ 	}
+ 	
  	button{style="background-color: pink;border: none;"}
  	.bi-cart4{
  		font-size: 30px;

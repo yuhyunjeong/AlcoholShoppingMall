@@ -27,7 +27,7 @@ div {
 				url : "${pageContext.request.contextPath}/ajax", //서버요청주소
 				type : "post", //요청방식(method방식 : get | post | put | delete )
 				datatType : "json", //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-				data : {key:"order", methodName:"orderAll"}, 
+				data : {key:"order", methodName:"orderAll", userId:"${loginUser.userId}" }, 
 				success : function(result) {
 					
 				let str= "";
@@ -107,7 +107,7 @@ div {
 									<input type="hidden" name="name" value="shipping" />
 									<input type=hidden name="userId" value="${loginUser.userId}">
 			 --%>
-									<input type="button" id="shipping" class="btn btn-link me-10"
+									<input type="submit" id="shipping" class="btn btn-link me-10"
 										style="text-decoration: none;" value="배송관리">
 							</div>
 							<div class="col">
@@ -143,7 +143,7 @@ div {
 		</div>
 	</div>
 
-	<div>
+<!-- 	<div>
 		<div class="btn-group" role="group"
 			aria-label="Basic outlined example">
 			<button type="button" class="btn btn-outline-dark">오늘</button>
@@ -154,7 +154,7 @@ div {
 			<button type="button" class="btn btn-dark">검색</button>
 		</div>
 
-	</div>
+	</div> -->
 
 
 	
