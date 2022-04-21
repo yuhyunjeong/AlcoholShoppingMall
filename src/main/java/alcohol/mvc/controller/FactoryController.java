@@ -1,6 +1,7 @@
 package alcohol.mvc.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import alcohol.mvc.dto.FactoryDTO;
+import alcohol.mvc.dto.ProductDTO;
 import alcohol.mvc.service.FactoryService;
 import alcohol.mvc.service.FactoryServiceImpl;
+import net.sf.json.JSONArray;
 
 
 
@@ -33,14 +36,21 @@ public class FactoryController implements Controller {
 				return new ModelAndView("store/factory.jsp");
 	}
 	
-	public ModelAndView selectByName(HttpServletRequest request, HttpServletResponse response)
+	public void selectByName(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println("FactoryController selectByName 확인용");
-		String fName = request.getParameter("fName");
-		FactoryDTO factory =  facService.factorySelect(fName);
-		request.setAttribute("fac", factory);
+		response.setContentType("text/html;charset=UTF-8");
+		String name = request.getParameter("name");
+
+		List<FactoryDTO> facList = facService.factoryAll();
+		request.setAttribute("facList", facList);
 		
-		return new ModelAndView("store/factory.jsp");
+		FactoryDTO fac = facService.factorySelect(name);
+		
+		JSONArray arr = JSONArray.fromObject(fac);
+		System.out.println("나오냐" + fac.getfName());
+		
+		PrintWriter out = response.getWriter();
+		out.print(arr);
 	}
 
 }

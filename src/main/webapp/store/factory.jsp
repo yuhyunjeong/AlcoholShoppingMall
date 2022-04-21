@@ -12,56 +12,8 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=67df1f7c9b283b2023123ffabe045899"></script>
 <script type="text/javascript">
-    	$(function(){
-    		function selectAll(){
-    		$("#title").mouseover(function(){
-    			
-    			let name = $(this).val();
-    			let param = {"name" : name};
-    			
-    			$.ajax({
-      				url : "../ajax",    //서버요청주소
-      				type : "post",    //요청방식(method방식 : get | post | put : delete )
-      				dataType : "json",    //서버가 보내온 데이터(응답) 타입 ( text | html | xml | json )
-      				data: {key :"factory", methodName:"selectByName" , name: name},
-      				success : function(result){
-      					
-      					let str ="";
-      	   				$.each(result, function(index, item) {
-      	   					
-      	   					str+="<div class='col-lg-4 col-md-6'>";
-      	   					//str+="<div class='row'>";
-      	   					str+="<div class='card mb-3 h-100'>";
-      	   					
-      	   					//str+=`<a href='productDetail.jsp?pName=${"${item.fName}"}&type=${"${item.fType}"}'>`;
-      	   					s//tr+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='이미지가 없습니다.'></a>`;
-      	   					str+="<div class='card-body'>";
-      	   					str+="<p class='card-text'>";
-      	   					
-      	   					str+=`<b>${'${item.fName}'}</b>`;
-      	   					str+=`<b>${'${item.fType}'}</b>`;
-      	   					str+=`<b>${'${item.fAddr}'}</b>`;
-      	   					//str+="</div>";
-      	   					str+="</p></div></div></div>";
-      	   				});
-      	   				//$("rrr").remove();
-
-      	   				$("[name=detail]").empty();
-      					$("[name=detail]").html(str);
-      					
-      					
-      				},      //성공했을때 실행할 함수
-      				error : function(err){
-      					alert(err+"에러 발생했어요.");
-      				}       //실패했을때 실행할 함수
-      			});
-    			
-    		});
-    	}
-    		
-    		selectAll();
-    });
-    </script>
+	
+</script>
 <style type="text/css">
 a:link , a:visited{
 	text-decoration: none;
@@ -77,37 +29,64 @@ a:link , a:visited{
 		<h1>양조장</h1>
 	</div>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-5">
 				<%@include file="map.jsp"%>
 			</div>
 			
-			<div class="col-md-8">
+			<div class="col-md-7">
 				<div class="row">
 					<div class="col">
 						<table>
 							<!-- <h2>양조장 목록</h2>-->
 							<tbody>
+							<div class="accordion accordion-flush" id="accordionFlushExample">
 							<c:forEach items="${facList}" var="factory">
+								 <div class="accordion-item">
+								    <h2 class="accordion-header" id="flush-headingTwo">
+								      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+								        ${factory.fName}
+								      </button>
+								    </h2>
+								    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+								      <div class="accordion-body">${factory.fType}<p>${factory.fAddr}</div>
+								    </div>
+								  </div>
+											
+							<!--  
 								    <tr>				
 								    			    
 				                        <th scope="row" id="title">${factory.fName}</a></td>	                
-				                       <!--  <td>${factory.fType}</td>
-				                        <td>${factory.fAddr}</td> -->
+				                       <td>${factory.fType}</td>
+				                        <td>${factory.fAddr}</td>
 								    </tr>
+							  -->
 						    </c:forEach>
-						    
+						    </div>
 						    </tbody>
 						    
 					    </table>
 				    </div>
+				    <!--
 				    <div class="col" name="detail">
+				    	아작스로 양조장 당 내용 표시
+					    	<div class="row mt-5 mb-5">
+								<div class="col">
+										<div class="accordion accordion-flush" id="accordionFlushExample">
+										<span><b>양조장 목록</b></span>
+										
+										  <div class="box">
+										  
+										  </div>
+										  
+										 
+										</div>
+								</div>
+							</div>
 				    	
 				    </div>
+				    -->
 				</div>
-				<div class="row">
-					아작스로 양조장 사진같은거 띄워줄예정
-					<div id="display"></div>
-				</div>
+				
 			</div>
 			<footer class="my-5 pt-5 text-muted text-center text-small"></footer>
 		</div>
