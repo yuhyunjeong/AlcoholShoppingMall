@@ -22,9 +22,10 @@ public class SubDAOImpl implements SubDAO {
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			
+			System.out.println("dto.getUserId() = " + dto.getUserId());
+			System.out.println("dto.getSubPrice() = " + dto.getSubPrice());
 			ps.setString(1, dto.getUserId());
-			ps.setString(2, dto.getSubPrice());
+			ps.setInt(2, Integer.parseInt(dto.getSubPrice()));
 			
 			result = ps.executeUpdate();
 			

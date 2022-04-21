@@ -30,24 +30,21 @@ public class SubController implements Controller{
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		String saveDir = request.getServletContext().getRealPath("/save");
+		String sid= request.getParameter("id");
+		String sPrice = request.getParameter("totalPrice");
 		
-		MultipartRequest m = new MultipartRequest(request, saveDir);
+		//sPrice.substring(0,sPrice.length()-1);
+		int ssPrice=Integer.parseInt(sPrice.substring(0,sPrice.length()-1));
 		
-		String subCode = m.getParameter("sub_code");
-		String uId = m.getParameter("u_id");
-		String subStartDate = m.getParameter("sub_startdate");
-		String subPrice = m.getParameter("sub_price");
+		System.out.println(sid);
+		System.out.println(ssPrice);
 		
+		SubDTO subDTO = new SubDTO(sid,ssPrice+"");
+	
 		
+		subService.subInsert(subDTO);
 		
-		
-		SubDTO subDto = 
-				new SubDTO(subCode, uId, subStartDate, subPrice);
-		
-		subService.subInsert(subDto);
-		
-		return new ModelAndView("front" , true);
+		return new ModelAndView("/index.jsp" , true);
 	}
 	
 	/**

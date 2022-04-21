@@ -16,6 +16,12 @@ public class SubDTO {
 		this.subPrice = subPrice;
 	}
 
+	public SubDTO(String userId, String subPrice) {
+		super();
+		this.userId = userId;
+		this.subPrice = subPrice;
+	}
+
 	public String getSubCode() {
 		return subCode;
 	}

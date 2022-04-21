@@ -65,8 +65,13 @@ img{
 					$("[name=price]").empty();
 					$("[name=price]").html(price2+"원");
 					
+					
+					
 					$("[name=goods]").empty();
 					$("[name=goods]").html(pAlcohol);
+					
+					
+					
 	   				
 	   			},error : function(err){  
 	   				alert(err+"에러 발생했어요.");
@@ -78,7 +83,9 @@ img{
 			
 		};
  		
- 		
+ 		function text(){	
+ 			$("#finfinPrice").val(parseInt($("#finfinPrice").val()));
+ 		}
  		
 		 selectAll();
  		
@@ -106,8 +113,8 @@ img{
        
       <div class="col-md-7 col-lg-8" style="float: none; margin:0 auto;"> <!-- 가운데 정렬 -->
                
-        <form name="myform" id="myform" method="post" action="" target="">
-          <input type=hidden name="noNumber" value="${notice.noNumber}">
+        
+          
           <div class="container">
            <div class="row mb-5">
            		<div class="col">
@@ -121,7 +128,7 @@ img{
 	           			</div>
 	           		<div class="col">
 	           				<p class="text-end"  name="price"> </p>
-		           			<p class="text-end" ><input id="count" ame="items" type="number" class="detail-quantity form-control text-center input-sm" min="0" value="1" ></p>
+		           			<p class="text-end" ><input id="count" name="items" type="number" class="detail-quantity form-control text-center input-sm" min="0" value="1" ></p>
 	           			</div>
 	           			
            			</div>
@@ -252,7 +259,7 @@ img{
 				<input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" />
 			</div>
 			</h4>
-          	<button class="btn btn-primary btn-lg" type="submit"  id="pay" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="text-decoration: none;">결제 하기</button>
+          	<button class="btn btn-primary btn-lg" type="button"  id="pay" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="text-decoration: none;">결제 하기</button>
           </div>
           <!-- Modal --> 
 									  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -266,14 +273,19 @@ img{
 									        <div class="modal-body">
 										        <div class="col mt-3 text-center">
 										        <b>주문자 : <b name="user">${loginId}</b></b><br>
-										        <b>결제 금액 : <b name="price"></b></b><br>
+										        <b>결제 금액 : <b id="price"><input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" /></b></b><br>
 										        <b>카드 번호 : <input type="text" name="cardNum"></b></b><br>
 										        <b>카드 비밀번호 : <input type="text"  name="cardPwd"></b><br>
 												</div> 		  
 									        </div>
 									        <div class="modal-footer">
-									          <input type="hidden" name="" value="">
-									          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+									        <form name="myform" id="myform" method="post" action="${path}/front" >
+									        	<input type="hidden" class="priceBox" id="finfinPrice" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" />
+										        <input type="hidden" name="id" value="${loginId}"> 
+												<input type="hidden" name="key" value="sub"> 
+												<input type="hidden" name="methodName" value="insert"> 
+									          <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+									          </form>
 									        </div>
 									        
 									      </div>
@@ -281,7 +293,7 @@ img{
 									  </div>
 		       						  <!-- Modal End -->
           
-        </form>
+        
       </div>
     </div>
   </main>
