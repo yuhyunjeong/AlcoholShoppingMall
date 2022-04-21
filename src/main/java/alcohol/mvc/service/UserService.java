@@ -55,6 +55,8 @@ public interface UserService {
 	
 	public int pointDelet(String id,int point)throws SQLException;
 	
+	public List<UserDTO> memeberAll()throws SQLException;
 	
+	public String totalPrice()throws SQLException;
 	
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -347,6 +348,62 @@ public class UserDAOImpl implements UserDAO {
 		
 		
 		
+	}
+
+
+
+	@Override
+	public String totalPrice() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String pwd = null;
+		String sql = "select sum(p_price*order_line_count) from (select a.*,b.p_price from(select a.* ,b.p_code,b.order_line_count from (select a.* from orders a, order_line b where a.order_code=b.order_code) a ,(select * from order_line) b where a.order_code= b.order_code\r\n"
+				+ ")a ,product b where a.p_code = b.p_code and u_id =?)";
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+
+
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				pwd = rs.getString(1);
+			}
+
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return pwd;
+	}
+
+	@Override
+	public List<UserDTO> memeberAll() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<UserDTO> list = new ArrayList<UserDTO>();
+		UserDTO dto = null;
+		
+		
+		String sql = "select a.join_date,a.u_id,a.u_name,a.u_phone,b.* from users a left outer join (select u_id, sum(p_price*order_line_count) from (select a.*,b.p_price from(select a.* ,b.p_code,b.order_line_count from (select a.* from orders a, order_line b where a.order_code=b.order_code) a ,(select * from order_line) b where a.order_code= b.order_code\r\n"
+				+ ")a ,product b where a.p_code = b.p_code ) group by u_id) b on a.u_id=b.u_id";
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+
+
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				dto=new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(6));
+				list.add(dto);
+			}
+
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return list;
 	}
 
 }

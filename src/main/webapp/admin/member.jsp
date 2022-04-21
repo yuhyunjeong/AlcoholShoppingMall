@@ -15,7 +15,44 @@
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 
 <script type="text/javascript">
+$(function(){
+	function seletAll(){	
 
+		$.ajax({
+   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
+   			type:"post", //요청방식(method방식 : get | post | put | delete )
+   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+   			data: {key :"user", methodName:"memberAll"},
+   			success :function(result){//map이나옴
+   			       let str = "";
+   			        $.each(result , function(index, item){
+   			        	str += "<tr>";
+   			        	str +=  `<th scope='row'>${'${item.joinDate}'}</th>`
+ 						str +=  `<td>${'${item.userId}'}</td>`
+   						str +=  `<td>${'${item.userName}'}</td>`
+   						str +=  `<td>${'${item.userPhone}'}</td>`
+   						str +=  `<td>${'${item.price}'}</td>`
+   						str += 	`<td>회원</td>`
+   						str +=  `<td><input type='checkbox'  name='couponcheck' value='Mark'></td>`
+						str += "</tr>"
+   			        })   	          
+					$("#qaTable tr:gt(0)").remove();
+				    $("#qaTable tr:eq(0)").after(str);	   
+
+			}, // 성공했을 때 실행할 함수 
+			error : function(err) {
+				alert(err + " 에러가 발생했어요.");
+			}// 실패했을 때 실행할 함수  
+   			
+		})
+		
+	}
+	
+
+	seletAll();
+	
+	
+})
 
 
 </script>
@@ -27,15 +64,11 @@
 	
 <div class="container ">
 	<div class="row">
-		<div class="col">
-			<input class="btn btn-primary" type="button" value="등록하기">
-		</div>
 	</div>
 	<form>
 	<div class="row mb-3">
 		<div class="col">
-			<table class="table text-center">
-			  <thead>
+			<table class="table text-center" id="qaTable">
 			    <tr>
 			      <th scope="col">등록일</th>
 			      <th scope="col">아이디</th>
@@ -85,28 +118,6 @@
 				  
 		        </th>
 			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr>
-			      <th scope="row">2022-04-14</th>
-			      <td>kim</td>
-			      <td>피카츄</td>
-			      <td>010-2222-2222</td>
-			      <td>20000</td>
-			      <td>회원</td>
-			      <td><input type="checkbox"  name="couponcheck" value="Mark"></td>
-			    </tr>
-			    <tr>
-			      <th scope="row">2022-04-14</th>
-			      <td>jeong</td>
-			      <td>파이리</td>
-			      <td>010-3333-3333</td>
-			      <td>40000</td>
-			      <td>회원</td>
-			      <td><input type="checkbox"  name="couponcheck" value="Otto"></td>
-			    </tr>
-			    
-			  </tbody>
 			</table>
 		</div>
 		

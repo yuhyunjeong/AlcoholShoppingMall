@@ -124,6 +124,20 @@ public class UserServiceImpl implements UserService {
 		int result = userDao.pointDelet(id,point);
 		return result;
 	}
+
+
+
+	@Override
+	public String totalPrice() throws SQLException {
+		String p = userDao.totalPrice();
+		return p;
+	}
+
+	@Override
+	public List<UserDTO> memeberAll() throws SQLException {
+		List<UserDTO> list = userDao.memeberAll();
+		return list;
+	}
 	
 	
 

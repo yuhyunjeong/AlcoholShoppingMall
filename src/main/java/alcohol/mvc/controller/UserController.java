@@ -1,18 +1,26 @@
 package alcohol.mvc.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import alcohol.mvc.dto.ProductDTO;
 import alcohol.mvc.dto.UserDTO;
+import alcohol.mvc.service.CartService;
+import alcohol.mvc.service.CartServiceImpl;
 import alcohol.mvc.service.UserService;
 import alcohol.mvc.service.UserServiceImpl;
+import net.sf.json.JSONArray;
 
 public class UserController implements Controller {
 
@@ -160,4 +168,31 @@ public class UserController implements Controller {
 		
 		return new ModelAndView("index.jsp", true);
 	}
+	
+	
+	
+	
+	
+	public void memberAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+
+		List<UserDTO> dto=userService.memeberAll();
+
+		
+		
+		JSONArray arr = JSONArray.fromObject(dto); //System.out.println(dto.getpName()+"나와라");
+		PrintWriter out = response.getWriter();
+		out.print(arr);
+		 
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

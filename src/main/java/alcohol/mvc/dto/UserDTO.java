@@ -13,7 +13,7 @@ public class UserDTO {
 	private int userGrade;
 	private int userPoint;
 	private String joinDate;
-
+	private String price;
 	public UserDTO() {
 	}
 
@@ -36,6 +36,23 @@ public class UserDTO {
 		this.userGrade = userGrade;
 		this.userPoint = userPoint;
 		this.joinDate = joinDate;
+	}
+
+	public UserDTO(String joinDate,String userId, String userName, String userPhone, String price) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userPhone = userPhone;
+		this.joinDate = joinDate;
+		this.price = price;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
 
 	public String getUserId() {
