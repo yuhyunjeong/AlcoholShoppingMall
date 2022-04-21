@@ -60,7 +60,7 @@ public interface ProductService {
 
 
 	//goods.jsp
-	public List<ProductDTO> selectGoods(String pCode) throws SQLException;
+	public List<ProductDTO> selectGoods() throws SQLException;
 
 	
 	/**
