@@ -51,7 +51,12 @@ $(function(){
 	   					str+=`</div></div><hr></div>`;
 	   					toPrice +=item.cartTotal;
 	   					
-	   				});;
+	   					//str+="<input type='hidden' name='goodsName' value=''>"
+	   					//	str+="<input type='hidden' name='orderQty' value=''>"  
+	   					
+	   					//String goodsName [] = request.getParameterValues("goodsName");
+	   					
+	   				});
 
 	   				$("#productList").empty();
 					$("#productList").html(str);
@@ -161,6 +166,7 @@ $(function(){
 </script>
 </head>
 <body>
+<form action="${path}/front">
 <h2 align="center">구매하기</h2><p>
 <div class="container" >
 <div class="container row" style="float: none; margin:100 auto;">
@@ -177,7 +183,7 @@ $(function(){
 </div><!--그리드 가운데 정렬?-->
 
 <p>
-<form action="${path}/front">
+
 <div class="col-md-6 col-lg-7" style="float: none; margin:0 auto;">
     <div class="card">
       <div class="card-body">
@@ -283,6 +289,7 @@ $(function(){
 </div>
 
 </div><!--계산서 전체를 위한....-->
+
 </form>
 </div><!--container row-->
 
