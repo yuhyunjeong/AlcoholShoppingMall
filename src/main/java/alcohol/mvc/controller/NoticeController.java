@@ -56,22 +56,22 @@ public class NoticeController implements Controller {
 		return new ModelAndView("board/notice.jsp");
 	}
 	
-	/**
-	 * 로그인한게 관리자라면..
-	 * */
-	public ModelAndView getNoticesView(HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		
-		int userGrade = Integer.parseInt(request.getParameter("userGrade"));
-		boolean isAdmin = false;
-		if (userGrade==1)  {
-			isAdmin = true;
-		}
-		List<NoticeDTO> noticeList = noService.noticeAll();
-		request.setAttribute("noticeList", noticeList);
-		request.setAttribute("isAdmin", isAdmin);
-		return new ModelAndView("board/notice.jsp");
-	}
+//	/**
+//	 * 로그인한게 관리자라면..
+//	 * */
+//	public ModelAndView getNoticesView(HttpServletRequest request, HttpServletResponse response)
+//			throws Exception {
+//		
+//		int userGrade = Integer.parseInt(request.getParameter("userGrade"));
+//		boolean isAdmin = false;
+//		if (userGrade==1)  {
+//			isAdmin = true;
+//		}
+//		List<NoticeDTO> noticeList = noService.noticeAll();
+//		request.setAttribute("noticeList", noticeList);
+//		request.setAttribute("isAdmin", isAdmin);
+//		return new ModelAndView("board/notice.jsp");
+//	}
 	
 	/**
 	 * 등록하기
