@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 
+import alcohol.mvc.dao.OrderDAO;
 import alcohol.mvc.dto.CouponDTO;
 import alcohol.mvc.dto.OrdersDTO;
 import alcohol.mvc.dto.ProductDTO;
@@ -179,6 +180,17 @@ public class OrderController implements Controller{
 		out.print(arr);
 		 
 
+	}
+	
+	public void orderAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		List<OrdersDTO> list = orderService.orderAll();
+		
+		
+		
+		
+		
+		
 	}
 	
 }
