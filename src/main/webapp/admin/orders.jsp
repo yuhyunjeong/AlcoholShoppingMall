@@ -62,7 +62,7 @@ div {
 			<div class="col-1"></div>
 		</div>
 
-
+<!-- 
 		<div class="btn-group" role="group"
 			aria-label="Basic outlined example">
 			<button type="button" class="btn btn-outline-dark">오늘</button>
@@ -76,7 +76,7 @@ div {
 	</div>
 
 
-	<!-- 일별 -->
+	일별
 	<div class="border border-dark container">
 		<div class="row border border-dark ">
 			<div class="col-2" style="background: lightgray;">일별</div>
@@ -149,7 +149,7 @@ div {
 				</div>
 			</div>
 
-			<!-- 주별 -->
+			주별
 			<div>
 			<div class="row border border-dark">
 				<div class="col-2" style="background: lightgray;">주별</div>
@@ -177,7 +177,7 @@ div {
 			</div>
 			</div>
 
-			<!-- 월별 -->
+			월별
 			<div>
 			<div class="row border border-dark">
 				<div class="col-2" style="background: lightgray;">월별</div>
@@ -245,7 +245,7 @@ div {
 		</div>
 	</div>
 	</div>
-
+ -->
 	<hr>
 
 	<c:choose>

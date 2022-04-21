@@ -33,8 +33,8 @@ public class QAController implements Controller {
 	/**
 	 * 전체검색하기
 	 */
-	public ModelAndView select(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+	public void select(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
 		String paging = request.getParameter("paging"); // 현재 페이지 번호
 		if (paging == null || paging.equals("")) {
 			paging = "1";
@@ -42,22 +42,18 @@ public class QAController implements Controller {
 
 		List<QADTO> qaList = qaService.qaAll(Integer.parseInt(paging));
 		Map<String, Object> map = new HashMap<String, Object>();
-		
-		
-		request.setAttribute("qaList", qaList);
-		request.setAttribute("paging", paging); // 뷰에서 사용 ${requestScope.paging}
 
 		System.out.println(qaList.size()+"페이징처리 값 나옴?");
 
-		return new ModelAndView("board/qa.jsp");
+	
+		map.put("qaList", qaList);
+		map.put("paging", paging);
 		
-		//map.put("qaList", qaList);
-		//map.put("paging", paging);
-		/*
 		JSONArray arr = JSONArray.fromObject(map);
 		System.out.println("나옴?" + qaList.size());
 		PrintWriter out = response.getWriter();
-		out.print(arr);*/
+		out.print(arr);
+
 	}
 
 	/**
@@ -95,9 +91,9 @@ public class QAController implements Controller {
 		qaService.qaInsert(qa);
 		
 		
-		ModelAndView mv = this.select(request, response);
-
-		return mv;
+		//ModelAndView mv = this.select(request, response);
+		
+		return new ModelAndView("board/qa.jsp",true);
 		
 //		int qaNumber = Integer.parseInt(request.getParameter("qaNumber"));
 //		String userId = request.getParameter("userId");
@@ -153,11 +149,10 @@ public class QAController implements Controller {
 		
 		System.out.println("qa삭제잘되나");
 		
-		ModelAndView mv = this.select(request,response);
+		//ModelAndView mv = this.select(request,response);
 		
-		return mv;
+		return new ModelAndView("board/qa.jsp",true);
 	}
-	
 	
 	public void selectFilter(HttpServletRequest request, HttpServletResponse response) throws Exception {	
 		response.setContentType("text/html;charset=UTF-8");
@@ -169,7 +164,7 @@ public class QAController implements Controller {
 		System.out.println("categoryNum"+categoryNum);
 		List<QADTO> qaList = qaService.qaFilter(categoryNum,Integer.parseInt(pageNo));
 		
-		Map<Object, Object> map = new HashMap<Object, Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("qaList", qaList);
 		map.put("pageNo", pageNo);
 		

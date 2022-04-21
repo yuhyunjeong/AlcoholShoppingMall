@@ -75,13 +75,17 @@
 					<form name="requestForm" method="get" action="${path}/board/noticeUpdate.jsp">	
 							<input type=hidden name="noNumber" value="${notice.noNumber}">
 							<input type=hidden name="noTitle" value="${notice.noTitle}">
-							<input type=hidden name="noContent" value="${notice.noContent}">				
-							<input type=submit class="btn btn-light" value="수정하기">
+							<input type=hidden name="noContent" value="${notice.noContent}">	
+							<c:if test="${loginGrade==1}">			
+								<input type=submit class="btn btn-light" value="수정하기">
+							</c:if>
 					</form>
 					<!-- 	<button type="button" onclick="location.href='${path}/board/noticeUpdate.jsp'" class="btn btn-light" >수정하기</button> -->
 					</div>
 					 <div class="col-sm-2">
-						<button type="button" class="btn btn-light"  onclick= "location.href='${path}/front?key=notice&methodName=delete&noNumber=${notice.noNumber}'">삭제하기</button>
+						 <c:if test="${loginGrade==1}">
+							<button type="button" class="btn btn-light"  onclick= "location.href='${path}/front?key=notice&methodName=delete&noNumber=${notice.noNumber}'">삭제하기</button>
+						</c:if>
 					</div>
 				</div>
 	          			

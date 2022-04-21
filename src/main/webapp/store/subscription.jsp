@@ -17,22 +17,34 @@ html,body{
  <script type="text/javascript">
  	$(function(){
 		function selectAll(){
+			let now = new Date();
+			let month = now.getMonth();
+			let name = month+"월의 술";
 			$.ajax({
 	   			url :"../ajax" , //서버요청주소
 	   			type:"post", //요청방식(method방식 : get | post | put | delete )
 	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-	   			data: {key :"product", methodName:"selectAll"},
+	   			data: {key :"product", methodName:"searchBy" , name: name},
 	   			success :function(result){
 					let pCode="";
 	   				let content ="";
 	   				let price = "";
 	   				let pAlcohol = "";
-	   				let price2 = 0;
+	   				let price2 = "";
 	   				let review = "";
+	   				$.each(result, function(index, item) {
+	   					content += `<h5>${"${item.pDetail}"}</h5>`;
+	   					price2 +=`${'${item.pPrice}'}`;
+	   					pAlcohol +=`<b>도수 : ${'${item.pAlcohol}'}%</b>`;
+	   					//price2 = `${'${item.pPrice}'}`;
+	   					pCode=`${'${item.pCode}'}`;
+	   					
+	   				
+	   				});
 	   				
 	   				$("#count").change(function(){
 	   		 			//var price = $("#price").val();
-	   		 			var price=29000;
+	   		 			var price=price2;
 	   		 			var priceTotal = Number($("#count").val()*price);
 	   		 			
 	   		 		//$(".numBox").val(num);
@@ -40,9 +52,18 @@ html,body{
 	   		 
 	   		 		});
 	   				
+	   				$("[name=goods]").empty();
+					$("[name=goods]").html(pAlcohol);
+					
+					$("[name=price]").empty();
+					$("[name=price]").html(price2+"원");
+	   				
 	   			},error : function(err){  
 	   				alert(err+"에러 발생했어요.");
 	   			}  //실팽했을때 실행할 함수 
+	   			
+	   			
+				
 	   		});
 			
 		};
@@ -56,7 +77,7 @@ html,body{
  	<%LocalDate now = LocalDate.now();
  		//String month = now.getMonth().toString();
  		int monthValue = now.getMonthValue();
-		int price = 29000;
+		//int price = 29000;
 
  	%>
  
@@ -87,24 +108,32 @@ html,body{
 		           			<p class="text-start" >개수</p>
 	           			</div>
 	           		<div class="col">
-	           				<p class="text-end" ><%=price%>원</p>
+	           				<p class="text-end"  name="price"> </p>
 		           			<p class="text-end" ><input id="count" ame="items" type="number" class="detail-quantity form-control text-center input-sm" min="0" value="1" ></p>
 	           			</div>
 	           			
            			</div>
            			<div class="row">
-	           			<div class="col">
+	           			<div class="col-md-8">
 								<h4>총 구독료 : 
 								</h4>
 						</div>
-						<div class="col">
+						<div class="col-md-4">
 								<h4 class="text-end" ><input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" /></h4>
+						</div>
+						<div class="col">
+							
 						</div>
 					</div>
            		</div>
 				
 				<div class="col" >
-					<img src="../img/Mo/<%=monthValue%>월의 술.jpg" class="rounded float-end" style="width: 300px; height: 200px">
+		
+						<div><img src="../img/Mo/<%=monthValue%>월의 술.jpg" class="rounded float-end" style="width: 300px; height: 200px"></div>
+						<div name="goods">
+						
+						</div>
+					
 				</div>
 								
 			</div>

@@ -22,8 +22,10 @@ a:link , a:visited{
 
 <div class="container" >
 	
-		<div class="d-grid gap-2 d-md-block">
+	<div class="d-grid gap-2 d-md-block">
+		<c:if test="${loginGrade==1}">
 			<a class="btn btn-primary" href="${path}/board/noticeWrite.jsp"  role="button" value="등록하기">등록하기</a>
+		</c:if>
 	</div>
 	<p>
 	
@@ -36,11 +38,11 @@ a:link , a:visited{
 	      <th scope="col">제목</th>
 	      <th scope="col">작성일</th>
 	      <th scope="col">조회수</th>
-	      <th scope="col">
+	    <!--   <th scope="col">
 	      	<button type="button" class="btn btn-primary btn-sm" id="delete">
   					삭제
 			</button>
-	      </th>
+	      </th> -->
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -71,7 +73,7 @@ a:link , a:visited{
                 
                         <td>${notice.noDate}</td>
                         <td>${notice.viewCount}</td>
-                        <td><input type="checkbox"  name="delete" value=""></td>
+                   <!--  <td><input type="checkbox"  name="delete" value=""></td> -->
              </tr>
       </c:forEach>
 	    

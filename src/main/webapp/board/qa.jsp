@@ -30,19 +30,37 @@ div {
 	   			data: {key :"qa", methodName:"selectFilter", cate:v},
 	   			success :function(result){//map이나옴
 
-					let str = "";
-					$.each(result, function(index, item) { // item이 customer 
+					
+	   			    $.each(result, function(i, map){ //2개 
+	   			       let str = "";
+	   			        $.each(map.qaList , function(index, item){
+	   			        	str += "<tr>";
+							str += `<th scope="row">${'${item.qaNumber}'}</th>`;
+							str += `<td>${'${item.userId}'}</td>`;
+							str += `<td>${'${item.qaTitle}'}</td>`;
+							str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaNumber}"}'>${'${item.qaContent}'}</a></td>`;
+							str += `<td>${'${item.qaDate}'}</td>`;
+							str += "</tr>"
+	   			        })   
+	   			          
+						$("#qaTable tr:gt(0)").remove();
+					    $("#qaTable tr:eq(0)").after(str);
+	   			    
+	   			    })
+	   			
+					/*$.each(result.qaList, function(index, item) { // item이 customer 
 						str += "<tr>";
-						str += `<th scope="row">${'${item.qaList.qaNumber}'}</th>`;
-						str += `<td>${'${item.qaList.userId}'}</td>`;
-						str += `<td>${'${item.qaList.qaTitle}'}</td>`;
-						str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaList.qaNumber}"}'>${'${item.qaList.qaContent}'}</a></td>`;
-						str += `<td>${'${item.qaList.qaDate}'}</td>`;
+						str += `<th scope="row">${'${item.qaNumber}'}</th>`;
+						str += `<td>${'${item.userId}'}</td>`;
+						str += `<td>${'${item.qaTitle}'}</td>`;
+						str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaNumber}"}'>${'${item.qaContent}'}</a></td>`;
+						str += `<td>${'${item.qaDate}'}</td>`;
 						str += "</tr>"
-						str +="나오냐"
+						//str +="나오냐"
 					});	
-					$("#qaTable").remove();
-					$("#qaTalbe").append(str);
+					alert(str)
+					$("#qaTable tr:gt(0)").remove();
+				    $("#qaTable tr:eq(0)").after(str);*/
 					
 					
 				}, // 성공했을 때 실행할 함수 
@@ -52,9 +70,64 @@ div {
 	   			
 			})
 		}
+		
+		function selectAll(){
+			$.ajax({
+	   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
+	   			type:"post", //요청방식(method방식 : get | post | put | delete )
+	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+	   			data: {key :"qa", methodName:"select"},
+	   			success :function(result){//map이나옴
+
+					
+	   			    $.each(result, function(i, map){ //2개 
+	   			       let str = "";
+	   			        $.each(map.qaList , function(index, item){
+	   			        	str += "<tr>";
+							str += `<th scope="row">${'${item.qaNumber}'}</th>`;
+							str += `<td>${'${item.userId}'}</td>`;
+							str += `<td>${'${item.qaTitle}'}</td>`;
+							str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaNumber}"}'>${'${item.qaContent}'}</a></td>`;
+							str += `<td>${'${item.qaDate}'}</td>`;
+							str += "</tr>"
+	   			        })   
+	   			          
+						$("#qaTable tr:gt(0)").remove();
+					    $("#qaTable tr:eq(0)").after(str);
+	   			    
+	   			    })
+	   			
+					/*$.each(result.qaList, function(index, item) { // item이 customer 
+						str += "<tr>";
+						str += `<th scope="row">${'${item.qaNumber}'}</th>`;
+						str += `<td>${'${item.userId}'}</td>`;
+						str += `<td>${'${item.qaTitle}'}</td>`;
+						str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaNumber}"}'>${'${item.qaContent}'}</a></td>`;
+						str += `<td>${'${item.qaDate}'}</td>`;
+						str += "</tr>"
+						//str +="나오냐"
+					});	
+					alert(str)
+					$("#qaTable tr:gt(0)").remove();
+				    $("#qaTable tr:eq(0)").after(str);*/
+					
+					
+				}, // 성공했을 때 실행할 함수 
+				error : function(err) {
+					alert(err + " 에러가 발생했어요.");
+				}// 실패했을 때 실행할 함수  
+	   			
+			})
+		}
+		
+		
+		
+		
+		
+		selectAll();
+		
 		$("[name=btn]").click(function(){
 			qaFilter($(this).val());
-			$("#test").html($(this).val());
 		})
 
 	});
@@ -101,10 +174,9 @@ div {
 				role="button">등록하기</a>
 		</div>
 		<p>
-	</div>
+	
 
-			<table class="table table-hover">
-			<thead>
+			<table class="table table-hover" id="qaTable">
 					<tr>
 						<th scope="col">글번호</th>
 						<th scope="col">작성자</th>
@@ -112,12 +184,8 @@ div {
 						<th scope="col">제목</th>
 						<th scope="col">작성일</th>
 					</tr>
-			</thead>
-			<tbody id= "qaTable">
-			
-			</tbody>
 			</table>
-
+		</div>
 	
 	<!-- 페이징처리 -->
 <jsp:useBean class="alcohol.mvc.paging.PageCnt" id="p"/> 
