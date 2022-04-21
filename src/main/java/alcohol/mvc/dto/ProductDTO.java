@@ -14,6 +14,7 @@ public class ProductDTO {
 	private String pDetail;
 	private int rStar;
 	
+	
 	public ProductDTO() {}
 
 	public ProductDTO(String pCode, String cateCode, String pName, int pAlcohol, int pPrice, int pStuck, String pDate ,String pDetail) {

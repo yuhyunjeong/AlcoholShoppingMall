@@ -16,8 +16,67 @@ div {
 	text-align: center;
 }
 </style>
+<script type="text/javascript"src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-	
+	$(function() {
+		// 배송관리 
+		
+		function shipping(userId) {
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/ajax", //서버요청주소
+				type : "post", //요청방식(method방식 : get | post | put | delete )
+				datatType : "json",
+				data : {key:"order", methodName:"orderAll", userId:"${loginUser.userId}"}, //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+				success : function(result) {
+					
+				let str= "";
+
+					str += "<table class='table text-center'><tr>"
+					str += `<th scope="col">주문번호</th>`;
+					str += `<th scope="col">아이디</th>`;
+					str += `<th scope="col">결제방식</th>`;
+					str += `<th scope="col">주문날짜</th>`;
+					str += `<th scope="col">주문상태</th>`;
+					str += `<th scope="col">배송상태</th>`;
+					str += `<th scope="col">주소</th>`;
+					str += `<th scope="col">상세주소</th>`;
+					str += `<th scope="col">연락처</th>`;
+					str += "</tr>";
+					
+					$.each(result, function(index, item) {
+
+						str += "<tr>";
+						str += `<th scope="row">${item.orderCode}</th>`;
+						str += `<td>${item.uId}</td>`;
+						str += `<td>${item.payCode}</td>`;
+						str += `<td>${item.orderDate}</td>`;
+						str += `<td>${item.orderStatus}</td>`;
+						str += `<td>${item.deliStatus}</td>`;
+						str += `<td>${item.deliAddr}</td> `;
+						str += `<td>${item.deliAddr2}</td> `;
+						str += `<td>${item.orderPhone}</td>`;
+						str += "</tr>";
+					});
+					
+					str += "</table>";
+					alert(result)
+				/* 	$("#shipping").html(str); */
+					$("#shipping").empty(); 
+					$("#shipping").append(str);
+
+					
+					
+				}, error : function(err){  
+	   				alert(err+"에러 발생했어요.");
+	   			}  //실팽했을때 실행할 함수 
+			})
+		}
+		$("#shipping").click(function(){
+			shipping($(this).val());
+		})
+		shipping();
+	});
 </script>
 </head>
 <body>
@@ -34,15 +93,14 @@ div {
 						<div class="row">
 
 							<div class="col">
-								<form action="${path}/front" method="post">
+<%-- 								<form action="${path}/front" method="post">
 									<input type="hidden" name="key" value="order" /> <!-- Controller를 찾는 정보 -->
 									<input type="hidden" name="methodName" value="orderAll" />  <!-- 메소드이름 -->
 									<input type="hidden" name="name" value="shipping" />
 									<input type=hidden name="userId" value="${loginUser.userId}">
-			
-									<button type="submit" id="shipping" class="btn btn-link me-10"
-										style="text-decoration: none;">배송관리</button>
-								</form>
+			 --%>
+									<input type="button" id="shipping" class="btn btn-link me-10"
+										style="text-decoration: none;" value="배송관리">
 							</div>
 							<div class="col">
 								<form action="" method="get">
@@ -65,6 +123,17 @@ div {
 			</div>
 			<div class="col-1"></div>
 		</div>
+		
+		<div class="container ">
+			<div class="row mb-3">
+				<div class="col" id="shipping">
+					
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
 
 <!-- 
 		<div class="btn-group" role="group"
@@ -251,23 +320,20 @@ div {
 	</div>
  -->
 	<hr>
-
-<%-- 	<c:choose>
+<%-- 
+	<c:choose>
 		<c:when test="${param.name == 'shipping' }">
-			<jsp:include page="${path}/admin/shipping.jsp" />
+			<jsp:include page="../admin/shipping.jsp" />
 		</c:when>
 		<c:when test="${param.name == 'refund'}">
-			<jsp:include page="${path}/admin/refund.jsp" />
+			<jsp:include page="../admin/refund.jsp" />
 		</c:when>
 		<c:when test="${param.name == 'sales'}">
-			<jsp:include page="${path}/admin/sales.jsp" />
+			<jsp:include page="../admin/sales.jsp" />
 		</c:when>
-		<c:otherwise>
-			<div></div>
-		</c:otherwise>
-	</c:choose> --%>
+	</c:choose> 
 
-
+ --%>
 
 	<jsp:include page="../common/footer.jsp" />
 </body>

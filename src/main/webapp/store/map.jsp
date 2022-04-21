@@ -117,14 +117,14 @@ for (var i = 0; i < markerPositions.length; i ++) {
     var positions = [
         {
             content: '<div class="customoverlay">' +
-            '  <a href="https://map.kakao.com/link/map/37.90540357648284,127.30905300193753" target="_blank">' +
+            '  <a href="https://www.soolsool.co.kr/" target="_blank">' +
             '    <strong class="fac">배상면주가</strong>' +
             '</div>', 
             latlng: new kakao.maps.LatLng(37.90540357648284 , 127.30905300193753)
         },
         {
             content: '<div class="customoverlay">' +
-            '  <a href="https://map.kakao.com/link/map/37.4893229 , 128.1957934" target="_blank">' +
+            '  <a href="http://www.ksdb.co.kr/" target="_blank">' +
             '    <strong class="fac">국순당</strong>' +
             '  </a>' +
             '</div>', 
@@ -132,7 +132,7 @@ for (var i = 0; i < markerPositions.length; i ++) {
         },
         {
             content: '<div class="customoverlay">' +
-            '  <a href="https://map.kakao.com/link/map/36.701695 , 127.545495" target="_blank">' +
+            '  <a href="https://m.hwayang.co/" target="_blank">' +
             '    <strong class="fac">풍정사계</strong>' +
             '  </a>' +
             '</div>', 
@@ -140,7 +140,7 @@ for (var i = 0; i < markerPositions.length; i ++) {
         },
         {
             content: '<div class="customoverlay">' +
-            '  <a href="https://map.kakao.com/link/map/36.9970372 , 127.8787317" target="_blank">' +
+            '  <a href="http://xn--v42bo8x7wc.com/" target="_blank">' +
             '    <strong class="fac">중원당</strong>' +
             '  </a>' +
             '</div>',
@@ -148,7 +148,7 @@ for (var i = 0; i < markerPositions.length; i ++) {
         },
         {
             content: '<div class="customoverlay">' +
-            '  <a href="https://map.kakao.com/link/map/35.5856494 , 129.0975319" target="_blank">' +
+            '  <a href="https://boksoon.com/" target="_blank">' +
             '    <strong class="fac">복순도가</strong>' +
             '  </a>' +
             '</div>',
@@ -156,7 +156,7 @@ for (var i = 0; i < markerPositions.length; i ++) {
         },
         {
             content: '<div class="customoverlay">' +
-            '  <a href="https://map.kakao.com/link/map/35.3451059 , 126.8128224" target="_blank">' +
+            '  <a href="http://www.bluegreenkorea.com/index.php" target="_blank">' +
             '    <strong class="fac">청산녹수</strong>' +
             '  </a>' +
             '</div>',
@@ -164,7 +164,7 @@ for (var i = 0; i < markerPositions.length; i ++) {
         },
         {
             content: '<div class="customoverlay">' +
-            '  <a href="https://map.kakao.com/link/map/36.4370944 , 128.7231036" target="_blank">' +
+            '  <a href="https://www.applewine.co.kr/" target="_blank">' +
             '    <strong class="fac">한국 애플리즈</strong>' +
             '  </a>' +
             '</div>',
@@ -172,7 +172,7 @@ for (var i = 0; i < markerPositions.length; i ++) {
         },
         {
             content: '<div class="customoverlay">' +
-            '  <a href="https://map.kakao.com/link/map/35.6516202 , 126.9450533" target="_blank">' +
+            '  <a href="http://www.xn--og5bv8a5dl6a612a.com/main.php" target="_blank">' +
             '    <strong class="fac">태인합동주조</strong>' +
             '  </a>' +
             '</div>',
@@ -180,7 +180,7 @@ for (var i = 0; i < markerPositions.length; i ++) {
         },
         {
             content: '<div class="customoverlay">' +
-            '  <a href="https://map.kakao.com/link/map/33.4446362 , 126.3375372" target="_blank">' +
+            '  <a href="https://jejusaemju.modoo.at/" target="_blank">' +
             '    <strong class="fac">제주샘주</strong>' +
             '  </a>' +
             '</div>',
