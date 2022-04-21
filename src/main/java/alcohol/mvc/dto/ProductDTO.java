@@ -40,13 +40,6 @@ public class ProductDTO {
 		this.rStar = rStar;
 	}
 
-	
-	
-	
-	
-	
-
-	
 
 	public ProductDTO(String pCode, String cateCode, String pName, int pAlcohol, int pPrice, int pStuck, String pDate,
 			String pImage, String pImage2, String pImage3, String pDetail, int rStar, int cartNo, int cartTotal) {
