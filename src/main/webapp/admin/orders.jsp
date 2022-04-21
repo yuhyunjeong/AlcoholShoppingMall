@@ -21,13 +21,13 @@ div {
 	$(function() {
 		// 배송관리 
 		
-		function shipping(userId) {
+		function shipping() {
 			
 			$.ajax({
 				url : "${pageContext.request.contextPath}/ajax", //서버요청주소
 				type : "post", //요청방식(method방식 : get | post | put | delete )
-				datatType : "json",
-				data : {key:"order", methodName:"orderAll", userId:"${loginUser.userId}"}, //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+				datatType : "json", //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+				data : {key:"order", methodName:"orderAll"}, 
 				success : function(result) {
 					
 				let str= "";
@@ -72,7 +72,7 @@ div {
 	   			}  //실패했을때 실행할 함수 
 	   			
 	   			$("#shipping").click(function(){
-	   				shipping($(this).val());
+	   				shipping();
 	   			})
 	   			
 			}) // ajax end 
