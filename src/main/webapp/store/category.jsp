@@ -21,7 +21,7 @@ $(function(){
    					
    					str+="<div class='col-lg-4 col-md-6'>";
    					//str+="<div class='row'>";
-   					str+="<div class='card mb-3 h-100'>";
+   					str+="<div class='card w-75 h-100'>";
    					
    					str+=`<a href='productDetail.jsp?pName=${"${item.pName}"}&type=${"${item.cateCode}"}'>`;
    					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='이미지가 없습니다.'></a>`;
@@ -53,7 +53,7 @@ $(function(){
    					
    					str+="<div class='col-lg-4 col-md-6'>";
    					//str+="<div class='row'>";
-   					str+="<div class='card mb-3 h-100'>";
+   					str+="<div class='card w-75 h-100'>";
    					
    					str+=`<a href='productDetail.jsp?pName=${"${item.pName}"}&type=${"${item.cateCode}"}'>`;
    					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pName}"}.jpg' class=card-img-top alt='이미지가 없습니다.'></a>`;
