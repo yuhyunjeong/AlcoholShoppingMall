@@ -47,7 +47,7 @@ public class QAController implements Controller {
 
 	
 		map.put("qaList", qaList);
-		map.put("paging", paging);
+		map.put("pageNo", paging);
 		
 		JSONArray arr = JSONArray.fromObject(map);
 		System.out.println("나옴?" + qaList.size());
