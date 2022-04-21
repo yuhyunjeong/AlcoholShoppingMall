@@ -70,8 +70,8 @@ div {
 	   			
 			})
 		}
-		function selectAll(){	
-
+		
+		function selectAll(){
 			$.ajax({
 	   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
 	   			type:"post", //요청방식(method방식 : get | post | put | delete )
@@ -128,7 +128,6 @@ div {
 		
 		$("[name=btn]").click(function(){
 			qaFilter($(this).val());
-			//$("#test").html($(this).val());
 		})
 
 	});
