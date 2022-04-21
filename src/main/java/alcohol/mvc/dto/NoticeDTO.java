@@ -33,7 +33,7 @@ public class NoticeDTO {
 		this.userId = userId;
 		this.noTitle = noTitle;
 		this.noContent = noContent;
-		this.noDate = noDate.substring(0,10);
+		this.noDate = noDate;
 		this.viewCount = viewCount;
 	}
 
@@ -71,13 +71,6 @@ public class NoticeDTO {
 
 	public String getNoDate() {
 		return noDate;
-	}
-	
-	public String DBgetNoDate() {
-		String date= DBgetNoDate();
-		String a=date.substring(0,10);
-		
-		return a;
 	}
 
 	public void setNoDate(String noDate) {

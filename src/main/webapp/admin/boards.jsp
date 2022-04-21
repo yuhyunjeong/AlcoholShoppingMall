@@ -21,29 +21,29 @@ div {
 <script type="text/javascript">
 	$(function() {
 		
-		function noFilter(v){	
+		function qaFilter(v){	
 
 			$.ajax({
 	   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
 	   			type:"post", //요청방식(method방식 : get | post | put | delete )
 	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-	   			data: {key :"notice", methodName:"select", cate:v},
+	   			data: {key :"qa", methodName:"selectFilter", cate:v},
 	   			success :function(result){//map이나옴
 
 	   			    $.each(result, function(i, map){ //2개 
 	   			       let str = "";
-	   			        $.each(map.noList , function(index, item){
+	   			        $.each(map.qaList , function(index, item){
 	   			        	str += "<tr>";
-							str += `<th scope="row">${'${item.noNumber}'}</th>`;
+							str += `<th scope="row">${'${item.qaNumber}'}</th>`;
 							str += `<td>${'${item.userId}'}</td>`;
-							str += `<td>${'${item.noTitle}'}</td>`;
-							str += `<td><a href='${path}/front?key=notice&methodName=selectByNoticeNum&noNumber=${"${item.noNumber}"}'>${'${item.noContent}'}</a></td>`;
-							str += `<td>${'${item.noDate}'}</td>`;
+							str += `<td>${'${item.qaTitle}'}</td>`;
+							str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaNumber}"}'>${'${item.qaContent}'}</a></td>`;
+							str += `<td>${'${item.qaDate}'}</td>`;
 							str += "</tr>"
 	   			        })   
 	   			          
-						$("#noTable tr:gt(0)").remove();
-					    $("#noTable tr:eq(0)").after(str);
+						$("#qaTable tr:gt(0)").remove();
+					    $("#qaTable tr:eq(0)").after(str);
 	   			    
 	   			    })
 
@@ -178,10 +178,9 @@ div {
 		<%-- <div class="d-grid gap-2 d-md-block">
 			<a class="btn btn-primary" href="${path}/board/qaWrite.jsp"
 				role="button">등록하기</a>
-		</div> --%>
-		<p>
+		</div>
+		<p> --%>
 	
-
 			<table class="table table-hover" id="qaTable">
 					<tr>
 						<th scope="col">글번호</th>

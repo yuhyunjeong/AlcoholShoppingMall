@@ -12,7 +12,7 @@ public class SubDTO {
 		super();
 		this.subCode = subCode;
 		this.userId = userId;
-		this.subStartDate = subStartDate;
+		this.subStartDate = subStartDate.substring(0,10);
 		this.subPrice = subPrice;
 	}
 
@@ -41,6 +41,14 @@ public class SubDTO {
 	public String getSubStartDate() {
 		return subStartDate;
 	}
+	
+	public String DBgetSubStartDate() {
+		String date= DBgetSubStartDate();
+		String a=date.substring(0,10);
+		
+		return a;
+	}
+	
 
 	public void setSubStartDate(String subStartDate) {
 		this.subStartDate = subStartDate;

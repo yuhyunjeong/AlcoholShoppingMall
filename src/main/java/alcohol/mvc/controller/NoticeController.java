@@ -186,35 +186,5 @@ public class NoticeController implements Controller {
 
 		return mv;
 	}
-	
-	
-	
-	
-	public void selectFilter(HttpServletRequest request, HttpServletResponse response) throws Exception {	
-		response.setContentType("text/html;charset=UTF-8");
-		String pageNo =request.getParameter("pageNo"); // 현재 페이지 번호
-		if (pageNo == null || pageNo.equals("")) {
-			pageNo = "1";
-		}
-		int categoryNum = Integer.parseInt(request.getParameter("cate"));
-		System.out.println("categoryNum"+categoryNum);
-		List<NoticeDTO> noList = noService.noFilter(categoryNum,Integer.parseInt(pageNo));
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("noList", noList);
-		map.put("pageNo", pageNo);
-		
-		JSONArray arr = JSONArray.fromObject(map);
-		System.out.println("사이즈 "+qaList.size());
-	
-		PrintWriter out = response.getWriter();
-		out.print(arr);
-		
-	}
-	
-	
-	
-	
-	
 
 }
