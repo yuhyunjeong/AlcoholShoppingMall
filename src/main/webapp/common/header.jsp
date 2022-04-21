@@ -26,7 +26,6 @@
 	
 	
 	
-	
   	.bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -184,9 +183,9 @@
 		        <span class="fs-4">안다미로</span>
 		      </a>
 			<div class="col-md-5 text-end">
-		        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/subscription.jsp'">구독</button>
-		        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/store/category.jsp'">스토어</button>
-		        <button type="button" class="btn btn-primary me-2" onclick= "location.href='${path}/user/login.jsp'">로그인</button>
+		        <button type="button" class="btn btn-secondary me-2" onclick= "location.href='${path}/store/subscription.jsp'">구독</button>
+		        <button type="button" class="btn btn-secondary  me-2" onclick= "location.href='${path}/store/category.jsp'">스토어</button>
+		        <button type="button" class="btn btn-secondary me-2" onclick= "location.href='${path}/user/login.jsp'">로그인</button>
 		    </div>
 		    </header>
 		</div>
