@@ -21,7 +21,7 @@ div {
 	$(function() {
 		
 		// 배송관리 
-		function shipping() {
+		$("#shipping").click(function() {
 			
 			$.ajax({
 				url : "${pageContext.request.contextPath}/ajax", //서버요청주소
@@ -29,7 +29,7 @@ div {
 				datatType : "json", //서버가 보내온 데이터(응답)타입(text | html | xml | json )
 				data : {key:"order", methodName:"orderAll", userId:"${loginUser.userId}" }, 
 				success : function(result) {
-					
+					alert(result)
 				let str= "";
 
 					str += "<table class='table text-center'><tr>"
@@ -70,15 +70,15 @@ div {
 				}, error : function(err){  
 	   				alert(err+"에러 발생했어요.");
 	   			}  //실패했을때 실행할 함수 
-	   			
+/* 	   			
 	   			$("#shipping").click(function(){
 	   				shipping();
-	   			})
+	   			}) */
 	   			
 			}) // ajax end 
-		} // shipping function end 
+		}) // shipping function end 
 
-		shipping();
+/* 		shipping(); */
 		
 		
 		// 매출통계 
