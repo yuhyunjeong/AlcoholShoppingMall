@@ -83,11 +83,11 @@ function checkValid() {
 				
 				<div class="row m-5" align="right">
 					 <div class="col-sm-10">
-						<button type="submit" class="btn btn-light" >등록하기</button>
+						<button type="submit" class="btn btn-dark" >등록하기</button>
 					</div>
 					
 					<div class="col-sm-2">
-						<button type="button" class="btn btn-light"   onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
+						<button type="button" class="btn btn-dark"   onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
 					</div>
 				
 				</div><p>

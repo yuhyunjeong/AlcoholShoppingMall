@@ -55,13 +55,13 @@
 								<input type=hidden name="qaTitle" value="${qa.qaTitle}">
 								<input type=hidden name="qaContent" value="${qa.qaContent}">
 								
-								<input type=submit class="btn btn-light" value="수정하기">
+								<input type=submit class="btn btn-dark" value="수정하기">
 							</form>
 							<!-- 	<button type="button" onclick="location.href='${path}/board/noticeUpdate.jsp'" class="btn btn-light" >수정하기</button> -->
 						</div>
 						<div class="col-sm-2">
-							<button type="button" class="btn btn-light" onclick="location.href='${path}/front?key=qa&methodName=select'">목록</button>
-							<button type="button" class="btn btn-light" onclick="location.href='${path}/front?key=qa&methodName=delete&qaNumber=${qa.qaNumber}'">삭제</button>
+							<button type="button" class="btn btn-dark" onclick="location.href='${path}/front?key=qa&methodName=select'">목록</button><p/>
+							<button type="button" class="btn btn-dark" onclick="location.href='${path}/front?key=qa&methodName=delete&qaNumber=${qa.qaNumber}'">삭제</button>
 						</div>
 					</div>
 

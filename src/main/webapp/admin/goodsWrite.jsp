@@ -111,7 +111,7 @@ $(function() {
 				<div align="right">
 					<input type="hidden" name="key" value="product" /> 
 					<input type="hidden" name="methodName" value="insertwrite" />
-					<button type="submit" class="btn btn-light" >등록하기</button>
+					<button type="submit" class="btn btn-dark" >등록하기</button>
 				</div>
 				<p>
 		    

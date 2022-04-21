@@ -177,7 +177,7 @@ div {
 
 	<div class="col-sm-6, container">
 		<div class="d-grid gap-2 d-md-block">
-			<a class="btn btn-primary" href="${path}/board/qaWrite.jsp"
+			<a class="btn btn-primary , btn btn-dark" href="${path}/board/qaWrite.jsp"
 				role="button">등록하기</a>
 		</div>
 		<p>

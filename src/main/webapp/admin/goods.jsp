@@ -34,7 +34,7 @@ button {
 	<div class="container">
 		<div align=left>
 			<a href="${path}/admin/goodsWrite.jsp">
-			<button type="button" class="btn btn-light">등록하기</button></a>
+			<button type="button" class="btn btn-dark">등록하기</button></a>
 		</div>
 	</div>
 	<p>

@@ -85,7 +85,7 @@ function checkValid() {
    								 <input type="hidden" name="key" value="notice" >
    								 <input type="hidden" name="methodName" value="update" >
    								 <input type='hidden' name='noNumber' value="${param.noNumber}">
-   								 <button type="submit" class="btn btn-light" >수정하기</button>
+   								 <button type="submit" class="btn btn-dark" >수정하기</button>
 						 	
 						 
 						 
@@ -94,7 +94,7 @@ function checkValid() {
 						
 						<div class="col-sm-2">
 						
-							<button type="button" class="btn btn-light"   onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
+							<button type="button" class="btn btn-dark"   onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
 						</div>
 					
 					</div><p>
