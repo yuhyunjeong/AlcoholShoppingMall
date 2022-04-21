@@ -140,7 +140,7 @@
 				        	<button type="submit" class="btn btn-dark me-2" >상품관리</button>
 				        	<input type="hidden" name="key" value = "product" /> <!-- Controller를 찾는 정보 -->
 							<input type="hidden" name="methodName" value = "select" />  <!-- 메소드이름 -->
-							<button type="button" class="btn btn-dark me-2" onclick= "location.href='${path}/admin/orders.jsp'">주문관리</button>
+							<button type="button" class="btn btn-dark me-2" onclick= "location.href='${path}/admin/orders.jsp'">배송관리</button>
 				        	<button type="button" class="btn btn-dark me-2" onclick= "location.href='${path}/admin/boards.jsp'">게시판관리</button>
 				        	<button type="button" class="btn btn-dark me-2" onclick= "location.href='${path}/front?key=user&methodName=logout'">로그아웃</button>
 				        </form>

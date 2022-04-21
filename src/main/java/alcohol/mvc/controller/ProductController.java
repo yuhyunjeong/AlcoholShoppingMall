@@ -199,10 +199,7 @@ public class ProductController implements Controller {
 
 	}
 	
-	// 주문관리 통계 
-	public void ordersStatistics(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		response.setContentType("text/html;charset=UTF-8");
-	}
+
 	
 	 
 
