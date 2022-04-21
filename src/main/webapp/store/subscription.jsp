@@ -163,7 +163,7 @@ img{
 					<hr class="my-5">
 					<div class="row"></div>
 				</div>
-			</div>
+			
 								
 
 			
@@ -300,7 +300,7 @@ img{
 									  </div>
 		       						  <!-- Modal End -->
           
-        
+        </div>
       </div>
     </div>
   </main>
