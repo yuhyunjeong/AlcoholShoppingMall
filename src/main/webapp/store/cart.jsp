@@ -26,46 +26,45 @@ $(function(){
 	   				
 					$.each(result, function(i, map){ //2개 
 							let str = "";
-							let str1 = "";
-							let str2 = "";
-							let str3 = "";
-							let str4 = "";
+							let price =0;
 		   				$.each(map.cartList, function(index, item) {
-							alert(item.cartNumber)
-							str+=`<div class='card w-85'><div class='row'>`			
-							str+=`<div class='col text-end'>`
-			   				str+=`<form action='${path}/front'>`
-			   				str+=`<input type='hidden' name='key' value='cart'>`
-			   				str+=`<input type='hidden' name='methodName' value='delete' >`
-			   				str+=`<input type='hidden' name='userId' value='${loginId}' >`
-			   				str+=`<input type='hidden' name='cartNo' value='${"${item.cartNumber}"}' >`		  	
-			   				str+=`<button type='submit' class='btn-close' aria-label='Close'/>`
-			   				str+=`</form>`
-			   				str+=`</div>`
-			   				str+=`<div class='card-body'>`
-			   				str+=`<div class='col-md-4'>`	
-		   					str+=`<img src='${path}/img/${"${map.proList[index].cateCode}"}/${"${map.proList[index].pImage}"}.jpg' class='rounded float-start' style='max-width: 200px;'>` 
-			   				str+=`</div>`
-					   		str+=`<div class='row'><div class='col'><div class='text-start'>`
-					   		str+=`<h4><b>${item.pName}</b></h4></div></div></div>	`					
-			   				str+=`<div class='row' style='padding-top:80px;'>	 `  				
-			   				str+=`<div class='col'>`
-			   				str+=`<div class='text-start'>수량</div><p>`
-			   				str+=`<div class='text-start'>상품 금액</div>`
-			   				str+=`</div>`
-			   				str+=`<div class='col'>`
+		   					price +=map.totalPrice[index].pPrice;
+							str+=`<div class='card w-85'><div class='row'>`;	
+							str+=`<div class='col text-end'>`;
+			   				str+=`<form action='${path}/front'>`;
+			   				str+=`<input type='hidden' name='key' value='cart'>`;
+			   				str+=`<input type='hidden' name='methodName' value='delete' >`;
+			   				str+=`<input type='hidden' name='userId' value='${loginId}' >`;
+			   				str+=`<input type='hidden' name='cartNo' value='${"${item.cartNumber}"}' >`;	  	
+			   				str+=`<button type='submit' class='btn-close' aria-label='Close'/>`;
+			   				str+=`</form>`;
+			   				str+=`</div>`;
+			   				str+=`<div class='card-body'>`;
+			   				str+=`<div class='col-md-4'>`;	
+		   					str+=`<img src='${path}/img/${"${map.proList[index].cateCode}"}/${"${map.proList[index].pImage}"}.jpg' class='rounded float-start' style='max-width: 200px;'>`; 
+			   				str+=`</div>`;
+					   		str+=`<div class='row'><div class='col'><div class='text-start'>`;
+					   		str+=`<h4><b>${'${map.proList[index].pName}'}</b></h4></div></div></div>`;			
+			   				str+=`<div class='row' style='padding-top:80px;'>`;			
+			   				str+=`<div class='col'>`;
+			   				str+=`<div class='text-start'>수량</div><p>`;
+			   				str+=`<div class='text-start'>상품 금액</div>`;
+			   				str+=`</div>`;
+			   				str+=`<div class='col'>`;
 			   				
-			   				str+=`<div class='text-end'>${'${item.cartCount}'}개</div><p>`
-		   					str+=`<div class='text-end'>`
-		   					str+=`${'${map.totalPrice[index].pPrice}'}원</div></div>`		  
-							str+=`</div></div></div></div><p>`	
+			   				str+=`<div class='text-end'>${'${item.cartCount}'}개</div><p>`;
+		   					str+=`<div class='text-end'>`;
+		   					str+=`${'${map.totalPrice[index].pPrice}'}원</div></div>`;	  
+							str+=`</div></div></div></div><p>`;
 			   				
-	   				
+	   						
 			   				
 		   				});		
-					   		$("#cartList").html(str);
-					   		
-					   		
+
+					   		$("#cartList").html(str+"원");
+
+					   		$("#sumPrice").html(price+"원")
+					   		$("#totalPrice").html((price+3000)+"원")
 					   		
 					})
 	   			},error : function(err){  
@@ -118,9 +117,9 @@ $(function(){
 							</div>
 			  
 							<div class="col">	
-								<div class="text-end">원</div><p>
+								<div class="text-end" id="sumPrice">원</div><p>
 								<div class="text-end">3000원</div><p>
-								<div class="text-end"><b>원</b></div><p>
+								<div class="text-end" id ="totalPrice"><b>원</b></div><p>
 							</div>
 			  
 						</div> 

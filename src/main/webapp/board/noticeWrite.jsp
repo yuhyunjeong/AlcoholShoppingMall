@@ -7,6 +7,7 @@
 <title>공지 등록</title>
 
 <SCRIPT language=javascript>
+
 function checkValid() {
     var f = window.document.writeForm;
 		
@@ -83,7 +84,7 @@ function checkValid() {
 				
 				<div class="row m-5" align="right">
 					 <div class="col-sm-10">
-						<button type="submit" class="btn btn-light" >등록하기</button>
+						<button type="submit" class="btn btn-light" id="upLoad" >등록하기</button>
 					</div>
 					
 					<div class="col-sm-2">

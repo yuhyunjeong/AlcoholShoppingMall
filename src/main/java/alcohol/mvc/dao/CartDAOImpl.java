@@ -122,7 +122,7 @@ import alcohol.mvc.util.DbUtil;
 			ResultSet rs = null;
 			List<ProductDTO> list = new ArrayList<ProductDTO>();
 			ProductDTO dto = null;
-			String sql = "select a.p_code, a.p_price from product a , cart b where b.p_code=a.p_code and b.u_id=?";
+			String sql = "select a.*,b.cart_count, (a.p_price*b.cart_count) from product a , cart b where b.p_code=a.p_code and b.u_id=?";
 			
 			try {
 				con = DbUtil.getConnection();
@@ -131,7 +131,8 @@ import alcohol.mvc.util.DbUtil;
 				rs = ps.executeQuery();
 				
 				while(rs.next()) {
-					dto = new ProductDTO(rs.getString(1),rs.getInt(2));
+					dto = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7)
+							,rs.getString(8),rs.getString(10),rs.getString(11),rs.getString(9),rs.getInt(12),rs.getInt(13),rs.getInt(14));
 					list.add(dto);
 					
 					
