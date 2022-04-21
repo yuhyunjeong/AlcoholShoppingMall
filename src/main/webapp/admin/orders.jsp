@@ -19,8 +19,8 @@ div {
 <script type="text/javascript"src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		// 배송관리 
 		
+		// 배송관리 
 		function shipping() {
 			
 			$.ajax({
@@ -79,6 +79,11 @@ div {
 		} // shipping function end 
 
 		shipping();
+		
+		
+		// 매출통계 
+		
+		
 	}); // ready end 
 </script>
 </head>
