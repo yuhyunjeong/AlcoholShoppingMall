@@ -200,7 +200,7 @@ public class OrderController implements Controller{
 		
 		System.out.println("배송관리 나오니이이이이");
 		System.out.println(orderList.size());
-		ModelAndView mv = new ModelAndView("admin/shpping.jsp");
+		ModelAndView mv = new ModelAndView("admin/shipping.jsp");
 
 		return mv;
 		
