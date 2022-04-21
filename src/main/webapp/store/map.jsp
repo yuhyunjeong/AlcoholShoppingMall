@@ -15,6 +15,7 @@
 <style type="text/css">
  .fac{
  	color: #CC000E; 
+ 	font-size: 20px;
  	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
  }
 </style>
