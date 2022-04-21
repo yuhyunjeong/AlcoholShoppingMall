@@ -51,12 +51,11 @@ System.out.println(${param.name});
 									        
 									        <div class="modal-body">
 										        <div class="col mt-3 text-center">
-										        <b>구독상품</b><br>
-										        <b>구독기간</b><br>
+										        <b id="sub1">구독상품</b><br>
+										        <b id="sub2">구독기간</b><br>
 												</div> 		  
 									        </div>
 									        <div class="modal-footer">
-									          <input type="hidden" name="" value="">
 									          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
 									        </div>
 									        

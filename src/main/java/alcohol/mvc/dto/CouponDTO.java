@@ -7,7 +7,16 @@ public class CouponDTO {
 	private int cRate;
 	private String cStartDate;
 	private String cEndDate;
+	private String count;
 	
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
+
 	public CouponDTO() {}
 
 	public CouponDTO(String cNumber, String cName, String userId, int cRate, String cStartDate, String cEndDate) {
@@ -18,6 +27,13 @@ public class CouponDTO {
 		this.cRate = cRate;
 		this.cStartDate = cStartDate;
 		this.cEndDate = cEndDate;
+	}
+
+	public CouponDTO(String userId, int cRate, String count) {
+		super();
+		this.userId = userId;
+		this.cRate = cRate;
+		this.count = count;
 	}
 
 	public String getcNumber() {
