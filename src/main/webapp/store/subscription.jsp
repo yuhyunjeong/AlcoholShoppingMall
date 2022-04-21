@@ -119,7 +119,7 @@ img{
            <div class="row mb-5">
            		<div class="col">
            			<div class="row mb-5">
-           			<h4>구독할 개수</h4>
+           			<!-- <h4>구독할 개수</h4> -->
            			</div>
            			<div class="row mb-5">
 	           			<div class="col">
@@ -136,6 +136,8 @@ img{
 	           			<div class="col-md-6">
 								<h4>총 구독료 : 
 								</h4>
+								<br>
+								
 						</div>
 						<div class="col-md-6">
 								<h4 class="text-end" ><input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" /></h4>
@@ -143,16 +145,22 @@ img{
 						<div class="col">
 							
 						</div>
+						
 					</div>
-           		</div>
+					<div class="row">
+							<h5>*매월 15일에 정기 배송 됩니다!</h5>
+           			</div>
 				
 				<div class="col" >
 					<p class="float-end">
+						
+						<div class="row"><img src="../img/Mo/<%=monthValue%>월의 술.jpg" class="rounded float-end" style="width: 300px; height: 200px"></div>
+						<br>
 						<div class="row" name="goods">
 						
 						</div>
 						<br>
-						<div class="row"><img src="../img/Mo/<%=monthValue%>월의 술.jpg" class="rounded float-end" style="width: 300px; height: 200px"></div>
+						
 						
 					</p>
 					
