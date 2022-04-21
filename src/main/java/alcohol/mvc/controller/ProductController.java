@@ -151,18 +151,17 @@ public class ProductController implements Controller {
 	}
 	
 	//goods.jsp에서 delete
-	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String pCode = request.getParameter("pCode");
 		
 		System.out.println("pCode" + pCode);
 		
+
 		proService.delete(pCode);
-		this.select(request, response);
 		
 		ModelAndView mv = new ModelAndView("admin/goods.jsp");
 
-		return mv;
 	}
 	
 	//구독에 쓸거

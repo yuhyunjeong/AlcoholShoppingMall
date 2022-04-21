@@ -223,7 +223,7 @@ $(function(){
 			            		<input type="hidden" name="key" value = "cart" /> <!-- Controller를 찾는 정보 -->
 								<input type="hidden" name="methodName" value = "insert" /><!-- 메소드이름 -->
 								<input type="hidden" name="userId" value = "${loginUser.userId}" /> <!-- userID --> 
-								<input type="hidden" class="pCode"/>								            
+								<input type="hidden" name="pName" value="${param.pName}"/>								            
 					            <button type="submit" class="btn btn-lg btn-primary mt-5">장바구니 담기</button><br>
 					            
 							</form>

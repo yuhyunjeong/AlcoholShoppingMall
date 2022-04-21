@@ -42,26 +42,6 @@ input:focus::-webkit-input-placeholder {
 	color: transparent;
 }
 </style>
-<script type="text/javascript">
-/* function idFind() { 
- 	var frm = document.idFind;
-
- 	if (frm.name.value.length < 1) {
-	  alert("이름을 입력해주세요");
-	  return;
-	 }
-
-	 if (frm.phone.value.length != 13) {
-		  alert("핸드폰번호를 정확하게 입력해주세요");
-		  return;
-	 }
-
- frm.method = "post";
- frm.action = "idFindAfter.jsp"; //넘어간화면
- frm.submit();  
- } */
-
-</script>
 </head>
 <body>
 <jsp:include page="../common/header.jsp" />
@@ -92,7 +72,7 @@ input:focus::-webkit-input-placeholder {
 			<div class="m-5">
 					<input type="hidden" name="key" value="user">
 					<input type="hidden" name="methodName" value="idFind">
-					<input class="w-25 btn btn-dark" type="submit" value="아이디 찾기" onClick="idFind()">
+					<input class="w-25 btn btn-dark" type="submit" value="아이디 찾기">
 				<p>
 			</div>
 		</form>

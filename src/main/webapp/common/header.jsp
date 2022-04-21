@@ -55,7 +55,7 @@
 <!-- 
 	*****유효성검사*****
 	
-	1. 로그인 후 뒤로갔을때 로그인창 안뜨게하기 
+	1. 로그인 후 뒤로갔을때 로그인창 안뜨게하기 -- 완료 
 	2. 비로그인 상태에서 구독누르면 로그인 페이지로 이동 
 	3. 비로그인 상태에서 상품 장바구니에 담으면 로그인 페이지로 이동 
 	4. 회원가입시 비밀번호 영문+숫자 8자 이상, 비밀번호 확인 
@@ -97,7 +97,7 @@
 				        </button>
 				
 				        <div class="collapse navbar-collapse" id="navbarsExample09">
-				          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				          <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
 				            <li class="nav-item">
 				              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?name=이달의 술">이달의 술</a>
 				            </li>
