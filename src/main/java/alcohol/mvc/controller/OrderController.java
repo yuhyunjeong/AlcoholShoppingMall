@@ -195,11 +195,16 @@ public class OrderController implements Controller{
 		
 		List<OrdersDTO> orderList = orderService.orderAll(Integer.parseInt(pageNo));
 		
+		JSONArray arr= JSONArray.fromObject(orderList);
+		PrintWriter out = response.getWriter();
+		out.print(arr);
+		
 		request.setAttribute("orderList", orderList); // ${orderList}
 		request.setAttribute("pageNo", pageNo); // ${pageNo}
 		
 		System.out.println("배송관리 나오니이이이이");
 		System.out.println(orderList.size());
+		
 		ModelAndView mv = new ModelAndView("admin/shipping.jsp");
 
 		return mv;
