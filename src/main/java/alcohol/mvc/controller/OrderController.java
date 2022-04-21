@@ -206,4 +206,41 @@ public class OrderController implements Controller{
 		
 	}
 	
+	
+	/**
+	 * cart주문결재창 출력
+	 * */
+	public void CartorderSelect(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+
+		String uId = request.getParameter("id");//쿠폰이랑 적립금 때문에 불러옴
+		System.out.println(uId+" 이름출력");
+		
+		
+		UserService userService = new UserServiceImpl();
+		UserDTO user = userService.selectByUserId(uId);
+		
+		
+		CouponService couService = new CouponServiceImpl();
+		List<CouponDTO> couList=couService.couponAll(uId);
+		
+	
+		ProductService pservice = new ProductServiceImpl();
+		//List<ProductDTO> list =pservice.searchBy(pName);
+		
+		
+		/*
+		 * int toPrice = (dto.getpPrice()*count); Map<Object, Object> map = new
+		 * HashMap<Object, Object>(); map.put("couList", couList); //쿠폰내역
+		 * map.put("pDTO", dto);//사진 가격 등등 map.put("toPrice",toPrice);//토탈가격
+		 * 
+		 * 
+		 * JSONArray arr = JSONArray.fromObject(map);
+		 * //System.out.println(dto.getpName()+"나와라"); PrintWriter out =
+		 * response.getWriter(); out.print(arr);
+		 */
+		 
+
+	}
+	
 }

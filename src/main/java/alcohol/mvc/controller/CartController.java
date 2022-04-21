@@ -3,7 +3,9 @@ package alcohol.mvc.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,8 +36,8 @@ public class CartController implements Controller {
 	}
 	
     //select * from cart
-	public ModelAndView select(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String id = request.getParameter("userId");
+	public void select(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
 		System.out.println(id+"나와줘");
 		
 		List<CartDTO> cartList = cartService.selectAll(id);
@@ -46,11 +48,16 @@ public class CartController implements Controller {
 		System.out.println(proList.size()+"proList");
 
 		
-		 request.setAttribute("cartList", cartList); 
-		 request.setAttribute("proList",proList); 
-		 return new ModelAndView("store/cart.jsp");
+		 //request.setAttribute("cartList", cartList); 
+		 //request.setAttribute("proList",proList); 
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("cartList", cartList);
+		 map.put("proList",proList);
 
 
+		JSONArray arr = JSONArray.fromObject(map); 
+		PrintWriter out = response.getWriter();
+		out.print(arr); 
 	}
 	
 	

@@ -72,10 +72,10 @@
 				        <span class="fs-4">안다미로</span>
 				      </a>
 					<div class="col-md-6 text-end">
-						<form action="${path}/front" method="post">
-						<input type="hidden" name="key" value="cart" /> 
+						<form action="${path}/store/cart.jsp" method="post">
+						<%-- <input type="hidden" name="key" value="cart" /> 
  						<input type="hidden" name="methodName" value="select" />
-						<input type="hidden" name="userId" value="${loginUser.userId}"/>
+						<input type="hidden" name="userId" value="${loginUser.userId}"/> --%>
 						<button type="submit" style="border: none; background: none;"><i class="bi bi-cart4 me-2"></i></button>
 						</form>
 					</div>
