@@ -34,8 +34,12 @@ div {
 						<div class="row">
 
 							<div class="col">
-								<form action="" method="get">
+								<form action="${path}/front" method="post">
+									<input type="hidden" name="key" value="order" /> <!-- Controller를 찾는 정보 -->
+									<input type="hidden" name="methodName" value="orderAll" />  <!-- 메소드이름 -->
 									<input type="hidden" name="name" value="shipping" />
+									<input type=hidden name="userId" value="${loginUser.userId}">
+			
 									<button type="submit" id="shipping" class="btn btn-link me-10"
 										style="text-decoration: none;">배송관리</button>
 								</form>
