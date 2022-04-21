@@ -80,7 +80,7 @@
 	
 		    <li class="page-item">
 			    <c:if test="${(startPage+p.blockcount)<=p.pageCnt}">
-			      <a class="page-link" style="color: black" href="front?key=order&methodName=orderAll&pageNo=${startPage+p.blockcount}" aria-label="Next">
+			      <a class="page-link" style="color: black" href="${path}/front?key=order&methodName=orderAll&pageNo=${startPage+p.blockcount}" aria-label="Next">
 			        <span aria-hidden="true">&raquo;</span>
 			      </a>
 			    </c:if>

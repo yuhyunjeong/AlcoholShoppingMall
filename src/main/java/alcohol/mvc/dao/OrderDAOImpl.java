@@ -169,6 +169,9 @@ public class OrderDAOImpl implements OrderDAO{
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 		
+			ps.setInt(1, (pageNo-1)*PageCnt.pagesize+1); //시작점번호
+			ps.setInt(2, pageNo*PageCnt.pagesize); //끝점 번호 
+
 			rs = ps.executeQuery();
 
 			while(rs.next()) {
