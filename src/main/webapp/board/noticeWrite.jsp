@@ -87,7 +87,7 @@ function checkValid() {
 					</div>
 					
 					<div class="col-sm-2">
-						<button type="button" class="btn btn-light"   onclick= "location.href='store/cart.jsp'">목록</button>
+						<button type="button" class="btn btn-light"   onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
 					</div>
 				
 				</div><p>
