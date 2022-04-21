@@ -111,7 +111,7 @@ $(function(){
 <body>
 <jsp:include page="../common/header.jsp"/>
 <div class="container">
-<h2 style="text-align: center; font-weight:bolder">${param.title}</h2>
+<h4 style="text-align: center; font-weight:bolder">${param.title}</h4>
 </div>
 
 
