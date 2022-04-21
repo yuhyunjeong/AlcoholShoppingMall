@@ -50,7 +50,7 @@
         </svg>
         <div class="container">
           <div class="carousel-caption text-start">
-            <h1>특별한 날을 완성시키는 가장 쉬운 방법</h1>
+            <h1 style="color:black;">특별한 날을 완성시키는 가장 쉬운 방법</h1>
             <p></p>
             <p><a class="btn btn-lg btn-dark" href="#">확인하러 가기</a></p>
           </div>
