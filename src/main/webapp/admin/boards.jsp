@@ -21,7 +21,7 @@ div {
 <script type="text/javascript">
 	$(function() {
 		
-		function qaFilter(v){	
+		function noFilter(v){	
 
 			$.ajax({
 	   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
@@ -32,7 +32,7 @@ div {
 
 	   			    $.each(result, function(i, map){ //2개 
 	   			       let str = "";
-	   			        $.each(map.qaList , function(index, item){
+	   			        $.each(map.noList , function(index, item){
 	   			        	str += "<tr>";
 							str += `<th scope="row">${'${item.noNumber}'}</th>`;
 							str += `<td>${'${item.userId}'}</td>`;
@@ -42,8 +42,8 @@ div {
 							str += "</tr>"
 	   			        })   
 	   			          
-						$("#qaTable tr:gt(0)").remove();
-					    $("#qaTable tr:eq(0)").after(str);
+						$("#noTable tr:gt(0)").remove();
+					    $("#noTable tr:eq(0)").after(str);
 	   			    
 	   			    })
 
