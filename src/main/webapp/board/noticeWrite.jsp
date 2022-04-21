@@ -7,7 +7,6 @@
 <title>공지 등록</title>
 
 <SCRIPT language=javascript>
-
 function checkValid() {
     var f = window.document.writeForm;
 		
@@ -63,7 +62,7 @@ function checkValid() {
 			      <textarea class="form-control" name="no_content" id="inputContent" rows="10">내용에 이미지 추가는 어떻게</textarea>
 			    </div>
 			 </div>
-			 
+	<!-- 	 
 			 <div class="row m-5">
 			    <div class="col-sm-2"></div>
 			    <div class="col-sm-10">
@@ -71,7 +70,7 @@ function checkValid() {
 				  <input class="form-control" type="file" id="formFileMultiple" multiple>
 				</div>
 			 </div>
-			 
+		 -->		 
 			 <div class="row m-5">
 			    <label for="date" class="col-sm-2 col-form-label">날짜</label>
 			    <div class="col-sm-10">
@@ -84,7 +83,7 @@ function checkValid() {
 				
 				<div class="row m-5" align="right">
 					 <div class="col-sm-10">
-						<button type="submit" class="btn btn-light" id="upLoad" >등록하기</button>
+						<button type="submit" class="btn btn-light" >등록하기</button>
 					</div>
 					
 					<div class="col-sm-2">
