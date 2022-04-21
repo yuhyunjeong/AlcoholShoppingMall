@@ -30,7 +30,6 @@ div {
 	   			data: {key :"qa", methodName:"selectFilter", cate:v},
 	   			success :function(result){//map이나옴
 
-					
 	   			    $.each(result, function(i, map){ //2개 
 	   			       let str = "";
 	   			        $.each(map.qaList , function(index, item){
@@ -47,22 +46,7 @@ div {
 					    $("#qaTable tr:eq(0)").after(str);
 	   			    
 	   			    })
-	   			
-					/*$.each(result.qaList, function(index, item) { // item이 customer 
-						str += "<tr>";
-						str += `<th scope="row">${'${item.qaNumber}'}</th>`;
-						str += `<td>${'${item.userId}'}</td>`;
-						str += `<td>${'${item.qaTitle}'}</td>`;
-						str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaNumber}"}'>${'${item.qaContent}'}</a></td>`;
-						str += `<td>${'${item.qaDate}'}</td>`;
-						str += "</tr>"
-						//str +="나오냐"
-					});	
-					alert(str)
-					$("#qaTable tr:gt(0)").remove();
-				    $("#qaTable tr:eq(0)").after(str);*/
-					
-					
+
 				}, // 성공했을 때 실행할 함수 
 				error : function(err) {
 					alert(err + " 에러가 발생했어요.");
@@ -70,6 +54,8 @@ div {
 	   			
 			})
 		}
+	
+	
 		
 		function selectAll(){
 			$.ajax({
@@ -79,9 +65,49 @@ div {
 	   			data: {key :"qa", methodName:"select"},
 	   			success :function(result){//map이나옴
 
-					
+					let pageQA = "";
+	   			
 	   			    $.each(result, function(i, map){ //2개 
 	   			       let str = "";
+	   			    
+	   					// 페이징처리 일단 보류
+/* 		   				let doneLoop = false;
+		   				let temp = (data.map.pageNo - 1) % data.map.blockCount;
+		   				let startPage = data.map.pageNo - temp; 
+					   			    
+	   			   		pageQA += `<li class='page-item'>`
+	   			   		
+	   					if('startPage - data.map.blockCount > 0') {
+	   						pageQA += `<a class='page-link' style='color: black' href='${path}/front?key=qa&methodName=select&pageNo=${startPage-1}' aria-label='Previous'>
+	   						<span aria-hidden='true'>&laquo;</span>`
+	   					}
+	   			   	
+	   					pageQA += `</li>`
+	   					
+	   					$.each(result.qaList, function(index, item) {
+	   						if('(i-1) >= data.map.pageCnt}') {
+	   							doneLoop = true;
+	   						}	
+	   						if('not doneLoop') {
+	   							pageQA += `<li class='page-item'>
+	   											<a style='color: black' class='${i==pageNo?"pagination-active":page} page-link' id='page' href='${path}/front?key=qa&methodName=select&pageNo=${i}'>${i}</a>
+	   									   </li>`
+	   						}
+	   					})
+	   					
+	   					
+	   					pageQA += `<li class='page-item'>`
+	   					if('${(startPage+p.blockcount)<=p.pageCnt}') {
+	   						pageQA += ` <a class='page-link' style='color: black' href='front?key=qa&methodName=select&pageNo=${startPage+p.blockcount}' aria-label='Next'>
+	   					        			<span aria-hidden='true'>&raquo;</span>
+	   						      		</a>`
+	   					}
+	   					pageQA += `</li>` */
+	   			    
+	   				 });
+	   			    $("#pagingQA").html(pageQA);
+	   			    
+	   					
 	   			        $.each(map.qaList , function(index, item){
 	   			        	str += "<tr>";
 							str += `<th scope="row">${'${item.qaNumber}'}</th>`;
@@ -95,22 +121,6 @@ div {
 						$("#qaTable tr:gt(0)").remove();
 					    $("#qaTable tr:eq(0)").after(str);
 	   			    
-	   			    })
-	   			
-					/*$.each(result.qaList, function(index, item) { // item이 customer 
-						str += "<tr>";
-						str += `<th scope="row">${'${item.qaNumber}'}</th>`;
-						str += `<td>${'${item.userId}'}</td>`;
-						str += `<td>${'${item.qaTitle}'}</td>`;
-						str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaNumber}"}'>${'${item.qaContent}'}</a></td>`;
-						str += `<td>${'${item.qaDate}'}</td>`;
-						str += "</tr>"
-						//str +="나오냐"
-					});	
-					alert(str)
-					$("#qaTable tr:gt(0)").remove();
-				    $("#qaTable tr:eq(0)").after(str);*/
-					
 					
 				}, // 성공했을 때 실행할 함수 
 				error : function(err) {
@@ -119,9 +129,6 @@ div {
 	   			
 			})
 		}
-		
-		
-		
 		
 		
 		selectAll();
