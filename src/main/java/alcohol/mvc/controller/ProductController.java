@@ -156,15 +156,11 @@ public class ProductController implements Controller {
 	public void delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String pCode = request.getParameter("pCode");
-		
 		System.out.println("pCode" + pCode);
 	
 		proService.delete(pCode);
 	    this.select(request, response);
-		
 		ModelAndView mv = new ModelAndView("admin/goods.jsp");
-
-		
 	}
 	
 	//구독에 쓸거
