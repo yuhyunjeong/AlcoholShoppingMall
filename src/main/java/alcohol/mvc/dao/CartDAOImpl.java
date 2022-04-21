@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import alcohol.mvc.dto.CartDTO;
+import alcohol.mvc.dto.ProductDTO;
 import alcohol.mvc.util.DbUtil;
 
 	public class CartDAOImpl implements CartDAO {
@@ -112,6 +113,37 @@ import alcohol.mvc.util.DbUtil;
 			
 			System.out.println(result);
 			return result;
+		}
+
+		@Override
+		public List<ProductDTO> cartOrders(String id) throws SQLException {
+			Connection con = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			List<ProductDTO> list = new ArrayList<ProductDTO>();
+			ProductDTO dto = null;
+			String sql = "select a.p_code, a.p_price from product a , cart b where b.p_code=a.p_code and b.u_id=?";
+			
+			try {
+				con = DbUtil.getConnection();
+				ps = con.prepareStatement(sql);
+				ps.setString(1, id);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					dto = new ProductDTO(rs.getString(1),rs.getInt(2));
+					list.add(dto);
+					
+					
+					
+				}
+				
+			} finally {
+				DbUtil.dbClose(rs, ps, con);
+			}
+			
+			
+			return list;
 		}
 			
 	}

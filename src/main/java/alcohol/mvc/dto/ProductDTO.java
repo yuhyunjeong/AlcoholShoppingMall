@@ -40,6 +40,12 @@ public class ProductDTO {
 
 	
 
+	public ProductDTO(String pCode, int pPrice) {
+		super();
+		this.pCode = pCode;
+		this.pPrice = pPrice;
+	}
+
 	public String getpCode() {
 		return pCode;
 	}

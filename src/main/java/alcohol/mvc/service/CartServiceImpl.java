@@ -6,6 +6,7 @@ import java.util.List;
 import alcohol.mvc.dao.CartDAO;
 import alcohol.mvc.dao.CartDAOImpl;
 import alcohol.mvc.dto.CartDTO;
+import alcohol.mvc.dto.ProductDTO;
 
 public class CartServiceImpl implements CartService {
 	
@@ -40,6 +41,12 @@ public class CartServiceImpl implements CartService {
 		
 		List<CartDTO> list = cartdao.selectAll(id);
 		
+		return list;
+	}
+
+	@Override
+	public List<ProductDTO> cartOrders(String id) throws SQLException {
+		List<ProductDTO> list = cartdao.cartOrders(id);
 		return list;
 	}
  
