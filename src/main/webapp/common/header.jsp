@@ -108,10 +108,10 @@
 				        <div class="collapse navbar-collapse" id="navbarsExample09">
 				          <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
 				            <li class="nav-item">
-				              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?name=이달의 술">이달의 술</a>
+				              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?type=Mo&title=이달의 술">이달의 술</a>
 				            </li>
 				            <li class="nav-item">
-				              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?name=선물 세트">선물 세트</a>
+				              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?type=Gift&title=선물 세트">선물 세트</a>
 				            </li>
 				            <li class="nav-item">
 				              <a class="nav-link active" aria-current="page" href="${path}/front?key=factory&methodName=select">양조장</a>
@@ -158,11 +158,11 @@
 				
 				        <div class="collapse navbar-collapse" id="navbarsExample09">
 				          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				            <li class="nav-item">
-				              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?name=이달의 술">이달의 술</a>
+				            <li class="nav-item">                                  
+				              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?type=Mo&title=이달의 술">이달의 술</a>
 				            </li>
 				            <li class="nav-item">
-				              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?name=선물 세트">선물 세트</a>
+				              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?type=Gift&title=선물 세트">선물 세트</a>
 				            </li>
 				            <li class="nav-item">
 				              <a class="nav-link active" aria-current="page" href="${path}/front?key=factory&methodName=select">양조장</a>
@@ -202,10 +202,10 @@
 		        <div class="collapse navbar-collapse" id="navbarsExample09">
 		          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 		            <li class="nav-item">
-		              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?name=이달의 술">이달의 술</a>
+		              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?type=Mo&title=이달의 술">이달의 술</a>
 		            </li>
 		            <li class="nav-item">
-		              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?name=선물 세트">선물 세트</a>
+		              <a class="nav-link active" aria-current="page" href="${path}/store/product.jsp?type=Gift&title=선물 세트">선물 세트</a>
 		            </li>
 		            <li class="nav-item">
 		              <a class="nav-link active" aria-current="page" href="${path}/front?key=factory&methodName=select">양조장</a>
