@@ -14,8 +14,36 @@ public class CouponDAOImpl implements CouponDAO {
 
 	@Override
 	public int couponInsert(CouponDTO dto) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "";
+
+		switch (dto.getcRate()) {
+		case 3000:
+			sql="insert into coupon values('W_' || dbms_random.string('x',10),'welcome coupon',?, 3000 ,sysdate, sysdate+30)";break;
+		case 4000:
+			sql="insert into coupon values('N_' || dbms_random.string('x',10),'new product coupon',?, 4000 ,sysdate, sysdate+30)";break;
+		case 5000:
+			sql="insert into coupon values('B_' || dbms_random.string('x',10),'birthday coupon',?, 5000 ,sysdate, sysdate+30)"; 
+			break;
+		}
+		
+		
+		try {
+			con = DbUtil.getConnection();
+			
+			
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getUserId());	
+			result = ps.executeUpdate();		
+			
+			
+			
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		return result;
 	}
 
 	@Override
