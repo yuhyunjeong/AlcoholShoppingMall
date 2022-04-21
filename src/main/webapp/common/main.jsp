@@ -46,7 +46,7 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/>  
-        <image href="${pageContext.request.contextPath}/img/바탕사진.jpeg" width="100%"/>
+        <image href="${pageContext.request.contextPath}/img/바탕사진.jpg" width="100%"/>
         </svg>
         <div class="container">
           <div class="carousel-caption text-start">
