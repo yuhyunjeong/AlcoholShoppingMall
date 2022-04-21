@@ -46,38 +46,38 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/>  
-        <image href="${pageContext.request.contextPath}/img/test1.JPG" height="100%" width="100%"/>
+        <image href="${pageContext.request.contextPath}/img/Gift/꽃길을 여는 술들2.jpg" width="100%"/>
         </svg>
         <div class="container">
           <div class="carousel-caption text-start">
-            <h1>첫번째 예제 술</h1>
-            <p>경기도의 술인가보다</p>
-            <p><a class="btn btn-lg btn-primary" href="#">보러가기</a></p>
+            <h1>특별한 날을 완성시키는 가장 쉬운 방법</h1>
+            <p></p>
+            <p><a class="btn btn-lg btn-dark" href="#">확인하러 가기</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/>
-        <image href="${pageContext.request.contextPath}/img/test1.JPG" height="100%" width="100%"/>
+        <image href="${pageContext.request.contextPath}/img/Mo/4월의 술.jpg" width="100%"/>
         </svg>
         <div class="container">
           <div class="carousel-caption">
-            <h1>두번째 예제 술</h1>
-            <p>강원도인가?</p>
-            <p><a class="btn btn-lg btn-primary" href="#">보러가기</a></p>
+            <h1 style="color:black;">한 달에 한 번, 집 앞으로 찾아오는 인생 술</h1>
+            <p style="color:black;">4월의 술</p>
+            <p><a class="btn btn-lg btn-dark" href="#">구독하러 가기</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/>
-        <image href="${pageContext.request.contextPath}/img/test1.JPG" height="100%" width="100%"/>
+        <image href="${pageContext.request.contextPath}/img/C/신애유자2.jpg" width="100%"/>
         </svg>
 			
         <div class="container">
           <div class="carousel-caption text-end">
-            <h1>세번째 예제 술</h1>
-            <p>도무지 작명이 어렵다</p>
-            <p><a class="btn btn-lg btn-primary" href="#">보러가기</a></p>
+            <h1></h1>
+            <p></p>
+            <p><a class="btn btn-lg btn-dark" href="#">베스트셀러 보러 가기</a></p>
           </div>
         </div>
       </div>
@@ -91,31 +91,34 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  <div class="container marketing">
+  <div class="container marketing" style="text-align: center;">
   <div class="row" >
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-        <image href="${pageContext.request.contextPath}/img/test1.JPG" height="100%" width="100%"/>
+        <image href="${pageContext.request.contextPath}/img/B/기다림 흑미 약주3.jpg" height="100%" />
         </svg>
 		
         <h2>술</h2>
-        <p>설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        <p>설명</p>
+        <p><a class="btn btn-secondary" href="#">보러 가기 &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+      
+      <div class="col-lg-6">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+        <image href="${pageContext.request.contextPath}/img/Gift/문배술.jpg" height="100%" /></svg>
 		
         <h2>세트</h2>
-        <p>설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        <p>설명</p>
+        <p><a class="btn btn-secondary" href="#">보러 가기 &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
+    <!--  
       <div class="col-lg-4">
         <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
 		
         <h2>굿즈</h2>
         <p>설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명</p>
         <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
+      </div>--><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
     <hr class="featurette-divider">
