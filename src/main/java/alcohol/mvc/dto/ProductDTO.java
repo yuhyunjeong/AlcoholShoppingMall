@@ -25,7 +25,7 @@ public class ProductDTO {
 		this.pAlcohol = pAlcohol;
 		this.pPrice = pPrice;
 		this.pStuck = pStuck;
-		this.pDate = pDate;
+		this.pDate = pDate.substring(0,10);;
 		this.pDetail = pDetail;
 	}
 
@@ -141,6 +141,14 @@ public class ProductDTO {
 		return pDate;
 	}
 
+	public String DBgetpDate() {
+		String date= getpDate();
+		String a=date.substring(0,10);
+		
+		return a;
+	}
+
+	
 	public void setpDate(String pDate) {
 		this.pDate = pDate;
 	}

@@ -54,7 +54,7 @@ $(function(){
 			   				
 			   				str+=`<div class='text-end'>${'${item.cartCount}'}개</div><p>`;
 		   					str+=`<div class='text-end'>`;
-		   					str+=`${'${map.totalPrice[index].pPrice}'}원</div></div>`;	  
+		   					str+=`${'${map.totalPrice[index].pPrice}'}</div></div>`;	  
 							str+=`</div></div></div></div><p>`;
 			   				
 	   						

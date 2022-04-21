@@ -102,6 +102,7 @@ public class ProductController implements Controller {
 		System.out.println("ProductController select 나오나?");
 		
 		List<ProductDTO> list = proService.selectGoods();
+		
 		request.setAttribute("list", list);
 
 		System.out.println(list.size());

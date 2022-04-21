@@ -13,11 +13,12 @@ import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 
-import alcohol.mvc.dao.OrderDAO;
 import alcohol.mvc.dto.CouponDTO;
 import alcohol.mvc.dto.OrdersDTO;
 import alcohol.mvc.dto.ProductDTO;
 import alcohol.mvc.dto.UserDTO;
+import alcohol.mvc.service.CartService;
+import alcohol.mvc.service.CartServiceImpl;
 import alcohol.mvc.service.CouponService;
 import alcohol.mvc.service.CouponServiceImpl;
 import alcohol.mvc.service.OrderService;
@@ -220,30 +221,13 @@ public class OrderController implements Controller{
 
 		String uId = request.getParameter("id");//쿠폰이랑 적립금 때문에 불러옴
 		System.out.println(uId+" 이름출력");
-		
-		
-		UserService userService = new UserServiceImpl();
-		UserDTO user = userService.selectByUserId(uId);
-		
-		
-		CouponService couService = new CouponServiceImpl();
-		List<CouponDTO> couList=couService.couponAll(uId);
-		
-	
-		ProductService pservice = new ProductServiceImpl();
-		//List<ProductDTO> list =pservice.searchBy(pName);
-		
-		
-		/*
-		 * int toPrice = (dto.getpPrice()*count); Map<Object, Object> map = new
-		 * HashMap<Object, Object>(); map.put("couList", couList); //쿠폰내역
-		 * map.put("pDTO", dto);//사진 가격 등등 map.put("toPrice",toPrice);//토탈가격
-		 * 
-		 * 
-		 * JSONArray arr = JSONArray.fromObject(map);
-		 * //System.out.println(dto.getpName()+"나와라"); PrintWriter out =
-		 * response.getWriter(); out.print(arr);
-		 */
+
+		CartService cartService = new CartServiceImpl();
+		List<ProductDTO> plist=cartService.cartOrders(uId);
+
+		JSONArray arr = JSONArray.fromObject(plist); //System.out.println(dto.getpName()+"나와라");
+		PrintWriter out = response.getWriter();
+		out.print(arr);
 		 
 
 	}
