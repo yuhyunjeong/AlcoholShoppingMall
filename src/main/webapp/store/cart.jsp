@@ -45,39 +45,26 @@
 2) ajax 
 --%>
 
-	<h2 align="center">장바구니</h2>
-	<p>
+	<h2 align="center">장바구니</h2><p>
 	
-    <div class="container" style="padding-left: 150px;">	
+    <div class="container" style="padding-left: 250px;">	
     
         <div class="row">
         
-          
-        
-        <div class="row">
-        
-             
-
               <div class="col-md-5 mr-3">
    
                  <c:forEach items="${cartList}" var="cartList" varStatus="status"> 
               
                     <div class="card w-85">
                     
-                       <div class="row">
-
-                       <div class="col text-start">
-						
-					  </div>
-					  
-			            
+                    <div class="row">
 					  <div class="col text-end">
 					  	<form action="${path}/front">
 					  	<input type="hidden" name="key" value="cart" >
    						<input type="hidden" name="methodName" value="delete" >
    						<input type="hidden" name="userId" value="${loginUser.userId}" >
    						<input type="hidden" name="cartNo" value="${cartList.cartNumber}" >			  	
-						<input type="submit" class="btn-close" aria-label="Close"/>
+						<input type="submit" class="btn-close" aria-label="Close" value=""/>
 						</form>
 					  </div>
 					 
@@ -138,25 +125,23 @@
                 <input type="hidden" class="pricebox" readonly="readonly" size="5" value="${proList[status.index].pPrice}"> --%>
                 
                 </c:forEach>
-              	<form action="${path}/front" method="post">
-                  <div class="col-md-5 mr-3"> 
+              
+            
+                 </div>
+                 
+                <div class="col-md-5 mr-3"> 
                  <div class="card" style="width: 18rem;">
                    <div class="card-body">
                    
-                   
-                   
-                     <b>계산서</b>
-					 <p><hr>
+                  <form action="${path}/front" method="post"> 
+
+                     <b>계산서</b><p><hr>
 					 
 					 <div class="row">
 					   <div class="col">
-						 <div class="text-start">총 상품 금액</div>
-							<p>
-						 <div class="text-start">총 배송비</div>
-						    <p>
-						 <div class="text-start">
-							<b>총 결제 금액</b>
-						</div>
+						 <div class="text-start">총 상품 금액</div><p>
+						 <div class="text-start">총 배송비</div><p>
+						 <div class="text-start"><b>총 결제 금액</b></div>
 					  </div>
 					  
 					  <div class="col">				  
@@ -169,42 +154,26 @@
 						<div class="text-end">
 						<b><input type="text" class="priceBox" name="total" value="${proList[status.index].pPrice}"readonly="readonly" size="5">원</b><!--최종금액-->
 						</div><p>
-						<input id="count" name="items" type="number" class="detail-quantity form-control text-center input-sm" min="0" value="1" >
+						
 					  </div>
 					  
 					</div> 
+					
+					<input type="hidden" name="img" value="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg">
+				    <div class="text-end"><button type="submit" class="btn btn-primary btn-lg">주문하기</button></div>
+                   
+                   </form>
                    
                    </div><!--카드바디-->
-                 
+
                  </div><p><p><p><!--카드-->
+                 </div><!--오른쪽에 들어가야함-->
                  
-                 
-                 <input type="hidden" name="img" value="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg">
-				 <button type="submit" class="btn btn-primary btn-lg">주문하기</button>
-                 </form>
-            
-                 </div>
-                 
-                 
-                
-              </div>
-                        
-            
-            
-        
-        </div>
-        
-   
-           
-        
-        </div><!-- 1번 row -->
-    
-    </div><!--컨테이너--> 
 
-
-	
-   
-
+        </div><!--row-->
+ 
+</div><!--컨테이너--> 
+        
 
 </body>
 </html>
