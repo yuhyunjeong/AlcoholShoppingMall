@@ -182,14 +182,27 @@ public class OrderController implements Controller{
 
 	}
 	
-	public void orderAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	/**
+	 * 배송관리 전체 검색 
+	 */
+	public ModelAndView orderAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		List<OrdersDTO> list = orderService.orderAll();
+		String pageNo = request.getParameter("pageNo"); // 현재 페이지 번호 
 		
+		if(pageNo==null || pageNo.equals("")) {
+			pageNo="1";
+		}
 		
+		List<OrdersDTO> orderList = orderService.orderAll(Integer.parseInt(pageNo));
 		
+		request.setAttribute("orderList", orderList); // ${orderList}
+		request.setAttribute("pageNo", pageNo); // ${pageNo}
 		
-		
+		System.out.println("배송관리 나오니이이이이");
+		System.out.println(orderList.size());
+		ModelAndView mv = new ModelAndView("admin/shpping.jsp");
+
+		return mv;
 		
 	}
 	

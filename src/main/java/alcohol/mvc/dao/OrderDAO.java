@@ -34,5 +34,5 @@ public interface OrderDAO {
 	/**
 	 * 배송관리 테이블 전체 출력 SELECT * FROM ORDERS
 	 */
-	public List<OrdersDTO> orderAll() throws SQLException; 
+	public List<OrdersDTO> orderAll(int pageNo) throws SQLException; 
 }

@@ -9,6 +9,7 @@ import java.util.List;
 
 import alcohol.mvc.dto.OrdersDTO;
 import alcohol.mvc.dto.ProductDTO;
+import alcohol.mvc.paging.PageCnt;
 import alcohol.mvc.util.DbUtil;
 
 public class OrderDAOImpl implements OrderDAO{
@@ -147,33 +148,65 @@ public class OrderDAOImpl implements OrderDAO{
 	}
 
 	@Override
-	public List<OrdersDTO> orderAll() throws SQLException {
+	public List<OrdersDTO> orderAll(int pageNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps =null;
 		ResultSet rs = null;
-		List<OrdersDTO> list = new ArrayList<OrdersDTO>();
-
-		String sql ="SELECT * FROM PRODUCT"; //
 		
-		OrdersDTO orders = null;
+		List<OrdersDTO> ordersList = new ArrayList<OrdersDTO>();
+		String sql ="select * from  (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM orders ORDER BY order_date) a) where  rnum>=? and rnum <=? "; 
+		
 		try {
+			
+			//전체레코드 수를 구해서 총페이지수를 구하고 db에서 꺼내 올 게시물의 개수를 pagesize만큼 가져온다.(시작 ~ 끝)
+			int totalCount = this.getTotalCount();
+			int totalPage = totalCount%PageCnt.getPagesize() ==0 ? totalCount/PageCnt.getPagesize() : (totalCount/PageCnt.getPagesize())+1;
+			
+			PageCnt pageCnt = new PageCnt();
+			pageCnt.setPageCnt(totalPage);//전체페이지수를 저장해준다.
+			pageCnt.setPageNo(pageNo); //사용자가 클릭한 page번호를 설정
+			
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 		
 			rs = ps.executeQuery();
 
 			while(rs.next()) {
-				orders = new OrdersDTO(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)
+				OrdersDTO orders = new OrdersDTO(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)
 						,rs.getString(8),rs.getString(9));
-				list.add(orders);
+				ordersList.add(orders);
 			}
 
 
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
-		System.out.println(list.get(0).getOrderStatus());
-		return list;
+		System.out.println(ordersList.get(0).getOrderStatus());
+		return ordersList;
 	}
+	
+	/**
+	 * 전체레코드수 가져오기 
+	 * */
+	private int getTotalCount() throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		int totalCount=0;
+		String sql = "select count(*) from notice";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+		}finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return totalCount;
+	}
+	
 
 }
