@@ -41,25 +41,21 @@ $(function(){
 	   				$.each(result, function(index, item) {
 	   					str+=`<div class='col-md-9 col-lg-9' style='float: none; margin:0 auto;'><p>`;
 	   					str+=`<div class='row'><div class='col align-self-center'>`;
-	   					str+=`<div class='row text-start'>${param.pName}</div>`	;
+	   					str+=`<div class='row text-start'>${'${item.pName}'}</div>`	;
 	   					str+=`</div><div class='col'>`;
-	   					str+=`<img src='${path}/img/${"${item.pDTO.cateCode}"}/${"${item.pDTO.pName}"}.jpg' class='rounded float-end' style='width:180px; height:250px;'>`;   
+	   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pName}"}.jpg' class='rounded float-end' style='width:180px; height:250px;'>`;   
 	   					str+=`</div></div><div class='row'><div class='col'><div class='text-start'>상품 금액</div><p><div class='text-start'>수량</div></div>` ;
 	   					str+=`<div class='col'>`;
-	   					str+=`<div class='text-center'>${'${item.toPrice}'}원</div><p>`;
-	   					str+=`<div class="text-center">${param.count}개</div>`;
+	   					str+=`<div class='text-center'>${'${item.cartTotal}'}원</div><p>`;
+	   					str+=`<div class="text-center">${'${item.cartNo}'}개</div>`;
 	   					str+=`</div></div><hr></div>`;
-	   					toPrice =`${'${item.toPrice}'}`;
-	
-	   					//cou +=`<option selected>선택</option>`;
-	   					//cou +=`<option value="${'{item.couList.cNumber}'}">${'${item.couList.cName}'}</option>`;
-	   					
+	   					toPrice +=item.cartTotal;
 	   					
 	   				});;
 
 	   				$("#productList").empty();
 					$("#productList").html(str);
-					
+
 					$("[name=finfinPrice]").val(toPrice);
 					
 					

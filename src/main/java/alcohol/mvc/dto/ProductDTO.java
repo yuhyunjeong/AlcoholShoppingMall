@@ -13,7 +13,8 @@ public class ProductDTO {
 	private String pImage3;
 	private String pDetail;
 	private int rStar;
-	
+	private int cartNo;
+	private int cartTotal;
 	
 	public ProductDTO() {}
 
@@ -40,11 +41,44 @@ public class ProductDTO {
 	}
 
 	
+	
+	
+	
+	
+
+	
+
+	public ProductDTO(String pCode, String cateCode, String pName, int pAlcohol, int pPrice, int pStuck, String pDate,
+			String pImage, String pImage2, String pImage3, String pDetail, int rStar, int cartNo, int cartTotal) {
+		super();
+		this.pCode = pCode;
+		this.cateCode = cateCode;
+		this.pName = pName;
+		this.pAlcohol = pAlcohol;
+		this.pPrice = pPrice;
+		this.pStuck = pStuck;
+		this.pDate = pDate;
+		this.pImage = pImage;
+		this.pImage2 = pImage2;
+		this.pImage3 = pImage3;
+		this.pDetail = pDetail;
+		this.rStar = rStar;
+		this.cartNo = cartNo;
+		this.cartTotal = cartTotal;
+	}
 
 	public ProductDTO(String pCode, int pPrice) {
 		super();
 		this.pCode = pCode;
 		this.pPrice = pPrice;
+	}
+
+	public int getCartNo() {
+		return cartNo;
+	}
+
+	public void setCartNo(int cartNo) {
+		this.cartNo = cartNo;
 	}
 
 	public String getpCode() {
@@ -61,6 +95,14 @@ public class ProductDTO {
 
 	public void setCateCode(String cateCode) {
 		this.cateCode = cateCode;
+	}
+
+	public int getCartTotal() {
+		return cartTotal;
+	}
+
+	public void setCartTotal(int cartTotal) {
+		this.cartTotal = cartTotal;
 	}
 
 	public String getpName() {
