@@ -56,7 +56,7 @@ public class OrdersDTO {
 	}
 
 	public String DBgetOrderDate() {
-		String date= getOrderDate();
+		String date= DBgetOrderDate();
 		String a=date.substring(0,10);
 		
 		return a;

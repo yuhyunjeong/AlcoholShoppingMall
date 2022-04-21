@@ -57,7 +57,7 @@ public class ReplyDTO {
 	}
 	
 	public String DBgetReDate() {
-		String date= getReDate();
+		String date= DBgetReDate();
 		String a=date.substring(0,10);
 		
 		return a;
