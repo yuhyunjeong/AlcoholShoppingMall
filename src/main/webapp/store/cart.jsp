@@ -41,12 +41,12 @@
       
       <div class="card-body">
       
-      <%-- <c:forEach items="${cartList}" var="cartList" varStatus="status"> --%>
+      <c:forEach items="${cartList}" var="cartList" varStatus="status">
       
          <img src="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg" 
 			  class="rounded float-start" style="max-width: 200px;">
 			  
-			  <div class="text-start"><h4><b>${proList[status.index].pName}</b></h4></div>
+		   <div class="text-start"><h4><b>${proList[status.index].pName}</b></h4></div>
 			  
 			 <div class="row">
 			  <div class="col">
@@ -60,12 +60,12 @@
 			  </div>
 			 </div>
 			   
-	   <%--  </c:forEach> --%>
+	   </c:forEach>
 			 
       </div><!--바디-->
-      
+        
     </div><p/><!--카드-->
-
+    
   </div><!--col-md-5 mr-3 왼쪽-->
   
   
@@ -89,8 +89,8 @@
 	      <div class="text-end"><fmt:formatNumber value="${(cartList.cartCount*proList[status.index].pPrice)+3000}"/>원</div><p/><p/>	    
 	    
 	    <form action="${path}/front" method="post">
-	      <input type="hidden" value="${cartList.cartCount}" >
-          <input type="hidden" value="${proList[status.index].pPrice}"> 
+	     <%--  <input type="hidden" value="${cartList.cartCount}" >
+          <input type="hidden" value="${proList[status.index].pPrice}">  --%>
 	      <input type="hidden" name="img" value="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg">
 	      <button type="submit" class="btn btn-primary btn-lg">주문하기</button><p/>
 	    </form> 
@@ -100,14 +100,11 @@
       
       
     </div><!--계산서박스-->
-  </div><!--col-md-5 mr-3 오른쪽-->
+  </div><p/><!--col-md-5 mr-3 오른쪽-->
 
 </div><!--가장 큰 row-->
 
 </div><!--컨테이너-->
-
-
-				
 
 
 
