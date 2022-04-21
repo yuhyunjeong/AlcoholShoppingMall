@@ -194,7 +194,7 @@ public class OrderController implements Controller{
 		}
 		
 		List<OrdersDTO> orderList = orderService.orderAll(Integer.parseInt(pageNo));
-		
+		response.setContentType("text/html;charset=UTF-8");
 		JSONArray arr= JSONArray.fromObject(orderList);
 		PrintWriter out = response.getWriter();
 		out.print(arr);
