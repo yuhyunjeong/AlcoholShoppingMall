@@ -69,14 +69,17 @@ div {
 					
 				}, error : function(err){  
 	   				alert(err+"에러 발생했어요.");
-	   			}  //실팽했을때 실행할 함수 
-			})
-		}
-		$("#shipping").click(function(){
-			shipping($(this).val());
-		})
+	   			}  //실패했을때 실행할 함수 
+	   			
+	   			$("#shipping").click(function(){
+	   				shipping($(this).val());
+	   			})
+	   			
+			}) // ajax end 
+		} // shipping function end 
+
 		shipping();
-	});
+	}); // ready end 
 </script>
 </head>
 <body>
