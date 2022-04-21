@@ -252,20 +252,20 @@ div {
  -->
 	<hr>
 
-	<c:choose>
+<%-- 	<c:choose>
 		<c:when test="${param.name == 'shipping' }">
-			<jsp:include page="../admin/shipping.jsp" />
+			<jsp:include page="${path}/admin/shipping.jsp" />
 		</c:when>
 		<c:when test="${param.name == 'refund'}">
-			<jsp:include page="../admin/refund.jsp" />
+			<jsp:include page="${path}/admin/refund.jsp" />
 		</c:when>
 		<c:when test="${param.name == 'sales'}">
-			<jsp:include page="../admin/sales.jsp" />
+			<jsp:include page="${path}/admin/sales.jsp" />
 		</c:when>
 		<c:otherwise>
 			<div></div>
 		</c:otherwise>
-	</c:choose>
+	</c:choose> --%>
 
 
 
