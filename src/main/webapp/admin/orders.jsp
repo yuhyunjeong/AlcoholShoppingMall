@@ -21,7 +21,7 @@ div {
 	$(function() {
 		// 배송관리 
 		
-		$("#shipping").on("click", function() {
+		function shipping(userId) {
 			
 			$.ajax({
 				url : "${pageContext.request.contextPath}/ajax", //서버요청주소
@@ -32,7 +32,7 @@ div {
 					
 				let str= "";
 
-					str += "<table><tr>"
+					str += "<table class='table text-center'><tr>"
 					str += `<th scope="col">주문번호</th>`;
 					str += `<th scope="col">아이디</th>`;
 					str += `<th scope="col">결제방식</th>`;
@@ -43,8 +43,9 @@ div {
 					str += `<th scope="col">상세주소</th>`;
 					str += `<th scope="col">연락처</th>`;
 					str += "</tr>";
-				
+					
 					$.each(result, function(index, item) {
+
 						str += "<tr>";
 						str += `<th scope="row">${item.orderCode}</th>`;
 						str += `<td>${item.uId}</td>`;
@@ -58,18 +59,23 @@ div {
 						str += "</tr>";
 					});
 					
-					$("#shipping tr:gt(0)").remove();
-					$("#shipping tr:eq(0)").after(str);
+					str += "</table>";
+					alert(result)
+				/* 	$("#shipping").html(str); */
+					$("#shipping").empty(); 
+					$("#shipping").append(str);
+
 					
-					str += "</tr></table>";
-					
-					$("#shipping").html(str);
 					
 				}, error : function(err){  
 	   				alert(err+"에러 발생했어요.");
 	   			}  //실팽했을때 실행할 함수 
 			})
+		}
+		$("#shipping").click(function(){
+			shipping($(this).val());
 		})
+		shipping();
 	});
 </script>
 </head>
@@ -126,6 +132,7 @@ div {
 					
 				</div>
 			</div>
+		</div>
 	</div>
 
 <!-- 
