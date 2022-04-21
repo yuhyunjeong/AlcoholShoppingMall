@@ -37,6 +37,7 @@ public class CartController implements Controller {
 	
     //select * from cart
 	public void select(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
 		String id = request.getParameter("id");
 		System.out.println(id+"나와줘");
 		
@@ -46,13 +47,14 @@ public class CartController implements Controller {
 		List<ProductDTO> proList =proService.cartSelect(cartList);
 		
 		System.out.println(proList.size()+"proList");
-
+		List<ProductDTO> totalPrice = cartService.cartOrders(id);
 		
 		 //request.setAttribute("cartList", cartList); 
 		 //request.setAttribute("proList",proList); 
 		 Map<String, Object> map = new HashMap<String, Object>();
 		 map.put("cartList", cartList);
 		 map.put("proList",proList);
+		 map.put("totalPrice",totalPrice);
 
 
 		JSONArray arr = JSONArray.fromObject(map); 

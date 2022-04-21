@@ -79,6 +79,11 @@ img{
  		
 		 selectAll();
  		
+		 
+		 $("#btn_submit").on("click", function(){
+			 window.open("", "popup_window", "width=500, height=300, scrollbars=no");
+			 $("#myform").submit();
+		 });
  		
  	});
  	<%LocalDate now = LocalDate.now();
@@ -87,7 +92,7 @@ img{
 		//int price = 29000;
 
  	%>
- 
+ 	
  </script>
 </head>
 <body>
@@ -102,7 +107,7 @@ img{
        
       <div class="col-md-7 col-lg-8" style="float: none; margin:0 auto;"> <!-- 가운데 정렬 -->
                
-        <form class="needs-validation" novalidate>
+        <form name="myform" id="myform" method="post" action="opoup url" target="popup_window">
           <div class="container">
            <div class="row mb-5">
            		<div class="col">
@@ -247,7 +252,7 @@ img{
 				<input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" />
 			</div>
 			</h4>
-          	<button class="btn btn-primary btn-lg" type="submit">결제 하기</button>
+          	<button class="btn btn-primary btn-lg" type="button" id="btn_submit">결제 하기</button>
           </div>
           
         </form>

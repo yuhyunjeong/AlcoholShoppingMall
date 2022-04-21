@@ -22,101 +22,51 @@ $(function(){
 	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
 	   			data: {key :"cart", methodName:"select", id:'${loginId}'},
 	   			success :function(result){
-
+						
 	   				
 					$.each(result, function(i, map){ //2개 
+							let str = "";
 							let str1 = "";
 							let str2 = "";
 							let str3 = "";
+							let str4 = "";
 		   				$.each(map.cartList, function(index, item) {
-							//alert(item.cartNumber);
-							str1+=`<div class='card w-85'><div class='row'>`			
-							str1+=`<div class='col text-end'>`
-			   				str1+=`<form action='${path}/front'>`
-			   				str1+=`<input type='hidden' name='key' value='cart'>`
-			   				str1+=`<input type='hidden' name='methodName' value='delete' >`
-			   				str1+=`<input type='hidden' name='userId' value='${loginId}' >`
-			   				str1+=`<input type='hidden' name='cartNo' value='${item.cartNumber}' >`		  	
-			   				str1+=`<input type='hidden' class='btn-close' aria-label='Close'/>`
-			   				str1+=`</form>`
-			   				str1+=`</div>`
-			   				str1+=`<div class='card-body'>`
-			   				str1+=`<div class='col-md-4'>`
+							alert(item.cartNumber)
+							str+=`<div class='card w-85'><div class='row'>`			
+							str+=`<div class='col text-end'>`
+			   				str+=`<form action='${path}/front'>`
+			   				str+=`<input type='hidden' name='key' value='cart'>`
+			   				str+=`<input type='hidden' name='methodName' value='delete' >`
+			   				str+=`<input type='hidden' name='userId' value='${loginId}' >`
+			   				str+=`<input type='hidden' name='cartNo' value='${"${item.cartNumber}"}' >`		  	
+			   				str+=`<button type='submit' class='btn-close' aria-label='Close'/>`
+			   				str+=`</form>`
+			   				str+=`</div>`
+			   				str+=`<div class='card-body'>`
+			   				str+=`<div class='col-md-4'>`	
+		   					str+=`<img src='${path}/img/${"${map.proList[index].cateCode}"}/${"${map.proList[index].pImage}"}.jpg' class='rounded float-start' style='max-width: 200px;'>` 
+			   				str+=`</div>`
+					   		str+=`<div class='row'><div class='col'><div class='text-start'>`
+					   		str+=`<h4><b>${item.pName}</b></h4></div></div></div>	`					
+			   				str+=`<div class='row' style='padding-top:80px;'>	 `  				
+			   				str+=`<div class='col'>`
+			   				str+=`<div class='text-start'>수량</div><p>`
+			   				str+=`<div class='text-start'>상품 금액</div>`
+			   				str+=`</div>`
+			   				str+=`<div class='col'>`
 			   				
-			   				str3+=`<div class='text-end'>'${item.cartCount}'개</div><p>`
+			   				str+=`<div class='text-end'>${'${item.cartCount}'}개</div><p>`
+		   					str+=`<div class='text-end'>`
+		   					str+=`${'${map.totalPrice[index].pPrice}'}원</div></div>`		  
+							str+=`</div></div></div></div><p>`	
 			   				
+	   				
 			   				
-				   			
-			   				
-							
-		   				});
-		   				$.each(map.proList, function(index, item) {
-		   					str2+=`<img src='${path}/img/${item.cateCode}/${item.pImage}.jpg' class='rounded float-start' style='max-width: 200px;'>` 
-			   				str2+=`</div>`
-			   				str2+=`<div class='row'><div class='col'><div class='text-start'>`
-			   				str2+=`<h4><b>${item.pName}</b></h4></div></div></div>	`					
-			   				str2+=`<div class='row' style='padding-top:80px;'>	 `  				
-			   				str2+=`<div class='col'>`
-			   				str2+=`<div class='text-start'>수량</div><p>`
-			   				str2+=`<div class='text-start'>상품 금액</div>`
-			   				str2+=`</div>`
-			   				str2+=`<div class='col'>`
-							
-		   					str3+=`<div class='text-end'>`
-							str3+=`'${item.cartCount}`*proList[status.index].pPrice}'원</div></div>`		  
-				   			str3+=`</div></div></div></div><p>`
-							
-		   					
-		   				});
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-
-		                
-		   				
-						 
-						  
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
-		   				
+		   				});		
+					   		$("#cartList").html(str);
+					   		
+					   		
+					   		
 					})
 	   			},error : function(err){  
 	   				alert(err+"에러 발생했어요.");
@@ -146,61 +96,11 @@ $(function(){
     
 		<div class="row">
         
-			<div class="col-md-5 mr-3">
+			<div class="col-md-5 mr-3" id ="cartList">
    				
-				<%-- <c:forEach items="${cartList}" var="cartList" varStatus="status"> 
+				
               
-					<div class="card w-85">
-                    
-						<div class="row">
-                    
-							<div class="col text-end">
-								<form action="${path}/front">
-									<input type="hidden" name="key" value="cart" >
-									<input type="hidden" name="methodName" value="delete" >
-									<input type="hidden" name="userId" value="${loginUser.userId}" >
-									<input type="hidden" name="cartNo" value="${cartList.cartNumber}" >			  	
-									<input type="submit" class="btn-close" aria-label="Close" value=""/>
-								</form>
-							 </div>
-					 
-					  
-					<div class="card-body">
-						<div class="col-md-4">
-							<img src="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg" 
-						     	class="rounded float-start" style="max-width: 200px;"> 
-						</div>		  
-					  
-						<div class="row">
-							<div class="col">
-								<div class="text-start">
-									<h4><b>${proList[status.index].pName}</b></h4>
-								</div>
-							</div>
-						</div>
-                                  
-						<div class="row" style="padding-top:80px;">
-							<div class="col">
-								<div class="text-start">수량</div><p>
-								<div class="text-start">상품 금액</div>
-							</div>
-	
-							<div class="col">
-					        	<div class="text-end"><fmt:formatNumber value="${cartList.cartCount}"/>개</div><p>
-						    	<div class="text-end"><fmt:formatNumber value="${cartList.cartCount*proList[status.index].pPrice}"/>원</div>
-							</div>					  
-                  
-						</div><!--상품금액 총금액row--> 
-				  
-					</div><!--카드바디-->
-                   
-				</div><!--카드 안 row--> 
-        
-			</div><p><!--w85카드-->
-       
-		</c:forEach> --%>
-              
-			</div><!--왼쪽에 들어가야함-->
+			</div>
                  
 			<div class="col-md-5 mr-3" style="padding-left:100px;"> 
 				<div class="card" style="width: 18rem;">

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import alcohol.mvc.dto.CartDTO;
+import alcohol.mvc.dto.ProductDTO;
 
 public interface CartDAO {
 	/**
@@ -29,5 +30,10 @@ public interface CartDAO {
 	 * 장바구니 담은거 전체검색 SELECT * FROM CART
 	 * */
 	public List<CartDTO> selectAll(String id)throws SQLException;
+	
+	/**
+	 * 장바구니 담은거 orders갈때 검색
+	 * */
+	public List<ProductDTO> cartOrders(String id)throws SQLException;
 	
 }
