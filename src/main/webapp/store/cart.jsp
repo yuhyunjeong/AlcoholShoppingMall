@@ -30,7 +30,7 @@
     <div class="card w-85">
     
        <div class="col text-end">
-         <form action="${path}/front">
+         <form action="${path}/front" method="post">
 		   <input type="hidden" name="key" value="cart" >
    		   <input type="hidden" name="methodName" value="delete" >
    		   <input type="hidden" name="userId" value="${loginUser.userId}" >
@@ -38,7 +38,7 @@
            <input type="submit" class="btn-close" aria-label="Close" value=""/>
          </form>
        </div>
-      
+       
       <div class="card-body">
       
       <c:forEach items="${cartList}" var="cartList" varStatus="status">
@@ -89,8 +89,8 @@
 	      <div class="text-end"><fmt:formatNumber value="${(cartList.cartCount*proList[status.index].pPrice)+3000}"/>원</div><p/><p/>	    
 	    
 	    <form action="${path}/front" method="post">
-	     <%--  <input type="hidden" value="${cartList.cartCount}" >
-          <input type="hidden" value="${proList[status.index].pPrice}">  --%>
+	      <input type="hidden" value="${cartList.cartCount}">
+          <input type="hidden" value="${proList[status.index].pPrice}">
 	      <input type="hidden" name="img" value="${path}/img/${proList[status.index].cateCode}/${proList[status.index].pImage}.jpg">
 	      <button type="submit" class="btn btn-primary btn-lg">주문하기</button><p/>
 	    </form> 
