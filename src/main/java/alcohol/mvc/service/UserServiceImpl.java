@@ -118,6 +118,12 @@ public class UserServiceImpl implements UserService {
 		UserDTO dto = userDao.selectByUserId(id);
 		return dto;
 	}
+
+	@Override
+	public int pointDelet(String id,int point) throws SQLException {
+		int result = userDao.pointDelet(id,point);
+		return result;
+	}
 	
 	
 

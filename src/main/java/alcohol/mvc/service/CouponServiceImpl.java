@@ -16,9 +16,11 @@ public class CouponServiceImpl implements CouponService {
 	}
 
 	@Override
-	public void couponDelete(String cNumber) throws SQLException {
-		// TODO Auto-generated method stub
-
+	public void couponDelete(String id,String coupon) throws SQLException {
+		int result =dao.couponDelete(id, coupon);
+		if(result == 0) {
+			throw new  SQLException("쿠폰삭제되지않음");
+		}
 	}
 
 	@Override

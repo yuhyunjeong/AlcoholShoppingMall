@@ -50,11 +50,11 @@ $(function(){
 	   					str+=`<div class="text-center">${'${item.cartNo}'}개</div>`;
 	   					str+=`</div></div><hr></div>`;
 	   					toPrice +=item.cartTotal;
+
+	   					str+=`<input type='hidden' name='pCode' value='${"${item.pCode}"}'>`
+	   					str+=`<input type='hidden' name='orderQty' value='${"${item.cartNo}"}'>` 
 	   					
-	   					//str+="<input type='hidden' name='goodsName' value=''>"
-	   					//	str+="<input type='hidden' name='orderQty' value=''>"  
 	   					
-	   					//String goodsName [] = request.getParameterValues("goodsName");
 	   					
 	   				});
 
@@ -189,23 +189,24 @@ $(function(){
       <div class="card-body">
         <h5 class="card-title">배송지</h5>
          <div class="input-group mb-3">
+
          <span class="input-group-text" id="basic-addon1">수령인</span>
-         <input type="text" class="form-control" placeholder="${loginName}" aria-label="Username" aria-describedby="basic-addon1">
+         <input type="text" class="form-control" name="name" value="${loginName}" placeholder="${loginName}" aria-label="Username" aria-describedby="basic-addon1">
          </div><p>
          
          <div class="input-group mb-3">
          <span class="input-group-text" id="basic-addon1">주소</span>
-         <input type="text" class="form-control" placeholder="${loginAddr}" aria-label="Username" aria-describedby="basic-addon1">
+         <input type="text" class="form-control" name="addr" value="${loginAddr}" placeholder="${loginAddr}"  aria-label="Username" aria-describedby="basic-addon1">
          </div><p>
                   
          <div class="input-group mb-3">
          <span class="input-group-text" id="basic-addon1">상세주소</span>
-         <input type="text" class="form-control" placeholder="상세주소" aria-label="Username" aria-describedby="basic-addon1">
+         <input type="text" class="form-control" name="addr2" value="" placeholder="상세주소" aria-label="Username" aria-describedby="basic-addon1">
          </div>
          
          <div class="input-group mb-3">
          <span class="input-group-text" id="basic-addon1">연락처</span>
-         <input type="text" class="form-control" placeholder="${loginUser.userPhone}" aria-label="Username" aria-describedby="basic-addon1">
+         <input type="text" class="form-control" name="phone" value="${loginUser.userPhone}" placeholder="${loginUser.userPhone}" aria-label="Username" aria-describedby="basic-addon1">
          </div>              
       </div><p>
 </div>
@@ -228,7 +229,7 @@ $(function(){
       <div class="card-body">
         <h5 class="card-title">사용 가능한 적립금</h5>
         <h6 class="text-end"><b id="point">${loginUser.userPoint}P</b></h6>
-        <input id="pointText" class="form-control form-control-sm" type="text" value="0" placeholder="사용할 적립금을 입력하세요" max="${loginUser.userPoint}" aria-label=".form-control-sm example">
+        <input id="pointText" name="point" class="form-control form-control-sm" type="text" value="0" placeholder="사용할 적립금을 입력하세요" max="${loginUser.userPoint}" aria-label=".form-control-sm example">
       </div>
     </div>
 </div><!--적립금--><p>
@@ -238,11 +239,11 @@ $(function(){
       <div class="card-body">
         <h5 class="card-title">결제방법</h5>
         <div class="form-check">
-       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="1" checked>
        <label class="form-check-label" for="flexRadioDefault2">신용카드</label>
       </div>
       <div class="form-check">
-       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="0">
        <label class="form-check-label" for="flexRadioDefault1">무통장 입금</label>
       </div>
       </div>
@@ -280,7 +281,8 @@ $(function(){
 
 
 <div align="center">
-
+<input type=hidden name="aftPoint" value="${loginUser.userPoint}">
+<input type=hidden name="id" value="${loginId}"/>
 <input type=hidden name="key" value="order"> 
 <input type=hidden name="methodName" value="insert"> 
 

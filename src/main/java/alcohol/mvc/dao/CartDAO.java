@@ -36,4 +36,5 @@ public interface CartDAO {
 	 * */
 	public List<ProductDTO> cartOrders(String id)throws SQLException;
 	
+	public int cartOrderDelete(String id) throws SQLException;
 }

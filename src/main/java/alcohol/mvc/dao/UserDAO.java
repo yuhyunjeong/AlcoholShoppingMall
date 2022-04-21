@@ -58,7 +58,7 @@ public interface UserDAO {
 	public String pwdFind(String id , String name, String phone, String email)throws SQLException;
 	
 	
-	
+	public int pointDelet(String id,int point)throws SQLException;
 	
 	
 	

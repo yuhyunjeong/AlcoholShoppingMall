@@ -14,7 +14,7 @@ public interface CouponService {
 	/**
 	 * 사용(제거) 
 	 * */
-	public void couponDelete(String cNumber)throws SQLException;
+	public void couponDelete(String id,String coupon)throws SQLException;
 	
 	/**
 	 * 쿠폰목록(select)

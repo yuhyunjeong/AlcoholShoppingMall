@@ -38,4 +38,7 @@ public interface CartService {
 	 * 장바구니 담은거 orders갈때 검색
 	 * */
 	public List<ProductDTO> cartOrders(String id)throws SQLException;
+	
+	
+	public void cartOrderDelete(String id) throws SQLException ;
 }

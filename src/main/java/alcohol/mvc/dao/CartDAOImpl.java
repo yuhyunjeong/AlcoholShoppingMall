@@ -146,6 +146,29 @@ import alcohol.mvc.util.DbUtil;
 			
 			return list;
 		}
+		
+		
+		
+		
+		public int cartOrderDelete(String id) throws SQLException {
+			Connection con = null;
+			PreparedStatement ps = null;
+			int result = 0;
+			String sql = "DELETE FROM CART WHERE U_ID=?";
+			
+			try {
+				con = DbUtil.getConnection();
+				ps = con.prepareStatement(sql);
+				ps.setString(1, id);
+				
+				result = ps.executeUpdate();
+			} finally {
+				DbUtil.dbClose(ps, con);
+			}
+			
+			System.out.println(result);
+			return result;
+		}
 			
 	}
 

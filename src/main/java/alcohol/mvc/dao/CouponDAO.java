@@ -15,7 +15,7 @@ public interface CouponDAO {
 	/**
 	 * 사용(제거) DELECT FROM COUPON WHERE C_NUMBER =?
 	 * */
-	public int couponDelete(String cNumber)throws SQLException;
+	public int couponDelete(String id,String coupon)throws SQLException;
 	
 	/**
 	 * 쿠폰목록(select) select * from coupon where U_ID=?

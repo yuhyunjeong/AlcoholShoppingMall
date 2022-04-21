@@ -323,4 +323,30 @@ public class UserDAOImpl implements UserDAO {
 		return pwd;
 	}
 
+	@Override
+	public int pointDelet(String id,int point) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		
+		String sql = "update users set u_point=? where u_id=?";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, point);
+			ps.setString(2, id);	
+			result = ps.executeUpdate();
+			
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		
+		return result;
+		
+		
+		
+		
+	}
+
 }

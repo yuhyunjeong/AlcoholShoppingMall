@@ -2,6 +2,7 @@ package alcohol.mvc.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,11 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.InternalFrameFocusTraversalPolicy;
 
 import com.oreilly.servlet.MultipartRequest;
 
 import alcohol.mvc.dto.CouponDTO;
+import alcohol.mvc.dto.OrderLineDTO;
 import alcohol.mvc.dto.OrdersDTO;
+import alcohol.mvc.dto.PaymentDTO;
 import alcohol.mvc.dto.ProductDTO;
 import alcohol.mvc.dto.UserDTO;
 import alcohol.mvc.service.CartService;
@@ -23,6 +27,8 @@ import alcohol.mvc.service.CouponService;
 import alcohol.mvc.service.CouponServiceImpl;
 import alcohol.mvc.service.OrderService;
 import alcohol.mvc.service.OrderServiceImpl;
+import alcohol.mvc.service.PaymentService;
+import alcohol.mvc.service.PaymentServiceImpl;
 import alcohol.mvc.service.ProductService;
 import alcohol.mvc.service.ProductServiceImpl;
 import alcohol.mvc.service.UserService;
@@ -32,7 +38,7 @@ import net.sf.json.JSONArray;
 public class OrderController implements Controller{
 	
 	private OrderService orderService = new OrderServiceImpl();
-
+	private PaymentService payService = new PaymentServiceImpl();
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -42,11 +48,83 @@ public class OrderController implements Controller{
 	
 	//주문하기 (여러개) insert 
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		CartService cartService= new CartServiceImpl();
+		UserService userService = new UserServiceImpl();
+		CouponService couService = new CouponServiceImpl();
 		
-
+		String pCode [] = request.getParameterValues("pCode");
+		String orderQty [] = request.getParameterValues("orderQty");
+		String id = request.getParameter("id");
+		String addr = request.getParameter("addr");
+		String addr2= request.getParameter("addr2");
+		String phone= request.getParameter("phone");
+		String couponList = request.getParameter("couponList");
+		int paytype = Integer.parseInt(request.getParameter("flexRadioDefault"));
+		int point = Integer.parseInt(request.getParameter("point"));
+		int bepoint = Integer.parseInt(request.getParameter("aftPoint"));
+		int toPoint = point-bepoint;
+		OrdersDTO oDTO= new OrdersDTO(0, id, 0, null, null, null, addr, addr2, phone);
+		OrderLineDTO oLineDTO = null;
+		List<OrderLineDTO> oLineList = new ArrayList<OrderLineDTO>();
 		
-		return null;
+		for(int i =0 ; i<pCode.length;i++) {
+			oLineDTO=new OrderLineDTO(pCode[i], Integer.parseInt(orderQty[i]));
+			oLineList.add(oLineDTO);
+		}
+		//결재 방식 시작 
+		payService.selectPay(paytype,oDTO,oLineList);
+		
+		cartService.cartOrderDelete(id);	
+		//userService.pointDelet(id,toPoint);
+		couService.couponDelete(id,couponList);
+		
+		
+		 ModelAndView mv = new ModelAndView("myPage/myPage.jsp",true);
+		 return mv;
 	}
+	
+	
+	
+	//주문하기 한개 insert 
+		public ModelAndView onlyInsert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			CartService cartService= new CartServiceImpl();
+			UserService userService = new UserServiceImpl();
+			CouponService couService = new CouponServiceImpl();
+			
+			String pCode [] = request.getParameterValues("pCode");
+			String orderQty [] = request.getParameterValues("orderQty");
+			String id = request.getParameter("id");
+			String addr = request.getParameter("addr");
+			String addr2= request.getParameter("addr2");
+			String phone= request.getParameter("phone");
+			String couponList = request.getParameter("couponList");
+			int paytype = Integer.parseInt(request.getParameter("flexRadioDefault"));
+			int point = Integer.parseInt(request.getParameter("point"));
+			int bepoint = Integer.parseInt(request.getParameter("aftPoint"));
+			int toPoint = point-bepoint;
+			OrdersDTO oDTO= new OrdersDTO(0, id, 0, null, null, null, addr, addr2, phone);
+			OrderLineDTO oLineDTO = null;
+			List<OrderLineDTO> oLineList = new ArrayList<OrderLineDTO>();
+			
+			for(int i =0 ; i<pCode.length;i++) {
+				oLineDTO=new OrderLineDTO(pCode[i], Integer.parseInt(orderQty[i]));
+				oLineList.add(oLineDTO);
+			}
+			//결재 방식 시작 
+			payService.selectPay(paytype,oDTO,oLineList);
+			
+			//cartService.cartOrderDelete(id);	
+			//userService.pointDelet(id,toPoint);
+			
+			//if(!couponList.equals("")|| couponList != null|| !couponList.equals("0")) {
+				//couService.couponDelete(id,couponList);
+			//}
+
+			
+			
+			 ModelAndView mv = new ModelAndView("myPage/myPage.jsp",true);
+			 return mv;
+		}
 	
 	//주문수정 update orders
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response) throws Exception {

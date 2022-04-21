@@ -19,9 +19,26 @@ public class CouponDAOImpl implements CouponDAO {
 	}
 
 	@Override
-	public int couponDelete(String cNumber) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int couponDelete(String id,String coupon) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "DELETE FROM COUPON WHERE C_RATE=? AND U_ID=?";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, coupon);
+			ps.setString(2, id);
+			
+			result = ps.executeUpdate();
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		
+		System.out.println(result);
+		return result;
+
 	}
 
 	@Override

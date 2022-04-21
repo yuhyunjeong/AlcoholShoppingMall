@@ -49,6 +49,16 @@ public class CartServiceImpl implements CartService {
 		List<ProductDTO> list = cartdao.cartOrders(id);
 		return list;
 	}
+	
+	
+	public void cartOrderDelete(String id) throws SQLException {
+		int result = cartdao.cartOrderDelete(id);
+		
+		if(result ==0) {
+			throw new SQLException("게시물을 삭제할 수 없습니다.");
+		}
+		
+	}
  
 
 }

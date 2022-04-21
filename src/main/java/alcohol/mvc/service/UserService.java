@@ -53,4 +53,8 @@ public interface UserService {
 	public UserDTO selectByUserId(String id) throws SQLException;
 	
 	
+	public int pointDelet(String id,int point)throws SQLException;
+	
+	
+	
 }
