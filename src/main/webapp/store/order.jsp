@@ -20,8 +20,12 @@
 </style>
 
 <script type="text/javascript">
-
 $(function(){ 
+	
+
+	
+
+
 	function selectAll(){
 
 		$.ajax({
@@ -55,10 +59,14 @@ $(function(){
 
 	   				$("#productList").empty();
 					$("#productList").html(str);
+					
+					$("[name=finfinPrice]").val(toPrice);
+					
+					
 	   				$("#totalPrice").html(toPrice+"원");
 	   				$("#finPrice").html(toPrice+"원");
 					//$("#couponList").html(cou);
-
+					$("[name=disco]").val()
 	   			},error : function(err){  
 	   				alert(err+"에러 발생했어요.");
 	   			}  //실팽했을때 실행할 함수 
@@ -74,66 +82,93 @@ $(function(){
 	   			data: {key :"order", methodName:"couponSelect", id : '${loginId}' },
 	   			success :function(result){
 	   				let cou ="";
+	   				let fin = "";
 	   				$.each(result, function(index, item) { 					
-	   					cou +=`<option value="${'{item.cRate}'}">${'${item.cName}'}${'${item.cRate}'}</option>`;
+	   					cou +=`<option value="${'${item.cRate}'}">${'${item.cName}'}${'${item.cRate}'}</option>`;
 	
 	   				});;
 					$("#couponList").append(cou);
-
 	   			},error : function(err){  
 	   				alert(err+"에러 발생했어요.");
 	   			}  //실팽했을때 실행할 함수 
 	   		});
 	 }
 	
-	$("#pointText").val(1000);
 	
+		$("#couponList").change(function(){
+			$("#finCoupon").html("-"+$(this).val()+"원");
+			//alert($("#finDiscount").text())
+			//alert(parseInt($("#finDiscount").text()));
+			//alert(Math.abs(parseInt($("#finDiscount").text())));
+			
+			//let olddisPr = Math.abs(parseInt($("#finDiscount").text()));
+			
+			test();
+			
+		})
+		
+		function test(){
+			//let res = parseInt($("#couponList").val()) + parseInt( $("#pointText").val());
+			res = parseInt($("#couponList").val()) + parseInt( $("#pointText").val());
+	 		$("#finDiscount").html("-"+res+"원");
+	 		
+	 		$("#finfinfinPrice").val((parseInt($("[name=finfinPrice]").val())-parseInt(res))+3000+"원")
+	 		//alert(parseInt($("[name=finfinPrice]").val()));
+
+		}
+		
+		
+			
+		$("#pointText").keyup(function(){
+		  const name = $('#pointText').val();
+		  
+		  
+		  if(${loginUser.userPoint}==0 || name =="" ||name ==null){
+			 	 $("#finPoint").html(0+"P");
+			 	 return;
+			 	
+		  }else if(${loginUser.userPoint}>=name){
+			  	$("#point").html((${loginUser.userPoint}-name)+"P");
+				$("#finPoint").html("-"+name+"P");
+				
+		  }else if(${loginUser.userPoint}<name){
+			  $("#point").html("0P");
+			  $("#finPoint").html("-"+3000+"P");
+			  
+		  }
+		  
+		  test();
+		});
+		
+	/* function finalPrice(){
+		
+		
+		if(${loginUser.userPoint}==0 || name =="" ||name ==null){
+			$("#finDiscount").html(0+"원")
+			
+	 	 }else if(${loginUser.userPoint}>=name){
+	 		$("#finDiscount").html($("#couponList").val()+(${loginUser.userPoint}-name));
+	 		
+	  	}else if(${loginUser.userPoint}<name){
+	  		$("#finDiscount").html($("#couponList").val()-3000);
+	  	}
+
+		
+	} */
+
+	//입력한 포인트값
+	//finalPrice();
 	couponAll();
 	selectAll();
  })      
   
 </script>
-
-
-
 </head>
 <body>
 <h2 align="center">구매하기</h2><p>
-
 <div class="container" >
-
-
-
 <div class="container row" style="float: none; margin:100 auto;">
 <div id="productList"></div>
-	<%-- <div class="col-md-9 col-lg-9" style="float: none; margin:0 auto;"><p>
-		
-		<div class="row">
-			<div class="col align-self-center">
-				<div class="row text-start">${param.pName}</div> 
-			</div>
-			
-			
-			<div class="col">
-				<img src="" class="rounded float-end" style="width:180px; height:250px;">   
-			</div>
-		</div>
-		
-		 
-		<div class="row">  
-			<div class="col">
-				<div class="text-start">상품 금액</div><p> 
-				<div class="text-start">수량</div> 
-			</div> 
-			<div class="col">
-				<div class="text-center">1222</div><p>
-				<div class="text-center">${param.count}개</div>
-			</div> 
-		</div>
-		<hr>
-	</div> --%>
-	
-
 <div class="col-md-9 col-lg-9" style="float: none; margin:0 auto;"><p>
 	<div class="row">  
 		<div class="col">
@@ -179,7 +214,7 @@ $(function(){
 		<div class="card-body">
 			<h5 class="card-title">사용 가능한 쿠폰</h5>
 				<select class="form-select" id="couponList" name="couponList" aria-label="Default select example">
-					<option selected >선택</option>
+					<option selected value="0" >선택</option>
 					
 				</select>
 		</div>
@@ -190,8 +225,8 @@ $(function(){
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">사용 가능한 적립금</h5>
-        <h6 class="text-end"><b id="point">${loginUser.userPoint}원</b></h6>
-        <input id="pointText" class="form-control form-control-sm" type="text" placeholder="사용할 적립금을 입력하세요" aria-label=".form-control-sm example">
+        <h6 class="text-end"><b id="point">${loginUser.userPoint}P</b></h6>
+        <input id="pointText" class="form-control form-control-sm" type="text" value="0" placeholder="사용할 적립금을 입력하세요" max="${loginUser.userPoint}" aria-label=".form-control-sm example">
       </div>
     </div>
 </div><!--적립금--><p>
@@ -214,6 +249,7 @@ $(function(){
 
 <div class="col-md-9 col-lg-9" style="float: none; margin:0 auto;"><p>
 <hr>
+<form action="${path}/front">
 
 <div class="row">
  <div class="col">
@@ -225,27 +261,31 @@ $(function(){
   <div class="text-start">총 배송비</div><p>
   <div class="text-start"><b>총 결제 금액</b></div><p>
  </div>
-
+<input type="hidden" name= "finfinPrice" value="0"/>
  <div class="col">
+ <input type="hidden" name="disco"/>
+ <input type="hidden" name="Poi"/>
   <div class="text-end">&nbsp;</div><p>
   <div class="text-end" id="finPrice"></div><p>
-  <div class="text-end" id="finDiscount">원</div><p>
-  <div class="text-end" id="finPoint">원</div><p>
+  <div class="text-end" id="finDiscount">0원</div><p>
+  <div class="text-end" id="finPoint">0P</div><p>
   <div class="text-end" id="finCoupon">원</div><p>
-  <div class="text-end" id="finDelivery">원</div><p>
-  <div class="text-end" id="finfinfinPrice"><b>원</b></div><p>
+  <div class="text-end" id="finDelivery">3000원</div><p>
+  <div class="text-end"><b><input type="text" name="toPr" style="border: none; text-align: right;" id="finfinfinPrice" value="0"></b></div><p>
  
 </div>
 
 
 
 <div align="center">
+
+<input type=hidden name="key" value="qa"> 
+<input type=hidden name="methodName" value="update"> 
+
 <button type="submit" class="btn btn-light">결제하기</button>
 </div><p> 
-
-
- 
 </div>
+</form>
 </div><!--계산서 전체를 위한....-->
 
 </div><!--container row-->
