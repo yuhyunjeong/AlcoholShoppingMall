@@ -230,7 +230,13 @@ html,body{
           <hr class="my-5">
           
           <div class="d-grid gap-2 col-6 mx-auto">
-			<h4  class="mb-3" style="text-align: center;">총 결제 금액 : 87,000원</h4>
+          <h4  class="mb-3" style="text-align: center;">
+          	<div class="col">
+				총 결제 금액 </div>
+			<div class="col">
+				<input type="text" class="priceBox" name="totalPrice" readonly="readonly" style="border: none; text-align: center;" />
+			</div>
+			</h4>
           	<button class="btn btn-primary btn-lg" type="submit">결제 하기</button>
           </div>
           
