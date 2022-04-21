@@ -165,6 +165,7 @@ img{
 					</p>
 					
 				</div>
+
 								
 			</div>
 			
@@ -301,7 +302,7 @@ img{
 									  </div>
 		       						  <!-- Modal End -->
           
-        
+        </div>
       </div>
     </div>
   </main>
