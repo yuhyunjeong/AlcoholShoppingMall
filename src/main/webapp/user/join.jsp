@@ -70,9 +70,20 @@ input:focus::-webkit-input-placeholder {
 			}
 		}).open();
 	}
+	
+	
+	// 회원가입 후 뒤로갔을때 로그인창 안뜨게하기
+ 	function noBack() {
+		window.history.forward();
+	} 
+
 
 	// 유효성 검사! 
 	$(function(){
+		
+		// 아이디 - 영문+숫자만 가능 
+		
+		
 		// 비밀번호 확인 - 영문+숫자포함 8글자 이상 
 	    $('#pwd').keyup(function(){
 	    	 $('#checkPwd').html('');
@@ -109,6 +120,9 @@ input:focus::-webkit-input-placeholder {
 	    	}
 	    });
 	    
+	    // 연락처 - 숫자+(-)만 가능 
+	    
+	    
 	    // 이메일 확인 - 영문+숫자만 입력가능하게 해야함 
 	    $('#email').keyup(function() {
 	    	$('#checkEmail').html('');
@@ -125,7 +139,7 @@ input:focus::-webkit-input-placeholder {
 
 </script>
 </head>
-<body>
+<body onload="noBack()" onpageshow="if(event.persisted) noBack();" onunload="">
 	<%@include file="../common/header.jsp"%>
 	<h1>회원가입</h1>
 	<p>
