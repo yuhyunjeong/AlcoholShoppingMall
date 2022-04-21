@@ -43,11 +43,11 @@
 								<input type=hidden name="methodName" value="update"> 
 								<input type=hidden name='qaNumber' value="${param.qaNumber}">
 								 
-								<button type="submit" class="btn btn-light">수정하기</button>
+								<button type="submit" class="btn btn-dark">수정하기</button>
 							</div>
 
 							<div class="col-sm-2">
-								<button type="button" class="btn btn-light"
+								<button type="button" class="btn btn-dark"
 									onclick="location.href='${path}/front?key=qa&methodName=select'">목록</button>
 							</div>
 

@@ -104,11 +104,11 @@
 <%-- 								<input type=hidden name="qaTitle" value="${qa.qaTitle}">
 								<input type=hidden name="qaContent" value="${qa.qaContent}">
 								<input type=hidden name="qaSecret" value="${qa.qaSecret}">  --%>
-								<button type="submit" class="btn btn-light">등록하기</button>
+								<button type="submit" class="btn btn-dark">등록하기</button>
 							</div>
 
 							<div class="col-sm-2">
-								<button type="button" class="btn btn-light"
+								<button type="button" class="btn btn-dark"
 									onclick="location.href='${path}/front?key=qa&methodName=select'">목록</button>
 							</div>
 

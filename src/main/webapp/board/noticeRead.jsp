@@ -68,7 +68,7 @@
            			
 				<div class="row m-5" >
 					<div class="col-sm-2" align="left">
-						<button type="button" class="btn btn-light"  onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
+						<button type="button" class="btn btn-dark"  onclick= "location.href='${path}/front?key=notice&methodName=select'">목록</button>
 					</div>
 					<div class="col-sm-8" align="right">
 					<!-- 수정시 필요한 데이터들을 hidden으로 숨겨놓고 폼 데이터로 보내준다. -->
