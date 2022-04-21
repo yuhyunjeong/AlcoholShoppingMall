@@ -98,8 +98,11 @@ public class ProductController implements Controller {
 	// goods.jsp
 	// 전체검색
 	public ModelAndView select(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String pCode = request.getParameter("pCode");
 		System.out.println("ProductController select 나오나?");
-		List<ProductDTO> list = proService.selectGoods();
+		
+		List<ProductDTO> list = proService.selectGoods(pCode);
 		request.setAttribute("list", list);
 
 		System.out.println(list.size());
@@ -198,5 +201,7 @@ public class ProductController implements Controller {
 		out.print(arr);
 
 	}
+	
+	 
 
 }

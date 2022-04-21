@@ -211,7 +211,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	//goods.jsp를 위한 selectAll
 
-	public List<ProductDTO> selectGoods() throws SQLException{
+	public List<ProductDTO> selectGoods(String pCode) throws SQLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -219,12 +219,16 @@ public class ProductDAOImpl implements ProductDAO {
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		ProductDTO proDto = null;
 
-		String sql = "select p_code,cate_code,p_name,p_alcohol,p_price,p_stuck,p_date,p_detail from product";
+		String sql = "select p_code,cate_code,p_name,p_alcohol,p_price,p_stuck,p_date,p_detail from product order by p_code =?";
 
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, pCode);
+			
 			rs = ps.executeQuery();
+			
 
 			while(rs.next()) {
 				proDto = new ProductDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7),rs.getString(8));
@@ -438,7 +442,6 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 		System.out.println(list.get(0).getpName());
 		return list;
-	}
-	
+	}	
 
 }
