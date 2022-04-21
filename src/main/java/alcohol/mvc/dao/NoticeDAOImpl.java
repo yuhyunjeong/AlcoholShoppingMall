@@ -134,7 +134,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 		ResultSet rs=null;
 		
 		List<NoticeDTO> noticeList = new ArrayList<NoticeDTO>();
-		String sql = "select * from  (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM notice ORDER BY no_date desc) a) where  rnum>=? and rnum <=? ";
+		String sql = "select * from  (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM notice ORDER BY no_number) a) where  rnum>=? and rnum <=? ";
 	
 		try {
 			//전체레코드 수를 구해서 총페이지수를 구하고 db에서 꺼내 올 게시물의 개수를 pagesize만큼 가져온다.(시작 ~ 끝)
