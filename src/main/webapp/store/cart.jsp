@@ -61,7 +61,7 @@ $(function(){
 			   				
 		   				});		
 
-					   		$("#cartList").html(str+"원");
+					   		$("#cartList").html(str);
 
 					   		$("#sumPrice").html(price+"원")
 					   		$("#totalPrice").html((price+3000)+"원")

@@ -75,7 +75,7 @@ public class OrderController implements Controller{
 		payService.selectPay(paytype,oDTO,oLineList);
 		
 		cartService.cartOrderDelete(id);	
-		//userService.pointDelet(id,toPoint);
+		userService.pointDelet(id,toPoint);
 		couService.couponDelete(id,couponList);
 		
 		

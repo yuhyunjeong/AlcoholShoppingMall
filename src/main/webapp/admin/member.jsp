@@ -34,35 +34,22 @@ $(function(){
    						str +=  `<td>${'${item.price}'}</td>`
    						str += 	`<td>회원</td>`
    						str +=  `<td><button type='button' name="bbbb" value='${"${item.userId}"}' class='btn btn-secondary btn-sm' id='coupon' data-bs-toggle='modal' data-bs-target='#exampleModal'>쿠폰 지급</button></td>`
-   						str += "</tr>"
-						
-					
-						
-						
-						
+   						str += "</tr>"							
    			        })   	          
 					$("#qaTable tr:gt(0)").remove();
 				    $("#qaTable tr:eq(0)").after(str);	   
 
-			}, // 성공했을 때 실행할 함수 
+			},
 			error : function(err) {
 				alert(err + " 에러가 발생했어요.");
-			}// 실패했을 때 실행할 함수  
-   			
+			}
 		})
-		
 	}
-	
 	$(document).on("click","#coupon",function(){
 		$("[name=bbbb]").empty();
 		$("[name=bbbb]").val($(this).val());
-		
 	})
-	
-	
 	seletAll();
-	
-	
 })
 
 
@@ -76,7 +63,6 @@ $(function(){
 <div class="container ">
 	<div class="row">
 	</div>
-
 	<div class="row mb-3">
 		<div class="col">
 			<table class="table text-center" id="qaTable">

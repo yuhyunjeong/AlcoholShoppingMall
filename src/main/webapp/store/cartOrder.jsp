@@ -98,67 +98,34 @@ $(function(){
 	
 		$("#couponList").change(function(){
 			$("#finCoupon").html("-"+$(this).val()+"원");
-			//alert($("#finDiscount").text())
-			//alert(parseInt($("#finDiscount").text()));
-			//alert(Math.abs(parseInt($("#finDiscount").text())));
-			
-			//let olddisPr = Math.abs(parseInt($("#finDiscount").text()));
-			
+
 			test();
 			
 		})
 		
 		function test(){
-			//let res = parseInt($("#couponList").val()) + parseInt( $("#pointText").val());
 			res = parseInt($("#couponList").val()) + parseInt( $("#pointText").val());
-	 		$("#finDiscount").html("-"+res+"원");
-	 		
+	 		$("#finDiscount").html("-"+res+"원");		
 	 		$("#finfinfinPrice").val((parseInt($("[name=finfinPrice]").val())-parseInt(res))+3000+"원")
-	 		//alert(parseInt($("[name=finfinPrice]").val()));
-
 		}
-		
-		
-			
+
 		$("#pointText").keyup(function(){
 		  const name = $('#pointText').val();
-		  
-		  
 		  if(${loginUser.userPoint}==0 || name =="" ||name ==null){
 			 	 $("#finPoint").html(0+"P");
 			 	 return;
-			 	
 		  }else if(${loginUser.userPoint}>=name){
 			  	$("#point").html((${loginUser.userPoint}-name)+"P");
 				$("#finPoint").html("-"+name+"P");
-				
 		  }else if(${loginUser.userPoint}<name){
 			  $("#point").html("0P");
 			  $("#finPoint").html("-"+3000+"P");
-			  
+ 
 		  }
-		  
+
 		  test();
 		});
-		
-	/* function finalPrice(){
-		
-		
-		if(${loginUser.userPoint}==0 || name =="" ||name ==null){
-			$("#finDiscount").html(0+"원")
-			
-	 	 }else if(${loginUser.userPoint}>=name){
-	 		$("#finDiscount").html($("#couponList").val()+(${loginUser.userPoint}-name));
-	 		
-	  	}else if(${loginUser.userPoint}<name){
-	  		$("#finDiscount").html($("#couponList").val()-3000);
-	  	}
 
-		
-	} */
-
-	//입력한 포인트값
-	//finalPrice();
 	couponAll();
 	selectAll();
  })      

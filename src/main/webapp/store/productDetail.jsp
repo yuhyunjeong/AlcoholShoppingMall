@@ -182,8 +182,11 @@ $(function(){
 					        			<c:when test="${star<=4.5}">
 					        				<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star-half"></i>
 					        			</c:when>
-					        			<c:when test="${star<=5}">
+					        			<c:when test="${star<5}">
 					        				<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+					        			</c:when>
+					        			<c:when test="${star==5}">
+					        				<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
 					        			</c:when>
 					        		</c:choose>
 					        		</b>   
@@ -343,21 +346,21 @@ $(function(){
 				  <div class="accordion-item">
 				    <h2 class="accordion-header" id="flush-headingOne">
 				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-				        질문입니다
+				        배송/기간 관련 질문
 				      </button>
 				    </h2>
 				    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-				      <div class="accordion-body">이게내용이고 <code>코드내용인듯</code>내용이다</div>
+				      <div class="accordion-body">사실 <code>나도 몰라</code>허허</div>
 				    </div>
 				  </div>
 				  <div class="accordion-item">
 				    <h2 class="accordion-header" id="flush-headingTwo">
 				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-				        문의합니다
+				        맛 문의합니다
 				      </button>
 				    </h2>
 				    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-				      <div class="accordion-body">이게내용이고 <code>코드내용인듯</code>내용이다</div>
+				      <div class="accordion-body">맛이  <code>좋은지는</code>몰라요</div>
 				    </div>
 				  </div>
 				  <div class="accordion-item">
@@ -367,7 +370,7 @@ $(function(){
 				      </button>
 				    </h2>
 				    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-				      <div class="accordion-body">이게내용이고 <code>코드내용인듯</code>내용이다</div>
+				      <div class="accordion-body">엄청 많은 <code>500ml</code>에요</div>
 				    </div>
 				  </div>
 				</div>

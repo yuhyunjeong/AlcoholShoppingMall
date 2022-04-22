@@ -27,7 +27,7 @@ $(function(){
    					str+="<div class='col-lg-3 col-md-6'>";
    					str+="<div class='card mb-3 h-100'>";
    					str+=`<a href = '${path}/front?key=review&methodName=reviewSelect&pName=${"${item.pName}"}&type=${param.type}&title=${param.title}'>`						
-   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pImage}"}.jpg' class=card-img-top alt='모르겠다'></a>`; 
+   					str+=`<img src='${path}/img/${"${item.cateCode}"}/${"${item.pName}"}.jpg' class=card-img-top alt='모르겠다'></a>`; 
    					str+="<div class='card-body'>";
    					str+="<p class='card-text'>";
    					str+=`<b>${'${item.pName}'}</b><p><p>`;
