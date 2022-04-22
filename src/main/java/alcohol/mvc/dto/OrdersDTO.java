@@ -19,7 +19,7 @@ public class OrdersDTO {
 		this.orderCode = orderCode;
 		this.uId = uId;
 		this.payCode = payCode;
-		this.orderDate = orderDate.substring(0,10);
+		this.orderDate = orderDate;
 		this.orderStatus = orderStatus;
 		this.deliStatus = deliStatus;
 		this.deliAddr = deliAddr;
@@ -55,13 +55,6 @@ public class OrdersDTO {
 		return orderDate;
 	}
 
-	public String DBgetOrderDate() {
-		String date= DBgetOrderDate();
-		String a=date.substring(0,10);
-		
-		return a;
-	}
-	
 	
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;

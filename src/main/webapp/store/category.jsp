@@ -137,7 +137,7 @@ $(function(){
 
     <hr class="featurette-divider">
     <p></p><br>
-    <h2 style="font-weight:bold;">베스트</h2>
+    <h2 style="font-weight:bold; padding ">베스트</h2>
     <div class="row m-5" name="best">
     	
   		
