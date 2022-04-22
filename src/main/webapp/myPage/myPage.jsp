@@ -214,8 +214,6 @@ function selectAll(){
 
 
 <jsp:include page="../common/footer.jsp"/>
-이름 구독상태 잔여적립금 잔여쿠폰  주문내역 회원정보<p>
 
-(주문내역, 회원정보 눌렀을때 각각 영역 출력 ex)iframe
 </body>
 </html>
