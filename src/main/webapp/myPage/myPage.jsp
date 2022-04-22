@@ -19,23 +19,30 @@ function selectAll(){
 
 			success :function(result){
 				
-				str sub = "";
-				 sub +=`<b>${'${result.sDTO.subStartDate}'}</b><br>`;
-				 sub +=`<b>${'${result.sDTO.subPrice}'}</b><br>`;
+				
 				let str ="";
-				$.each(result, function(index, item) {
-					alert(result)
-					/* <b>쿠폰명 :</b><br>
-			        <b>쿠폰명 : 신규가입쿠폰</b><br> */
-					
-					
-					
-					
-				});
-				//$("rrr").remove();
-
-				$("#rrr").empty();
-			$("#rrr").html(str);
+				
+				
+				 $.each(result, function(i, map){ //2개 
+					 str sub = "";
+					 sub +=`<b>${'${result.sDTO.subStartDate}'}</b><br>`;
+					 sub +=`<b>${'${result.sDTO.subPrice}'}</b><br>`;
+					 
+					 
+	   			       let str = "";
+	   			        $.each(map.qList , function(index, item){
+	   			        	str += "<tr>";
+							str += `<th scope="row">${'${item.qaNumber}'}</th>`;
+							str += `<td>${'${item.userId}'}</td>`;
+							str += `<td>${'${item.qaTitle}'}</td>`;
+							str += `<td><a href='${path}/front?key=qa&methodName=selectByQANum&qaNumber=${"${item.qaNumber}"}'>${'${item.qaContent}'}</a></td>`;
+							str += `<td>${'${item.qaDate}'}</td>`;
+							str += "</tr>"
+	   			        })   
+	   			          
+						
+	   			    
+	   			    })
 				
 			},error : function(err){  
 				alert(err+"에러 발생했어요.");
@@ -59,7 +66,7 @@ function selectAll(){
 			  <div class="card-body">
 			    <div class="row" >
 					<div class="col-2  text-center">
-						<b>아이디</b> 님
+						<b>${loginName}</b> 님
 					</div>
 					<div class="col-3">
 		           		<div class="row">
