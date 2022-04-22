@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -13,8 +13,7 @@ h1 {
 	text-align: center;
 }
 
-div {
-	margin 100px;
+div {margin 100px;
 	
 }
 
@@ -77,7 +76,9 @@ div {
 	margin-left: 50px;
 }
 
-a{text-decoration: none}
+a {
+	text-decoration: none
+}
 </style>
 <script type="text/javascript">
 	$(function() {
@@ -95,7 +96,7 @@ a{text-decoration: none}
 	   			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
 	   			data: {key :"qa", methodName:"selectFilter", cate:v, pageNo:pn},
 	   			success :function(result){//map이나옴
-                       alert(result)
+                       /* alert(result) */
 	   			    $.each(result, function(i, map){ //2개 
 	   			       let str = "";
 	   			        $.each(map.qaList , function(index, item){
@@ -173,7 +174,7 @@ a{text-decoration: none}
 	  ///////////////////////////////
 	  
 	    $(document).on("click","#page", function(){
-	    	alert($(this).attr("name") +", "+ $(this).text())
+	    	/* alert($(this).attr("name") +", "+ $(this).text()) */
 	    	
 	    	qaFilter($(this).attr("name") , $(this).text())	  
 	    	
@@ -183,7 +184,7 @@ a{text-decoration: none}
 	  ////////////////////////
 		
 		function selectAll(){
-			alert(22)
+			/* alert(22) */
 		/*	$.ajax({
 	   			url :"${pageContext.request.contextPath}/ajax" , //서버요청주소
 	   			type:"post", //요청방식(method방식 : get | post | put | delete )
@@ -266,30 +267,25 @@ a{text-decoration: none}
 
 	<div class="col-sm-6, container">
 		<div class="d-grid gap-2 d-md-block">
-			<a class="btn btn-primary , btn btn-dark" href="${path}/board/qaWrite.jsp"
-				role="button">등록하기</a>
+			<a class="btn btn-primary , btn btn-dark"
+				href="${path}/board/qaWrite.jsp" role="button">등록하기</a>
 		</div>
 		<p>
-	
+		<table class="table table-hover" id="qaTable">
+			<tr>
+				<th scope="col">글번호</th>
+				<th scope="col">작성자</th>
+				<th scope="col">카테고리</th>
+				<th scope="col">제목</th>
+				<th scope="col">작성일</th>
+			</tr>
+		</table>
+	</div>
 
-			<table class="table table-hover" id="qaTable">
-					<tr>
-						<th scope="col">글번호</th>
-						<th scope="col">작성자</th>
-						<th scope="col">카테고리</th>
-						<th scope="col">제목</th>
-						<th scope="col">작성일</th>
-					</tr>
-			</table>
-		</div>
-	
 	<!-- 페이징처리 -->
 
-<nav aria-label="Page navigation example" id="pagingQA" style="text-align: center;">
-
-	
-
-</nav>
-<%@include file="../common/footer.jsp"%>
+	<nav aria-label="Page navigation example" id="pagingQA"
+		style="text-align: center;"></nav>
+	<%@include file="../common/footer.jsp"%>
 </body>
 </html>
