@@ -35,7 +35,7 @@
 						  <span class="input-group-text" id="inputGroup-sizing-default">연락처</span>
 						  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${loginUser.userPhone}">
 						</div>
-						<p class="text-end" ><button type="button" class="btn btn-link , btn btn-dark" style="text-decoration: none;">수정</button></p>
+						<p class="text-end" ><button type="button" class="btn btn-link , btn btn-dark" style="text-decoration: none; color:white;">수정</button></p>
 
 			  		</div>		  		
 			  	</div>

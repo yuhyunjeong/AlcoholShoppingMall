@@ -343,7 +343,7 @@ $(function(){
 				  <div class="accordion-item">
 				    <h2 class="accordion-header" id="flush-headingOne">
 				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-				        첫 질문은 뭐로할까
+				        질문입니다
 				      </button>
 				    </h2>
 				    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -353,7 +353,7 @@ $(function(){
 				  <div class="accordion-item">
 				    <h2 class="accordion-header" id="flush-headingTwo">
 				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-				        두번째 질문
+				        문의합니다
 				      </button>
 				    </h2>
 				    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
@@ -363,7 +363,7 @@ $(function(){
 				  <div class="accordion-item">
 				    <h2 class="accordion-header" id="flush-headingThree">
 				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-				        세번째 질문이구먼
+				        양이 얼마나 되나요
 				      </button>
 				    </h2>
 				    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
