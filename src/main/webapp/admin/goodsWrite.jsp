@@ -20,7 +20,7 @@
 
 <script type="text/javascript">
 
-$(function() {	
+/* $(function() {	
 		
    $('#datePicker').datepicker({
 	    format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
@@ -38,7 +38,7 @@ $(function() {
 	
 
 	
-});//ready end
+});//ready end */
 
 
 </script>
@@ -104,7 +104,8 @@ $(function() {
 				</div>
 				<div class="col">
 					<label for="inputAddress" class="form-label">등록일</label>
-					<input class="form-control"	id="datePicker" value="0000-00-00" "name="pDate"/> 
+					<input type="date" class="form-control"	placeholder="0000-00-00" name="pDate"/> 
+					<!-- <input class="form-control"	id="datePicker" value="0000-00-00" "name="pDate"/>  -->
 				</div>
                 <p>
 
