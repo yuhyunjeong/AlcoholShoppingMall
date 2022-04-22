@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import alcohol.mvc.dto.QADTO;
+import alcohol.mvc.paging.PageCnt;
 import alcohol.mvc.service.QAService;
 import alcohol.mvc.service.QAServiceImpl;
 import net.sf.json.JSONArray;
@@ -167,6 +168,9 @@ public class QAController implements Controller {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("qaList", qaList);
 		map.put("pageNo", pageNo);
+		map.put("blockcount", PageCnt.blockcount);
+		map.put("pageCnt", PageCnt.pageCnt);
+		map.put("categoryNum", categoryNum);
 		
 		JSONArray arr = JSONArray.fromObject(map);
 		System.out.println("사이즈 "+qaList.size());

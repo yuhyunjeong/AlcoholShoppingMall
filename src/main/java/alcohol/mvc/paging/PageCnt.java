@@ -2,11 +2,11 @@ package alcohol.mvc.paging;
 
 
 public class PageCnt {
-	private static int pageCnt; // 전체 페이지 수  
+	public static int pageCnt; // 전체 페이지 수  
 	public static  int pagesize = 5;// 한 페이지당 출력될 게시물 수 
 	public static int pageNo=1; // 현재 페이지 번호 
 	
-	public  int blockcount=2; // 한 블록당 보여질 페이지 번호 개수  
+	public static int blockcount=2; // 한 블록당 보여질 페이지 번호 개수  
 	
 	//String keyField;
 	

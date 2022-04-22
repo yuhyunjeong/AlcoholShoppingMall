@@ -132,6 +132,7 @@ public class QADAOImpl implements QADAO {
 
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
@@ -144,6 +145,34 @@ public class QADAOImpl implements QADAO {
 
 		return totalCount;
 	}
+	
+	private int getTotalCount2(int categoryNum) throws SQLException {
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int totalCount = 0;
+		String sql = "select count(*) from (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM QA WHERE QA_CATEGORY =? ORDER BY QA_DATE desc) a)";
+
+		try {
+
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, categoryNum);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+
+		return totalCount;
+	}
+	
+	
 
 	@Override
 	public QADTO qaSelect(int qaNumber) throws SQLException {
@@ -180,13 +209,13 @@ public class QADAOImpl implements QADAO {
 		
 		QADTO dto = null;
 		try {
-			int totalCount = this.getTotalCount();
+			int totalCount = this.getTotalCount2(categoryNum);
 			int totalPage = totalCount%PageCnt.getPagesize()==0 ?totalCount/PageCnt.getPagesize() : (totalCount/PageCnt.getPagesize())+1;
 			
 			PageCnt pageCnt = new PageCnt();
 			pageCnt.setPageCnt(totalPage);//전체페이지수 저장
 			PageCnt.setPageNo(pageNo);
-			
+			System.out.println("totalpage = " + totalPage);
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, categoryNum);//카테고리 
@@ -202,12 +231,15 @@ public class QADAOImpl implements QADAO {
 				qaList.add(dto);
 			}
 			
+			
+			System.out.println(qaList);
+			
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
-		System.out.println("dao " +qaList.get(0).getQaCategory());
-		System.out.println("dao " +qaList.get(0).getQaTitle());
-		System.out.println("dao " +qaList.get(0).getQaNumber());
+		//System.out.println("dao " +qaList.get(0).getQaCategory());
+		//System.out.println("dao " +qaList.get(0).getQaTitle());
+		//System.out.println("dao " +qaList.get(0).getQaNumber());
 		return qaList;
 	}
 
