@@ -8,11 +8,42 @@
 <title>마이페이지</title>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+$(function(){
+alert(1)
+function selectAll(){	
+	$.ajax({
+			url :"../ajax" , //서버요청주소
+			type:"post", //요청방식(method방식 : get | post | put | delete )
+			dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+			data: {key :"user", methodName:"mypage", cate :"${loginId}"},
 
-request.setAttribute("id", "222jankg");
-System.out.println(${param.name});
+			success :function(result){
+				
+				str sub = "";
+				 sub +=`<b>${'${result.sDTO.subStartDate}'}</b><br>`;
+				 sub +=`<b>${'${result.sDTO.subPrice}'}</b><br>`;
+				let str ="";
+				$.each(result, function(index, item) {
+					alert(result)
+					/* <b>쿠폰명 :</b><br>
+			        <b>쿠폰명 : 신규가입쿠폰</b><br> */
+					
+					
+					
+					
+				});
+				//$("rrr").remove();
 
-
+				$("#rrr").empty();
+			$("#rrr").html(str);
+				
+			},error : function(err){  
+				alert(err+"에러 발생했어요.");
+			}  //실팽했을때 실행할 함수 
+		});
+	
+}
+})
 </script>
 </head>
 <body>
@@ -50,9 +81,8 @@ System.out.println(${param.name});
 									        </div>
 									        
 									        <div class="modal-body">
-										        <div class="col mt-3 text-center">
-										        <b id="sub1">구독상품</b><br>
-										        <b id="sub2">구독기간</b><br>
+										        <div class="col mt-3 text-center" id="sub">
+										        
 												</div> 		  
 									        </div>
 									        <div class="modal-footer">
@@ -77,7 +107,7 @@ System.out.println(${param.name});
 									        
 									        <div class="modal-body">
 										        <div class="col mt-3 text-center">
-										        <b>상품명 : 100p</b><br>
+										        <b>상품명 : 이건 버리기로 해벼렸따 ~</b><br>
 										        <b>상품명 : 100p</b><br>
 												</div> 		  
 									        </div>
@@ -99,13 +129,13 @@ System.out.println(${param.name});
 									      <div class="modal-content">
 									        <div class="modal-header">
 									          <h5 class="modal-title" id="exampleModalLabel">보유중인 쿠폰</h5>
+									          
 									          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 									        </div>
 									        
 									        <div class="modal-body">
-										        <div class="col mt-3 text-center">
-										        <b>쿠폰명 : 생일쿠폰</b><br>
-										        <b>쿠폰명 : 신규가입쿠폰</b><br>
+										        <div class="col mt-3 text-center" id="cou">
+										        
 												</div> 		  
 									        </div>
 									        <div class="modal-footer">

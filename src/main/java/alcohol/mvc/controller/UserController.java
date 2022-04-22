@@ -16,11 +16,14 @@ import javax.servlet.http.HttpSession;
 
 import alcohol.mvc.dto.CouponDTO;
 import alcohol.mvc.dto.ProductDTO;
+import alcohol.mvc.dto.SubDTO;
 import alcohol.mvc.dto.UserDTO;
 import alcohol.mvc.service.CartService;
 import alcohol.mvc.service.CartServiceImpl;
 import alcohol.mvc.service.CouponService;
 import alcohol.mvc.service.CouponServiceImpl;
+import alcohol.mvc.service.SubService;
+import alcohol.mvc.service.SubServiceImpl;
 import alcohol.mvc.service.UserService;
 import alcohol.mvc.service.UserServiceImpl;
 import net.sf.json.JSONArray;
@@ -191,7 +194,7 @@ public class UserController implements Controller {
 	}
 	
 	
-public ModelAndView couponInsert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView couponInsert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String id = request.getParameter("bbbb");
 		String items = request.getParameter("items");//갯수
@@ -211,7 +214,26 @@ public ModelAndView couponInsert(HttpServletRequest request, HttpServletResponse
 	
 		
 	}
+	public void mypage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String id = request.getParameter("id");
+
+
+		SubService subService = new SubServiceImpl();
+		CouponService couService = new CouponServiceImpl();
+		List<CouponDTO> clist=couService.couponAll(id);
+		SubDTO sDTO=subService.subSelect(id);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("clist", clist);
+		map.put("sDTO", sDTO);
+
+		JSONArray arr = JSONArray.fromObject(map); //System.out.println(dto.getpName()+"나와라");
+		PrintWriter out = response.getWriter();
+		out.print(arr);
 	
+		
+	}	
 	
 	
 	
