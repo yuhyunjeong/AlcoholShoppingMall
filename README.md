@@ -26,5 +26,6 @@
 ![image](https://user-images.githubusercontent.com/88241376/167448961-f32860e8-94c3-409b-b311-df82116ea5e6.png)
 
 # <h2> 화면 </h2>
+![image](https://user-images.githubusercontent.com/88241376/229091451-07bfdf24-75d3-4439-ab43-8f17e5e2b339.png)
 ![image](https://user-images.githubusercontent.com/88241376/229090737-4fd1f507-ae7c-4ddd-bc55-f8d4c9fad8c8.png)
 
