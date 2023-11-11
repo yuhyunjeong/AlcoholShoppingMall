@@ -1,11 +1,11 @@
 # :sake: 안다미로 :sake:
 # <h2> :bulb: Overview</h2>
-Traditional Spirits Ordering and Subscription Websites
+Traditional Liquor Ordering and Subscription Websites
 
-Sell traditional spirits online that are lesser known than other alcoholic beverages. 
+Sell traditional liquors online that are lesser known than other alcoholic beverages. 
 making it easier to try them without traveling to the region, 
 Provide a guide to help users choose according to their preferences, 
-aims to revitalize the local economy by generating interest in traditional liquor among users.
+aims to revitalize the local economy by generating interest in traditional liquor among users. 
 
 전통주 주문 및 구독형 웹사이트
 
