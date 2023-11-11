@@ -1,5 +1,12 @@
 # :sake: 안다미로 :sake:
-# <h2> :bulb: 프로젝트 개요</h2>
+# <h2> :bulb: Overview</h2>
+Traditional Spirits Ordering and Subscription Websites
+
+Sell traditional spirits online that are lesser known than other alcoholic beverages. 
+making it easier to try them without traveling to the region, 
+Provide a guide to help users choose according to their preferences, 
+aims to revitalize the local economy by generating interest in traditional liquor among users.
+
 전통주 주문 및 구독형 웹사이트
 
 다른 주류들에 비해 많이 알려지지 않은 전통주를 온라인으로 판매하여 
@@ -7,10 +14,10 @@
 취향에 따라 선택할 수 있도록 가이드를 제시해주며, 
 사용자가 전통술에 대한 관심을 갖게 하여 추후 지역경제를 활성화시키는 것을 목표로 한다. 
 
-# <h2> :calendar: 기간</h2>
+# <h2> :calendar: Duration</h2>
 2022.04.15 ~ 2022.04.22
 
-# <h2> :computer: 사용 기술</h2>
+# <h2> :computer: Skills</h2>
 <ul>
   <li><img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white"/></li>
   <li><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/></li>
@@ -25,7 +32,7 @@
 # <h2> ERD </h2>
 ![image](https://user-images.githubusercontent.com/88241376/167448961-f32860e8-94c3-409b-b311-df82116ea5e6.png)
 
-# <h2> 화면 </h2>
+# <h2> Detail Pages </h2>
 ![image](https://user-images.githubusercontent.com/88241376/229091451-07bfdf24-75d3-4439-ab43-8f17e5e2b339.png)
 ![image](https://user-images.githubusercontent.com/88241376/229090737-4fd1f507-ae7c-4ddd-bc55-f8d4c9fad8c8.png)
 ![image](https://user-images.githubusercontent.com/88241376/229091642-64601962-ec85-4158-b966-4088135d3f7d.png)
