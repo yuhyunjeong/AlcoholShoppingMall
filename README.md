@@ -31,7 +31,7 @@ aims to revitalize the local economy by generating interest in traditional liquo
   <li><img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=Notion&logoColor=white"/></li>
 </ul>
 
-# <h2> Detail Pages </h2>
+# <h2>:white_check_mark:Detail Pages </h2>
 <h3>Category</h3>
 
 ![image](https://user-images.githubusercontent.com/88241376/229091451-07bfdf24-75d3-4439-ab43-8f17e5e2b339.png)
