@@ -1,5 +1,7 @@
 # :sake: 안다미로 :sake:
 # <h2> :bulb: Overview</h2>
+Andamiro - Korean for 'so much that it overflows the bowl'
+
 Traditional Liquor Ordering and Subscription Websites
 
 Sell traditional liquors online that are lesser known than other alcoholic beverages. 
